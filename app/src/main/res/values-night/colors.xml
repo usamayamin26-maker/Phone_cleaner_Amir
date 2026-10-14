@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark palette, same names as values/colors.xml. -->
+
+    <!-- TODO(figma): read from the dark Home frame. Placeholder until the palette is pulled. -->
+    <color name="background">#FF121212</color>
+</resources>

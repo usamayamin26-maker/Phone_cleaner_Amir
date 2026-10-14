@@ -1,0 +1,87 @@
+package com.phone.cleaner
+
+import ai.jhw.aicleaner.di.aiCleanerModule
+import ai.jhw.appmanager.di.appManagerModule
+import ai.jhw.appusage.di.appUsageModule
+import ai.jhw.battery.di.batteryModule
+import ai.jhw.compressor.di.compressorModule
+import ai.jhw.deviceinfo.di.deviceInfoModule
+import ai.jhw.duplicates.di.duplicatesModule
+import ai.jhw.junkcleaner.di.junkCleanerModule
+import ai.jhw.storage.di.storageModule
+import ai.jhw.whatsapp.di.whatsAppModule
+import android.app.Application
+import android.app.LocaleManager
+import android.os.Build
+import android.os.LocaleList
+import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import com.phone.cleaner.di.SharedModule
+import com.phone.cleaner.utils.SharedPref
+import org.koin.android.ext.android.get
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+
+class BaseApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        startKoin {
+            androidContext(this@BaseApp)
+            modules(
+                SharedModule,
+                // Feature library modules - each registers its own singles.
+                storageModule,
+                junkCleanerModule,
+                aiCleanerModule,
+                whatsAppModule,
+                duplicatesModule,
+                appManagerModule,
+                deviceInfoModule,
+                batteryModule,
+                appUsageModule,
+                compressorModule,
+            )
+        }
+
+        applyStoredLanguage()
+    }
+
+    /**
+     * Applies the language the user picked, here in the application, before the first activity
+     * exists.
+     *
+     * Below API (Application Programming Interface) level 33 a locale change can only reach a live
+     * activity by recreating it. With no activity alive yet the locale is simply part of the
+     * configuration every activity is then created with, so nothing has to be recreated.
+     *
+     * From API level 33 the locale lives in the framework's [LocaleManager]. It is addressed
+     * directly rather than through `AppCompatDelegate`, because AppCompat reaches LocaleManager
+     * through a live activity and silently does nothing when there is none.
+     */
+    private fun applyStoredLanguage() {
+        val tag = get<SharedPref>().appLanguage
+        val current = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getSystemService(LocaleManager::class.java)?.applicationLocales?.toLanguageTags()
+        } else {
+            AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        }
+        if (current == tag) {
+            Log.d(TAG, "Locale already in effect: $tag")
+            return
+        }
+        Log.d(TAG, "Applying stored locale: $tag (was \"$current\")")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getSystemService(LocaleManager::class.java)?.applicationLocales =
+                LocaleList.forLanguageTags(tag)
+        } else {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
+        }
+    }
+
+    private companion object {
+        const val TAG = "BaseApp"
+    }
+}

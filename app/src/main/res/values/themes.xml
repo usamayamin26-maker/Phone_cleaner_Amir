@@ -1,9 +1,16 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
+
     <style name="Base.Theme.PhoneCleaner" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:colorBackground">@color/background</item>
+
+        <!-- No font is set here on purpose. A theme-level android:fontFamily overrides the
+             android:fontFamily a TextView sets for itself, so every label would render in one
+             weight. Each TextView names its own weight file instead. -->
+
+        <!-- No android:statusBarColor / android:navigationBarColor: every activity goes
+             edge-to-edge through enableEdgeToEdge(), which makes the bars transparent itself. -->
     </style>
 
     <style name="Theme.PhoneCleaner" parent="Base.Theme.PhoneCleaner" />
+
 </resources>
