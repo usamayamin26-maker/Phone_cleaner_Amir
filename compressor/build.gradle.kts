@@ -30,9 +30,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":storage"))
+    // api: the storage models (FileItem, DeleteResult) are part of this module's public API.
+    api(project(":storage"))
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.exifinterface)
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(platform(libs.koin.bom))
