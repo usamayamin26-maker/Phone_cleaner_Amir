@@ -1,0 +1,27 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Kotlin compiler session files.
+.kotlin/
+
+# Signing credentials. The keystore itself may be committed (see jks/); these passwords
+# never are - together they are everything needed to sign a build as this app.
+keystore.properties
+
+# Android Studio's "Generate Signed Bundle / APK" wizard writes here. Tens of megabytes
+# per build, and committing them puts every one of them in the history permanently.
+/app/release/
