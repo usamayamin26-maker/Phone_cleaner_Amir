@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:989 / 1:3052: the primary button's second shape - radius 16 instead of a pill, used by
+     onboarding, the dialogs and the results screens. The gradient runs within 17 degrees of left
+     to right, which a shape draws at 0. The upper half carries the design's highlight (1:990: white
+     32% to 0 at 70% opacity). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_on_primary">
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/_13sdp" />
+                    <gradient
+                        android:angle="0"
+                        android:centerColor="@color/primary_gradient_center"
+                        android:endColor="@color/primary_gradient_end"
+                        android:startColor="@color/primary_gradient_start"
+                        android:type="linear" />
+                </shape>
+            </item>
+            <item
+                android:height="@dimen/_20sdp"
+                android:gravity="top">
+                <shape android:shape="rectangle">
+                    <corners
+                        android:topLeftRadius="@dimen/_13sdp"
+                        android:topRightRadius="@dimen/_13sdp" />
+                    <gradient
+                        android:angle="270"
+                        android:endColor="@color/primary_highlight_end"
+                        android:startColor="@color/primary_highlight"
+                        android:type="linear" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</ripple>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One language (Figma 1:4308): a 68 px card, radius 22, with the flag in a 48 px round tile 15 px
-     in, the name 14 px after it and the 21 px tick 15 px from the end on the chosen language. The
-     design shows one name; the row shows the language's own name and, under it, its name in the
-     app's language. -->
+<!-- One language (Figma 1:4317 unselected, 1:4308 selected): a 68 px card, radius 20, 72% white
+     with a 12% blue hairline and 14 px padding; the flag in a 48 px rounded tile, the name 14 px
+     after it, and on the chosen language a violet-to-blue fill, white text and the 21 px white tick.
+     The design shows one name; the row shows the language's own name and, under it, its name in
+     the app's language. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,8 +11,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_10sdp"
     android:outlineSpotShadowColor="@color/card_shadow"
-    app:cardBackgroundColor="@color/card_row_surface"
-    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardBackgroundColor="@color/card_glass"
+    app:cardCornerRadius="@dimen/_16sdp"
     app:cardElevation="@dimen/_3sdp"
     app:rippleColor="@color/ripple_on_light"
     app:strokeColor="@color/card_row_stroke"
@@ -19,23 +20,24 @@
     tools:targetApi="28">
 
     <LinearLayout
+        android:id="@+id/language_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:minHeight="@dimen/_54sdp"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/_12sdp"
+        android:paddingHorizontal="@dimen/_11sdp"
         android:paddingVertical="@dimen/_8sdp">
 
         <TextView
             android:id="@+id/language_flag"
             android:layout_width="@dimen/_38sdp"
             android:layout_height="@dimen/_38sdp"
-            android:background="@drawable/shape_circle_tile"
+            android:background="@drawable/shape_flag_tile"
             android:gravity="center"
             android:importantForAccessibility="no"
-            android:textColor="@color/text_label_strong"
-            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/text_option"
+            android:textSize="@dimen/_22sdp"
             tools:text="🇺🇸" />
 
         <LinearLayout
@@ -49,9 +51,9 @@
                 android:id="@+id/language_native"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
+                android:fontFamily="@font/roboto_semi_bold"
                 android:textAlignment="viewStart"
-                android:textColor="@color/text_label_strong"
+                android:textColor="@color/text_option"
                 android:textDirection="locale"
                 android:textSize="@dimen/_12ssp"
                 app:lineHeight="@dimen/_19ssp"
@@ -66,7 +68,7 @@
                 android:textColor="@color/text_tertiary"
                 android:textDirection="locale"
                 android:textSize="@dimen/_10ssp"
-                app:lineHeight="@dimen/_15ssp"
+                app:lineHeight="@dimen/_16ssp"
                 tools:text="English" />
         </LinearLayout>
 
@@ -75,7 +77,8 @@
             android:layout_width="@dimen/_17sdp"
             android:layout_height="@dimen/_17sdp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_tick" />
+            android:src="@drawable/ic_tick"
+            app:tint="@color/icon_on_primary" />
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

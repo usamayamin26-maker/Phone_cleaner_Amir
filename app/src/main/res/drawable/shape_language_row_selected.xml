@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4308: the chosen language's fill, violet to blue from left to right (72%, composited
+     over screen_background), inside the card's radius 20. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_16sdp" />
+    <gradient
+        android:angle="0"
+        android:endColor="@color/card_row_selected_end"
+        android:startColor="@color/card_row_selected_start"
+        android:type="linear" />
+</shape>

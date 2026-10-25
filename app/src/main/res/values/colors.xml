@@ -26,8 +26,10 @@
     <color name="text_accent">#FF0041FF</color>
     <!-- Splash subtitle and loading line, onboarding Skip. -->
     <color name="text_secondary">#FF5F6475</color>
-    <!-- Onboarding subtitles. -->
-    <color name="text_tertiary">#FF72778A</color>
+    <!-- Body text under a title: onboarding subtitles, dialog messages (Figma #5F6475 at 85%). -->
+    <color name="text_tertiary">#D95F6475</color>
+    <!-- A language name on an unselected Language row (Figma 1:4322). -->
+    <color name="text_option">#FF16100E</color>
 
     <!-- Icons -->
     <color name="icon_back">#FF171A2B</color>
@@ -38,19 +40,25 @@
     <color name="icon_violet">#FF6366F1</color>
     <color name="icon_on_primary">#FFFFFFFF</color>
     <!-- The forward chevron on the Settings rows: lighter than the Device Info one. -->
-    <color name="icon_chevron_muted">#FF9A9FAC</color>
+    <color name="icon_chevron_muted">#995F6475</color>
 
     <!-- Cards -->
     <color name="card_surface">#FFFFFFFF</color>
     <color name="card_glass">#FFFDFDFF</color>
     <color name="card_glass_stroke">#D9FFFFFF</color>
     <color name="card_power_stroke">#FFE8EEFF</color>
-    <!-- Settings and Language rows: a near-white card with a pale blue hairline. -->
-    <color name="card_row_surface">#FFFAFAFF</color>
-    <color name="card_row_stroke">#FFE5EAFF</color>
+    <!-- Settings and Language rows (Figma 1:4241): 72% white, composited as card_glass, with a
+         12% blue hairline. The selected language is a 72% violet-to-blue gradient (1:4308),
+         composited over screen_background, with a stronger blue stroke. -->
+    <color name="card_row_stroke">#1F4F7CFF</color>
+    <color name="card_row_selected_start">#FF8C8FF5</color>
+    <color name="card_row_selected_end">#FF7E9FFF</color>
+    <color name="card_row_selected_stroke">#FF7997FD</color>
+    <!-- The 48 px rounded tile a language flag sits in (1:4309). -->
+    <color name="flag_tile_stroke">#FFECE2E0</color>
     <!-- The round tile behind a Settings icon or a language flag. -->
     <color name="circle_tile_fill">#FFEEF2FF</color>
-    <color name="circle_tile_stroke">#FFDBE4FF</color>
+    <color name="circle_tile_stroke">#1F4F7CFF</color>
     <color name="card_action_shadow">#FF4F7CFF</color>
     <!-- Spot shadow under the white cards: Figma's drop shadow is 8% black, lighter than the
          platform default, so the shadow colour is dimmed (API 28+; older versions keep the
@@ -88,6 +96,9 @@
     <color name="primary_gradient_center">#FF6366F1</color>
     <color name="primary_gradient_end">#FF8B5CF6</color>
     <color name="primary_button_shadow">#996366F1</color>
+    <!-- The highlight over the upper half of the radius-16 primary button (Figma 1:990). -->
+    <color name="primary_highlight">#39FFFFFF</color>
+    <color name="primary_highlight_end">#00FFFFFF</color>
 
     <!-- Splash (Figma 1:4189): the logo's 70% white border, the violet glow behind it and the
          loading bar's track. -->
@@ -97,7 +108,7 @@
     <color name="progress_track">#FFEEF2FF</color>
 
     <!-- Onboarding page indicator: the current page is a primary-gradient pill, the others dots. -->
-    <color name="indicator_inactive">#FFD5E0FF</color>
+    <color name="indicator_inactive">#334F7CFF</color>
 
     <!-- Pressed states -->
     <color name="ripple_on_light">#1F0041FF</color>

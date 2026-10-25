@@ -49,4 +49,13 @@
         <item name="android:outlineAmbientShadowColor" tools:targetApi="28">@color/primary_button_shadow</item>
     </style>
 
+    <!-- The primary button's second shape (Figma 1:989, 1:3052): radius 16, 50 px high, 17-18 px
+         bold label. Onboarding, the dialogs and the cleaner result screens use it. -->
+    <style name="Widget.PhoneCleaner.PrimaryButton.Rounded">
+        <item name="android:background">@drawable/shape_primary_button_rounded</item>
+        <item name="android:minHeight">@dimen/_40sdp</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="lineHeight">@dimen/_20ssp</item>
+    </style>
+
 </resources>

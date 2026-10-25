@@ -58,12 +58,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/continue_button"
-            style="@style/Widget.PhoneCleaner.PrimaryButton"
+            style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/_41sdp"
-            android:text="@string/action_continue"
-            android:textSize="@dimen/_14ssp" />
+            android:text="@string/action_continue" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

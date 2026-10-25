@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One Settings row (Figma 1:4241): a 70 px card, radius 22, with the 20 px icon in a 40 px round
-     tile 15 px in, the title 14 px after it and the 20 px chevron 15 px from the end. -->
+<!-- One Settings row (Figma 1:4241): a 70 px card, radius 20, 72% white with a 12% blue hairline,
+     14 px padding; the 20 px icon in a 40 px round tile, the title 14 px after it and the 20 px
+     chevron at the end. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,8 +9,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_10sdp"
     android:outlineSpotShadowColor="@color/card_shadow"
-    app:cardBackgroundColor="@color/card_row_surface"
-    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardBackgroundColor="@color/card_glass"
+    app:cardCornerRadius="@dimen/_16sdp"
     app:cardElevation="@dimen/_3sdp"
     app:rippleColor="@color/ripple_on_light"
     app:strokeColor="@color/card_row_stroke"
@@ -22,7 +23,7 @@
         android:gravity="center_vertical"
         android:minHeight="@dimen/_56sdp"
         android:orientation="horizontal"
-        android:padding="@dimen/_12sdp">
+        android:padding="@dimen/_11sdp">
 
         <FrameLayout
             android:layout_width="@dimen/_32sdp"
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_11sdp"
             android:layout_weight="1"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/roboto_semi_bold"
             android:textColor="@color/text_label_strong"
             android:textSize="@dimen/_12ssp"
             app:lineHeight="@dimen/_18ssp"

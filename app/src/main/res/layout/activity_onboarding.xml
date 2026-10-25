@@ -29,13 +29,13 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_22sdp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_semi_bold"
         android:text="@string/onboarding_skip"
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/_11ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lineHeight="@dimen/_17ssp" />
+        app:lineHeight="@dimen/_16ssp" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
@@ -101,13 +101,12 @@
         <!-- Next: 163 x 51; on the last page Continue fills the row (319 x 50). -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/action_button"
-            style="@style/Widget.PhoneCleaner.PrimaryButton"
+            style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="@dimen/_130sdp"
             android:minHeight="@dimen/_41sdp"
-            android:text="@string/onboarding_next"
-            android:textSize="@dimen/_14ssp" />
+            android:text="@string/onboarding_next" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
