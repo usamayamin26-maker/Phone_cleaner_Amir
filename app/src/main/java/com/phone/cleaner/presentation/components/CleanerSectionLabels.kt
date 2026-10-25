@@ -21,6 +21,7 @@ val CleanerSectionType.countTitle: Int
         CleanerSectionType.GALLERY -> R.string.cleaner_gallery_count
         CleanerSectionType.WA_PHOTOS -> R.string.cleaner_wa_photos_count
         CleanerSectionType.WA_VIDEOS -> R.string.cleaner_wa_videos_count
+        CleanerSectionType.JUNK_FILES -> R.string.cleaner_junk_files_count
     }
 
 /** "Images": the title of the section's own page. */
@@ -40,4 +41,5 @@ val CleanerSectionType.pageTitle: Int
         CleanerSectionType.GALLERY -> R.string.cleaner_title_gallery
         CleanerSectionType.WA_PHOTOS -> R.string.cleaner_title_wa_photos
         CleanerSectionType.WA_VIDEOS -> R.string.cleaner_title_wa_videos
+        CleanerSectionType.JUNK_FILES -> R.string.cleaner_title_junk_files
     }

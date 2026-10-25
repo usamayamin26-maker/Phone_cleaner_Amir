@@ -71,6 +71,7 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
             container = resultsSections,
             onCheck = { host.cleaner.onSectionCheckClicked(it) },
             onOpen = { host.openSection(it) },
+            onAllowAccess = { host.requestAllFilesAccess() },
         )
         deleteButton.onClick { host.cleaner.onDeleteClicked(null) }
     }

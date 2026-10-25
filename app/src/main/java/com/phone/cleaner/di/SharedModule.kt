@@ -7,6 +7,7 @@ import com.phone.cleaner.data.repository.AppManagerRepositoryImp
 import com.phone.cleaner.data.repository.BatteryRepositoryImp
 import com.phone.cleaner.data.repository.DeviceInfoRepositoryImp
 import com.phone.cleaner.data.repository.DuplicatesRepositoryImp
+import com.phone.cleaner.data.repository.JunkRepositoryImp
 import com.phone.cleaner.data.repository.StorageAccessRepositoryImp
 import com.phone.cleaner.data.repository.WhatsAppRepositoryImp
 import com.phone.cleaner.domain.repository.AiCleanerRepository
@@ -14,6 +15,7 @@ import com.phone.cleaner.domain.repository.AppManagerRepository
 import com.phone.cleaner.domain.repository.BatteryRepository
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
 import com.phone.cleaner.domain.repository.DuplicatesRepository
+import com.phone.cleaner.domain.repository.JunkRepository
 import com.phone.cleaner.domain.repository.StorageAccessRepository
 import com.phone.cleaner.domain.repository.WhatsAppRepository
 import com.phone.cleaner.domain.view_models.AiCleanerViewModel
@@ -86,9 +88,10 @@ val SharedModule = module {
     viewModel { DuplicatesViewModel(get()) }
     factory { DuplicateGroupAdapter() }
 
-    // ---- ai junk cleaner ----
+    // ---- ai junk cleaner, with the Smart Scan's junk files ----
     single<AiCleanerRepository> { AiCleanerRepositoryImp(get(), get(), get()) }
-    viewModel { AiCleanerViewModel(get()) }
+    single<JunkRepository> { JunkRepositoryImp(get(), get()) }
+    viewModel { AiCleanerViewModel(get(), get()) }
 
     // ---- wa cleaner ----
     single<WhatsAppRepository> { WhatsAppRepositoryImp(get(), get()) }

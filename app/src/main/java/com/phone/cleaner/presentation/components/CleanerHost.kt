@@ -15,6 +15,9 @@ interface CleanerHost {
 
     /** "View All" or a section card: that section's page, over the results. */
     fun openSection(key: String)
+
+    /** A section that needs All files access asked for it (the AI cleaner's Junk Files). */
+    fun requestAllFilesAccess()
 }
 
 /** How one cleaner screen differs from the others in the design. */

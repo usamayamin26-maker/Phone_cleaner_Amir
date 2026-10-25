@@ -38,6 +38,7 @@ class CleanerSectionsFragment : BaseFragment<FragmentCleanerSectionsBinding>() {
             container = groups,
             onCheck = { host.cleaner.onSectionCheckClicked(it) },
             onOpen = { host.openSection(it) },
+            onAllowAccess = { host.requestAllFilesAccess() },
         )
         deleteButton.root.onClick { host.cleaner.onDeleteClicked(key) }
     }

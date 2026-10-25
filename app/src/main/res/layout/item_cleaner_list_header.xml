@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A category heading in the Junk Files list (no design): the category and its size, in the
+     section title's type, above that category's files. -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_6sdp"
+    android:paddingBottom="@dimen/_8sdp"
+    android:accessibilityHeading="true"
+    android:fontFamily="@font/roboto_semi_bold"
+    android:textAlignment="viewStart"
+    android:textColor="@color/text_label_strong"
+    android:textSize="@dimen/_12ssp"
+    app:lineHeight="@dimen/_17ssp"
+    tools:targetApi="28"
+    tools:text="Temp files · 12 MB" />

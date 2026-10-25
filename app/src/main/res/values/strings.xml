@@ -175,6 +175,24 @@
     <string name="cleaner_title_stickers">Stickers</string>
     <string name="cleaner_title_statuses">Statuses</string>
 
+    <!-- The AI cleaner's Junk Files section and its list (no design). -->
+    <string name="cleaner_junk_files_count">Junk Files (%1$s)</string>
+    <string name="cleaner_title_junk_files">Junk Files</string>
+    <string name="junk_access_message">Allow access to all files to find temp files, empty folders and old installers.</string>
+    <string name="junk_apk_files">APK files</string>
+    <string name="junk_temp_files">Temp files</string>
+    <string name="junk_thumbnails">Thumbnails</string>
+    <string name="junk_empty_folders">Empty folders</string>
+    <string name="junk_residual_files">Leftover app files</string>
+    <string name="junk_app_cache">App cache</string>
+    <string name="junk_reason_full_access">needs access to all files</string>
+    <string name="junk_reason_blocked">Android keeps other apps\' caches private</string>
+    <string name="junk_reason_package_visibility">needs permission to see installed apps</string>
+    <string name="junk_empty_folder">Empty folder</string>
+    <!-- A name and its size, or a junk category and its total: "Temp files · 12 MB". -->
+    <string name="junk_name_size">%1$s · %2$s</string>
+    <string name="junk_unavailable" translatable="false">%1$s: %2$s</string>
+
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>
     <string name="info_device">Device Information</string>

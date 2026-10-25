@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A junk category that could not be scanned (no design): one muted line naming it and why. -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_note"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_4sdp"
+    android:paddingBottom="@dimen/_8sdp"
+    android:fontFamily="@font/roboto_regular"
+    android:textAlignment="viewStart"
+    android:textColor="@color/text_tertiary"
+    android:textSize="@dimen/_11ssp"
+    app:lineHeight="@dimen/_16ssp"
+    tools:text="Residual files: needs permission to see installed apps" />

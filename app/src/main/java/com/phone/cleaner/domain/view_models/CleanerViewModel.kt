@@ -1,6 +1,7 @@
 package com.phone.cleaner.domain.view_models
 
 import ai.jhw.duplicates.model.DuplicateGroup
+import ai.jhw.junkcleaner.model.JunkCategory
 import ai.jhw.storage.model.DeleteOutcome
 import ai.jhw.storage.model.DeleteResult
 import ai.jhw.storage.model.FileItem
@@ -39,6 +40,8 @@ data class CleanerUiState(
     val duplicateGroups: Map<CleanerSectionType, List<DuplicateGroup>> = emptyMap(),
     /** Delete Duplicates: sections where "Keep best one" is on. */
     val keepBest: Set<CleanerSectionType> = emptySet(),
+    /** AI Junk Cleaner: the Smart Scan's categories behind the Junk Files section. */
+    val junkCategories: List<JunkCategory> = emptyList(),
 ) {
     fun section(key: String): CleanerSection? = sections.firstNotNullOfOrNull { it.find(key) }
 
@@ -59,7 +62,7 @@ data class CleanerUiState(
         return files.isNotEmpty() && files.all { it.path in selectedPaths }
     }
 
-    /** Nothing was found. */
+    /** Nothing was found - a section that only asks for access does not count. */
     val isEmpty: Boolean get() = sections.all { it.files.isEmpty() }
 }
 
@@ -216,7 +219,7 @@ abstract class CleanerViewModel : ViewModel() {
 
     /**
      * What a declined consent leaves deleted. Nothing, unless the screen already deleted part of
-     * the selection itself before asking.
+     * the selection itself before asking (the AI cleaner's junk files).
      */
     protected open suspend fun consentDeclined(files: List<FileItem>): ApiResult<DeleteResult> =
         ApiResult.Success(DeleteResult(emptyList(), emptyList(), 0))
@@ -227,7 +230,7 @@ abstract class CleanerViewModel : ViewModel() {
 
     protected fun CleanerSection.without(gone: Set<String>): CleanerSection? {
         val files = files.filterNot { it.path in gone }
-        if (files.isEmpty()) return null
+        if (files.isEmpty() && !needsAccess) return null
         return copy(files = files, groups = groups.mapNotNull { it.without(gone) })
     }
 

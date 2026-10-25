@@ -24,6 +24,9 @@ enum class CleanerSectionType(val isMedia: Boolean) {
     GALLERY(true),
     WA_PHOTOS(true),
     WA_VIDEOS(true),
+
+    /** The Smart Scan's junk on the AI cleaner's results. */
+    JUNK_FILES(false),
 }
 
 /**
@@ -36,6 +39,8 @@ data class CleanerSection(
     val files: List<FileItem>,
     /** Folder groups the section's own page shows as cards (AI cleaner Images and Videos). */
     val groups: List<CleanerSection> = emptyList(),
+    /** The section could not be scanned without All files access; its card asks for it. */
+    val needsAccess: Boolean = false,
     /** Only for duplicates: what deleting every extra copy frees, less than the files' total. */
     private val wastedBytes: Long? = null,
     val key: String = type.name,

@@ -2,7 +2,8 @@
 <!-- One section of the results (Figma 1:576), or a folder group on a section's page (1:75): radius
      28, 72% white with a 12% blue hairline, 12 px padding and 6 px gaps. The header row: the
      section's check (19 px), its title 14 px after it and "View All"; under it the first previews,
-     cut by the card's edge as in the design. -->
+     cut by the card's edge as in the design. A section that needs All files access (no design)
+     shows a message instead of the previews, and its link asks for access. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -72,6 +73,19 @@
                 android:textSize="@dimen/_10ssp"
                 app:lineHeight="@dimen/_16ssp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/section_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/_11ssp"
+            android:visibility="gone"
+            app:lineHeight="@dimen/_16ssp"
+            tools:text="@string/junk_access_message" />
 
         <!-- The previews keep their size and run past the card's edge, as in the design; the row
              scrolls sideways. -->

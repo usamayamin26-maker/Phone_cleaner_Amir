@@ -135,10 +135,14 @@ internal class JunkScanner(
             isRecommended = recommended,
         )
 
-    /** A folder as one item, sized by its files; null when it does not exist or holds nothing. */
+    /**
+     * A folder as one item, sized by its files; null when it does not exist or holds nothing. A
+     * thumbnails folder counts only its thumbnails, not MediaStore's marker files.
+     */
     private fun folderItem(dir: File, type: JunkType, packageName: String?): JunkItem? {
         if (!dir.isDirectory) return null
-        val size = dir.walkTopDown().filter { it.isFile }.sumOf { it.length() }
+        val counted: (File) -> Boolean = if (type == JunkType.THUMBNAILS) JunkRules::isThumbnail else File::isFile
+        val size = dir.walkTopDown().filter(counted).sumOf { it.length() }
         if (size <= 0L) return null
         return JunkItem(
             path = dir.path,

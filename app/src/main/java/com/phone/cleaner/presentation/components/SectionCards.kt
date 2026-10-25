@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.ItemCleanerSectionBinding
 import com.phone.cleaner.domain.entities.CleanerSection
@@ -24,6 +25,7 @@ class SectionCards(
     private val container: LinearLayout,
     private val onCheck: (key: String) -> Unit,
     private val onOpen: (key: String) -> Unit,
+    private val onAllowAccess: () -> Unit,
 ) {
     private val cards = LinkedHashMap<String, ItemCleanerSectionBinding>()
 
@@ -51,9 +53,29 @@ class SectionCards(
 
     private fun ItemCleanerSectionBinding.bind(section: CleanerSection, state: CleanerUiState) {
         val context = root.context
-        sectionTitle.text = context.getString(section.type.countTitle, context.formatNumber(section.files.size))
-        sectionViewAll.onClick { onOpen(section.key) }
-        root.onClick { onOpen(section.key) }
+        val needsAccess = section.needsAccess
+
+        sectionTitle.text = if (needsAccess) {
+            context.getString(section.type.pageTitle)
+        } else {
+            context.getString(section.type.countTitle, context.formatNumber(section.files.size))
+        }
+        sectionCheck.visibleIf(!needsAccess)
+        // Without its check, the title starts where the check would.
+        sectionTitle.updateLayoutParams<LinearLayout.LayoutParams> {
+            marginStart = if (needsAccess) 0 else marginEnd
+        }
+        sectionMessage.visibleIf(needsAccess)
+        sectionPreviewsScroll.visibleIf(!needsAccess)
+        sectionViewAll.setText(if (needsAccess) R.string.permission_allow else R.string.cleaner_view_all)
+        val open = { if (needsAccess) onAllowAccess() else onOpen(section.key) }
+        sectionViewAll.onClick { open() }
+        root.onClick { open() }
+
+        if (needsAccess) {
+            sectionMessage.setText(R.string.junk_access_message)
+            return
+        }
 
         val included = state.isIncluded(section.key)
         sectionCheck.setBackgroundResource(if (included) R.drawable.shape_section_check_on else R.drawable.shape_check_off)

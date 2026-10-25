@@ -9,7 +9,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * AI Junk Cleaner (Figma 1:3 / 1:349 / 1:48 / 1:142 / 1:208 / 1:337), opened from Home's quick
- * action and from Scan Now. Photos and videos are enough to scan.
+ * action and from Scan Now. Photos and videos are enough to scan; the Junk Files section asks for
+ * All files access from its own card.
  */
 class AiCleanerActivity : BaseCleanerActivity() {
 
@@ -29,6 +30,8 @@ class AiCleanerActivity : BaseCleanerActivity() {
     override val accessLevel = StorageAccessGate.Level.MEDIA
 
     override val logTag: String = TAG
+
+    override fun onAllFilesAccessGranted() = cleaner.onJunkAccessGranted()
 
     private companion object {
         const val TAG = "AiCleanerActivity"

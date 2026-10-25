@@ -53,6 +53,19 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
     private val sharedPref: SharedPref by inject()
 
     private val accessGate by lazy { gate(accessLevel, onGranted = { if (!cleaner.hasStarted) cleaner.startScan() }, onDeclined = ::finish) }
+
+    /**
+     * For a section that asks for All files access from the results; declining keeps the results.
+     * A screen that needs All files access to scan at all already has it, so it has no second gate.
+     */
+    private val allFilesGate by lazy {
+        if (accessLevel == StorageAccessGate.Level.ALL_FILES) {
+            accessGate
+        } else {
+            gate(StorageAccessGate.Level.ALL_FILES, onGranted = ::onAllFilesAccessGranted, onDeclined = {})
+        }
+    }
+
     private val consentLauncher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             cleaner.onConsentResult(result.resultCode == Activity.RESULT_OK)
@@ -61,8 +74,9 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
     private var dialog: Dialog? = null
 
     override fun setupViews() {
-        // The gate registers its result launchers, which has to happen before the activity starts.
+        // The gates register their result launchers, which has to happen before the activity starts.
         accessGate
+        allFilesGate
         // A fresh ViewModel has no results - first launch, or the process was killed and the
         // pages restored - so the screen starts again from scanning, whatever page was showing.
         if (!cleaner.hasStarted) {
@@ -91,6 +105,11 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
         }
     }
 
+    override fun requestAllFilesAccess() = allFilesGate.request()
+
+    /** All files access was granted from a section's card. */
+    protected open fun onAllFilesAccessGranted() = Unit
+
     /** The page a section opens: its folder groups, a photo grid or a file list. */
     protected open fun pageFor(section: CleanerSection): Fragment = when {
         section.groups.isNotEmpty() -> CleanerSectionsFragment.newInstance(section.key)
@@ -117,6 +136,8 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
     private fun render(state: CleanerUiState) {
         val current = supportFragmentManager.findFragmentById(R.id.cleaner_container)
         when {
+            // A new scan (access granted from the results): back to the scanning page.
+            state.isScanning && current != null && current !is CleanerScanFragment -> showScanning()
             // Results once the scan is done, unless they (or a section's page) already show. A
             // quick scan can finish before the scanning page's own commit has run, so an empty
             // container counts as scanning too; the two commits then run in order.
