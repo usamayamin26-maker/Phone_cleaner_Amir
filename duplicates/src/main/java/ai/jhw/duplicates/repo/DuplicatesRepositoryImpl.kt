@@ -34,25 +34,38 @@ class DuplicatesRepositoryImpl(
                 .values
                 .filter { it.size > 1 }
         }
-        val total = candidates.values.sumOf { groups -> groups.sumOf { it.size } }.coerceAtLeast(1)
+        // Every candidate is read twice at most: a quick hash, and a full hash when the quick ones
+        // match. Each read is one step of the progress, and the steps a file skips are counted as
+        // done when its group finishes.
+        val total = candidates.values.sumOf { groups -> groups.sumOf { it.size } }.times(2).coerceAtLeast(1)
         var done = 0
         val result = ArrayList<DuplicateGroup>()
 
         for ((kind, sizeGroups) in candidates) {
             for (sameSize in sizeGroups) {
-                currentCoroutineContext().ensureActive()
-                emit(DuplicateScanEvent.Progress(done.toFloat() / total, kind))
-                done += sameSize.size
-
-                val byQuick = sameSize.groupBy { hasher.quickHash(it) }
+                val groupEnd = done + sameSize.size * 2
+                val byQuick = LinkedHashMap<String?, MutableList<FileItem>>()
+                for (file in sameSize) {
+                    currentCoroutineContext().ensureActive()
+                    byQuick.getOrPut(hasher.quickHash(file)) { ArrayList() } += file
+                    done++
+                    emit(DuplicateScanEvent.Progress(done.toFloat() / total, kind))
+                }
                 for ((quick, sameQuick) in byQuick) {
                     if (quick == null || sameQuick.size < 2) continue
-                    val byFull = sameQuick.groupBy { hasher.fullHash(it) }
+                    val byFull = LinkedHashMap<String?, MutableList<FileItem>>()
+                    for (file in sameQuick) {
+                        currentCoroutineContext().ensureActive()
+                        byFull.getOrPut(hasher.fullHash(file)) { ArrayList() } += file
+                        done++
+                        emit(DuplicateScanEvent.Progress(done.toFloat() / total, kind))
+                    }
                     for ((full, identical) in byFull) {
                         if (full == null || identical.size < 2) continue
                         result += DuplicateGroup(full, kind, identical, BestCopy.indexOf(identical))
                     }
                 }
+                done = groupEnd
             }
         }
         emit(DuplicateScanEvent.Progress(1f, null))

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The design's switch (Figma 1:2058 Power Saving Mode, 1:699 / 1:865 Keep best one): a 39 x 19
+     track with a 22 px thumb, grey when off and blue when on. It is drawn, not a SwitchCompat,
+     because its thumb is larger than its track, which SwitchCompat cannot draw. The thumb moves
+     between start and end, so it follows right to left like a platform switch. Include it with its
+     own id and set it with ViewSwitchBinding.setOn(); the row around it takes the click and the
+     spoken state. A FrameLayout, not <merge>: it carries the switch's size. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_31sdp"
+    android:layout_height="@dimen/_18sdp"
+    android:importantForAccessibility="no"
+    tools:ignore="MergeRootFrame">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/shape_switch_track" />
+
+    <View
+        android:id="@+id/switch_thumb"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:layout_gravity="start|center_vertical"
+        android:background="@drawable/shape_switch_thumb" />
+</FrameLayout>

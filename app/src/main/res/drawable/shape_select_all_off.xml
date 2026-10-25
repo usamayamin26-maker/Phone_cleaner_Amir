@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:689: "Select All" when not everything is selected - pale blue with a blue ring. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/select_all_fill" />
+    <stroke
+        android:width="@dimen/_1sdp"
+        android:color="@color/check_fill" />
+</shape>

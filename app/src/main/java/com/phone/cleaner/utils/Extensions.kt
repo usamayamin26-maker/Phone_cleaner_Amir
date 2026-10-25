@@ -1,21 +1,29 @@
 package com.phone.cleaner.utils
 
+import ai.jhw.storage.model.FileItem
+import ai.jhw.storage.model.FileKind
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.ImageDecoder
+import android.graphics.Matrix
 import android.graphics.Outline
 import android.graphics.Rect
 import android.graphics.drawable.AnimatedImageDrawable
 import android.os.Build
 import android.text.format.Formatter
 import android.util.Log
+import android.view.Gravity
 import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.os.ConfigurationCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -23,7 +31,12 @@ import androidx.core.view.doOnAttach
 import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import coil3.dispose
+import coil3.load
+import coil3.request.error
+import coil3.request.placeholder
 import com.phone.cleaner.R
+import com.phone.cleaner.databinding.ViewSwitchBinding
 import com.phone.cleaner.presentation.components.CompositeTouchDelegate
 import java.text.NumberFormat
 import java.util.Locale
@@ -131,6 +144,17 @@ fun View.expandTouchTarget(minimumDp: Int = 48) {
     }
 }
 
+/**
+ * Sets the design's switch (layout/view_switch.xml): the thumb turns blue and moves to the end
+ * when on, and back to the start when off.
+ */
+fun ViewSwitchBinding.setOn(on: Boolean) {
+    switchThumb.isActivated = on
+    switchThumb.updateLayoutParams<FrameLayout.LayoutParams> {
+        gravity = (if (on) Gravity.END else Gravity.START) or Gravity.CENTER_VERTICAL
+    }
+}
+
 /** Clips the view to a rounded rectangle - an app icon or a thumbnail with the design's radius. */
 fun View.clipToRoundRect(radiusPx: Float) {
     outlineProvider = object : ViewOutlineProvider() {
@@ -153,6 +177,52 @@ fun ImageView.playAnimatedImage(@DrawableRes resId: Int) {
         (drawable as? AnimatedImageDrawable)?.start()
     } catch (e: Exception) {
         Log.w(TAG, "Animated image not decoded, keeping the still frame", e)
+    }
+}
+
+/**
+ * A file's preview: a Coil thumbnail for photos and video frames, the PDF icon for documents and
+ * the file icon for anything else. Recycled views are reset, so a tile never keeps the wrong image.
+ */
+fun ImageView.loadFilePreview(file: FileItem) {
+    val inset = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp)
+    when (file.kind) {
+        FileKind.IMAGE, FileKind.VIDEO -> {
+            setPadding(0, 0, 0, 0)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+            imageTintList = null
+            load(file.uri) {
+                placeholder(ContextCompat.getColor(context, R.color.thumbnail_placeholder).toDrawable())
+                error(ContextCompat.getColor(context, R.color.thumbnail_placeholder).toDrawable())
+            }
+        }
+        FileKind.DOCUMENT -> {
+            dispose()
+            setPadding(inset, inset, inset, inset)
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            imageTintList = null
+            setImageResource(R.drawable.img_pdf)
+        }
+        else -> {
+            dispose()
+            setPadding(inset, inset, inset, inset)
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            imageTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.icon_accent))
+            setImageResource(R.drawable.ic_file)
+        }
+    }
+}
+
+/**
+ * Scales the image to the view's width and pins it to the top, so a tall image is cut at the
+ * bottom (the robot on the Delete Duplicates card). The view needs `scaleType="matrix"`.
+ */
+fun ImageView.scaleToWidthFromTop() {
+    addOnLayoutChangeListener { view, _, _, _, _, _, _, _, _ ->
+        val image = (view as ImageView).drawable ?: return@addOnLayoutChangeListener
+        if (image.intrinsicWidth <= 0 || view.width == 0) return@addOnLayoutChangeListener
+        val scale = view.width.toFloat() / image.intrinsicWidth
+        view.imageMatrix = Matrix().apply { setScale(scale, scale) }
     }
 }
 

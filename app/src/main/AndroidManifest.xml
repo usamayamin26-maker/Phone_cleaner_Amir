@@ -53,6 +53,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".presentation.duplicates.DuplicatesActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".presentation.deviceinfo.DeviceInfoActivity"
             android:exported="false" />
 

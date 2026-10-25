@@ -19,6 +19,7 @@ import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.appmanager.AppCleanerActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
 import com.phone.cleaner.presentation.deviceinfo.DeviceInfoActivity
+import com.phone.cleaner.presentation.duplicates.DuplicatesActivity
 import com.phone.cleaner.presentation.settings.SettingsActivity
 import com.phone.cleaner.utils.SharedPref
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
@@ -74,6 +75,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         settingsButton.onClick {
             startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+        }
+        actionDuplicates.root.onClick {
+            startActivity(Intent(this@MainActivity, DuplicatesActivity::class.java))
         }
         actionAppCleaner.root.onClick {
             startActivity(Intent(this@MainActivity, AppCleanerActivity::class.java))

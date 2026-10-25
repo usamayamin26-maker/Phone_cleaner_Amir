@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:711: a file's thumbnail frame - radius 15 with a 70% white hairline, drawn over the
+     image; the image itself is clipped to the same radius in code. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_12sdp" />
+    <stroke
+        android:width="@dimen/_1sdp"
+        android:color="@color/thumbnail_stroke" />
+</shape>

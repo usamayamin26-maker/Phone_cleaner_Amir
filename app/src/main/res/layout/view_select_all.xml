@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Select All" in a section's header (Figma 1:687): 15 px medium, then 9 px on the 19 px circle -
+     pale blue with a blue ring, or blue with a white tick once everything is selected. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/_35sdp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:importantForAccessibility="no"
+        android:text="@string/duplicates_select_all"
+        android:textColor="@color/text_item_meta"
+        android:textSize="@dimen/_12ssp"
+        app:lineHeight="@dimen/_17ssp" />
+
+    <FrameLayout
+        android:id="@+id/select_all_circle"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:background="@drawable/shape_select_all_off">
+
+        <ImageView
+            android:id="@+id/select_all_tick"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_tick"
+            app:tint="@color/icon_on_primary" />
+    </FrameLayout>
+</LinearLayout>

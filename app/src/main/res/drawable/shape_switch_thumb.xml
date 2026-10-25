@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The Power Saving Mode switch thumb, 22 px, larger than its track. Grey when off (Figma 1:2058),
-     blue when on (batter_info_2.png); the view is "activated" while power saving is on. -->
+<!-- The switch thumb, 22 px, larger than its track: grey when off (Figma 1:2058, 1:701), blue when
+     on (1:867). The view is "activated" while the switch is on. -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_activated="true">
         <shape android:shape="oval">

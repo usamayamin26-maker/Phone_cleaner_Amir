@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One group of identical files (Figma 1:702): radius 28, 72% white with a 12% blue hairline,
+     16 px padding; the file's name, then 12 px under it its copies, two to a row. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:cardBackgroundColor="@color/card_glass"
+    app:cardCornerRadius="@dimen/_22sdp"
+    app:cardElevation="@dimen/_3sdp"
+    app:strokeColor="@color/card_row_stroke"
+    app:strokeWidth="@dimen/_1sdp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
+
+        <TextView
+            android:id="@+id/group_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_label_strong"
+            android:textDirection="locale"
+            android:textSize="@dimen/_12ssp"
+            app:lineHeight="@dimen/_17ssp"
+            tools:text="7(1)_Jpg" />
+
+        <GridLayout
+            android:id="@+id/group_files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:columnCount="2"
+            android:useDefaultMargins="false" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

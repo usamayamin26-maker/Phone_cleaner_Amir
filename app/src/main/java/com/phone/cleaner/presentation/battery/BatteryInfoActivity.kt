@@ -5,14 +5,11 @@ import ai.jhw.battery.model.CapacitySource
 import android.content.ActivityNotFoundException
 import android.text.format.DateUtils
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.Switch
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
-import androidx.core.view.updateLayoutParams
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.ActivityBatteryInfoBinding
@@ -27,6 +24,7 @@ import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
 import com.phone.cleaner.utils.onClick
 import com.phone.cleaner.utils.orNotAvailable
+import com.phone.cleaner.utils.setOn
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -104,10 +102,7 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
         val info = battery.info
 
         powerSaveOn = info.isPowerSaveMode
-        powerSavingThumb.isActivated = info.isPowerSaveMode
-        powerSavingThumb.updateLayoutParams<FrameLayout.LayoutParams> {
-            gravity = (if (info.isPowerSaveMode) Gravity.END else Gravity.START) or Gravity.CENTER_VERTICAL
-        }
+        powerSavingSwitch.setOn(info.isPowerSaveMode)
         ViewCompat.setStateDescription(
             powerSaving,
             getString(if (info.isPowerSaveMode) R.string.state_on else R.string.state_off),

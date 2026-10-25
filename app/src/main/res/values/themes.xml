@@ -58,4 +58,12 @@
         <item name="lineHeight">@dimen/_20ssp</item>
     </style>
 
+    <!-- "Stop Scanning" (Figma 1:518): the radius-16 button in red, 16 px regular label. -->
+    <style name="Widget.PhoneCleaner.PrimaryButton.Rounded.Danger">
+        <item name="android:background">@drawable/shape_danger_button_rounded</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="lineHeight">@dimen/_22ssp</item>
+    </style>
+
 </resources>

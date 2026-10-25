@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One section of the results (Figma 1:576): radius 28, 72% white with a 12% blue hairline, 12 px
+     padding and 6 px gaps. The header row: the section's check (19 px), its title 14 px after it
+     and "View All"; under it the first previews, cut by the card's edge as in the design. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:cardBackgroundColor="@color/card_glass"
+    app:cardCornerRadius="@dimen/_22sdp"
+    app:cardElevation="@dimen/_3sdp"
+    app:strokeColor="@color/card_row_stroke"
+    app:strokeWidth="@dimen/_1sdp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_18sdp"
+            android:orientation="horizontal">
+
+            <!-- The section's check: whether the section takes part in Delete. 48dp to touch. -->
+            <FrameLayout
+                android:id="@+id/section_check"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/shape_check_off">
+
+                <ImageView
+                    android:id="@+id/section_check_tick"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_tick"
+                    app:tint="@color/icon_on_primary" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/section_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_11sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:textColor="@color/text_label_strong"
+                android:textSize="@dimen/_12ssp"
+                app:lineHeight="@dimen/_17ssp"
+                tools:text="Images (10)" />
+
+            <TextView
+                android:id="@+id/section_view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/duplicates_view_all"
+                android:textColor="@color/text_link"
+                android:textSize="@dimen/_10ssp"
+                app:lineHeight="@dimen/_16ssp" />
+        </LinearLayout>
+
+        <!-- The previews keep their size and run past the card's edge, as in the design; the row
+             scrolls sideways. -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/section_previews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/preview_1"
+                    layout="@layout/view_file_thumb" />
+
+                <include
+                    android:id="@+id/preview_2"
+                    layout="@layout/view_file_thumb" />
+
+                <include
+                    android:id="@+id/preview_3"
+                    layout="@layout/view_file_thumb" />
+
+                <include
+                    android:id="@+id/preview_4"
+                    layout="@layout/view_file_thumb" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

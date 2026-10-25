@@ -106,27 +106,9 @@
                         android:textSize="@dimen/_12ssp"
                         app:lineHeight="@dimen/_17ssp" />
 
-                    <!-- The switch is drawn, not a SwitchCompat: its thumb is larger than its
-                         track, which SwitchCompat cannot draw. The thumb moves between start and
-                         end, so it follows right to left like a platform switch. -->
-                    <FrameLayout
-                        android:layout_width="@dimen/_31sdp"
-                        android:layout_height="@dimen/_18sdp"
-                        android:importantForAccessibility="no">
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/shape_switch_track" />
-
-                        <View
-                            android:id="@+id/power_saving_thumb"
-                            android:layout_width="@dimen/_18sdp"
-                            android:layout_height="@dimen/_18sdp"
-                            android:layout_gravity="start|center_vertical"
-                            android:background="@drawable/shape_switch_thumb" />
-                    </FrameLayout>
+                    <include
+                        android:id="@+id/power_saving_switch"
+                        layout="@layout/view_switch" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

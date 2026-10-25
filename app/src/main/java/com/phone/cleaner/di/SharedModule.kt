@@ -5,20 +5,24 @@ import com.phone.cleaner.data.local.AppDatabase
 import com.phone.cleaner.data.repository.AppManagerRepositoryImp
 import com.phone.cleaner.data.repository.BatteryRepositoryImp
 import com.phone.cleaner.data.repository.DeviceInfoRepositoryImp
+import com.phone.cleaner.data.repository.DuplicatesRepositoryImp
 import com.phone.cleaner.data.repository.StorageAccessRepositoryImp
 import com.phone.cleaner.domain.repository.AppManagerRepository
 import com.phone.cleaner.domain.repository.BatteryRepository
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
+import com.phone.cleaner.domain.repository.DuplicatesRepository
 import com.phone.cleaner.domain.repository.StorageAccessRepository
 import com.phone.cleaner.domain.view_models.AppCleanerViewModel
 import com.phone.cleaner.domain.view_models.BatteryViewModel
 import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
+import com.phone.cleaner.domain.view_models.DuplicatesViewModel
 import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.domain.view_models.LanguageViewModel
 import com.phone.cleaner.domain.view_models.SettingsViewModel
 import com.phone.cleaner.domain.view_models.SplashViewModel
 import com.phone.cleaner.presentation.adapters.AppAdapter
 import com.phone.cleaner.presentation.adapters.DeviceInfoSectionAdapter
+import com.phone.cleaner.presentation.adapters.DuplicateGroupAdapter
 import com.phone.cleaner.presentation.adapters.InfoListAdapter
 import com.phone.cleaner.presentation.adapters.LanguageAdapter
 import com.phone.cleaner.presentation.adapters.OnboardingAdapter
@@ -64,6 +68,11 @@ val SharedModule = module {
     single<AppManagerRepository> { AppManagerRepositoryImp(get(), get()) }
     viewModel { AppCleanerViewModel(get()) }
     factory { AppAdapter() }
+
+    // ---- delete duplicates ----
+    single<DuplicatesRepository> { DuplicatesRepositoryImp(get(), get(), get()) }
+    viewModel { DuplicatesViewModel(get()) }
+    factory { DuplicateGroupAdapter() }
 
     // ---- device info ----
     single<DeviceInfoRepository> { DeviceInfoRepositoryImp(get()) }

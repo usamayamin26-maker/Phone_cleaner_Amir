@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources/ic_video.svg: the video icon in the results chip (Figma 1:564). White; tinted where it sits on a light tile. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="18dp"
+    android:height="12dp"
+    android:viewportWidth="18"
+    android:viewportHeight="12">
+    <path
+        android:pathData="M9.68113 0.523315H2.70366C1.49942 0.523315 0.523193 1.49954 0.523193 2.70378V9.24516C0.523193 10.4494 1.49942 11.4256 2.70366 11.4256H9.68113C10.8854 11.4256 11.8616 10.4494 11.8616 9.24516V2.70378C11.8616 1.49954 10.8854 0.523315 9.68113 0.523315Z"
+        android:strokeColor="@color/icon_on_primary"
+        android:strokeWidth="1.04662"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M15.9085 2.05838L12.6117 4.00335C12.1116 4.29989 11.8616 4.73889 11.8616 5.32035V6.62863C11.8616 7.21008 12.1116 7.64908 12.6117 7.94562L15.9085 9.8906C16.4086 10.1871 16.6586 10.0447 16.6586 9.46323V2.48575C16.6586 1.90429 16.4086 1.76183 15.9085 2.05838Z"
+        android:strokeColor="@color/icon_on_primary"
+        android:strokeWidth="1.04662"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Scanning (Figma 1:483): the header 12 px under the status bar, then 12 px apart: the 205 px
+     progress ring with the percentage in its middle, "Loading Data" with its line (28 px side
+     padding, 8 px apart) and the red "Stop Scanning" (211 x 50). -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/scan_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_16sdp">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/view_inner_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp" />
+
+        <FrameLayout
+            android:layout_width="@dimen/_164sdp"
+            android:layout_height="@dimen/_164sdp"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <com.phone.cleaner.presentation.components.ProgressRingView
+                android:id="@+id/progress_ring"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Sized to fit inside the ring: the design's 37.4 px, smaller only when a large font
+                 would push "100%" over the ring. -->
+            <TextView
+                android:id="@+id/progress_percent"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:letterSpacing="-0.025"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_30ssp"
+                app:autoSizeMaxTextSize="@dimen/_30ssp"
+                app:autoSizeMinTextSize="@dimen/_12ssp"
+                app:autoSizeTextType="uniform"
+                app:lineHeight="@dimen/_30ssp" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:gravity="center_horizontal"
+            android:text="@string/duplicates_loading_title"
+            android:textColor="@color/text_label_strong"
+            android:textSize="@dimen/_18ssp"
+            app:lineHeight="@dimen/_29ssp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_horizontal"
+            android:text="@string/duplicates_loading_message"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/_12ssp"
+            app:lineHeight="@dimen/_18ssp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/stop_button"
+            style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded.Danger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:minWidth="@dimen/_169sdp"
+            android:text="@string/duplicates_stop" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -8,6 +8,7 @@ import ai.jhw.storage.model.FileKind
 import ai.jhw.storage.model.StorageAccess
 import ai.jhw.storage.utils.AccessChecker
 import ai.jhw.storage.utils.MediaStoreReader
+import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
 import android.media.MediaScannerConnection
@@ -57,14 +58,18 @@ class StorageRepositoryImpl(private val context: Context) : StorageRepository {
         }
 
         // Without full access only MediaStore can delete another app's media, and from Android 11
-        // it asks the user first.
-        val mediaItems = items.filter { it.mediaId != null }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && mediaItems.isNotEmpty()) {
-            val request = MediaStore.createDeleteRequest(
-                context.contentResolver,
-                mediaItems.map { it.uri },
-            )
-            return@withContext DeleteOutcome.NeedsUserConsent(request.intentSender, mediaItems)
+        // it asks the user first. The request takes Images / Video / Audio / Downloads item URIs
+        // only - a Files-table URI is refused ("All requested items must be Media items") - so
+        // each item is addressed through its own collection, and one no collection covers is
+        // left out of the request (it stays, and confirmDeleted reports nothing for it).
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val requests = items.mapNotNull { item -> consentUri(item)?.let { item to it } }
+            if (requests.isNotEmpty()) {
+                val skipped = items.size - requests.size
+                if (skipped > 0) Log.w(TAG, "$skipped items are not media and cannot be deleted without full access")
+                val request = MediaStore.createDeleteRequest(context.contentResolver, requests.map { it.second })
+                return@withContext DeleteOutcome.NeedsUserConsent(request.intentSender, requests.map { it.first })
+            }
         }
 
         Log.w(TAG, "No access to delete ${items.size} items")
@@ -126,6 +131,22 @@ class StorageRepositoryImpl(private val context: Context) : StorageRepository {
         }
         rescan(deleted)
         return DeleteResult(deleted, failed, freed)
+    }
+
+    /** The item's URI in the media collection the consent request accepts, if it has one. */
+    private fun consentUri(item: FileItem): Uri? {
+        val id = item.mediaId ?: return null
+        val collection = when (item.kind) {
+            FileKind.IMAGE -> MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            FileKind.VIDEO -> MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+            FileKind.AUDIO -> MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+            else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && "/Download/" in item.path) {
+                MediaStore.Downloads.EXTERNAL_CONTENT_URI
+            } else {
+                return null
+            }
+        }
+        return ContentUris.withAppendedId(collection, id)
     }
 
     /**

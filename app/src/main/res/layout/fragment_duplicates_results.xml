@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Results (Figma 1:528): the shared header, then with a 20 px gutter, 6 px from the header and
+     12 px apart: the robot card (335 x 146, radius 28) with the three size chips (133 px wide,
+     8 px apart) on its end side, the Images / Videos / Large Files sections (10 px apart) and
+     "Delete" for everything selected (211 x 50). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_inner_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/results_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/results_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_16sdp">
+
+            <!-- The robot card. In Figma the card is an image fill (not in resources/), so only the
+                 robot is drawn: scaled to its width and cut by the card's bottom, as the design
+                 shows it. -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_117sdp">
+
+                <!-- 0dp tall between the card's edges: the chips decide the card's height. -->
+                <ImageView
+                    android:id="@+id/robot"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="matrix"
+                    android:src="@drawable/img_robo_duplicate"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        android:id="@+id/chip_images"
+                        layout="@layout/view_size_chip" />
+
+                    <include
+                        android:id="@+id/chip_videos"
+                        layout="@layout/view_size_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_6sdp" />
+
+                    <include
+                        android:id="@+id/chip_files"
+                        layout="@layout/view_size_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_6sdp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 12 px under the robot card, whichever sections are left to show. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/section_images"
+                    layout="@layout/item_duplicates_section" />
+
+                <include
+                    android:id="@+id/section_videos"
+                    layout="@layout/item_duplicates_section" />
+
+                <include
+                    android:id="@+id/section_large_files"
+                    layout="@layout/item_duplicates_section" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/results_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center_horizontal"
+                android:text="@string/duplicates_none"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="gone"
+                app:lineHeight="@dimen/_18ssp"
+                tools:visibility="visible" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/delete_button"
+                style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:minWidth="@dimen/_169sdp"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:textSize="@dimen/_13ssp"
+                app:lineHeight="@dimen/_19ssp"
+                tools:text="Delete 2 · 357.47 MB" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

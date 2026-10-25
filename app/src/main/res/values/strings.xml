@@ -14,6 +14,15 @@
     <string name="value_not_supported">Not supported</string>
     <string name="state_on">On</string>
     <string name="state_off">Off</string>
+    <string name="state_selected">Selected</string>
+    <string name="state_not_selected">Not selected</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+
+    <!-- "Are You Sure?" (Figma 1:984). The summary names what is about to go: "2 selected · 357 MB". -->
+    <string name="dialog_delete_title">Are You Sure?</string>
+    <string name="dialog_delete_message">Are you sure you want to delete these files?</string>
+    <string name="dialog_delete_summary">%1$s selected · %2$s</string>
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="action_continue">Continue</string>
 
@@ -114,6 +123,28 @@
     <!-- Shown when Usage access is off: the sizes are the app's package only. -->
     <string name="app_cleaner_usage_prompt">Sizes show the app only. Allow Usage access to see exact sizes with data and cache.</string>
     <string name="app_cleaner_usage_allow">Allow</string>
+
+    <!-- Delete Duplicates (Figma 1:483, 1:528, 1:661). -->
+    <string name="duplicates_loading_title">Loading Data</string>
+    <string name="duplicates_loading_message">Scanning your device safely — nothing is deleted yet.</string>
+    <string name="duplicates_stop">Stop Scanning</string>
+    <!-- "Images (50)": the number of files in the section. -->
+    <string name="duplicates_images_count">Images (%1$s)</string>
+    <string name="duplicates_videos_count">Videos (%1$s)</string>
+    <string name="duplicates_large_files_count">Large Files (%1$s)</string>
+    <string name="duplicates_view_all">View All</string>
+    <string name="duplicates_title_images">Images</string>
+    <string name="duplicates_title_videos">Videos</string>
+    <string name="duplicates_title_large_files">Large Files</string>
+    <string name="duplicates_select_all">Select All</string>
+    <string name="duplicates_keep_best">Keep best one</string>
+    <string name="duplicates_none">No duplicates found. Every photo and video is unique.</string>
+    <!-- The Delete button: how many files and how much space, "Delete 2 · 357.47 MB". -->
+    <string name="duplicates_delete_button">Delete %1$s · %2$s</string>
+    <!-- Spoken for a copy: its name and size. -->
+    <string name="duplicates_file_description">%1$s, %2$s</string>
+    <string name="duplicates_freed">%1$s freed</string>
+    <string name="duplicates_delete_partial">%1$s freed. Some files could not be deleted.</string>
 
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>

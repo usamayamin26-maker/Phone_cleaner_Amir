@@ -85,8 +85,8 @@
     <color name="action_icon_end">#FF95D8FF</color>
     <color name="action_icon_stroke">#BFFFFFFF</color>
 
-    <!-- Power Saving Mode switch. The "on" thumb is read from batter_info_2.png: Figma only has
-         the "off" state. -->
+    <!-- The design's switch (view_switch): Power Saving Mode, Keep best one. The "on" thumb is
+         Figma 1:867. -->
     <color name="switch_track">#FFDFDFDF</color>
     <color name="switch_thumb_off">#FF7C7C7C</color>
     <color name="switch_thumb_on">#FF0041FF</color>
@@ -109,6 +109,29 @@
 
     <!-- Onboarding page indicator: the current page is a primary-gradient pill, the others dots. -->
     <color name="indicator_inactive">#334F7CFF</color>
+
+    <!-- Delete Duplicates (Figma 1:483, 1:528, 1:661). -->
+    <!-- Scan progress ring: a 30% blue track under the blue arc (1:510, 1:511). -->
+    <color name="progress_ring">#FF0041FF</color>
+    <color name="progress_ring_track">#4D0041FF</color>
+    <!-- "Stop Scanning" (1:518): red, top start to bottom end. -->
+    <color name="danger_gradient_start">#FFFF0004</color>
+    <color name="danger_gradient_end">#FF990003</color>
+    <!-- The size chips on the results card (1:556) and their round icon. -->
+    <color name="chip_fill">#2B4F7CFF</color>
+    <color name="chip_icon_fill">#FF7295FB</color>
+    <!-- "View All" (1:587). -->
+    <color name="text_link">#FF0005FF</color>
+    <!-- File sizes under a thumbnail and "Select All" (1:713, 1:688): 85% black. -->
+    <color name="text_item_meta">#D9000000</color>
+    <!-- A file's check: a grey ring off (1:714), blue with a white tick on (1:886). -->
+    <color name="check_ring">#FF6C6C6C</color>
+    <color name="check_fill">#FF0041FF</color>
+    <!-- "Select All" off: pale blue with a blue ring (1:689). -->
+    <color name="select_all_fill">#FFDCE5FF</color>
+    <!-- The 70% white hairline round a thumbnail (1:711). -->
+    <color name="thumbnail_stroke">#B2FFFFFF</color>
+    <color name="thumbnail_placeholder">#FFEEF2FF</color>
 
     <!-- Dialogs (Figma 1:984, 1:1881, 1:2884): a white card with a 75% white hairline and a violet
          shadow over a dimmed, blurred screen. -->

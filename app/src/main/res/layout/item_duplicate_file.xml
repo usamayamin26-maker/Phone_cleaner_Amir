@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One copy in a group (Figma 1:710): the 104 x 97 thumbnail (radius 15, 70% white hairline), and
+     6 px under it the size and the 16 px check, 3.5 px in from the sides. The tile toggles the
+     copy. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_83sdp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/file_thumb"
+        android:layout_width="@dimen/_83sdp"
+        android:layout_height="@dimen/_78sdp"
+        android:foreground="@drawable/shape_thumbnail"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_3sdp">
+
+        <TextView
+            android:id="@+id/file_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_medium"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_item_meta"
+            android:textDirection="locale"
+            android:textSize="@dimen/_10ssp"
+            app:lineHeight="@dimen/_12ssp"
+            tools:text="23.23 KB" />
+
+        <FrameLayout
+            android:id="@+id/file_check"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:background="@drawable/shape_check_off">
+
+            <ImageView
+                android:id="@+id/file_check_tick"
+                android:layout_width="@dimen/_9sdp"
+                android:layout_height="@dimen/_9sdp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_tick"
+                app:tint="@color/icon_on_primary" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

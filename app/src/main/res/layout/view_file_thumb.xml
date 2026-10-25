@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A file's preview on the results screen (Figma 1:590): 80 x 74.5, radius 18, 70% white hairline.
+     Photos and videos show a thumbnail; a document shows the PDF icon (1:633), other files the
+     file icon. -->
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_64sdp"
+    android:layout_height="@dimen/_60sdp"
+    android:layout_marginEnd="@dimen/_3sdp"
+    android:foreground="@drawable/shape_thumbnail_small"
+    android:importantForAccessibility="no"
+    android:scaleType="centerCrop" />

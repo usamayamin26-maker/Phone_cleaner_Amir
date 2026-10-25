@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Figma 1:2058: the Power Saving Mode switch track, 39 x 19, fully rounded. -->
+<!-- Figma 1:2058 / 1:700: the switch track, 39 x 19, fully rounded. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="@dimen/_8sdp" />

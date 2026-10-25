@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:579: a section that is all selected on the results screen - the primary gradient,
+     almost left to right, under a white tick. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/primary_gradient_center"
+        android:endColor="@color/primary_gradient_end"
+        android:startColor="@color/primary_gradient_start"
+        android:type="linear" />
+</shape>

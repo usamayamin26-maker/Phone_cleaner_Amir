@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- The header of an inner screen (Figma 1:1914): the shared back button and the screen title,
-     on a 44 px row with a 20 px gutter. The title weight differs per screen in the design (Device
-     Info bold, the others semi-bold), so the activity sets it. -->
+     on a 44 px row with a 20 px gutter, and an optional trailing control. The title weight differs
+     per screen in the design (Device Info bold, the others semi-bold), so the activity sets it. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -25,5 +25,11 @@
         android:textColor="@color/text_title"
         android:textSize="@dimen/_14ssp"
         app:lineHeight="@dimen/_17ssp" />
+
+    <!-- Optional trailing control, e.g. "Select All" (Figma 1:687). Empty, it takes no room. -->
+    <FrameLayout
+        android:id="@+id/header_trailing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
