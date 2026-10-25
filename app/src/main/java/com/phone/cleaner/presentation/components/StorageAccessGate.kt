@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation.components
 
+import ai.jhw.storage.model.FileKind
 import ai.jhw.storage.model.StorageAccess
 import android.app.Dialog
 import android.content.ActivityNotFoundException
@@ -38,6 +39,11 @@ class StorageAccessGate(
     private val repository: StorageAccessRepository,
     private val sharedPref: SharedPref,
     private val level: Level,
+    /**
+     * The media the feature reads, so Android asks only for those: Delete Duplicates and the AI
+     * cleaner need photos and videos, never audio. Below Android 13 one permission covers all.
+     */
+    private val mediaKinds: Set<FileKind>,
     /** The feature asking, named in the dialog: "Delete Duplicates needs access to ...". */
     @param:StringRes private val featureName: Int,
     private val onGranted: () -> Unit,
@@ -45,7 +51,7 @@ class StorageAccessGate(
 ) {
 
     enum class Level {
-        /** Photos, videos and audio through MediaStore; partial access on Android 14+ counts. */
+        /** The media in [mediaKinds] through MediaStore; partial access on Android 14+ counts. */
         MEDIA,
 
         /** Every file in shared storage: documents, folders, junk. */
@@ -147,7 +153,7 @@ class StorageAccessGate(
             launchSettings(allFilesIntent)
         } else {
             sharedPref.hasAskedStorageAccess = true
-            permissionLauncher.launch(repository.mediaPermissions())
+            permissionLauncher.launch(repository.mediaPermissions(mediaKinds))
         }
     }
 
@@ -178,7 +184,7 @@ class StorageAccessGate(
     private fun isDeniedForever(): Boolean {
         if (level == Level.ALL_FILES && usesAllFilesPage()) return false
         if (!sharedPref.hasAskedStorageAccess) return false
-        val permission = repository.mediaPermissions().first()
+        val permission = repository.mediaPermissions(mediaKinds).first()
         return !ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)
     }
 

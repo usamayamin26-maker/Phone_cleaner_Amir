@@ -1,5 +1,6 @@
 package ai.jhw.storage.utils
 
+import ai.jhw.storage.model.FileKind
 import ai.jhw.storage.model.StorageAccess
 import android.Manifest
 import android.content.Context
@@ -34,18 +35,21 @@ internal object AccessChecker {
         }
     }
 
-    fun mediaPermissions(): Array<String> = when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> arrayOf(
-            Manifest.permission.READ_MEDIA_IMAGES,
-            Manifest.permission.READ_MEDIA_VIDEO,
-            Manifest.permission.READ_MEDIA_AUDIO,
-            Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED,
-        )
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> arrayOf(
-            Manifest.permission.READ_MEDIA_IMAGES,
-            Manifest.permission.READ_MEDIA_VIDEO,
-            Manifest.permission.READ_MEDIA_AUDIO,
-        )
+    /**
+     * The runtime permissions for [kinds]. From Android 13 photos, videos and audio are separate
+     * permissions, so a feature asks only for what it reads; before that one permission covers all.
+     */
+    fun mediaPermissions(kinds: Set<FileKind>): Array<String> = when {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> buildList {
+            if (FileKind.IMAGE in kinds) add(Manifest.permission.READ_MEDIA_IMAGES)
+            if (FileKind.VIDEO in kinds) add(Manifest.permission.READ_MEDIA_VIDEO)
+            if (FileKind.AUDIO in kinds) add(Manifest.permission.READ_MEDIA_AUDIO)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE &&
+                (FileKind.IMAGE in kinds || FileKind.VIDEO in kinds)
+            ) {
+                add(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
+            }
+        }.toTypedArray()
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
         )

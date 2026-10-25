@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation.duplicates
 
+import ai.jhw.storage.model.FileKind
 import android.app.Activity
 import android.app.Dialog
 import android.util.Log
@@ -41,13 +42,14 @@ class DuplicatesActivity : BaseActivity<ActivityDuplicatesBinding>() {
     private val storageAccess: StorageAccessRepository by inject()
     private val sharedPref: SharedPref by inject()
 
-    /** Photos and videos are enough: they go through MediaStore. */
+    /** Photos and videos through MediaStore; Android is not asked for audio. */
     private val accessGate by lazy {
         StorageAccessGate(
             activity = this,
             repository = storageAccess,
             sharedPref = sharedPref,
             level = StorageAccessGate.Level.MEDIA,
+            mediaKinds = setOf(FileKind.IMAGE, FileKind.VIDEO),
             featureName = R.string.action_delete_duplicates,
             onGranted = { if (!viewModel.hasStarted) viewModel.startScan() },
             onDeclined = { finish() },

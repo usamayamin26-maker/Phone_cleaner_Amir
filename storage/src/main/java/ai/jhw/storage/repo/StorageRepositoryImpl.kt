@@ -28,7 +28,7 @@ class StorageRepositoryImpl(private val context: Context) : StorageRepository {
 
     override fun access(): StorageAccess = AccessChecker.access(context)
 
-    override fun mediaPermissions(): Array<String> = AccessChecker.mediaPermissions()
+    override fun mediaPermissions(kinds: Set<FileKind>): Array<String> = AccessChecker.mediaPermissions(kinds)
 
     override fun allFilesAccessIntent(): Intent? =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

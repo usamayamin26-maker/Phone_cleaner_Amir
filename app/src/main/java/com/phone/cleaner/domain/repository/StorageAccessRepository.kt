@@ -1,5 +1,6 @@
 package com.phone.cleaner.domain.repository
 
+import ai.jhw.storage.model.FileKind
 import ai.jhw.storage.model.StorageAccess
 import android.content.Intent
 
@@ -12,8 +13,8 @@ interface StorageAccessRepository {
 
     fun access(): StorageAccess
 
-    /** The runtime permissions that grant media access on this Android version. */
-    fun mediaPermissions(): Array<String>
+    /** The runtime permissions that grant access to [kinds] of media on this Android version. */
+    fun mediaPermissions(kinds: Set<FileKind>): Array<String>
 
     /** Android 11+: the system page that grants All files access; null below Android 11. */
     fun allFilesAccessIntent(): Intent?

@@ -17,8 +17,11 @@ interface StorageRepository {
 
     fun access(): StorageAccess
 
-    /** Runtime permissions to request for media access on this API level. */
-    fun mediaPermissions(): Array<String>
+    /**
+     * Runtime permissions to request for media access to [kinds] (images, videos, audio) on this
+     * API level. A feature asks only for the kinds it reads.
+     */
+    fun mediaPermissions(kinds: Set<FileKind> = MEDIA_KINDS): Array<String>
 
     /** Android 11+: the system screen that grants All files access; null below Android 11. */
     fun allFilesAccessIntent(): Intent?
@@ -50,5 +53,8 @@ interface StorageRepository {
 
     companion object {
         const val DEFAULT_LARGE_FILE_BYTES = 50L * 1024 * 1024
+
+        /** Every kind a media permission covers. */
+        val MEDIA_KINDS: Set<FileKind> = setOf(FileKind.IMAGE, FileKind.VIDEO, FileKind.AUDIO)
     }
 }
