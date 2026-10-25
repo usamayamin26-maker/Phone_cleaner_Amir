@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Svenska</string>
     <string name="lang_nb_english">Norska</string>
     <string name="lang_da_english">Danska</string>
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_share_app">Dela appen</string>
+    <string name="settings_rate_us">Betygsätt oss</string>
+    <string name="settings_privacy_policy">Integritet och policy</string>
+    <string name="share_app_message">Rensa telefonen med %1$s: %2$s</string>
+    <string name="share_app_chooser">Dela via</string>
+    <string name="link_open_failed">Ingen app på telefonen kan öppna länken.</string>
     <string name="onboarding_skip">Hoppa över</string>
     <string name="onboarding_next">Nästa</string>
     <string name="onboarding_junk_subtitle">Rensa telefonen med AI-rensaren</string>

@@ -10,6 +10,7 @@ import com.phone.cleaner.domain.view_models.BatteryViewModel
 import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
 import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.domain.view_models.LanguageViewModel
+import com.phone.cleaner.domain.view_models.SettingsViewModel
 import com.phone.cleaner.domain.view_models.SplashViewModel
 import com.phone.cleaner.presentation.adapters.DeviceInfoSectionAdapter
 import com.phone.cleaner.presentation.adapters.InfoListAdapter
@@ -46,6 +47,9 @@ val SharedModule = module {
 
     // ---- home ----
     viewModel { HomeViewModel(get()) }
+
+    // ---- settings ----
+    viewModel { SettingsViewModel() }
 
     // ---- device info ----
     single<DeviceInfoRepository> { DeviceInfoRepositoryImp(get()) }

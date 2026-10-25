@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Sueco</string>
     <string name="lang_nb_english">Noruego</string>
     <string name="lang_da_english">Danés</string>
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_share_app">Compartir app</string>
+    <string name="settings_rate_us">Valóranos</string>
+    <string name="settings_privacy_policy">Privacidad y política</string>
+    <string name="share_app_message">Limpia tu teléfono con %1$s: %2$s</string>
+    <string name="share_app_chooser">Compartir con</string>
+    <string name="link_open_failed">Ninguna app de este teléfono puede abrir este enlace.</string>
     <string name="onboarding_skip">Omitir</string>
     <string name="onboarding_next">Siguiente</string>
     <string name="onboarding_junk_subtitle">Limpia tu teléfono con el limpiador de IA</string>

@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Шведский</string>
     <string name="lang_nb_english">Норвежский</string>
     <string name="lang_da_english">Датский</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_share_app">Поделиться</string>
+    <string name="settings_rate_us">Оцените нас</string>
+    <string name="settings_privacy_policy">Конфиденциальность</string>
+    <string name="share_app_message">Очистите телефон с %1$s: %2$s</string>
+    <string name="share_app_chooser">Поделиться через</string>
+    <string name="link_open_failed">На этом телефоне нет приложения, которое может открыть эту ссылку.</string>
     <string name="onboarding_skip">Пропустить</string>
     <string name="onboarding_next">Далее</string>
     <string name="onboarding_junk_subtitle">Очистите телефон с помощью ИИ-очистителя</string>

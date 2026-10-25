@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Suédois</string>
     <string name="lang_nb_english">Norvégien</string>
     <string name="lang_da_english">Danois</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_share_app">Partager l\'appli</string>
+    <string name="settings_rate_us">Notez-nous</string>
+    <string name="settings_privacy_policy">Confidentialité et politique</string>
+    <string name="share_app_message">Nettoyez votre téléphone avec %1$s : %2$s</string>
+    <string name="share_app_chooser">Partager via</string>
+    <string name="link_open_failed">Aucune appli de ce téléphone ne peut ouvrir ce lien.</string>
     <string name="onboarding_skip">Passer</string>
     <string name="onboarding_next">Suivant</string>
     <string name="onboarding_junk_subtitle">Nettoyez votre téléphone avec le nettoyeur IA</string>

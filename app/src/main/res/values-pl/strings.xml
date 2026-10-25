@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Szwedzki</string>
     <string name="lang_nb_english">Norweski</string>
     <string name="lang_da_english">Duński</string>
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_share_app">Udostępnij aplikację</string>
+    <string name="settings_rate_us">Oceń nas</string>
+    <string name="settings_privacy_policy">Prywatność i zasady</string>
+    <string name="share_app_message">Wyczyść telefon z %1$s: %2$s</string>
+    <string name="share_app_chooser">Udostępnij przez</string>
+    <string name="link_open_failed">Żadna aplikacja na tym telefonie nie może otworzyć tego linku.</string>
     <string name="onboarding_skip">Pomiń</string>
     <string name="onboarding_next">Dalej</string>
     <string name="onboarding_junk_subtitle">Wyczyść telefon za pomocą czyściciela AI</string>

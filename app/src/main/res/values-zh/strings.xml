@@ -40,6 +40,13 @@
     <string name="lang_sv_english">瑞典语</string>
     <string name="lang_nb_english">挪威语</string>
     <string name="lang_da_english">丹麦语</string>
+    <string name="settings_title">设置</string>
+    <string name="settings_share_app">分享应用</string>
+    <string name="settings_rate_us">给我们评分</string>
+    <string name="settings_privacy_policy">隐私与政策</string>
+    <string name="share_app_message">用 %1$s 清理手机：%2$s</string>
+    <string name="share_app_chooser">分享方式</string>
+    <string name="link_open_failed">此手机上没有可以打开此链接的应用。</string>
     <string name="onboarding_skip">跳过</string>
     <string name="onboarding_next">下一步</string>
     <string name="onboarding_junk_subtitle">用 AI 清理工具清理手机</string>

@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Svedese</string>
     <string name="lang_nb_english">Norvegese</string>
     <string name="lang_da_english">Danese</string>
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_share_app">Condividi app</string>
+    <string name="settings_rate_us">Valutaci</string>
+    <string name="settings_privacy_policy">Privacy e informativa</string>
+    <string name="share_app_message">Pulisci il telefono con %1$s: %2$s</string>
+    <string name="share_app_chooser">Condividi tramite</string>
+    <string name="link_open_failed">Nessuna app su questo telefono può aprire questo link.</string>
     <string name="onboarding_skip">Salta</string>
     <string name="onboarding_next">Avanti</string>
     <string name="onboarding_junk_subtitle">Pulisci il telefono con il pulitore IA</string>

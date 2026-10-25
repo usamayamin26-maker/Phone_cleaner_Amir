@@ -40,6 +40,13 @@
     <string name="lang_sv_english">السويدية</string>
     <string name="lang_nb_english">النرويجية</string>
     <string name="lang_da_english">الدانماركية</string>
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_share_app">مشاركة التطبيق</string>
+    <string name="settings_rate_us">قيّمنا</string>
+    <string name="settings_privacy_policy">الخصوصية والسياسة</string>
+    <string name="share_app_message">نظّف هاتفك باستخدام %1$s: %2$s</string>
+    <string name="share_app_chooser">مشاركة عبر</string>
+    <string name="link_open_failed">لا يوجد تطبيق على هذا الهاتف يمكنه فتح هذا الرابط.</string>
     <string name="onboarding_skip">تخطي</string>
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_junk_subtitle">نظّف هاتفك بمنظف الذكاء الاصطناعي</string>

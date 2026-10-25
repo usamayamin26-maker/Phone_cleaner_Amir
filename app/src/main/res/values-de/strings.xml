@@ -40,6 +40,13 @@
     <string name="lang_sv_english">Schwedisch</string>
     <string name="lang_nb_english">Norwegisch</string>
     <string name="lang_da_english">Dänisch</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_share_app">App teilen</string>
+    <string name="settings_rate_us">Bewerte uns</string>
+    <string name="settings_privacy_policy">Datenschutz &amp; Richtlinie</string>
+    <string name="share_app_message">Räum dein Handy mit %1$s auf: %2$s</string>
+    <string name="share_app_chooser">Teilen über</string>
+    <string name="link_open_failed">Keine App auf diesem Handy kann diesen Link öffnen.</string>
     <string name="onboarding_skip">Überspringen</string>
     <string name="onboarding_next">Weiter</string>
     <string name="onboarding_junk_subtitle">Reinige dein Handy mit dem KI-Reiniger</string>

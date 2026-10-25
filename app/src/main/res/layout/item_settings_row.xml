@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One Settings row (Figma 1:4241): a 70 px card, radius 22, with the 20 px icon in a 40 px round
+     tile 15 px in, the title 14 px after it and the 20 px chevron 15 px from the end. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:cardBackgroundColor="@color/card_row_surface"
+    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardElevation="@dimen/_3sdp"
+    app:rippleColor="@color/ripple_on_light"
+    app:strokeColor="@color/card_row_stroke"
+    app:strokeWidth="@dimen/_1sdp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/_56sdp"
+        android:orientation="horizontal"
+        android:padding="@dimen/_12sdp">
+
+        <FrameLayout
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="@drawable/shape_circle_tile">
+
+            <ImageView
+                android:id="@+id/row_icon"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                tools:src="@drawable/ic_language" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/row_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_11sdp"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/text_label_strong"
+            android:textSize="@dimen/_12ssp"
+            app:lineHeight="@dimen/_18ssp"
+            tools:text="@string/language_title" />
+
+        <ImageView
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_chevron_forward"
+            app:tint="@color/icon_chevron_muted" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

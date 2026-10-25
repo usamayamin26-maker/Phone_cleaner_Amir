@@ -40,6 +40,13 @@
     <string name="lang_sv_english">स्वीडिश</string>
     <string name="lang_nb_english">नॉर्वेजियन</string>
     <string name="lang_da_english">डेनिश</string>
+    <string name="settings_title">सेटिंग</string>
+    <string name="settings_share_app">ऐप शेयर करें</string>
+    <string name="settings_rate_us">हमें रेट करें</string>
+    <string name="settings_privacy_policy">निजता और नीति</string>
+    <string name="share_app_message">%1$s से अपना फ़ोन साफ़ करें: %2$s</string>
+    <string name="share_app_chooser">इससे शेयर करें</string>
+    <string name="link_open_failed">इस फ़ोन पर कोई ऐप यह लिंक नहीं खोल सकता।</string>
     <string name="onboarding_skip">छोड़ें</string>
     <string name="onboarding_next">आगे</string>
     <string name="onboarding_junk_subtitle">AI क्लीनर से अपना फ़ोन साफ़ करें</string>

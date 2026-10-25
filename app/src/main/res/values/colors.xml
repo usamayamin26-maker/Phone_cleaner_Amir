@@ -37,6 +37,8 @@
     <!-- The selected language's tick and the Settings row icons. -->
     <color name="icon_violet">#FF6366F1</color>
     <color name="icon_on_primary">#FFFFFFFF</color>
+    <!-- The forward chevron on the Settings rows: lighter than the Device Info one. -->
+    <color name="icon_chevron_muted">#FF9A9FAC</color>
 
     <!-- Cards -->
     <color name="card_surface">#FFFFFFFF</color>

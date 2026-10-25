@@ -40,6 +40,13 @@
     <string name="lang_sv_english">İsveççe</string>
     <string name="lang_nb_english">Norveççe</string>
     <string name="lang_da_english">Danca</string>
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_share_app">Uygulamayı paylaş</string>
+    <string name="settings_rate_us">Bizi değerlendirin</string>
+    <string name="settings_privacy_policy">Gizlilik ve politika</string>
+    <string name="share_app_message">Telefonunuzu %1$s ile temizleyin: %2$s</string>
+    <string name="share_app_chooser">Şununla paylaş</string>
+    <string name="link_open_failed">Bu telefonda bu bağlantıyı açabilecek bir uygulama yok.</string>
     <string name="onboarding_skip">Atla</string>
     <string name="onboarding_next">İleri</string>
     <string name="onboarding_junk_subtitle">Telefonunuzu yapay zekâ temizleyiciyle temizleyin</string>

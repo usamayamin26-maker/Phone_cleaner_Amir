@@ -40,6 +40,13 @@
     <string name="lang_sv_english">스웨덴어</string>
     <string name="lang_nb_english">노르웨이어</string>
     <string name="lang_da_english">덴마크어</string>
+    <string name="settings_title">설정</string>
+    <string name="settings_share_app">앱 공유</string>
+    <string name="settings_rate_us">평가하기</string>
+    <string name="settings_privacy_policy">개인정보 및 정책</string>
+    <string name="share_app_message">%1$s(으)로 휴대폰을 정리하세요: %2$s</string>
+    <string name="share_app_chooser">공유 방법</string>
+    <string name="link_open_failed">이 휴대폰에는 이 링크를 열 수 있는 앱이 없습니다.</string>
     <string name="onboarding_skip">건너뛰기</string>
     <string name="onboarding_next">다음</string>
     <string name="onboarding_junk_subtitle">AI 클리너로 휴대폰을 정리하세요</string>
