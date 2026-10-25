@@ -31,6 +31,11 @@
         <item name="android:textColor">@color/text_on_primary</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0</item>
+        <!-- MaterialButton's own state list animator sets the elevation itself (0 in Material 3),
+             which would drop the design's purple shadow; without it the elevation below holds. -->
+        <item name="android:stateListAnimator">@null</item>
+        <!-- The shadow follows the pill of the background, not the view's rectangle. -->
+        <item name="android:outlineProvider">background</item>
         <item name="android:elevation">@dimen/_8sdp</item>
         <item name="android:outlineSpotShadowColor" tools:targetApi="28">@color/primary_button_shadow</item>
         <item name="android:outlineAmbientShadowColor" tools:targetApi="28">@color/primary_button_shadow</item>

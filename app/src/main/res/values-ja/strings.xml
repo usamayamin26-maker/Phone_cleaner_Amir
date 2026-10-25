@@ -9,6 +9,7 @@
     <string name="state_on">オン</string>
     <string name="state_off">オフ</string>
     <string name="error_generic">問題が発生しました。もう一度お試しください。</string>
+    <string name="action_continue">続ける</string>
     <string name="cd_settings">設定</string>
     <string name="home_storage_usage">ストレージ使用量</string>
     <string name="home_ram_usage">RAM使用量</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">重複を削除</string>
     <string name="action_app_cleaner">アプリクリーナー</string>
     <string name="action_wa_cleaner">WAクリーナー</string>
+    <string name="onboarding_skip">スキップ</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_junk_subtitle">AI クリーナーでスマホをきれいに</string>
+    <string name="onboarding_duplicates_subtitle">重複したアイテムを数秒ですべて削除。</string>
+    <string name="onboarding_whatsapp_title">WhatsApp クリーナー</string>
+    <string name="onboarding_whatsapp_subtitle">WhatsApp のデータを整理します。</string>
+    <string name="onboarding_battery_subtitle">スマホのバッテリー情報を確認できます。</string>
     <string name="device_info_title">デバイス情報</string>
     <string name="info_device">デバイス情報</string>
     <string name="info_processor">プロセッサ情報</string>

@@ -9,6 +9,7 @@
     <string name="state_on">Вкл.</string>
     <string name="state_off">Выкл.</string>
     <string name="error_generic">Что-то пошло не так. Повторите попытку.</string>
+    <string name="action_continue">Продолжить</string>
     <string name="cd_settings">Настройки</string>
     <string name="home_storage_usage">Использование памяти</string>
     <string name="home_ram_usage">Использование ОЗУ</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">Удалить дубликаты</string>
     <string name="action_app_cleaner">Очистка приложений</string>
     <string name="action_wa_cleaner">Очистка WA</string>
+    <string name="onboarding_skip">Пропустить</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_junk_subtitle">Очистите телефон с помощью ИИ-очистителя</string>
+    <string name="onboarding_duplicates_subtitle">Удалите все дубликаты за несколько секунд.</string>
+    <string name="onboarding_whatsapp_title">Очистка WhatsApp</string>
+    <string name="onboarding_whatsapp_subtitle">Очистите данные WhatsApp.</string>
+    <string name="onboarding_battery_subtitle">Узнайте всё об аккумуляторе телефона.</string>
     <string name="device_info_title">Об устройстве</string>
     <string name="info_device">Сведения об устройстве</string>
     <string name="info_processor">Сведения о процессоре</string>

@@ -9,6 +9,7 @@
     <string name="state_on">تشغيل</string>
     <string name="state_off">إيقاف</string>
     <string name="error_generic">حدث خطأ ما. يُرجى المحاولة مرة أخرى.</string>
+    <string name="action_continue">متابعة</string>
     <string name="cd_settings">الإعدادات</string>
     <string name="home_storage_usage">استخدام التخزين</string>
     <string name="home_ram_usage">استخدام الذاكرة</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">حذف المكررات</string>
     <string name="action_app_cleaner">منظف التطبيقات</string>
     <string name="action_wa_cleaner">منظف واتساب</string>
+    <string name="onboarding_skip">تخطي</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_junk_subtitle">نظّف هاتفك بمنظف الذكاء الاصطناعي</string>
+    <string name="onboarding_duplicates_subtitle">احذف كل العناصر المكررة في ثوانٍ.</string>
+    <string name="onboarding_whatsapp_title">منظف WhatsApp</string>
+    <string name="onboarding_whatsapp_subtitle">نظّف بيانات WhatsApp.</string>
+    <string name="onboarding_battery_subtitle">اطّلع على معلومات بطارية هاتفك.</string>
     <string name="device_info_title">معلومات الجهاز</string>
     <string name="info_device">معلومات الجهاز</string>
     <string name="info_processor">معلومات المعالج</string>

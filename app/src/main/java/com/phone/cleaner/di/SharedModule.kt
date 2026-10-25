@@ -11,6 +11,7 @@ import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
 import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.presentation.adapters.DeviceInfoSectionAdapter
 import com.phone.cleaner.presentation.adapters.InfoListAdapter
+import com.phone.cleaner.presentation.adapters.OnboardingAdapter
 import com.phone.cleaner.utils.Constants
 import com.phone.cleaner.utils.SharedPref
 import org.koin.android.ext.koin.androidContext
@@ -33,6 +34,9 @@ val SharedModule = module {
         Room.databaseBuilder(androidContext(), AppDatabase::class.java, Constants.DB_NAME).build()
     }
     single { get<AppDatabase>().aiScanResultDao() }
+
+    // ---- onboarding ----
+    factory { OnboardingAdapter() }
 
     // ---- home ----
     viewModel { HomeViewModel(get()) }

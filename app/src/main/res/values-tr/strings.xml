@@ -9,6 +9,7 @@
     <string name="state_on">Açık</string>
     <string name="state_off">Kapalı</string>
     <string name="error_generic">Bir sorun oluştu. Lütfen tekrar deneyin.</string>
+    <string name="action_continue">Devam</string>
     <string name="cd_settings">Ayarlar</string>
     <string name="home_storage_usage">Depolama Kullanımı</string>
     <string name="home_ram_usage">RAM Kullanımı</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">Kopyaları Sil</string>
     <string name="action_app_cleaner">Uygulama Temizleyici</string>
     <string name="action_wa_cleaner">WA Temizleyici</string>
+    <string name="onboarding_skip">Atla</string>
+    <string name="onboarding_next">İleri</string>
+    <string name="onboarding_junk_subtitle">Telefonunuzu yapay zekâ temizleyiciyle temizleyin</string>
+    <string name="onboarding_duplicates_subtitle">Tüm kopya öğeleri saniyeler içinde silin.</string>
+    <string name="onboarding_whatsapp_title">WhatsApp Temizleyici</string>
+    <string name="onboarding_whatsapp_subtitle">WhatsApp verilerinizi temizleyin.</string>
+    <string name="onboarding_battery_subtitle">Telefonunuzun pil bilgilerine göz atın.</string>
     <string name="device_info_title">Cihaz Bilgisi</string>
     <string name="info_device">Cihaz Bilgileri</string>
     <string name="info_processor">İşlemci Bilgileri</string>

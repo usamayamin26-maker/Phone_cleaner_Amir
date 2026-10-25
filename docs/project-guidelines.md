@@ -52,8 +52,8 @@ di/SharedModule.kt
 utils/
 data/{local,repository,mapper}      data/remote only if a backend is added
 domain/{entities,repository,view_models}
-presentation/{base,components,adapters,home,deviceinfo,battery,junkcleaner,aicleaner,whatsapp,
-              duplicates,appmanager,appusage,compressor,settings}
+presentation/{base,components,adapters,onboarding,home,deviceinfo,battery,junkcleaner,aicleaner,
+              whatsapp,duplicates,appmanager,appusage,compressor,settings}
 ```
 
 There is no `core` package. Base classes such as `BaseActivity` and `BaseFragment` live in
@@ -68,6 +68,8 @@ There is no `core` package. Base classes such as `BaseActivity` and `BaseFragmen
 - The root package contains only `BaseApp.kt`. Every activity lives under `presentation/` —
   `MainActivity` directly in `presentation/`, all others in their screen-area sub-package.
 - Fragments live in the screen-area package they belong to, never in a shared `fragments` package.
+- The first-run screens (splash, language, onboarding) live in `presentation/onboarding/`, as in
+  UniversalRemoteControl. The language screen is opened from Settings too and stays there.
 - Keep a `.gitkeep` only in empty leaf packages; delete it as soon as the package has real files.
 
 ## Preferences — utils/SharedPref.kt

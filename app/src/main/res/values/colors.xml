@@ -24,6 +24,10 @@
     <color name="text_on_tile">#FFFFFFFF</color>
     <color name="text_on_primary">#FFFFFFFF</color>
     <color name="text_accent">#FF0041FF</color>
+    <!-- Splash subtitle and loading line, onboarding Skip. -->
+    <color name="text_secondary">#FF5F6475</color>
+    <!-- Onboarding subtitles. -->
+    <color name="text_tertiary">#FF72778A</color>
 
     <!-- Icons -->
     <color name="icon_back">#FF171A2B</color>
@@ -73,6 +77,9 @@
     <color name="primary_gradient_center">#FF6366F1</color>
     <color name="primary_gradient_end">#FF8B5CF6</color>
     <color name="primary_button_shadow">#996366F1</color>
+
+    <!-- Onboarding page indicator: the current page is a primary-gradient pill, the others dots. -->
+    <color name="indicator_inactive">#FFD5E0FF</color>
 
     <!-- Pressed states -->
     <color name="ripple_on_light">#1F0041FF</color>

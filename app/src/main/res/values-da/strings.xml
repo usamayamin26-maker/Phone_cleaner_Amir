@@ -9,6 +9,7 @@
     <string name="state_on">Til</string>
     <string name="state_off">Fra</string>
     <string name="error_generic">Noget gik galt. Prøv igen.</string>
+    <string name="action_continue">Fortsæt</string>
     <string name="cd_settings">Indstillinger</string>
     <string name="home_storage_usage">Lagerforbrug</string>
     <string name="home_ram_usage">RAM-forbrug</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">Slet dubletter</string>
     <string name="action_app_cleaner">Apprenser</string>
     <string name="action_wa_cleaner">WA-renser</string>
+    <string name="onboarding_skip">Spring over</string>
+    <string name="onboarding_next">Næste</string>
+    <string name="onboarding_junk_subtitle">Ryd op på telefonen med AI-rensningen</string>
+    <string name="onboarding_duplicates_subtitle">Slet alle dubletter på få sekunder.</string>
+    <string name="onboarding_whatsapp_title">WhatsApp-rens</string>
+    <string name="onboarding_whatsapp_subtitle">Ryd op i dine WhatsApp-data.</string>
+    <string name="onboarding_battery_subtitle">Se oplysninger om telefonens batteri.</string>
     <string name="device_info_title">Enhedsinfo</string>
     <string name="info_device">Enhedsoplysninger</string>
     <string name="info_processor">Processoroplysninger</string>

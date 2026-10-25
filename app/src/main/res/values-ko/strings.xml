@@ -9,6 +9,7 @@
     <string name="state_on">켜짐</string>
     <string name="state_off">꺼짐</string>
     <string name="error_generic">문제가 발생했습니다. 다시 시도해 주세요.</string>
+    <string name="action_continue">계속</string>
     <string name="cd_settings">설정</string>
     <string name="home_storage_usage">저장공간 사용량</string>
     <string name="home_ram_usage">RAM 사용량</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">중복 삭제</string>
     <string name="action_app_cleaner">앱 클리너</string>
     <string name="action_wa_cleaner">WA 클리너</string>
+    <string name="onboarding_skip">건너뛰기</string>
+    <string name="onboarding_next">다음</string>
+    <string name="onboarding_junk_subtitle">AI 클리너로 휴대폰을 정리하세요</string>
+    <string name="onboarding_duplicates_subtitle">중복 항목을 몇 초 만에 모두 삭제하세요.</string>
+    <string name="onboarding_whatsapp_title">WhatsApp 클리너</string>
+    <string name="onboarding_whatsapp_subtitle">WhatsApp 데이터를 정리하세요.</string>
+    <string name="onboarding_battery_subtitle">휴대폰 배터리 정보를 확인하세요.</string>
     <string name="device_info_title">기기 정보</string>
     <string name="info_device">기기 정보</string>
     <string name="info_processor">프로세서 정보</string>

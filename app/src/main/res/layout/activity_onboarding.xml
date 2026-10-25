@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding (Figma 1:2896, 1:3178, 1:3705, 1:3962). Skip, the page indicator and Next /
+     Continue are the same on every page, so they belong to the activity and stay still while the
+     pages swipe under them.
+
+     Skip sits 12 px under the status bar with a 28 px gutter. The controls row (28 px gutter,
+     51 px high) sits 12 px under the page's image: OnboardingActivity places it there, because
+     where the image ends depends on the screen and the font size. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context=".presentation.onboarding.OnboardingActivity">
+
+    <com.phone.cleaner.presentation.components.ScreenBackgroundView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/skip_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/onboarding_skip"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lineHeight="@dimen/_17ssp" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skip_button" />
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:clipChildren="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pager">
+
+        <!-- 28 px pill for the current page, 8 px dots for the others, 8 px apart, 7.5 px in. -->
+        <LinearLayout
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:importantForAccessibility="noHideDescendants"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_6sdp"
+                android:background="@drawable/shape_indicator_active" />
+
+            <View
+                android:layout_width="@dimen/_6sdp"
+                android:layout_height="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:background="@drawable/shape_indicator_inactive" />
+
+            <View
+                android:layout_width="@dimen/_6sdp"
+                android:layout_height="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:background="@drawable/shape_indicator_inactive" />
+
+            <View
+                android:layout_width="@dimen/_6sdp"
+                android:layout_height="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:background="@drawable/shape_indicator_inactive" />
+        </LinearLayout>
+
+        <Space
+            android:id="@+id/indicator_gap"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Next: 163 x 51; on the last page Continue fills the row (319 x 50). -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/action_button"
+            style="@style/Widget.PhoneCleaner.PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/_130sdp"
+            android:minHeight="@dimen/_41sdp"
+            android:text="@string/onboarding_next"
+            android:textSize="@dimen/_14ssp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

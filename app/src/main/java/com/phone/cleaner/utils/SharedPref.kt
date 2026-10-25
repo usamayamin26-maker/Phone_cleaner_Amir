@@ -18,4 +18,9 @@ class SharedPref(context: Context) {
     var lastFullChargeAt: Long
         get() = sharedPref.getLong("lastFullChargeAt", 0L)
         set(value) = prefEdit.putLong("lastFullChargeAt", value).apply()
+
+    /** Set when the user leaves onboarding, by Continue or by Skip; onboarding is not shown again. */
+    var isOnboardingDone: Boolean
+        get() = sharedPref.getBoolean("isOnboardingDone", false)
+        set(value) = prefEdit.putBoolean("isOnboardingDone", value).apply()
 }

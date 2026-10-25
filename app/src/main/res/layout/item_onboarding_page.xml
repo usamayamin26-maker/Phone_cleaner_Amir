@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One onboarding page (Figma 1:2896, 1:3178, 1:3705, 1:3962): the title and subtitle in a
+     284 px column, 12 px under Skip, then the 375 x 420 phone image 12 px below them.
+
+     The image is as wide as the screen and keeps its aspect ratio. When the page is shorter than
+     that (a large font, a short screen), the LinearLayout hands it only the height that is left and
+     adjustViewBounds + fitCenter shrink it instead of pushing it under the controls. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/page_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_36sdp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text_label_strong"
+        android:textSize="@dimen/_18ssp"
+        app:lineHeight="@dimen/_27ssp"
+        tools:text="@string/action_ai_junk_cleaner" />
+
+    <TextView
+        android:id="@+id/page_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_36sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text_tertiary"
+        android:textSize="@dimen/_10ssp"
+        app:lineHeight="@dimen/_16ssp"
+        tools:text="@string/onboarding_junk_subtitle" />
+
+    <ImageView
+        android:id="@+id/page_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
+        android:scaleType="fitCenter"
+        tools:src="@drawable/img_boarding_1" />
+
+</LinearLayout>

@@ -9,6 +9,7 @@
     <string name="state_on">चालू</string>
     <string name="state_off">बंद</string>
     <string name="error_generic">कुछ गलत हो गया। कृपया फिर से कोशिश करें।</string>
+    <string name="action_continue">जारी रखें</string>
     <string name="cd_settings">सेटिंग</string>
     <string name="home_storage_usage">स्टोरेज उपयोग</string>
     <string name="home_ram_usage">RAM उपयोग</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">डुप्लिकेट हटाएँ</string>
     <string name="action_app_cleaner">ऐप क्लीनर</string>
     <string name="action_wa_cleaner">WA क्लीनर</string>
+    <string name="onboarding_skip">छोड़ें</string>
+    <string name="onboarding_next">आगे</string>
+    <string name="onboarding_junk_subtitle">AI क्लीनर से अपना फ़ोन साफ़ करें</string>
+    <string name="onboarding_duplicates_subtitle">कुछ ही सेकंड में सभी डुप्लिकेट आइटम हटाएँ।</string>
+    <string name="onboarding_whatsapp_title">WhatsApp क्लीनर</string>
+    <string name="onboarding_whatsapp_subtitle">अपना WhatsApp डेटा साफ़ करें।</string>
+    <string name="onboarding_battery_subtitle">अपने फ़ोन की बैटरी की जानकारी देखें।</string>
     <string name="device_info_title">डिवाइस जानकारी</string>
     <string name="info_device">डिवाइस की जानकारी</string>
     <string name="info_processor">प्रोसेसर की जानकारी</string>

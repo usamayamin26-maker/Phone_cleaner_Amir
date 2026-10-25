@@ -15,6 +15,7 @@
     <string name="state_on">On</string>
     <string name="state_off">Off</string>
     <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="action_continue">Continue</string>
 
     <!-- Home -->
     <string name="home_title" translatable="false">Smart Cleaner Pro</string>
@@ -29,6 +30,15 @@
     <string name="action_delete_duplicates">Delete Duplicates</string>
     <string name="action_app_cleaner">App Cleaner</string>
     <string name="action_wa_cleaner">WA Cleaner</string>
+
+    <!-- Onboarding. The page titles are the feature names Home uses. -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_junk_subtitle">Clean your phone with AI cleaner</string>
+    <string name="onboarding_duplicates_subtitle">Delete all duplicate items in a few seconds.</string>
+    <string name="onboarding_whatsapp_title">WhatsApp Cleaner</string>
+    <string name="onboarding_whatsapp_subtitle">Clean your WhatsApp data.</string>
+    <string name="onboarding_battery_subtitle">Check your phone\'s battery information.</string>
 
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>

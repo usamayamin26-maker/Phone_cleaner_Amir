@@ -9,6 +9,7 @@
     <string name="state_on">Activado</string>
     <string name="state_off">Desactivado</string>
     <string name="error_generic">Algo salió mal. Inténtalo de nuevo.</string>
+    <string name="action_continue">Continuar</string>
     <string name="cd_settings">Ajustes</string>
     <string name="home_storage_usage">Uso de almacenamiento</string>
     <string name="home_ram_usage">Uso de RAM</string>
@@ -18,6 +19,13 @@
     <string name="action_delete_duplicates">Eliminar duplicados</string>
     <string name="action_app_cleaner">Limpiador de apps</string>
     <string name="action_wa_cleaner">Limpiador de WA</string>
+    <string name="onboarding_skip">Omitir</string>
+    <string name="onboarding_next">Siguiente</string>
+    <string name="onboarding_junk_subtitle">Limpia tu teléfono con el limpiador de IA</string>
+    <string name="onboarding_duplicates_subtitle">Elimina todos los elementos duplicados en segundos.</string>
+    <string name="onboarding_whatsapp_title">Limpiador de WhatsApp</string>
+    <string name="onboarding_whatsapp_subtitle">Limpia tus datos de WhatsApp.</string>
+    <string name="onboarding_battery_subtitle">Consulta la información de la batería de tu teléfono.</string>
     <string name="device_info_title">Info del dispositivo</string>
     <string name="info_device">Información del dispositivo</string>
     <string name="info_processor">Información del procesador</string>
