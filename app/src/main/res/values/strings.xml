@@ -31,6 +31,51 @@
     <string name="action_app_cleaner">App Cleaner</string>
     <string name="action_wa_cleaner">WA Cleaner</string>
 
+    <!-- Splash. The title is the brand name and stays in English. -->
+    <string name="splash_title" translatable="false">Ai Junk Cleaner</string>
+    <string name="splash_subtitle">Premium cleaning, storage &amp; security</string>
+    <string name="splash_loading">Getting things ready…</string>
+
+    <!-- Language. Each language's own name is never translated; the second line is its name in
+         the app's current language. -->
+    <string name="language_title">Language</string>
+    <string name="lang_en_native" translatable="false">English</string>
+    <string name="lang_es_native" translatable="false">Español</string>
+    <string name="lang_fr_native" translatable="false">Français</string>
+    <string name="lang_de_native" translatable="false">Deutsch</string>
+    <string name="lang_pt_native" translatable="false">Português</string>
+    <string name="lang_it_native" translatable="false">Italiano</string>
+    <string name="lang_ja_native" translatable="false">日本語</string>
+    <string name="lang_ko_native" translatable="false">한국어</string>
+    <string name="lang_zh_native" translatable="false">中文</string>
+    <string name="lang_ar_native" translatable="false">العربية</string>
+    <string name="lang_hi_native" translatable="false">हिन्दी</string>
+    <string name="lang_ru_native" translatable="false">Русский</string>
+    <string name="lang_tr_native" translatable="false">Türkçe</string>
+    <string name="lang_nl_native" translatable="false">Nederlands</string>
+    <string name="lang_pl_native" translatable="false">Polski</string>
+    <string name="lang_sv_native" translatable="false">Svenska</string>
+    <string name="lang_nb_native" translatable="false">Norsk</string>
+    <string name="lang_da_native" translatable="false">Dansk</string>
+    <string name="lang_en_english">English</string>
+    <string name="lang_es_english">Spanish</string>
+    <string name="lang_fr_english">French</string>
+    <string name="lang_de_english">German</string>
+    <string name="lang_pt_english">Portuguese</string>
+    <string name="lang_it_english">Italian</string>
+    <string name="lang_ja_english">Japanese</string>
+    <string name="lang_ko_english">Korean</string>
+    <string name="lang_zh_english">Chinese</string>
+    <string name="lang_ar_english">Arabic</string>
+    <string name="lang_hi_english">Hindi</string>
+    <string name="lang_ru_english">Russian</string>
+    <string name="lang_tr_english">Turkish</string>
+    <string name="lang_nl_english">Dutch</string>
+    <string name="lang_pl_english">Polish</string>
+    <string name="lang_sv_english">Swedish</string>
+    <string name="lang_nb_english">Norwegian</string>
+    <string name="lang_da_english">Danish</string>
+
     <!-- Onboarding. The page titles are the feature names Home uses. -->
     <string name="onboarding_skip">Skip</string>
     <string name="onboarding_next">Next</string>

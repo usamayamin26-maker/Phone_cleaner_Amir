@@ -34,12 +34,21 @@
     <color name="icon_chevron">#80000000</color>
     <color name="icon_on_header">#FFFFFFFF</color>
     <color name="icon_accent">#FF0041FF</color>
+    <!-- The selected language's tick and the Settings row icons. -->
+    <color name="icon_violet">#FF6366F1</color>
+    <color name="icon_on_primary">#FFFFFFFF</color>
 
     <!-- Cards -->
     <color name="card_surface">#FFFFFFFF</color>
     <color name="card_glass">#FFFDFDFF</color>
     <color name="card_glass_stroke">#D9FFFFFF</color>
     <color name="card_power_stroke">#FFE8EEFF</color>
+    <!-- Settings and Language rows: a near-white card with a pale blue hairline. -->
+    <color name="card_row_surface">#FFFAFAFF</color>
+    <color name="card_row_stroke">#FFE5EAFF</color>
+    <!-- The round tile behind a Settings icon or a language flag. -->
+    <color name="circle_tile_fill">#FFEEF2FF</color>
+    <color name="circle_tile_stroke">#FFDBE4FF</color>
     <color name="card_action_shadow">#FF4F7CFF</color>
     <!-- Spot shadow under the white cards: Figma's drop shadow is 8% black, lighter than the
          platform default, so the shadow colour is dimmed (API 28+; older versions keep the
@@ -77,6 +86,13 @@
     <color name="primary_gradient_center">#FF6366F1</color>
     <color name="primary_gradient_end">#FF8B5CF6</color>
     <color name="primary_button_shadow">#996366F1</color>
+
+    <!-- Splash (Figma 1:4189): the logo's 70% white border, the violet glow behind it and the
+         loading bar's track. -->
+    <color name="splash_logo_stroke">#B3FFFFFF</color>
+    <color name="splash_glow">#9E7C6CF7</color>
+    <color name="splash_glow_end">#007C6CF7</color>
+    <color name="progress_track">#FFEEF2FF</color>
 
     <!-- Onboarding page indicator: the current page is a primary-gradient pill, the others dots. -->
     <color name="indicator_inactive">#FFD5E0FF</color>

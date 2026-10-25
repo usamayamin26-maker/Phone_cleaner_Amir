@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4198: the gradient copy of the logo under it, blurred by 20 px at 70% opacity. A shape
+     cannot blur, so a round glow fades out from the logo's middle instead. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:endColor="@color/splash_glow_end"
+        android:gradientRadius="50%"
+        android:startColor="@color/splash_glow"
+        android:type="radial" />
+</shape>

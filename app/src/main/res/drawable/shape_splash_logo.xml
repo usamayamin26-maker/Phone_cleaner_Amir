@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4199: the splash logo tile, 104 px, radius 34, the primary gradient (100 degrees,
+     drawn left to right: a shape gradient only takes multiples of 45) and a 70% white border. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_27sdp" />
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/primary_gradient_center"
+        android:endColor="@color/primary_gradient_end"
+        android:startColor="@color/primary_gradient_start"
+        android:type="linear" />
+    <stroke
+        android:width="@dimen/_1sdp"
+        android:color="@color/splash_logo_stroke" />
+</shape>

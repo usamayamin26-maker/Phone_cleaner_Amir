@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4207: the splash loading bar's track, a 6 px pill. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_3sdp" />
+    <solid android:color="@color/progress_track" />
+</shape>

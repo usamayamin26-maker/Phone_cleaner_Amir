@@ -18,6 +18,7 @@ import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
 import com.phone.cleaner.presentation.deviceinfo.DeviceInfoActivity
+import com.phone.cleaner.utils.SharedPref
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
@@ -25,6 +26,7 @@ import com.phone.cleaner.utils.formatPercent
 import com.phone.cleaner.utils.onClick
 import com.phone.cleaner.utils.playAnimatedImage
 import com.phone.cleaner.utils.toReadableSize
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -44,8 +46,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val darkStatusBarContent: Boolean = true
 
     private val viewModel: HomeViewModel by viewModel()
+    private val sharedPref: SharedPref by inject()
 
     override fun setupViews() = with(binding) {
+        // From now on a launch is not a first run: the splash goes straight to Home.
+        sharedPref.hasOpenedMainScreen = true
+
         statusAnchor.applyStatusBarTopMargin()
         quickActions.applyNavigationBarBottomMargin()
 

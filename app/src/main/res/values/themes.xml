@@ -15,6 +15,14 @@
 
     <style name="Theme.PhoneCleaner" parent="Base.Theme.PhoneCleaner" />
 
+    <!-- The system splash (core-splashscreen) that covers the cold start: the splash background
+         and logo, until SplashActivity draws the design's splash in the same place. -->
+    <style name="Theme.PhoneCleaner.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/screen_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.PhoneCleaner</item>
+    </style>
+
     <!-- The design's primary call to action ("Delete 357.47 MB", "Scan Again"): a pill with the
          blue-to-violet gradient and bold white text. Shared by every cleaner screen. -->
     <style name="Widget.PhoneCleaner.PrimaryButton" parent="Widget.Material3.Button">

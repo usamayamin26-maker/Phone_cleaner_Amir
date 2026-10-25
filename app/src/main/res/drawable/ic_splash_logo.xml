@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The splash logo (Figma 1:4197) for the system splash window that covers the cold start. The
+     window draws its icon in a 240-unit box and only the middle circle, 160 across, is safe, so the
+     104 px tile is drawn 96 units wide in the middle, with the sparkle scaled to match. 240dp is the
+     size core-splashscreen asks this icon to have, hence the VectorRaster suppression. -->
+<vector xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240"
+    tools:ignore="VectorRaster">
+    <path
+        android:pathData="M103.4,72H136.6A31.4,31.4 0,0 1,168 103.4V136.6A31.4,31.4 0,0 1,136.6 168H103.4A31.4,31.4 0,0 1,72 136.6V103.4A31.4,31.4 0,0 1,103.4 72Z"
+        android:strokeWidth="1"
+        android:strokeColor="@color/splash_logo_stroke">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="174.7"
+                android:endY="129.7"
+                android:startX="65.3"
+                android:startY="110.3"
+                android:type="linear">
+                <item
+                    android:color="@color/primary_gradient_start"
+                    android:offset="0" />
+                <item
+                    android:color="@color/primary_gradient_center"
+                    android:offset="0.52" />
+                <item
+                    android:color="@color/primary_gradient_end"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <group
+        android:scaleX="0.923"
+        android:scaleY="0.923"
+        android:translateX="97.85"
+        android:translateY="97.85">
+        <path
+            android:pathData="M22.034,5.628C22.1197,5.16921 22.3631,4.75483 22.7222,4.45664C23.0812,4.15844 23.5333,3.99521 24,3.99521C24.4667,3.99521 24.9188,4.15844 25.2778,4.45664C25.6369,4.75483 25.8803,5.16921 25.966,5.628L28.068,16.744C28.2173,17.5343 28.6014,18.2612 29.1701,18.8299C29.7388,19.3986 30.4657,19.7827 31.256,19.932L42.372,22.034C42.8308,22.1197 43.2452,22.3631 43.5434,22.7222C43.8416,23.0812 44.0048,23.5333 44.0048,24C44.0048,24.4667 43.8416,24.9188 43.5434,25.2778C43.2452,25.6369 42.8308,25.8803 42.372,25.966L31.256,28.068C30.4657,28.2173 29.7388,28.6014 29.1701,29.1701C28.6014,29.7388 28.2173,30.4657 28.068,31.256L25.966,42.372C25.8803,42.8308 25.6369,43.2452 25.2778,43.5434C24.9188,43.8416 24.4667,44.0048 24,44.0048C23.5333,44.0048 23.0812,43.8416 22.7222,43.5434C22.3631,43.2452 22.1197,42.8308 22.034,42.372L19.932,31.256C19.7827,30.4657 19.3986,29.7388 18.8299,29.1701C18.2612,28.6014 17.5343,28.2173 16.744,28.068L5.628,25.966C5.16921,25.8803 4.75483,25.6369 4.45664,25.2778C4.15844,24.9188 3.99521,24.4667 3.99521,24C3.99521,23.5333 4.15844,23.0812 4.45664,22.7222C4.75483,22.3631 5.16921,22.1197 5.628,22.034L16.744,19.932C17.5343,19.7827 18.2612,19.3986 18.8299,18.8299C19.3986,18.2612 19.7827,17.5343 19.932,16.744L22.034,5.628Z"
+            android:strokeWidth="4"
+            android:strokeColor="@color/icon_on_primary"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:pathData="M40,4V12M44,8H36"
+            android:strokeWidth="4"
+            android:strokeColor="@color/icon_on_primary"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:pathData="M12,40C12,42.2091 10.2091,44 8,44C5.79086,44 4,42.2091 4,40C4,37.7909 5.79086,36 8,36C10.2091,36 12,37.7909 12,40Z"
+            android:strokeWidth="4"
+            android:strokeColor="@color/icon_on_primary"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>

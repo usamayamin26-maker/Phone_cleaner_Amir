@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4313 "charm:tick": the selected language, 21 x 21. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="21dp"
+    android:height="21dp"
+    android:viewportWidth="16"
+    android:viewportHeight="16">
+    <path
+        android:pathData="M2.75,8.75L6.25,12.25L13.25,4.75"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/icon_violet"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

@@ -9,8 +9,11 @@ import com.phone.cleaner.domain.repository.DeviceInfoRepository
 import com.phone.cleaner.domain.view_models.BatteryViewModel
 import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
 import com.phone.cleaner.domain.view_models.HomeViewModel
+import com.phone.cleaner.domain.view_models.LanguageViewModel
+import com.phone.cleaner.domain.view_models.SplashViewModel
 import com.phone.cleaner.presentation.adapters.DeviceInfoSectionAdapter
 import com.phone.cleaner.presentation.adapters.InfoListAdapter
+import com.phone.cleaner.presentation.adapters.LanguageAdapter
 import com.phone.cleaner.presentation.adapters.OnboardingAdapter
 import com.phone.cleaner.utils.Constants
 import com.phone.cleaner.utils.SharedPref
@@ -35,7 +38,10 @@ val SharedModule = module {
     }
     single { get<AppDatabase>().aiScanResultDao() }
 
-    // ---- onboarding ----
+    // ---- first run: splash, language, onboarding ----
+    viewModel { SplashViewModel(get()) }
+    viewModel { LanguageViewModel(get()) }
+    factory { LanguageAdapter() }
     factory { OnboardingAdapter() }
 
     // ---- home ----

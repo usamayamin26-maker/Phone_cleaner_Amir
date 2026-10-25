@@ -23,4 +23,20 @@ class SharedPref(context: Context) {
     var isOnboardingDone: Boolean
         get() = sharedPref.getBoolean("isOnboardingDone", false)
         set(value) = prefEdit.putBoolean("isOnboardingDone", value).apply()
+
+    /**
+     * Set the first time Home opens and never cleared. Until then every launch is a first run and
+     * the splash starts with the Language screen.
+     */
+    var hasOpenedMainScreen: Boolean
+        get() = sharedPref.getBoolean("hasOpenedMainScreen", false)
+        set(value) = prefEdit.putBoolean("hasOpenedMainScreen", value).apply()
+
+    /**
+     * Set by the Language screen just before it applies the chosen locale, which recreates it.
+     * The recreated screen reads it, clears it and moves on once.
+     */
+    var isLocaleChangePending: Boolean
+        get() = sharedPref.getBoolean("isLocaleChangePending", false)
+        set(value) = prefEdit.putBoolean("isLocaleChangePending", value).apply()
 }

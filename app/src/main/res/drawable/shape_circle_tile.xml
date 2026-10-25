@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4243 "Background+Border": the 40 px round tile behind a Settings icon, and behind a
+     flag on the Language rows (1:4309). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/circle_tile_fill" />
+    <stroke
+        android:width="@dimen/_1sdp"
+        android:color="@color/circle_tile_stroke" />
+</shape>
