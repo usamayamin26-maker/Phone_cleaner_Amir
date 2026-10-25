@@ -5,6 +5,8 @@
     <string name="cd_back">Back</string>
     <!-- A value the device does not report. -->
     <string name="value_not_available">-</string>
+    <string name="state_on">On</string>
+    <string name="state_off">Off</string>
     <string name="error_generic">Something went wrong. Please try again.</string>
 
     <!-- Home -->
@@ -26,4 +28,24 @@
 
     <!-- Battery Info -->
     <string name="battery_info_title">Battery Info</string>
+    <string name="battery_power_saving">Power Saving Mode</string>
+    <string name="battery_health">Battery Health</string>
+    <string name="health_good">Good</string>
+    <string name="health_overheat">Overheat</string>
+    <string name="health_dead">Dead</string>
+    <string name="health_over_voltage">Over Voltage</string>
+    <string name="health_cold">Cold</string>
+    <string name="health_failure">Failure</string>
+    <string name="health_unknown">Unknown</string>
+    <string name="battery_temperature">Temperature</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">Last Fully Charged</string>
+    <string name="battery_charging">Charging</string>
+    <string name="battery_capacity">Capacity</string>
+    <!-- When the device has no design capacity and the app estimates it from the charge counter. -->
+    <string name="battery_capacity_approx">Capacity (approx.)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">Battery Saver settings are not available on this phone.</string>
 </resources>

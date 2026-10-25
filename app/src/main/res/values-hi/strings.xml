@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">वापस</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">चालू</string>
+    <string name="state_off">बंद</string>
     <string name="error_generic">कुछ गलत हो गया। कृपया फिर से कोशिश करें।</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">सेटिंग</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WA क्लीनर</string>
     <string name="device_info_title">डिवाइस जानकारी</string>
     <string name="battery_info_title">बैटरी जानकारी</string>
+    <string name="battery_power_saving">पावर सेविंग मोड</string>
+    <string name="battery_health">बैटरी की सेहत</string>
+    <string name="health_good">अच्छी</string>
+    <string name="health_overheat">ज़्यादा गर्म</string>
+    <string name="health_dead">खराब</string>
+    <string name="health_over_voltage">अधिक वोल्टेज</string>
+    <string name="health_cold">ठंडी</string>
+    <string name="health_failure">विफल</string>
+    <string name="health_unknown">अज्ञात</string>
+    <string name="battery_temperature">तापमान</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">पिछली बार पूरी चार्ज</string>
+    <string name="battery_charging">चार्ज हो रही है</string>
+    <string name="battery_capacity">क्षमता</string>
+    <string name="battery_capacity_approx">क्षमता (अनुमानित)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">इस फ़ोन पर बैटरी सेवर सेटिंग उपलब्ध नहीं है।</string>
 </resources>

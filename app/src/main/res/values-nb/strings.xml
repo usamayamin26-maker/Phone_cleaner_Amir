@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Tilbake</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">På</string>
+    <string name="state_off">Av</string>
     <string name="error_generic">Noe gikk galt. Prøv igjen.</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Innstillinger</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WA-renser</string>
     <string name="device_info_title">Enhetsinfo</string>
     <string name="battery_info_title">Batteriinfo</string>
+    <string name="battery_power_saving">Strømsparingsmodus</string>
+    <string name="battery_health">Batterihelse</string>
+    <string name="health_good">God</string>
+    <string name="health_overheat">Overopphetet</string>
+    <string name="health_dead">Defekt</string>
+    <string name="health_over_voltage">Overspenning</string>
+    <string name="health_cold">Kald</string>
+    <string name="health_failure">Feil</string>
+    <string name="health_unknown">Ukjent</string>
+    <string name="battery_temperature">Temperatur</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">Sist fulladet</string>
+    <string name="battery_charging">Lader</string>
+    <string name="battery_capacity">Kapasitet</string>
+    <string name="battery_capacity_approx">Kapasitet (ca.)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">Innstillingene for batterisparing er ikke tilgjengelige på denne telefonen.</string>
 </resources>

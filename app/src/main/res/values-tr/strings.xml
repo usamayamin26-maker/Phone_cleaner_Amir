@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Geri</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">Açık</string>
+    <string name="state_off">Kapalı</string>
     <string name="error_generic">Bir sorun oluştu. Lütfen tekrar deneyin.</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Ayarlar</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WA Temizleyici</string>
     <string name="device_info_title">Cihaz Bilgisi</string>
     <string name="battery_info_title">Pil Bilgisi</string>
+    <string name="battery_power_saving">Güç Tasarrufu Modu</string>
+    <string name="battery_health">Pil Sağlığı</string>
+    <string name="health_good">İyi</string>
+    <string name="health_overheat">Aşırı Isınma</string>
+    <string name="health_dead">Ölü</string>
+    <string name="health_over_voltage">Aşırı Gerilim</string>
+    <string name="health_cold">Soğuk</string>
+    <string name="health_failure">Arıza</string>
+    <string name="health_unknown">Bilinmiyor</string>
+    <string name="battery_temperature">Sıcaklık</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">Son Tam Şarj</string>
+    <string name="battery_charging">Şarj oluyor</string>
+    <string name="battery_capacity">Kapasite</string>
+    <string name="battery_capacity_approx">Kapasite (yaklaşık)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">Pil Tasarrufu ayarları bu telefonda kullanılamıyor.</string>
 </resources>

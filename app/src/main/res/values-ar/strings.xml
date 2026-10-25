@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">رجوع</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">تشغيل</string>
+    <string name="state_off">إيقاف</string>
     <string name="error_generic">حدث خطأ ما. يُرجى المحاولة مرة أخرى.</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">الإعدادات</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">منظف واتساب</string>
     <string name="device_info_title">معلومات الجهاز</string>
     <string name="battery_info_title">معلومات البطارية</string>
+    <string name="battery_power_saving">وضع توفير الطاقة</string>
+    <string name="battery_health">صحة البطارية</string>
+    <string name="health_good">جيدة</string>
+    <string name="health_overheat">ساخنة جدًا</string>
+    <string name="health_dead">تالفة</string>
+    <string name="health_over_voltage">جهد زائد</string>
+    <string name="health_cold">باردة</string>
+    <string name="health_failure">عطل</string>
+    <string name="health_unknown">غير معروفة</string>
+    <string name="battery_temperature">درجة الحرارة</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">آخر شحن كامل</string>
+    <string name="battery_charging">جارٍ الشحن</string>
+    <string name="battery_capacity">السعة</string>
+    <string name="battery_capacity_approx">السعة (تقريبية)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">إعدادات توفير شحن البطارية غير متاحة على هذا الهاتف.</string>
 </resources>

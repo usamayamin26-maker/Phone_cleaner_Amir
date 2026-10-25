@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Terug</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">Aan</string>
+    <string name="state_off">Uit</string>
     <string name="error_generic">Er is iets misgegaan. Probeer het opnieuw.</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Instellingen</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WA-opruimer</string>
     <string name="device_info_title">Apparaatinfo</string>
     <string name="battery_info_title">Batterij-info</string>
+    <string name="battery_power_saving">Energiebesparingsmodus</string>
+    <string name="battery_health">Batterijconditie</string>
+    <string name="health_good">Goed</string>
+    <string name="health_overheat">Oververhit</string>
+    <string name="health_dead">Defect</string>
+    <string name="health_over_voltage">Overspanning</string>
+    <string name="health_cold">Koud</string>
+    <string name="health_failure">Storing</string>
+    <string name="health_unknown">Onbekend</string>
+    <string name="battery_temperature">Temperatuur</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">Laatst volledig opgeladen</string>
+    <string name="battery_charging">Wordt opgeladen</string>
+    <string name="battery_capacity">Capaciteit</string>
+    <string name="battery_capacity_approx">Capaciteit (ca.)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">De instellingen voor Batterijbesparing zijn niet beschikbaar op deze telefoon.</string>
 </resources>

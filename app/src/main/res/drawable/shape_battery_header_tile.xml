@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:2049: the Battery Info header tile fill, a 140 degree cyan-to-violet gradient (top
+     left to bottom right). Drawn inside a MaterialCardView, which clips it and adds the border. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="315"
+        android:endColor="@color/battery_header_end"
+        android:startColor="@color/battery_header_start"
+        android:type="linear" />
+</shape>

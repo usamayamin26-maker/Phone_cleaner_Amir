@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation
 
+import android.content.Intent
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
@@ -15,6 +16,7 @@ import com.phone.cleaner.databinding.ItemUsagePillBinding
 import com.phone.cleaner.domain.view_models.HomeUiState
 import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.presentation.base.BaseActivity
+import com.phone.cleaner.presentation.battery.BatteryInfoActivity
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
@@ -60,6 +62,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         actionBatteryInfo.bind(R.drawable.img_action_battery_info, R.string.battery_info_title)
 
         stackQuickActionsIfWordsDoNotFit()
+
+        actionBatteryInfo.root.onClick {
+            startActivity(Intent(this@MainActivity, BatteryInfoActivity::class.java))
+        }
     }
 
     override fun observeState() {

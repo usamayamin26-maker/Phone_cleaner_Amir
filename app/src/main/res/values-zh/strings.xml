@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">返回</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">开启</string>
+    <string name="state_off">关闭</string>
     <string name="error_generic">出了点问题，请重试。</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">设置</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WA 清理</string>
     <string name="device_info_title">设备信息</string>
     <string name="battery_info_title">电池信息</string>
+    <string name="battery_power_saving">省电模式</string>
+    <string name="battery_health">电池健康</string>
+    <string name="health_good">良好</string>
+    <string name="health_overheat">过热</string>
+    <string name="health_dead">已损坏</string>
+    <string name="health_over_voltage">过压</string>
+    <string name="health_cold">过冷</string>
+    <string name="health_failure">故障</string>
+    <string name="health_unknown">未知</string>
+    <string name="battery_temperature">温度</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">上次充满</string>
+    <string name="battery_charging">正在充电</string>
+    <string name="battery_capacity">容量</string>
+    <string name="battery_capacity_approx">容量（估算）</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">此手机不提供省电模式设置。</string>
 </resources>

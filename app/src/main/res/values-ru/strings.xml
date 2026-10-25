@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Назад</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">Вкл.</string>
+    <string name="state_off">Выкл.</string>
     <string name="error_generic">Что-то пошло не так. Повторите попытку.</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Настройки</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">Очистка WA</string>
     <string name="device_info_title">Об устройстве</string>
     <string name="battery_info_title">О батарее</string>
+    <string name="battery_power_saving">Режим энергосбережения</string>
+    <string name="battery_health">Состояние батареи</string>
+    <string name="health_good">Хорошее</string>
+    <string name="health_overheat">Перегрев</string>
+    <string name="health_dead">Неисправна</string>
+    <string name="health_over_voltage">Перенапряжение</string>
+    <string name="health_cold">Переохлаждение</string>
+    <string name="health_failure">Сбой</string>
+    <string name="health_unknown">Неизвестно</string>
+    <string name="battery_temperature">Температура</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s В</string>
+    <string name="format_millivolts">%1$s мВ</string>
+    <string name="battery_last_full_charge">Последняя полная зарядка</string>
+    <string name="battery_charging">Заряжается</string>
+    <string name="battery_capacity">Ёмкость</string>
+    <string name="battery_capacity_approx">Ёмкость (прибл.)</string>
+    <string name="format_mah">%1$s мА·ч</string>
+    <string name="battery_saver_unavailable">Настройки энергосбережения недоступны на этом телефоне.</string>
 </resources>

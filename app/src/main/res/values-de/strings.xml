@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Zurück</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">An</string>
+    <string name="state_off">Aus</string>
     <string name="error_generic">Etwas ist schiefgelaufen. Bitte versuche es erneut.</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Einstellungen</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WA-Reiniger</string>
     <string name="device_info_title">Geräteinfo</string>
     <string name="battery_info_title">Akkuinfo</string>
+    <string name="battery_power_saving">Energiesparmodus</string>
+    <string name="battery_health">Akkuzustand</string>
+    <string name="health_good">Gut</string>
+    <string name="health_overheat">Überhitzt</string>
+    <string name="health_dead">Defekt</string>
+    <string name="health_over_voltage">Überspannung</string>
+    <string name="health_cold">Kalt</string>
+    <string name="health_failure">Fehler</string>
+    <string name="health_unknown">Unbekannt</string>
+    <string name="battery_temperature">Temperatur</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">Zuletzt voll geladen</string>
+    <string name="battery_charging">Wird geladen</string>
+    <string name="battery_capacity">Kapazität</string>
+    <string name="battery_capacity_approx">Kapazität (ca.)</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">Die Energiespar-Einstellungen sind auf diesem Telefon nicht verfügbar.</string>
 </resources>

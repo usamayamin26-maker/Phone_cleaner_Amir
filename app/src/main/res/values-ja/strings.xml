@@ -3,6 +3,8 @@
     <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">戻る</string>
     <string name="value_not_available">-</string>
+    <string name="state_on">オン</string>
+    <string name="state_off">オフ</string>
     <string name="error_generic">問題が発生しました。もう一度お試しください。</string>
     <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">設定</string>
@@ -17,4 +19,23 @@
     <string name="action_wa_cleaner">WAクリーナー</string>
     <string name="device_info_title">デバイス情報</string>
     <string name="battery_info_title">バッテリー情報</string>
+    <string name="battery_power_saving">省電力モード</string>
+    <string name="battery_health">バッテリーの状態</string>
+    <string name="health_good">良好</string>
+    <string name="health_overheat">過熱</string>
+    <string name="health_dead">劣化</string>
+    <string name="health_over_voltage">過電圧</string>
+    <string name="health_cold">低温</string>
+    <string name="health_failure">故障</string>
+    <string name="health_unknown">不明</string>
+    <string name="battery_temperature">温度</string>
+    <string name="format_celsius">%1$s°C</string>
+    <string name="format_volts">%1$s V</string>
+    <string name="format_millivolts">%1$s mV</string>
+    <string name="battery_last_full_charge">最後の満充電</string>
+    <string name="battery_charging">充電中</string>
+    <string name="battery_capacity">容量</string>
+    <string name="battery_capacity_approx">容量（推定）</string>
+    <string name="format_mah">%1$s mAh</string>
+    <string name="battery_saver_unavailable">このスマートフォンではバッテリーセーバーの設定を利用できません。</string>
 </resources>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Battery Info (Figma 1:2023 off, batter_info_2.png on). Header 12 px under the status bar, then
+     the battery tile, the Power Saving Mode card and the tile grid, 12 px apart. The grid has a
+     162 px column of two 190 px tiles and a 176 px column of three 126 px tiles, 10 px apart, with
+     a 13.5 px gutter. Figma places the top right tile 3 px to the left of the two under it; the
+     columns here are straight. The left tiles' titles wrap at 105 px in Figma ("Battery /
+     Health"); a 78ssp cap gives the same break with the Android Roboto metrics and grows with the
+     font size, so a larger font breaks between words. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.battery.BatteryInfoActivity">
+
+    <com.phone.cleaner.presentation.components.ScreenBackgroundView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_inner_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:id="@+id/content_column"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_16sdp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="@dimen/_102sdp"
+                android:layout_height="@dimen/_102sdp"
+                app:cardCornerRadius="@dimen/_23sdp"
+                app:cardElevation="@dimen/_4sdp"
+                app:strokeColor="@color/header_tile_stroke"
+                app:strokeWidth="@dimen/_2sdp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_battery_header_tile">
+
+                    <ImageView
+                        android:layout_width="@dimen/_58sdp"
+                        android:layout_height="@dimen/_58sdp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/img_info_battery" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/power_saving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@color/card_glass"
+                app:cardCornerRadius="@dimen/_22sdp"
+                app:cardElevation="@dimen/_2sdp"
+                app:rippleColor="@color/ripple_on_light"
+                app:strokeColor="@color/card_power_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_45sdp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_14sdp"
+                    android:paddingVertical="@dimen/_13sdp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_semi_bold"
+                        android:importantForAccessibility="no"
+                        android:text="@string/battery_power_saving"
+                        android:textColor="@color/text_label_strong"
+                        android:textSize="@dimen/_12ssp"
+                        app:lineHeight="@dimen/_17ssp" />
+
+                    <!-- The switch is drawn, not a SwitchCompat: its thumb is larger than its
+                         track, which SwitchCompat cannot draw. The thumb moves between start and
+                         end, so it follows right to left like a platform switch. -->
+                    <FrameLayout
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:importantForAccessibility="no">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/shape_switch_track" />
+
+                        <View
+                            android:id="@+id/power_saving_thumb"
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_gravity="start|center_vertical"
+                            android:background="@drawable/shape_switch_thumb" />
+                    </FrameLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_11sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:baselineAligned="false"
+                android:clipChildren="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="162"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/health_tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_14sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/_152sdp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:importantForAccessibility="no"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_battery_tile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="@dimen/_39sdp"
+                                android:layout_height="@dimen/_27sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/img_info_battery_health" />
+                            <TextView
+                                android:id="@+id/health_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxWidth="@dimen/_78ssp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/battery_health"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_13ssp"
+                                app:lineHeight="@dimen/_14ssp" />
+                            <TextView
+                                android:id="@+id/health_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_11sdp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/charged_tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_14sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/_152sdp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:importantForAccessibility="no"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_battery_tile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="@dimen/_45sdp"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/img_info_battery_charged" />
+                            <TextView
+                                android:id="@+id/charged_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxWidth="@dimen/_78ssp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/battery_last_full_charge"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_13ssp"
+                                app:lineHeight="@dimen/_14ssp" />
+                            <TextView
+                                android:id="@+id/charged_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="176"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/temperature_tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_14sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/_101sdp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:importantForAccessibility="no"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_battery_tile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/img_info_battery_temperature" />
+                            <TextView
+                                android:id="@+id/temperature_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textAlignment="center"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_13ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                            <TextView
+                                android:id="@+id/temperature_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/battery_temperature"
+                                android:textAlignment="center"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_6sdp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/voltage_tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_14sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/_101sdp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:importantForAccessibility="no"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_battery_tile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/img_info_battery_volt" />
+                            <TextView
+                                android:id="@+id/voltage_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textAlignment="center"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_13ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                            <TextView
+                                android:id="@+id/voltage_millivolts"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textAlignment="center"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_6sdp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/capacity_tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_14sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/_101sdp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:importantForAccessibility="no"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_battery_tile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_29sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/img_info_battery_ampere" />
+                            <TextView
+                                android:id="@+id/capacity_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textAlignment="center"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_13ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                            <TextView
+                                android:id="@+id/capacity_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textAlignment="center"
+                                android:textColor="@color/text_on_tile"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_18ssp" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
