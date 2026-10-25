@@ -5,6 +5,10 @@
     <string name="cd_back">Back</string>
     <!-- A value the device does not report. -->
     <string name="value_not_available">-</string>
+    <string name="value_yes">Yes</string>
+    <string name="value_no">No</string>
+    <string name="value_supported">Supported</string>
+    <string name="value_not_supported">Not supported</string>
     <string name="state_on">On</string>
     <string name="state_off">Off</string>
     <string name="error_generic">Something went wrong. Please try again.</string>
@@ -25,6 +29,92 @@
 
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>
+    <string name="info_device">Device Information</string>
+    <string name="info_processor">Processor Information</string>
+    <string name="info_battery">Battery Information</string>
+    <string name="info_wifi">WiFi Information</string>
+    <string name="info_display">Display Information</string>
+    <string name="info_ram">RAM Information</string>
+    <string name="info_rom">ROM Information</string>
+    <string name="info_camera">Camera Information</string>
+
+    <string name="label_screen_resolution">Screen Resolution</string>
+    <string name="label_screen_size">Screen Size</string>
+    <string name="label_android_id">Android ID</string>
+    <!-- Width x height in pixels: "1080 × 2210" -->
+    <string name="format_resolution">%1$s × %2$s</string>
+    <!-- A diagonal in inches: 6.71" -->
+    <string name="format_inches">%1$s\"</string>
+
+    <string name="label_processor">Processor</string>
+    <string name="label_manufacturer">Manufacturer</string>
+    <string name="label_hardware">Hardware</string>
+    <string name="label_cores">Cores</string>
+    <string name="label_architecture">Architecture</string>
+    <string name="label_max_frequency">Max Frequency</string>
+    <string name="label_governor">CPU Governor</string>
+    <string name="format_ghz">%1$s GHz</string>
+    <string name="format_mhz">%1$s MHz</string>
+
+    <string name="label_status">Status</string>
+    <string name="wifi_connected">Connected</string>
+    <string name="wifi_not_connected">Not connected</string>
+    <string name="label_network_name">Network Name</string>
+    <string name="label_signal_strength">Signal Strength</string>
+    <string name="format_dbm">%1$s dBm</string>
+    <string name="label_link_speed">Link Speed</string>
+    <string name="format_mbps">%1$s Mbps</string>
+    <string name="label_frequency">Frequency</string>
+    <string name="label_wifi_standard">WiFi Standard</string>
+    <!-- "WiFi 6" -->
+    <string name="format_wifi_generation">WiFi %1$s</string>
+    <string name="wifi_standard_legacy">Legacy</string>
+    <string name="label_ip_address">IP Address</string>
+    <string name="label_ipv6_address">IPv6 Address</string>
+    <string name="label_gateway">Gateway</string>
+    <string name="label_dns">DNS Servers</string>
+
+    <string name="label_density">Density</string>
+    <!-- "420 dpi (xxhdpi)" -->
+    <string name="format_dpi">%1$s dpi (%2$s)</string>
+    <string name="label_refresh_rate">Refresh Rate</string>
+    <string name="label_supported_refresh_rates">Supported Refresh Rates</string>
+    <string name="format_hz">%1$s Hz</string>
+    <string name="label_hdr">HDR</string>
+    <string name="label_brightness">Brightness</string>
+    <string name="value_brightness_auto">Automatic</string>
+    <string name="label_screen_timeout">Screen Timeout</string>
+    <string name="format_seconds">%1$s s</string>
+    <string name="format_minutes">%1$s min</string>
+    <string name="value_never">Never</string>
+
+    <string name="label_total">Total</string>
+    <string name="label_used">Used</string>
+    <string name="label_available">Available</string>
+    <string name="label_usage">Usage</string>
+    <string name="label_system">System</string>
+    <string name="label_removable_storage">Removable Storage</string>
+
+    <string name="camera_back">Rear Camera</string>
+    <string name="camera_front">Front Camera</string>
+    <string name="camera_external">External Camera</string>
+    <string name="camera_other">Camera</string>
+    <!-- A camera when there is more than one of its kind: "Rear Camera 2" -->
+    <string name="format_camera_numbered">%1$s %2$s</string>
+    <string name="label_megapixels">Megapixels</string>
+    <string name="format_megapixels">%1$s MP</string>
+    <string name="label_max_resolution">Max Resolution</string>
+    <string name="label_aperture">Aperture</string>
+    <string name="format_aperture">f/%1$s</string>
+    <string name="label_focal_length">Focal Length</string>
+    <string name="format_mm">%1$s mm</string>
+    <string name="label_sensor_size">Sensor Size</string>
+    <string name="format_sensor_size">%1$s × %2$s mm</string>
+    <string name="label_flash">Flash</string>
+    <string name="label_optical_stabilization">Optical Stabilization</string>
+    <string name="label_autofocus">Autofocus</string>
+    <string name="label_digital_zoom">Max Digital Zoom</string>
+    <string name="format_zoom">%1$s×</string>
 
     <!-- Battery Info -->
     <string name="battery_info_title">Battery Info</string>

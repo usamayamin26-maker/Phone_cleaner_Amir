@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma "famicons:chevron-back-outline" as the design draws it in the Device Info rows:
+     mirrored to point forward. 16 x 16. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:autoMirrored="true"
+    android:viewportWidth="16"
+    android:viewportHeight="16">
+    <path
+        android:pathData="M5.75,3.5L10.25,8L5.75,12.5"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/icon_chevron"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

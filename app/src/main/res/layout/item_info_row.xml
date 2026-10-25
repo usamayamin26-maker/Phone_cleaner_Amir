@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A label/value card (Figma 1:2007): white, radius 22, 16 px padding, label at the start and the
+     value at the end. Values are device data, shown in the user's language direction. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    app:cardBackgroundColor="@color/card_surface"
+    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardElevation="@dimen/_3sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:strokeWidth="0dp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_13sdp">
+
+        <TextView
+            android:id="@+id/row_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/_12ssp"
+            app:lineHeight="@dimen/_15ssp" />
+
+        <TextView
+            android:id="@+id/row_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="2"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/text_value"
+            android:textDirection="locale"
+            android:textSize="@dimen/_9ssp"
+            app:lineHeight="@dimen/_15ssp" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

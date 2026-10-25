@@ -17,6 +17,7 @@ import com.phone.cleaner.domain.view_models.HomeUiState
 import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
+import com.phone.cleaner.presentation.deviceinfo.DeviceInfoActivity
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
@@ -63,6 +64,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         stackQuickActionsIfWordsDoNotFit()
 
+        actionDeviceInfo.root.onClick {
+            startActivity(Intent(this@MainActivity, DeviceInfoActivity::class.java))
+        }
         actionBatteryInfo.root.onClick {
             startActivity(Intent(this@MainActivity, BatteryInfoActivity::class.java))
         }

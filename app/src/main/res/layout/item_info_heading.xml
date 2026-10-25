@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The heading over one camera's block on Camera Information. No frame in the design: it uses the
+     card label's font and colour one step larger. -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/heading_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_6sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:fontFamily="@font/roboto_semi_bold"
+    android:paddingHorizontal="@dimen/_3sdp"
+    android:textColor="@color/text_title"
+    android:textSize="@dimen/_13ssp"
+    app:lineHeight="@dimen/_17ssp" />

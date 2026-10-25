@@ -33,10 +33,10 @@ internal object WifiReader {
         val wifiInfo: WifiInfo? = when {
             !isConnected -> null
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q ->
-                capabilities?.transportInfo as? WifiInfo ?: legacyInfo(wifiManager)
+                capabilities.transportInfo as? WifiInfo ?: legacyInfo(wifiManager)
             else -> legacyInfo(wifiManager)
         }
-        val links = if (isConnected) network?.let { connectivity.getLinkProperties(it) } else null
+        val links = if (isConnected) connectivity.getLinkProperties(network) else null
 
         val rssi = wifiInfo?.rssi?.takeIf { it in -127..0 }
         return WifiDetails(
