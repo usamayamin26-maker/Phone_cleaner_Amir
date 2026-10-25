@@ -10,11 +10,12 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.FragmentDuplicatesDetailBinding
 import com.phone.cleaner.databinding.ViewSelectAllBinding
-import com.phone.cleaner.domain.entities.DuplicatesSection
-import com.phone.cleaner.domain.view_models.DuplicatesUiState
+import com.phone.cleaner.domain.entities.CleanerSectionType
+import com.phone.cleaner.domain.view_models.CleanerUiState
 import com.phone.cleaner.domain.view_models.DuplicatesViewModel
 import com.phone.cleaner.presentation.adapters.DuplicateGroupAdapter
 import com.phone.cleaner.presentation.base.BaseFragment
+import com.phone.cleaner.presentation.components.pageTitle
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
@@ -27,8 +28,9 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
- * One section's page (Figma 1:661, 1:827, 1:738): its groups with a check on every copy,
- * "Select All", "Keep best one" for photos and videos, and "Delete" for this section's selection.
+ * A section of duplicate groups (Figma 1:661, 1:827, 1:738): its groups with a check on every copy,
+ * "Select All", "Keep best one", and "Delete" for this section's selection. Large Files opens the
+ * shared file list instead.
  */
 class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>() {
 
@@ -38,8 +40,10 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
     private val viewModel: DuplicatesViewModel by activityViewModel()
     private val groupAdapter: DuplicateGroupAdapter by inject()
 
-    private val section: DuplicatesSection
-        get() = DuplicatesSection.valueOf(requireArguments().getString(ARG_SECTION) ?: DuplicatesSection.IMAGES.name)
+    private val section: CleanerSectionType
+        get() = CleanerSectionType.valueOf(requireArguments().getString(ARG_SECTION) ?: CleanerSectionType.IMAGES.name)
+
+    private var isLeaving = false
 
     private var selectAll: ViewSelectAllBinding? = null
 
@@ -49,15 +53,14 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
         deleteContainer.applyNavigationBarBottomMargin()
-        header.headerTitle.setText(title(section))
+        header.headerTitle.setText(section.pageTitle)
         header.backButton.root.onClick { parentFragmentManager.popBackStack() }
         header.backButton.root.expandTouchTarget()
 
         selectAll = ViewSelectAllBinding.inflate(layoutInflater, header.headerTrailing, true).also {
-            it.root.onClick(intervalMs = 0) { viewModel.onSelectAllClicked(section) }
+            it.root.onClick(intervalMs = 0) { viewModel.onSelectAllClicked(section.name) }
         }
 
-        keepBest.visibleIf(section.hasGroups)
         keepBest.contentDescription = getString(R.string.duplicates_keep_best)
         keepBest.onClick(intervalMs = 0) { viewModel.onKeepBestChanged(section, !isKeepBestOn) }
         ViewCompat.setAccessibilityDelegate(keepBest, object : AccessibilityDelegateCompat() {
@@ -72,8 +75,8 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
         })
 
         groups.adapter = groupAdapter
-        groupAdapter.onFileClick = { viewModel.onFileClicked(section, it) }
-        deleteButton.onClick { viewModel.onDeleteClicked(section) }
+        groupAdapter.onFileClick = { viewModel.onFileClicked(section.name, it) }
+        deleteButton.onClick { viewModel.onDeleteClicked(section.name) }
     }
 
     override fun observeState() {
@@ -85,11 +88,18 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
         super.onDestroyView()
     }
 
-    private fun render(state: DuplicatesUiState) = with(binding) {
+    private fun render(state: CleanerUiState) = with(binding) {
         val context = requireContext()
         val section = section
+        val groups = state.duplicateGroups[section].orEmpty()
+        if (groups.isEmpty()) {
+            // Every duplicate in it was deleted: back to the results, once.
+            if (!isLeaving) parentFragmentManager.popBackStack()
+            isLeaving = true
+            return@with
+        }
 
-        val allSelected = state.isAllSelected(section)
+        val allSelected = state.isAllSelected(section.name)
         selectAll?.apply {
             selectAllCircle.setBackgroundResource(
                 if (allSelected) R.drawable.shape_check_on else R.drawable.shape_select_all_off,
@@ -105,11 +115,20 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
         keepBestSwitch.setOn(isKeepBestOn)
         ViewCompat.setStateDescription(keepBest, getString(if (isKeepBestOn) R.string.state_on else R.string.state_off))
 
-        groupAdapter.submitList(items(state, section))
+        groupAdapter.submitList(
+            groups.map { group ->
+                DuplicateGroupAdapter.Item(
+                    key = group.hash,
+                    title = group.best.name,
+                    files = group.files,
+                    selected = group.files.map { it.path }.filter { it in state.selectedPaths }.toSet(),
+                )
+            },
+        )
 
-        val selected = state.selected(section)
+        val selected = state.selected(section.name)
         deleteButton.text = getString(
-            R.string.duplicates_delete_button,
+            R.string.cleaner_delete_button,
             context.formatNumber(selected.size),
             selected.sumOf { it.sizeBytes }.toReadableSize(context),
         )
@@ -117,39 +136,11 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
         deleteButton.alpha = if (deleteButton.isEnabled) 1f else DISABLED_ALPHA
     }
 
-    /** Photos and videos as their groups, named after the best copy; a large file is a card alone. */
-    private fun items(state: DuplicatesUiState, section: DuplicatesSection): List<DuplicateGroupAdapter.Item> =
-        if (section.hasGroups) {
-            state.groups(section).map { group ->
-                DuplicateGroupAdapter.Item(
-                    key = group.hash,
-                    title = group.best.name,
-                    files = group.files,
-                    selected = group.files.map { it.path }.filter { it in state.selectedPaths }.toSet(),
-                )
-            }
-        } else {
-            state.largeFiles.map { file ->
-                DuplicateGroupAdapter.Item(
-                    key = file.path,
-                    title = file.name,
-                    files = listOf(file),
-                    selected = if (file.path in state.selectedPaths) setOf(file.path) else emptySet(),
-                )
-            }
-        }
-
-    private fun title(section: DuplicatesSection): Int = when (section) {
-        DuplicatesSection.IMAGES -> R.string.duplicates_title_images
-        DuplicatesSection.VIDEOS -> R.string.duplicates_title_videos
-        DuplicatesSection.LARGE_FILES -> R.string.duplicates_title_large_files
-    }
-
     companion object {
         private const val ARG_SECTION = "section"
         private const val DISABLED_ALPHA = 0.5f
 
-        fun newInstance(section: DuplicatesSection) = DuplicatesDetailFragment().apply {
+        fun newInstance(section: CleanerSectionType) = DuplicatesDetailFragment().apply {
             arguments = Bundle().apply { putString(ARG_SECTION, section.name) }
         }
     }

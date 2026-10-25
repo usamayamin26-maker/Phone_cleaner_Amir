@@ -15,8 +15,9 @@ import com.phone.cleaner.databinding.ItemQuickActionBinding
 import com.phone.cleaner.databinding.ItemUsagePillBinding
 import com.phone.cleaner.domain.view_models.HomeUiState
 import com.phone.cleaner.domain.view_models.HomeViewModel
-import com.phone.cleaner.presentation.base.BaseActivity
+import com.phone.cleaner.presentation.aicleaner.AiCleanerActivity
 import com.phone.cleaner.presentation.appmanager.AppCleanerActivity
+import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
 import com.phone.cleaner.presentation.deviceinfo.DeviceInfoActivity
 import com.phone.cleaner.presentation.duplicates.DuplicatesActivity
@@ -34,10 +35,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * The app's main screen: Home from the design. Every feature (Device Info, Battery Info, WA Cleaner,
- * ...) opens on top of it as its own activity.
- *
- * Scan Now and the Ai Junk Cleaner and WA Cleaner quick actions are shown but not wired yet; their
- * screens come later.
+ * ...) opens on top of it as its own activity. Scan Now opens the AI Junk Cleaner, like its quick
+ * action. The WA Cleaner quick action is not wired yet.
  */
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -75,6 +74,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         settingsButton.onClick {
             startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+        }
+        scanNow.onClick {
+            startActivity(Intent(this@MainActivity, AiCleanerActivity::class.java))
+        }
+        actionJunk.root.onClick {
+            startActivity(Intent(this@MainActivity, AiCleanerActivity::class.java))
         }
         actionDuplicates.root.onClick {
             startActivity(Intent(this@MainActivity, DuplicatesActivity::class.java))

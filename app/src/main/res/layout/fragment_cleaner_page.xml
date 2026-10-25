@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A section's own page: the photos grid (Figma 1:142 / 1:208 / 1:1526) or the file list (1:1160 /
+     1:1250). The shared header with "Select All", the items with a 20 px gutter 6 px under it, and
+     "Delete" (211 x 50) for this section's selection at the bottom. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_inner_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Padding and spacing are set by the fragment: the grid's (23 px, 4 px apart) or the list's. -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/items"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        app:layout_constraintBottom_toTopOf="@id/delete_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        tools:listitem="@layout/item_cleaner_file_row" />
+
+    <!-- Unclipped, so the button's violet shadow shows; its padding is the room it falls into. -->
+    <FrameLayout
+        android:id="@+id/delete_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include
+            android:id="@+id/delete_button"
+            layout="@layout/view_delete_button" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

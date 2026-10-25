@@ -57,6 +57,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".presentation.aicleaner.AiCleanerActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".presentation.deviceinfo.DeviceInfoActivity"
             android:exported="false" />
 

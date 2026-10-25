@@ -1,0 +1,152 @@
+package com.phone.cleaner.presentation.components
+
+import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.phone.cleaner.R
+import com.phone.cleaner.databinding.FragmentCleanerPageBinding
+import com.phone.cleaner.databinding.ViewSelectAllBinding
+import com.phone.cleaner.domain.entities.CleanerSection
+import com.phone.cleaner.domain.view_models.CleanerUiState
+import com.phone.cleaner.presentation.adapters.CleanerFileAdapter
+import com.phone.cleaner.presentation.adapters.CleanerGridAdapter
+import com.phone.cleaner.presentation.base.BaseFragment
+import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyStatusBarTopMargin
+import com.phone.cleaner.utils.expandTouchTarget
+import com.phone.cleaner.utils.formatNumber
+import com.phone.cleaner.utils.onClick
+import com.phone.cleaner.utils.toReadableSize
+import com.phone.cleaner.utils.visibleIf
+import org.koin.android.ext.android.inject
+
+/**
+ * A section's own page with "Select All" and "Delete": photos and videos as the design's grid
+ * (Figma 1:142 / 1:208 / 1:1526), every other kind of file as its list (1:1160 / 1:1250).
+ */
+class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
+
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCleanerPageBinding =
+        FragmentCleanerPageBinding::inflate
+
+    private val host: CleanerHost get() = requireActivity() as CleanerHost
+    private val gridAdapter: CleanerGridAdapter by inject()
+    private val fileAdapter: CleanerFileAdapter by inject()
+
+    private val key: String get() = requireArguments().getString(ARG_KEY).orEmpty()
+    private val isGrid: Boolean get() = requireArguments().getBoolean(ARG_GRID)
+
+    private var selectAll: ViewSelectAllBinding? = null
+    private var isLeaving = false
+
+    override fun setupViews() = with(binding) {
+        header.root.applyStatusBarTopMargin()
+        deleteContainer.applyNavigationBarBottomMargin()
+        header.backButton.root.onClick { parentFragmentManager.popBackStack() }
+        header.backButton.root.expandTouchTarget()
+
+        selectAll = ViewSelectAllBinding.inflate(layoutInflater, header.headerTrailing, true).also {
+            it.root.onClick(intervalMs = 0) { host.cleaner.onSelectAllClicked(key) }
+        }
+
+        if (isGrid) {
+            // Figma 1:240: four to a row, 4 px apart, 12 px between rows, 23 px from the edges.
+            val side = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._18sdp)
+            items.setPaddingRelative(side, items.paddingTop, side, items.paddingBottom)
+            items.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
+            items.addItemDecoration(
+                GridSpacingDecoration(
+                    spanCount = SPAN_COUNT,
+                    spacingPx = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._3sdp),
+                    rowSpacingPx = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp),
+                ),
+            )
+            items.adapter = gridAdapter
+            gridAdapter.onFileClick = { host.cleaner.onFileClicked(key, it) }
+        } else {
+            // Figma 1:1189: a 20 px gutter, rows 12 px apart.
+            val side = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._16sdp)
+            items.setPaddingRelative(side, items.paddingTop, side, items.paddingBottom)
+            items.layoutManager = LinearLayoutManager(requireContext())
+            items.adapter = fileAdapter
+            fileAdapter.onFileClick = { host.cleaner.onFileClicked(key, it) }
+        }
+        deleteButton.root.onClick { host.cleaner.onDeleteClicked(key) }
+    }
+
+    override fun observeState() {
+        host.cleaner.state.collectState(::render)
+    }
+
+    override fun onDestroyView() {
+        selectAll = null
+        super.onDestroyView()
+    }
+
+    private fun render(state: CleanerUiState) = with(binding) {
+        val section = state.section(key)
+        if (section == null || section.files.isEmpty()) {
+            // Everything in it was deleted: back to where it was opened from, once.
+            if (!isLeaving) parentFragmentManager.popBackStack()
+            isLeaving = true
+            return
+        }
+        val context = requireContext()
+        header.headerTitle.setText(section.type.pageTitle)
+
+        val allSelected = state.isAllSelected(key)
+        selectAll?.apply {
+            selectAllCircle.setBackgroundResource(
+                if (allSelected) R.drawable.shape_check_on else R.drawable.shape_select_all_off,
+            )
+            selectAllTick.visibleIf(allSelected)
+            ViewCompat.setStateDescription(
+                root,
+                getString(if (allSelected) R.string.state_selected else R.string.state_not_selected),
+            )
+        }
+
+        if (isGrid) {
+            gridAdapter.submitList(section.files.map { CleanerGridAdapter.Item(it, it.path in state.selectedPaths) })
+        } else {
+            fileAdapter.submitList(listItems(context, section, state))
+        }
+
+        val selected = state.selected(key)
+        deleteButton.root.text = getString(
+            R.string.cleaner_delete_button,
+            context.formatNumber(selected.size),
+            selected.sumOf { it.sizeBytes }.toReadableSize(context),
+        )
+        deleteButton.root.isEnabled = selected.isNotEmpty() && !state.isDeleting
+        deleteButton.root.alpha = if (deleteButton.root.isEnabled) 1f else DISABLED_ALPHA
+    }
+
+    /** Each file with its size under its name. */
+    private fun listItems(context: Context, section: CleanerSection, state: CleanerUiState): List<CleanerFileAdapter.Item> =
+        section.files.map { file ->
+            CleanerFileAdapter.Item.File(
+                file = file,
+                isSelected = file.path in state.selectedPaths,
+                detail = file.sizeBytes.toReadableSize(context),
+            )
+        }
+
+    companion object {
+        private const val ARG_KEY = "section_key"
+        private const val ARG_GRID = "grid"
+        private const val SPAN_COUNT = 4
+        private const val DISABLED_ALPHA = 0.5f
+
+        fun newInstance(key: String, grid: Boolean) = CleanerPageFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_KEY, key)
+                putBoolean(ARG_GRID, grid)
+            }
+        }
+    }
+}

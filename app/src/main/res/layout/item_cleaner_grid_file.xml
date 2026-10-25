@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One photo or video in a section's grid (Figma 1:242, four to a row): 79.3 x 73.9, radius 10.3,
+     70% white hairline. Selected, a 14 px blue disc with a white tick sits 16.5 px from the top and
+     9 px from the end (1:249); not selected, the design draws nothing. The tile toggles the file. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_59sdp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/file_thumb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/shape_thumbnail_grid"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+    <FrameLayout
+        android:id="@+id/file_check"
+        android:layout_width="@dimen/_11sdp"
+        android:layout_height="@dimen/_11sdp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginEnd="@dimen/_7sdp"
+        android:background="@drawable/shape_check_on">
+
+        <ImageView
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_tick"
+            app:tint="@color/icon_on_primary" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Delete Duplicates: the shared background behind its three pages - scanning (Figma 1:483),
-     results (1:528) and a section's details (1:661) - each a fragment with its own header. -->
+<!-- A cleaner screen (Delete Duplicates, AI Junk Cleaner, WA Cleaner): the shared background behind
+     its pages - scanning (Figma 1:483 / 1:3 / 1:997), results (1:528 / 1:349 / 1:1042) and a
+     section's page - each a fragment with its own header. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.duplicates.DuplicatesActivity">
+    tools:context=".presentation.base.BaseCleanerActivity">
 
     <com.phone.cleaner.presentation.components.ScreenBackgroundView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/duplicates_container"
+        android:id="@+id/cleaner_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

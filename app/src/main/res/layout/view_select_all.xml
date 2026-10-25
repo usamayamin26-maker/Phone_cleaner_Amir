@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:importantForAccessibility="no"
-        android:text="@string/duplicates_select_all"
+        android:text="@string/cleaner_select_all"
         android:textColor="@color/text_item_meta"
         android:textSize="@dimen/_12ssp"
         app:lineHeight="@dimen/_17ssp" />

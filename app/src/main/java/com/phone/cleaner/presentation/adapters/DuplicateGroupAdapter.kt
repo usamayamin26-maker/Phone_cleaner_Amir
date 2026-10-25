@@ -71,7 +71,7 @@ class DuplicateGroupAdapter : ListAdapter<DuplicateGroupAdapter.Item, DuplicateG
             fileCheckTick.visibleIf(isSelected)
 
             // TalkBack: the copy's name and size, read as a checkbox that is on or off.
-            root.contentDescription = context.getString(R.string.duplicates_file_description, file.name, fileSize.text)
+            root.contentDescription = context.getString(R.string.cleaner_file_description, file.name, fileSize.text)
             ViewCompat.setStateDescription(
                 root,
                 context.getString(if (isSelected) R.string.state_selected else R.string.state_not_selected),

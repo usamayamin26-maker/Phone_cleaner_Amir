@@ -2,16 +2,19 @@ package com.phone.cleaner.di
 
 import androidx.room.Room
 import com.phone.cleaner.data.local.AppDatabase
+import com.phone.cleaner.data.repository.AiCleanerRepositoryImp
 import com.phone.cleaner.data.repository.AppManagerRepositoryImp
 import com.phone.cleaner.data.repository.BatteryRepositoryImp
 import com.phone.cleaner.data.repository.DeviceInfoRepositoryImp
 import com.phone.cleaner.data.repository.DuplicatesRepositoryImp
 import com.phone.cleaner.data.repository.StorageAccessRepositoryImp
+import com.phone.cleaner.domain.repository.AiCleanerRepository
 import com.phone.cleaner.domain.repository.AppManagerRepository
 import com.phone.cleaner.domain.repository.BatteryRepository
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
 import com.phone.cleaner.domain.repository.DuplicatesRepository
 import com.phone.cleaner.domain.repository.StorageAccessRepository
+import com.phone.cleaner.domain.view_models.AiCleanerViewModel
 import com.phone.cleaner.domain.view_models.AppCleanerViewModel
 import com.phone.cleaner.domain.view_models.BatteryViewModel
 import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
@@ -21,6 +24,8 @@ import com.phone.cleaner.domain.view_models.LanguageViewModel
 import com.phone.cleaner.domain.view_models.SettingsViewModel
 import com.phone.cleaner.domain.view_models.SplashViewModel
 import com.phone.cleaner.presentation.adapters.AppAdapter
+import com.phone.cleaner.presentation.adapters.CleanerFileAdapter
+import com.phone.cleaner.presentation.adapters.CleanerGridAdapter
 import com.phone.cleaner.presentation.adapters.DeviceInfoSectionAdapter
 import com.phone.cleaner.presentation.adapters.DuplicateGroupAdapter
 import com.phone.cleaner.presentation.adapters.InfoListAdapter
@@ -69,10 +74,18 @@ val SharedModule = module {
     viewModel { AppCleanerViewModel(get()) }
     factory { AppAdapter() }
 
+    // ---- cleaner pages, shared by Delete Duplicates and AI Junk Cleaner ----
+    factory { CleanerGridAdapter() }
+    factory { CleanerFileAdapter() }
+
     // ---- delete duplicates ----
     single<DuplicatesRepository> { DuplicatesRepositoryImp(get(), get(), get()) }
     viewModel { DuplicatesViewModel(get()) }
     factory { DuplicateGroupAdapter() }
+
+    // ---- ai junk cleaner ----
+    single<AiCleanerRepository> { AiCleanerRepositoryImp(get(), get(), get()) }
+    viewModel { AiCleanerViewModel(get()) }
 
     // ---- device info ----
     single<DeviceInfoRepository> { DeviceInfoRepositoryImp(get()) }

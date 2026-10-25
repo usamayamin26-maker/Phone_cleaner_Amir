@@ -58,6 +58,9 @@ class StorageAccessGate(
         ALL_FILES,
     }
 
+    /** One per level, so a screen can hold a media gate and an All files gate side by side. */
+    private val stateKey = "$STATE_KEY_PREFIX${level.name}"
+
     private var dialog: Dialog? = null
     private var isRequestInFlight = false
     private var isStateRestored = false
@@ -75,7 +78,7 @@ class StorageAccessGate(
         }
 
     init {
-        activity.savedStateRegistry.registerSavedStateProvider(STATE_KEY) {
+        activity.savedStateRegistry.registerSavedStateProvider(stateKey) {
             Bundle().apply { putBoolean(KEY_IN_FLIGHT, isRequestInFlight) }
         }
         activity.lifecycle.addObserver(object : DefaultLifecycleObserver {
@@ -100,7 +103,7 @@ class StorageAccessGate(
         if (!isStateRestored) {
             isStateRestored = true
             isRequestInFlight = activity.savedStateRegistry
-                .consumeRestoredStateForKey(STATE_KEY)?.getBoolean(KEY_IN_FLIGHT) ?: false
+                .consumeRestoredStateForKey(stateKey)?.getBoolean(KEY_IN_FLIGHT) ?: false
         }
         if (isRequestInFlight) return
         if (hasAccess()) {
@@ -190,7 +193,7 @@ class StorageAccessGate(
 
     private companion object {
         const val TAG = "StorageAccessGate"
-        const val STATE_KEY = "storage_access_gate"
+        const val STATE_KEY_PREFIX = "storage_access_gate_"
         const val KEY_IN_FLIGHT = "in_flight"
     }
 }

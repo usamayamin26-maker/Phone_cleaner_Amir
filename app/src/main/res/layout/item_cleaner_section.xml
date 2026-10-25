@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One section of the results (Figma 1:576): radius 28, 72% white with a 12% blue hairline, 12 px
-     padding and 6 px gaps. The header row: the section's check (19 px), its title 14 px after it
-     and "View All"; under it the first previews, cut by the card's edge as in the design. -->
+<!-- One section of the results (Figma 1:576), or a folder group on a section's page (1:75): radius
+     28, 72% white with a 12% blue hairline, 12 px padding and 6 px gaps. The header row: the
+     section's check (19 px), its title 14 px after it and "View All"; under it the first previews,
+     cut by the card's edge as in the design. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -64,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/duplicates_view_all"
+                android:minHeight="@dimen/_18sdp"
+                android:gravity="center_vertical"
+                android:text="@string/cleaner_view_all"
                 android:textColor="@color/text_link"
                 android:textSize="@dimen/_10ssp"
                 app:lineHeight="@dimen/_16ssp" />
@@ -73,6 +76,7 @@
         <!-- The previews keep their size and run past the card's edge, as in the design; the row
              scrolls sideways. -->
         <HorizontalScrollView
+            android:id="@+id/section_previews_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"

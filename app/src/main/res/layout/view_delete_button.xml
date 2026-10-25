@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Delete" on the cleaner pages (Figma 1:140): the radius-16 primary button, at least 211 x 50,
+     16 px medium; it names the count and the size of what is selected. -->
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:fontFamily="@font/roboto_medium"
+    android:minWidth="@dimen/_169sdp"
+    android:paddingHorizontal="@dimen/_16sdp"
+    android:textSize="@dimen/_13ssp"
+    app:lineHeight="@dimen/_19ssp"
+    tools:text="Delete 2 · 357.47 MB" />

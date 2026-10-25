@@ -38,6 +38,8 @@ class AiCleanerRepositoryImpl(
         }
         val onPhone = items.mapTo(HashSet()) { it.path }
         val junk = ArrayList<FileItem>()
+        var unreadable = 0
+        Log.d(TAG, "Scanning ${items.size} files, ${known.size} verdicts known")
 
         items.forEachIndexed { index, item ->
             currentCoroutineContext().ensureActive()
@@ -45,9 +47,11 @@ class AiCleanerRepositoryImpl(
 
             val cached = known[item.path]?.takeIf { it.dateModified == item.dateModified }
             val isJunk = cached?.isJunk ?: classify(item)?.also { emit(AiScanEvent.Classified(item, it)) }
+            if (cached == null && isJunk == null) unreadable++
             if (isJunk == true) junk += item
         }
 
+        if (unreadable > 0) Log.w(TAG, "$unreadable files could not be read and were skipped")
         emit(AiScanEvent.Progress(1f, items.size, items.size))
         emit(
             AiScanEvent.Completed(

@@ -124,27 +124,39 @@
     <string name="app_cleaner_usage_prompt">Sizes show the app only. Allow Usage access to see exact sizes with data and cache.</string>
     <string name="app_cleaner_usage_allow">Allow</string>
 
-    <!-- Delete Duplicates (Figma 1:483, 1:528, 1:661). -->
-    <string name="duplicates_loading_title">Loading Data</string>
-    <string name="duplicates_loading_message">Scanning your device safely — nothing is deleted yet.</string>
-    <string name="duplicates_stop">Stop Scanning</string>
+    <!-- The cleaner screens: Delete Duplicates (Figma 1:483, 1:528, 1:661), AI Junk Cleaner and WA
+         Cleaner share these. -->
+    <string name="cleaner_loading_title">Loading Data</string>
+    <string name="cleaner_loading_message">Scanning your device safely — nothing is deleted yet.</string>
+    <string name="cleaner_stop_scanning">Stop Scanning</string>
     <!-- "Images (50)": the number of files in the section. -->
-    <string name="duplicates_images_count">Images (%1$s)</string>
-    <string name="duplicates_videos_count">Videos (%1$s)</string>
-    <string name="duplicates_large_files_count">Large Files (%1$s)</string>
-    <string name="duplicates_view_all">View All</string>
-    <string name="duplicates_title_images">Images</string>
-    <string name="duplicates_title_videos">Videos</string>
-    <string name="duplicates_title_large_files">Large Files</string>
-    <string name="duplicates_select_all">Select All</string>
+    <string name="cleaner_images_count">Images (%1$s)</string>
+    <string name="cleaner_videos_count">Videos (%1$s)</string>
+    <string name="cleaner_large_files_count">Large Files (%1$s)</string>
+    <string name="cleaner_view_all">View All</string>
+    <string name="cleaner_title_images">Images</string>
+    <string name="cleaner_title_videos">Videos</string>
+    <string name="cleaner_title_large_files">Large Files</string>
+    <string name="cleaner_select_all">Select All</string>
     <string name="duplicates_keep_best">Keep best one</string>
     <string name="duplicates_none">No duplicates found. Every photo and video is unique.</string>
     <!-- The Delete button: how many files and how much space, "Delete 2 · 357.47 MB". -->
-    <string name="duplicates_delete_button">Delete %1$s · %2$s</string>
+    <string name="cleaner_delete_button">Delete %1$s · %2$s</string>
     <!-- Spoken for a copy: its name and size. -->
-    <string name="duplicates_file_description">%1$s, %2$s</string>
-    <string name="duplicates_freed">%1$s freed</string>
-    <string name="duplicates_delete_partial">%1$s freed. Some files could not be deleted.</string>
+    <string name="cleaner_file_description">%1$s, %2$s</string>
+    <string name="cleaner_freed">%1$s freed</string>
+    <string name="cleaner_delete_partial">%1$s freed. Some files could not be deleted.</string>
+
+    <!-- AI Junk Cleaner (Figma 1:3, 1:349, 1:48, 1:142): the folder groups inside Images and Videos. -->
+    <string name="cleaner_downloads_count">Downloads (%1$s)</string>
+    <string name="cleaner_gallery_count">Gallery (%1$s)</string>
+    <string name="cleaner_wa_photos_count">WA Photos (%1$s)</string>
+    <string name="cleaner_wa_videos_count">WA Videos (%1$s)</string>
+    <string name="cleaner_title_downloads">Downloads</string>
+    <string name="cleaner_title_gallery">Gallery</string>
+    <string name="cleaner_title_wa_photos">WA Photos</string>
+    <string name="cleaner_title_wa_videos">WA Videos</string>
+    <string name="ai_cleaner_none">No junk photos or videos found.</string>
 
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>

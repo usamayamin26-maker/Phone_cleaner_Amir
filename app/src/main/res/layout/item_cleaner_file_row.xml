@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One file in a section's list (Figma 1:1190): the white card, radius 22, 16 px padding; the
+     26 x 32 file icon (or a photo's thumbnail), 10 px after it the name, and 12 px before the end
+     the 22 px check - a grey ring, or blue with a white tick when selected (1:1293). The design
+     has no second line; the junk list shows the size there. The card toggles the file. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:cardBackgroundColor="@color/card_surface"
+    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardElevation="@dimen/_3sdp"
+    app:rippleColor="@color/ripple_on_light"
+    app:strokeWidth="0dp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_13sdp">
+
+        <ImageView
+            android:id="@+id/file_icon"
+            android:layout_width="@dimen/_21sdp"
+            android:layout_height="@dimen/_26sdp"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_medium"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_title"
+                android:textDirection="locale"
+                android:textSize="@dimen/_12ssp"
+                app:lineHeight="@dimen/_15ssp"
+                tools:text="System Security" />
+
+            <TextView
+                android:id="@+id/file_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_regular"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_secondary"
+                android:textDirection="locale"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="gone"
+                app:lineHeight="@dimen/_14ssp"
+                tools:text="12.4 MB"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/file_check"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:background="@drawable/shape_check_off">
+
+            <ImageView
+                android:id="@+id/file_check_tick"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_tick"
+                app:tint="@color/icon_on_primary" />
+        </FrameLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

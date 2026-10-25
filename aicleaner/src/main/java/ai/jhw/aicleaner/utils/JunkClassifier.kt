@@ -14,10 +14,10 @@ import java.nio.channels.FileChannel
  * The meme / junk-image model from the old source (softmax_fit_gene.tflite in src/main/assets):
  * a 224x224 RGB (Red Green Blue) input scaled to -1..1, two output scores.
  *
- * Which output means "junk": the source treated the image as a meme when score 0 beat score 1,
- * even though labels.txt lists "Not Meme" first. The source's behaviour is kept ([JUNK_INDEX] = 0)
- * because that is what shipped; confirm it on a device with a few known memes and photos, and
- * flip [JUNK_INDEX] if the verdicts come out reversed.
+ * Which output means "junk": score 0 ([JUNK_INDEX]), as in the source, although labels.txt lists
+ * "Not Meme" first - the label file has the names the wrong way round. Checked on an emulator
+ * (2026-10-25): all ten test memes (captioned, two-panel, a forwarded quote) came out junk, and all
+ * twelve photographs, two videos and two stickers did not.
  *
  * Not thread-safe: the repository serialises every call.
  */

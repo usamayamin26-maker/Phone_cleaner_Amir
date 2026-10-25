@@ -19,9 +19,11 @@ internal object AccessChecker {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager() ->
                 StorageAccess.FULL
             // Android 10 runs in legacy storage mode (requestLegacyExternalStorage), so the old
-            // write permission still covers every file there.
+            // permissions still cover every file there. Both are needed: write alone does not let
+            // the app read MediaStore, and Android grants them separately.
             Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
-                granted(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> StorageAccess.FULL
+                granted(Manifest.permission.WRITE_EXTERNAL_STORAGE) &&
+                granted(Manifest.permission.READ_EXTERNAL_STORAGE) -> StorageAccess.FULL
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> when {
                 granted(Manifest.permission.READ_MEDIA_IMAGES) &&
                     granted(Manifest.permission.READ_MEDIA_VIDEO) -> StorageAccess.MEDIA_ALL

@@ -181,11 +181,14 @@ fun ImageView.playAnimatedImage(@DrawableRes resId: Int) {
 }
 
 /**
- * A file's preview: a Coil thumbnail for photos and video frames, the PDF icon for documents and
- * the file icon for anything else. Recycled views are reset, so a tile never keeps the wrong image.
+ * A file's preview: a Coil thumbnail for photos and video frames, the PDF icon for PDF documents
+ * and the file icon for anything else. Recycled views are reset, so a tile never keeps the wrong image.
+ * [inset] is the room around an icon inside a tile; a list row's icon fills its view.
  */
-fun ImageView.loadFilePreview(file: FileItem) {
-    val inset = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp)
+fun ImageView.loadFilePreview(
+    file: FileItem,
+    inset: Int = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp),
+) {
     when (file.kind) {
         FileKind.IMAGE, FileKind.VIDEO -> {
             setPadding(0, 0, 0, 0)
@@ -196,7 +199,7 @@ fun ImageView.loadFilePreview(file: FileItem) {
                 error(ContextCompat.getColor(context, R.color.thumbnail_placeholder).toDrawable())
             }
         }
-        FileKind.DOCUMENT -> {
+        FileKind.DOCUMENT if file.name.endsWith(".pdf", ignoreCase = true) -> {
             dispose()
             setPadding(inset, inset, inset, inset)
             scaleType = ImageView.ScaleType.FIT_CENTER
@@ -214,15 +217,19 @@ fun ImageView.loadFilePreview(file: FileItem) {
 }
 
 /**
- * Scales the image to the view's width and pins it to the top, so a tall image is cut at the
- * bottom (the robot on the Delete Duplicates card). The view needs `scaleType="matrix"`.
+ * Scales the image to the view's width and pins it to the top, [offsetTopPx] down (negative: up,
+ * cut by the view's top), so a tall image is cut at the bottom (the robot on a cleaner's results
+ * card). The view needs `scaleType="matrix"`.
  */
-fun ImageView.scaleToWidthFromTop() {
+fun ImageView.scaleToWidthFromTop(offsetTopPx: Int = 0) {
     addOnLayoutChangeListener { view, _, _, _, _, _, _, _, _ ->
         val image = (view as ImageView).drawable ?: return@addOnLayoutChangeListener
         if (image.intrinsicWidth <= 0 || view.width == 0) return@addOnLayoutChangeListener
         val scale = view.width.toFloat() / image.intrinsicWidth
-        view.imageMatrix = Matrix().apply { setScale(scale, scale) }
+        view.imageMatrix = Matrix().apply {
+            setScale(scale, scale)
+            postTranslate(0f, offsetTopPx.toFloat())
+        }
     }
 }
 
