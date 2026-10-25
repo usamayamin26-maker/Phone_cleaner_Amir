@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- A size chip on the results card (Figma 1:556): 17% blue pill, 10 / 5 px padding, the 25 px
-     round icon and the size 7 px after it, 14 px semi-bold in capitals. -->
+     round icon and the size 7 px after it, 14 px semi-bold in capitals. WA Cleaner's chips (1:1065)
+     are the same pill without the icon, the text centred. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,6 +15,7 @@
     android:paddingVertical="@dimen/_4sdp">
 
     <FrameLayout
+        android:id="@+id/chip_icon_frame"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:background="@drawable/shape_chip_icon">

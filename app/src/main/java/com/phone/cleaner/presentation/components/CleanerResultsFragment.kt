@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation.components
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.phone.cleaner.utils.applyNavigationBarBottomMargin
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
+import com.phone.cleaner.utils.gone
 import com.phone.cleaner.utils.onClick
 import com.phone.cleaner.utils.scaleToWidthFromTop
 import com.phone.cleaner.utils.toReadableSize
@@ -56,6 +58,12 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
                 chipVideos.chipIcon.setImageResource(R.drawable.ic_video)
                 chipFiles.chipIcon.setImageResource(R.drawable.ic_file)
             }
+            CleanerScreen.Chips.TOTAL_AND_STATUS -> {
+                listOf(chipImages, chipVideos).forEach { it.asTextChip() }
+                chipVideos.chipSize.isAllCaps = false
+                chipVideos.chipSize.setText(R.string.wa_scan_completed)
+                chipFiles.root.gone()
+            }
         }
         resultsEmpty.setText(screen.emptyMessage)
 
@@ -84,6 +92,9 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
                 chipVideos.setSize(state.section(CleanerSectionType.VIDEOS.name)?.reclaimableBytes ?: 0)
                 chipFiles.setSize(state.section(CleanerSectionType.LARGE_FILES.name)?.reclaimableBytes ?: 0)
             }
+            // A file in two sections (a large video) counts once.
+            CleanerScreen.Chips.TOTAL_AND_STATUS ->
+                chipImages.setSize(state.sections.flatMap { it.files }.distinctBy { it.path }.sumOf { it.sizeBytes })
         }
 
         cards?.bind(state.sections, state)
@@ -120,6 +131,13 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
 
     private fun ViewSizeChipBinding.setSize(bytes: Long) {
         chipSize.text = bytes.toReadableSize(requireContext())
+    }
+
+    /** WA Cleaner's chips (Figma 1:1065): the same pill with its text centred and no icon. */
+    private fun ViewSizeChipBinding.asTextChip() {
+        chipIconFrame.gone()
+        root.gravity = Gravity.CENTER
+        chipSize.updateLayoutParams<ViewGroup.MarginLayoutParams> { marginStart = 0 }
     }
 
     private companion object {

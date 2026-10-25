@@ -158,6 +158,23 @@
     <string name="cleaner_title_wa_videos">WA Videos</string>
     <string name="ai_cleaner_none">No junk photos or videos found.</string>
 
+    <!-- WA Cleaner (Figma 1:997, 1:1042, 1:1160): its scanning heading, its chips and the media types. -->
+    <string name="wa_scanning_title">Scanning WhatsApp</string>
+    <string name="wa_scan_completed">Scan completed</string>
+    <string name="wa_cleaner_none">No WhatsApp media found on this phone.</string>
+    <string name="cleaner_files_count">Files (%1$s)</string>
+    <string name="cleaner_voice_notes_count">Voice Notes (%1$s)</string>
+    <string name="cleaner_audio_count">Audio (%1$s)</string>
+    <string name="cleaner_gifs_count">GIFs (%1$s)</string>
+    <string name="cleaner_stickers_count">Stickers (%1$s)</string>
+    <string name="cleaner_statuses_count">Statuses (%1$s)</string>
+    <string name="cleaner_title_files">Files</string>
+    <string name="cleaner_title_voice_notes">Voice Notes</string>
+    <string name="cleaner_title_audio">Audio</string>
+    <string name="cleaner_title_gifs">GIFs</string>
+    <string name="cleaner_title_stickers">Stickers</string>
+    <string name="cleaner_title_statuses">Statuses</string>
+
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>
     <string name="info_device">Device Information</string>

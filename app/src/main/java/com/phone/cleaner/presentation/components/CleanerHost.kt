@@ -20,7 +20,7 @@ interface CleanerHost {
 /** How one cleaner screen differs from the others in the design. */
 data class CleanerScreen(
     @param:StringRes val title: Int,
-    /** The scanning page's heading: "Loading Data". */
+    /** The scanning page's heading: "Loading Data" or "Scanning WhatsApp". */
     @param:StringRes val scanTitle: Int,
     /**
      * Figma 1:483 and 1:997 pad the scanning text by 12 px above and below, so it sits 24 px from
@@ -45,5 +45,8 @@ data class CleanerScreen(
     enum class Chips {
         /** Images, videos and files, each with its icon and size (Figma 1:555). */
         SIZES,
+
+        /** The total found and "Scan completed", text only (Figma 1:1065). */
+        TOTAL_AND_STATUS,
     }
 }

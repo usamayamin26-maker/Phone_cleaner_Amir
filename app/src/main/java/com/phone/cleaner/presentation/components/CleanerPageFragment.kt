@@ -11,6 +11,7 @@ import com.phone.cleaner.R
 import com.phone.cleaner.databinding.FragmentCleanerPageBinding
 import com.phone.cleaner.databinding.ViewSelectAllBinding
 import com.phone.cleaner.domain.entities.CleanerSection
+import com.phone.cleaner.domain.entities.CleanerSectionType
 import com.phone.cleaner.domain.view_models.CleanerUiState
 import com.phone.cleaner.presentation.adapters.CleanerFileAdapter
 import com.phone.cleaner.presentation.adapters.CleanerGridAdapter
@@ -126,15 +127,17 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
         deleteButton.root.alpha = if (deleteButton.root.isEnabled) 1f else DISABLED_ALPHA
     }
 
-    /** Each file with its size under its name. */
-    private fun listItems(context: Context, section: CleanerSection, state: CleanerUiState): List<CleanerFileAdapter.Item> =
-        section.files.map { file ->
+    /** The design's "Files" list (1:1160) has no second line; the lists with no design show the size. */
+    private fun listItems(context: Context, section: CleanerSection, state: CleanerUiState): List<CleanerFileAdapter.Item> {
+        val showSize = section.type != CleanerSectionType.DOCUMENTS
+        return section.files.map { file ->
             CleanerFileAdapter.Item.File(
                 file = file,
                 isSelected = file.path in state.selectedPaths,
-                detail = file.sizeBytes.toReadableSize(context),
+                detail = if (showSize) file.sizeBytes.toReadableSize(context) else null,
             )
         }
+    }
 
     companion object {
         private const val ARG_KEY = "section_key"

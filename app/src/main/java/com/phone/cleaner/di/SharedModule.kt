@@ -8,12 +8,14 @@ import com.phone.cleaner.data.repository.BatteryRepositoryImp
 import com.phone.cleaner.data.repository.DeviceInfoRepositoryImp
 import com.phone.cleaner.data.repository.DuplicatesRepositoryImp
 import com.phone.cleaner.data.repository.StorageAccessRepositoryImp
+import com.phone.cleaner.data.repository.WhatsAppRepositoryImp
 import com.phone.cleaner.domain.repository.AiCleanerRepository
 import com.phone.cleaner.domain.repository.AppManagerRepository
 import com.phone.cleaner.domain.repository.BatteryRepository
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
 import com.phone.cleaner.domain.repository.DuplicatesRepository
 import com.phone.cleaner.domain.repository.StorageAccessRepository
+import com.phone.cleaner.domain.repository.WhatsAppRepository
 import com.phone.cleaner.domain.view_models.AiCleanerViewModel
 import com.phone.cleaner.domain.view_models.AppCleanerViewModel
 import com.phone.cleaner.domain.view_models.BatteryViewModel
@@ -23,6 +25,7 @@ import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.domain.view_models.LanguageViewModel
 import com.phone.cleaner.domain.view_models.SettingsViewModel
 import com.phone.cleaner.domain.view_models.SplashViewModel
+import com.phone.cleaner.domain.view_models.WaCleanerViewModel
 import com.phone.cleaner.presentation.adapters.AppAdapter
 import com.phone.cleaner.presentation.adapters.CleanerFileAdapter
 import com.phone.cleaner.presentation.adapters.CleanerGridAdapter
@@ -74,7 +77,7 @@ val SharedModule = module {
     viewModel { AppCleanerViewModel(get()) }
     factory { AppAdapter() }
 
-    // ---- cleaner pages, shared by Delete Duplicates and AI Junk Cleaner ----
+    // ---- cleaner pages, shared by Delete Duplicates, AI Junk Cleaner and WA Cleaner ----
     factory { CleanerGridAdapter() }
     factory { CleanerFileAdapter() }
 
@@ -86,6 +89,10 @@ val SharedModule = module {
     // ---- ai junk cleaner ----
     single<AiCleanerRepository> { AiCleanerRepositoryImp(get(), get(), get()) }
     viewModel { AiCleanerViewModel(get()) }
+
+    // ---- wa cleaner ----
+    single<WhatsAppRepository> { WhatsAppRepositoryImp(get(), get()) }
+    viewModel { WaCleanerViewModel(get()) }
 
     // ---- device info ----
     single<DeviceInfoRepository> { DeviceInfoRepositoryImp(get()) }

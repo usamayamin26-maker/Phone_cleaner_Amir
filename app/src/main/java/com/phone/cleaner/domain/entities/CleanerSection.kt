@@ -11,6 +11,14 @@ enum class CleanerSectionType(val isMedia: Boolean) {
     VIDEOS(true),
     LARGE_FILES(false),
 
+    /** WhatsApp documents - the design's "Files" (Figma 1:1160). */
+    DOCUMENTS(false),
+    VOICE_NOTES(false),
+    AUDIO(false),
+    GIFS(true),
+    STICKERS(true),
+    STATUSES(true),
+
     /** The AI cleaner's folder groups inside Images and Videos (Figma 1:48). */
     DOWNLOADS(true),
     GALLERY(true),
