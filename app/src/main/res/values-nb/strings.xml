@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp-rydder</string>
     <string name="onboarding_whatsapp_subtitle">Rydd opp i WhatsApp-dataene dine.</string>
     <string name="onboarding_battery_subtitle">Se informasjon om telefonens batteri.</string>
+    <string name="app_cleaner_uninstall_message">Er du sikker på at du vil avinstallere denne appen?</string>
+    <string name="app_cleaner_uninstall">Avinstaller</string>
+    <string name="app_cleaner_clear_cache">Tøm buffer</string>
+    <string name="app_cleaner_usage_prompt">Størrelsene viser bare appen. Tillat brukstilgang for å se nøyaktige størrelser med data og buffer.</string>
+    <string name="app_cleaner_usage_allow">Tillat</string>
     <string name="device_info_title">Enhetsinfo</string>
     <string name="info_device">Enhetsinformasjon</string>
     <string name="info_processor">Prosessorinformasjon</string>

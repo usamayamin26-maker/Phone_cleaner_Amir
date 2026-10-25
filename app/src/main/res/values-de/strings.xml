@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp-Reiniger</string>
     <string name="onboarding_whatsapp_subtitle">Bereinige deine WhatsApp-Daten.</string>
     <string name="onboarding_battery_subtitle">Sieh dir die Akkuinformationen deines Handys an.</string>
+    <string name="app_cleaner_uninstall_message">Möchtest du diese App wirklich deinstallieren?</string>
+    <string name="app_cleaner_uninstall">Deinstallieren</string>
+    <string name="app_cleaner_clear_cache">Cache leeren</string>
+    <string name="app_cleaner_usage_prompt">Die Größen zeigen nur die App. Erlaube den Zugriff auf Nutzungsdaten, um die genauen Größen mit Daten und Cache zu sehen.</string>
+    <string name="app_cleaner_usage_allow">Erlauben</string>
     <string name="device_info_title">Geräteinfo</string>
     <string name="info_device">Geräteinformationen</string>
     <string name="info_processor">Prozessorinformationen</string>

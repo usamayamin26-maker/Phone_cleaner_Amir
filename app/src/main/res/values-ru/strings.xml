@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">Очистка WhatsApp</string>
     <string name="onboarding_whatsapp_subtitle">Очистите данные WhatsApp.</string>
     <string name="onboarding_battery_subtitle">Узнайте всё об аккумуляторе телефона.</string>
+    <string name="app_cleaner_uninstall_message">Удалить это приложение?</string>
+    <string name="app_cleaner_uninstall">Удалить</string>
+    <string name="app_cleaner_clear_cache">Очистить кеш</string>
+    <string name="app_cleaner_usage_prompt">Размеры учитывают только само приложение. Разрешите доступ к истории использования, чтобы видеть точный размер с данными и кешем.</string>
+    <string name="app_cleaner_usage_allow">Разрешить</string>
     <string name="device_info_title">Об устройстве</string>
     <string name="info_device">Сведения об устройстве</string>
     <string name="info_processor">Сведения о процессоре</string>

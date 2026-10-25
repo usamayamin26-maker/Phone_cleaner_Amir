@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp-cleaner</string>
     <string name="onboarding_whatsapp_subtitle">Ruim je WhatsApp-gegevens op.</string>
     <string name="onboarding_battery_subtitle">Bekijk de batterij-informatie van je telefoon.</string>
+    <string name="app_cleaner_uninstall_message">Weet je zeker dat je deze app wilt verwijderen?</string>
+    <string name="app_cleaner_uninstall">Verwijderen</string>
+    <string name="app_cleaner_clear_cache">Cache wissen</string>
+    <string name="app_cleaner_usage_prompt">De grootte toont alleen de app. Sta gebruikstoegang toe om de exacte grootte met gegevens en cache te zien.</string>
+    <string name="app_cleaner_usage_allow">Toestaan</string>
     <string name="device_info_title">Apparaatinfo</string>
     <string name="info_device">Apparaatinformatie</string>
     <string name="info_processor">Processorinformatie</string>

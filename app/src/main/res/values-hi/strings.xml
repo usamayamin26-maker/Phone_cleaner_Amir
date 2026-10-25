@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp क्लीनर</string>
     <string name="onboarding_whatsapp_subtitle">अपना WhatsApp डेटा साफ़ करें।</string>
     <string name="onboarding_battery_subtitle">अपने फ़ोन की बैटरी की जानकारी देखें।</string>
+    <string name="app_cleaner_uninstall_message">क्या आप वाकई यह ऐप अनइंस्टॉल करना चाहते हैं?</string>
+    <string name="app_cleaner_uninstall">अनइंस्टॉल करें</string>
+    <string name="app_cleaner_clear_cache">कैश साफ़ करें</string>
+    <string name="app_cleaner_usage_prompt">साइज़ में सिर्फ़ ऐप शामिल है। डेटा और कैश समेत सही साइज़ देखने के लिए इस्तेमाल का ऐक्सेस दें।</string>
+    <string name="app_cleaner_usage_allow">अनुमति दें</string>
     <string name="device_info_title">डिवाइस जानकारी</string>
     <string name="info_device">डिवाइस की जानकारी</string>
     <string name="info_processor">प्रोसेसर की जानकारी</string>

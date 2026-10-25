@@ -2,6 +2,7 @@ package com.phone.cleaner.utils
 
 import android.content.Context
 import android.graphics.ImageDecoder
+import android.graphics.Outline
 import android.graphics.Rect
 import android.graphics.drawable.AnimatedImageDrawable
 import android.os.Build
@@ -10,6 +11,7 @@ import android.util.Log
 import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -127,6 +129,16 @@ fun View.expandTouchTarget(minimumDp: Int = 48) {
             ?: CompositeTouchDelegate(hit, host).also { host.touchDelegate = it }
         composite.put(this, TouchDelegate(hit, this))
     }
+}
+
+/** Clips the view to a rounded rectangle - an app icon or a thumbnail with the design's radius. */
+fun View.clipToRoundRect(radiusPx: Float) {
+    outlineProvider = object : ViewOutlineProvider() {
+        override fun getOutline(view: View, outline: Outline) {
+            outline.setRoundRect(0, 0, view.width, view.height, radiusPx)
+        }
+    }
+    clipToOutline = true
 }
 
 /**

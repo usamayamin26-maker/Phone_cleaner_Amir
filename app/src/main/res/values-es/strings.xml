@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">Limpiador de WhatsApp</string>
     <string name="onboarding_whatsapp_subtitle">Limpia tus datos de WhatsApp.</string>
     <string name="onboarding_battery_subtitle">Consulta la información de la batería de tu teléfono.</string>
+    <string name="app_cleaner_uninstall_message">¿Seguro que quieres desinstalar esta app?</string>
+    <string name="app_cleaner_uninstall">Desinstalar</string>
+    <string name="app_cleaner_clear_cache">Borrar caché</string>
+    <string name="app_cleaner_usage_prompt">Los tamaños solo incluyen la app. Permite el acceso de uso para ver los tamaños exactos con datos y caché.</string>
+    <string name="app_cleaner_usage_allow">Permitir</string>
     <string name="device_info_title">Info del dispositivo</string>
     <string name="info_device">Información del dispositivo</string>
     <string name="info_processor">Información del procesador</string>

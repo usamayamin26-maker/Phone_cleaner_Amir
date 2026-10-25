@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp 클리너</string>
     <string name="onboarding_whatsapp_subtitle">WhatsApp 데이터를 정리하세요.</string>
     <string name="onboarding_battery_subtitle">휴대폰 배터리 정보를 확인하세요.</string>
+    <string name="app_cleaner_uninstall_message">이 앱을 제거하시겠습니까?</string>
+    <string name="app_cleaner_uninstall">제거</string>
+    <string name="app_cleaner_clear_cache">캐시 지우기</string>
+    <string name="app_cleaner_usage_prompt">크기는 앱 자체만 표시됩니다. 사용 기록 접근을 허용하면 데이터와 캐시를 포함한 정확한 크기를 볼 수 있습니다.</string>
+    <string name="app_cleaner_usage_allow">허용</string>
     <string name="device_info_title">기기 정보</string>
     <string name="info_device">기기 정보</string>
     <string name="info_processor">프로세서 정보</string>

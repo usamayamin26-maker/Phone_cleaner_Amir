@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">Pulitore WhatsApp</string>
     <string name="onboarding_whatsapp_subtitle">Pulisci i tuoi dati di WhatsApp.</string>
     <string name="onboarding_battery_subtitle">Controlla le informazioni sulla batteria del telefono.</string>
+    <string name="app_cleaner_uninstall_message">Vuoi davvero disinstallare questa app?</string>
+    <string name="app_cleaner_uninstall">Disinstalla</string>
+    <string name="app_cleaner_clear_cache">Svuota cache</string>
+    <string name="app_cleaner_usage_prompt">Le dimensioni mostrano solo l\'app. Consenti l\'accesso ai dati di utilizzo per vedere le dimensioni esatte con dati e cache.</string>
+    <string name="app_cleaner_usage_allow">Consenti</string>
     <string name="device_info_title">Info dispositivo</string>
     <string name="info_device">Informazioni dispositivo</string>
     <string name="info_processor">Informazioni processore</string>

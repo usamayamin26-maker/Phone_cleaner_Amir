@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp 清理</string>
     <string name="onboarding_whatsapp_subtitle">清理您的 WhatsApp 数据。</string>
     <string name="onboarding_battery_subtitle">查看手机电池信息。</string>
+    <string name="app_cleaner_uninstall_message">确定要卸载此应用吗？</string>
+    <string name="app_cleaner_uninstall">卸载</string>
+    <string name="app_cleaner_clear_cache">清除缓存</string>
+    <string name="app_cleaner_usage_prompt">大小仅包含应用本身。允许“使用情况访问权限”即可查看包含数据和缓存的准确大小。</string>
+    <string name="app_cleaner_usage_allow">允许</string>
     <string name="device_info_title">设备信息</string>
     <string name="info_device">设备信息</string>
     <string name="info_processor">处理器信息</string>

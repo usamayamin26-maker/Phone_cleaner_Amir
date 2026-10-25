@@ -5,12 +5,16 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.LinearLayout
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.updateLayoutParams
+import androidx.core.widget.TextViewCompat
+import com.phone.cleaner.R
 import com.phone.cleaner.databinding.ViewAppDialogBinding
 import com.phone.cleaner.utils.gone
 import com.phone.cleaner.utils.onClick
@@ -36,14 +40,24 @@ object AppDialog {
         STRONG(0.5f),
     }
 
+    enum class Variant {
+        /** "Are You Sure?" and "Permission is required": a full-width 18 px bold button. */
+        STANDARD,
+
+        /**
+         * The uninstall dialog (1:1881): the app's icon, its message 3 px under the title on a
+         * 15.5 px line, and a 211 px centred button with a 16 px medium label.
+         */
+        APP,
+    }
+
     class Spec(
         val title: CharSequence,
         val message: CharSequence,
         val primaryLabel: CharSequence,
         val secondaryLabel: CharSequence,
         val icon: Drawable? = null,
-        /** False for the uninstall dialog, whose button is 211 px wide and centred. */
-        val primaryFullWidth: Boolean = true,
+        val variant: Variant = Variant.STANDARD,
         val scrim: Scrim = Scrim.LIGHT,
     )
 
@@ -73,11 +87,23 @@ object AppDialog {
             dialogMessage.text = spec.message
             dialogPrimary.text = spec.primaryLabel
             dialogSecondary.text = spec.secondaryLabel
-            if (!spec.primaryFullWidth) {
+            if (spec.variant == Variant.APP) {
+                dialogMessage.updateLayoutParams<LinearLayout.LayoutParams> {
+                    topMargin = context.resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._2sdp)
+                }
+                TextViewCompat.setLineHeight(
+                    dialogMessage,
+                    context.resources.getDimensionPixelSize(com.intuit.ssp.R.dimen._12ssp),
+                )
                 dialogPrimary.updateLayoutParams<LinearLayout.LayoutParams> {
                     width = LinearLayout.LayoutParams.WRAP_CONTENT
                 }
                 dialogPrimary.minWidth = context.resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._169sdp)
+                dialogPrimary.typeface = ResourcesCompat.getFont(context, R.font.roboto_medium)
+                dialogPrimary.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    context.resources.getDimension(com.intuit.ssp.R.dimen._13ssp),
+                )
             }
             dialogPrimary.onClick {
                 dialog.dismiss()

@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">منظف WhatsApp</string>
     <string name="onboarding_whatsapp_subtitle">نظّف بيانات WhatsApp.</string>
     <string name="onboarding_battery_subtitle">اطّلع على معلومات بطارية هاتفك.</string>
+    <string name="app_cleaner_uninstall_message">هل أنت متأكد من أنك تريد إلغاء تثبيت هذا التطبيق؟</string>
+    <string name="app_cleaner_uninstall">إلغاء التثبيت</string>
+    <string name="app_cleaner_clear_cache">مسح ذاكرة التخزين المؤقت</string>
+    <string name="app_cleaner_usage_prompt">تعرض الأحجام التطبيق فقط. اسمح بالوصول إلى بيانات الاستخدام لرؤية الأحجام الدقيقة مع البيانات وذاكرة التخزين المؤقت.</string>
+    <string name="app_cleaner_usage_allow">سماح</string>
     <string name="device_info_title">معلومات الجهاز</string>
     <string name="info_device">معلومات الجهاز</string>
     <string name="info_processor">معلومات المعالج</string>

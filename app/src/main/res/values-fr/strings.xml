@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">Nettoyeur WhatsApp</string>
     <string name="onboarding_whatsapp_subtitle">Nettoyez vos données WhatsApp.</string>
     <string name="onboarding_battery_subtitle">Consultez les informations sur la batterie de votre téléphone.</string>
+    <string name="app_cleaner_uninstall_message">Voulez-vous vraiment désinstaller cette appli ?</string>
+    <string name="app_cleaner_uninstall">Désinstaller</string>
+    <string name="app_cleaner_clear_cache">Vider le cache</string>
+    <string name="app_cleaner_usage_prompt">Les tailles ne comptent que l\'appli. Autorisez l\'accès aux données d\'utilisation pour voir les tailles exactes avec données et cache.</string>
+    <string name="app_cleaner_usage_allow">Autoriser</string>
     <string name="device_info_title">Infos appareil</string>
     <string name="info_device">Informations sur l\'appareil</string>
     <string name="info_processor">Informations sur le processeur</string>

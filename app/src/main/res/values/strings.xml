@@ -106,6 +106,15 @@
     <string name="onboarding_whatsapp_subtitle">Clean your WhatsApp data.</string>
     <string name="onboarding_battery_subtitle">Check your phone\'s battery information.</string>
 
+    <!-- App Cleaner (Figma 1:1778, dialog 1:1881). The design's button says "Uninstall Images", a
+         typo; it uninstalls the app. -->
+    <string name="app_cleaner_uninstall_message">Are you sure you want to uninstall this app?</string>
+    <string name="app_cleaner_uninstall">Uninstall</string>
+    <string name="app_cleaner_clear_cache">Clear cache</string>
+    <!-- Shown when Usage access is off: the sizes are the app's package only. -->
+    <string name="app_cleaner_usage_prompt">Sizes show the app only. Allow Usage access to see exact sizes with data and cache.</string>
+    <string name="app_cleaner_usage_allow">Allow</string>
+
     <!-- Device Info -->
     <string name="device_info_title">Device Info</string>
     <string name="info_device">Device Information</string>

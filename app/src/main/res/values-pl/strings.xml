@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">Czyściciel WhatsApp</string>
     <string name="onboarding_whatsapp_subtitle">Wyczyść dane WhatsApp.</string>
     <string name="onboarding_battery_subtitle">Sprawdź informacje o baterii telefonu.</string>
+    <string name="app_cleaner_uninstall_message">Czy na pewno chcesz odinstalować tę aplikację?</string>
+    <string name="app_cleaner_uninstall">Odinstaluj</string>
+    <string name="app_cleaner_clear_cache">Wyczyść pamięć podręczną</string>
+    <string name="app_cleaner_usage_prompt">Rozmiary obejmują tylko aplikację. Zezwól na dostęp do danych o użyciu, aby zobaczyć dokładne rozmiary z danymi i pamięcią podręczną.</string>
+    <string name="app_cleaner_usage_allow">Zezwól</string>
     <string name="device_info_title">Informacje o urządzeniu</string>
     <string name="info_device">Informacje o urządzeniu</string>
     <string name="info_processor">Informacje o procesorze</string>

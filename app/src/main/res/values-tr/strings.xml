@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp Temizleyici</string>
     <string name="onboarding_whatsapp_subtitle">WhatsApp verilerinizi temizleyin.</string>
     <string name="onboarding_battery_subtitle">Telefonunuzun pil bilgilerine göz atın.</string>
+    <string name="app_cleaner_uninstall_message">Bu uygulamayı kaldırmak istediğinizden emin misiniz?</string>
+    <string name="app_cleaner_uninstall">Kaldır</string>
+    <string name="app_cleaner_clear_cache">Önbelleği temizle</string>
+    <string name="app_cleaner_usage_prompt">Boyutlar yalnızca uygulamayı gösterir. Veri ve önbellekle tam boyutları görmek için kullanım erişimine izin verin.</string>
+    <string name="app_cleaner_usage_allow">İzin ver</string>
     <string name="device_info_title">Cihaz Bilgisi</string>
     <string name="info_device">Cihaz Bilgileri</string>
     <string name="info_processor">İşlemci Bilgileri</string>

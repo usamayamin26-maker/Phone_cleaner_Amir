@@ -61,6 +61,11 @@
     <string name="onboarding_whatsapp_title">WhatsApp-rensare</string>
     <string name="onboarding_whatsapp_subtitle">Rensa dina WhatsApp-data.</string>
     <string name="onboarding_battery_subtitle">Se information om telefonens batteri.</string>
+    <string name="app_cleaner_uninstall_message">Vill du verkligen avinstallera appen?</string>
+    <string name="app_cleaner_uninstall">Avinstallera</string>
+    <string name="app_cleaner_clear_cache">Rensa cache</string>
+    <string name="app_cleaner_usage_prompt">Storlekarna visar bara appen. Tillåt användningsåtkomst för att se exakta storlekar med data och cache.</string>
+    <string name="app_cleaner_usage_allow">Tillåt</string>
     <string name="device_info_title">Enhetsinfo</string>
     <string name="info_device">Enhetsinformation</string>
     <string name="info_processor">Processorinformation</string>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One app (Figma 1:1805): the white card, radius 22, 16 px padding and 12 px gaps; the app's
+     40 px icon (radius 9), its name and its size. The whole card opens the app's dialog. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:cardBackgroundColor="@color/card_surface"
+    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardElevation="@dimen/_3sdp"
+    app:rippleColor="@color/ripple_on_light"
+    app:strokeWidth="0dp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_13sdp">
+
+        <ImageView
+            android:id="@+id/app_icon"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_title"
+                android:textDirection="locale"
+                android:textSize="@dimen/_12ssp"
+                app:lineHeight="@dimen/_15ssp"
+                tools:text="AI Junk Cleaner" />
+
+            <TextView
+                android:id="@+id/app_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_value"
+                android:textDirection="locale"
+                android:textSize="@dimen/_9ssp"
+                app:lineHeight="@dimen/_15ssp"
+                tools:text="123.43 MB" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

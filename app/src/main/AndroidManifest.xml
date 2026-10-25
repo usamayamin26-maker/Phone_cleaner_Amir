@@ -49,6 +49,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".presentation.appmanager.AppCleanerActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".presentation.deviceinfo.DeviceInfoActivity"
             android:exported="false" />
 
