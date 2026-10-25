@@ -1,8 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Light palette. Every name here has the same name in values-night/colors.xml.
-         Values are read from the Figma light frames; never a raw hex in a layout or in code. -->
+    <!-- The app's palette, read from the Figma file and named by role. The app is light only, so
+         there is no values-night counterpart. Never a raw hex in a layout or in code.
 
-    <!-- TODO(figma): read from the Home frame. Placeholder until the palette is pulled. -->
-    <color name="background">#FFFFFFFF</color>
+         Where Figma lays a translucent white over the screen background and the surface also
+         carries an elevation shadow, the colour here is that translucent white already composited
+         over screen_background: Android draws an elevation shadow under the whole outline, so a
+         translucent card would show its own shadow through it. -->
+
+    <!-- Screen background (Figma "Background", 1:4211): a flat fill and two radial glows. -->
+    <color name="screen_background">#FFF7F9FF</color>
+    <color name="screen_glow_lavender">#A6DDD6FE</color>
+    <color name="screen_glow_lavender_end">#00DDD6FE</color>
+    <color name="screen_glow_blue">#475B8CFF</color>
+    <color name="screen_glow_blue_end">#005B8CFF</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FF171C35</color>
+    <color name="text_title">#E6000000</color>
+    <color name="text_value">#B5000000</color>
+    <color name="text_label_strong">#FF171A2B</color>
+    <color name="text_on_header">#FFFFFFFF</color>
+    <color name="text_on_tile">#FFFFFFFF</color>
+    <color name="text_on_primary">#FFFFFFFF</color>
+    <color name="text_accent">#FF0041FF</color>
+
+    <!-- Icons -->
+    <color name="icon_back">#FF171A2B</color>
+    <color name="icon_chevron">#80000000</color>
+    <color name="icon_on_header">#FFFFFFFF</color>
+    <color name="icon_accent">#FF0041FF</color>
+
+    <!-- Cards -->
+    <color name="card_surface">#FFFFFFFF</color>
+    <color name="card_glass">#FFFDFDFF</color>
+    <color name="card_glass_stroke">#D9FFFFFF</color>
+    <color name="card_power_stroke">#FFE8EEFF</color>
+    <color name="card_action_shadow">#FF4F7CFF</color>
+    <!-- Spot shadow under the white cards: Figma's drop shadow is 8% black, lighter than the
+         platform default, so the shadow colour is dimmed (API 28+; older versions keep the
+         default). -->
+    <color name="card_shadow">#66000000</color>
+    <color name="icon_tile_fill">#1F0041FF</color>
+    <color name="header_tile_fill">#FFD9E3FF</color>
+    <color name="header_tile_stroke">#420041FF</color>
+    <color name="battery_header_start">#FFCFEBFF</color>
+    <color name="battery_header_end">#FFD9CDFC</color>
+
+    <!-- Home -->
+    <color name="usage_pill_surface">#FFFFFFFF</color>
+    <color name="usage_dot">#FF4F7CFF</color>
+    <color name="usage_dot_glow">#FF67C7FF</color>
+    <color name="usage_dot_glow_end">#0067C7FF</color>
+    <color name="robot_circle_fill">#FFFFFFFF</color>
+    <color name="robot_circle_stroke">#91FFFFFF</color>
+    <color name="robot_shadow">#2E6366F1</color>
+    <color name="robot_shadow_end">#006366F1</color>
+    <color name="scan_button_surface">#FFFFFFFF</color>
+    <color name="scan_button_stroke">#D9FFFFFF</color>
+    <color name="action_icon_start">#FFFFFFFF</color>
+    <color name="action_icon_end">#FF95D8FF</color>
+    <color name="action_icon_stroke">#BFFFFFFF</color>
+
+    <!-- Power Saving Mode switch. The "on" thumb is read from batter_info_2.png: Figma only has
+         the "off" state. -->
+    <color name="switch_track">#FFDFDFDF</color>
+    <color name="switch_thumb_off">#FF7C7C7C</color>
+    <color name="switch_thumb_on">#FF0041FF</color>
+
+    <!-- Primary gradient button (Figma "Button", 1:334). -->
+    <color name="primary_gradient_start">#FF4F7CFF</color>
+    <color name="primary_gradient_center">#FF6366F1</color>
+    <color name="primary_gradient_end">#FF8B5CF6</color>
+    <color name="primary_button_shadow">#996366F1</color>
+
+    <!-- Pressed states -->
+    <color name="ripple_on_light">#1F0041FF</color>
+    <color name="ripple_on_primary">#33FFFFFF</color>
 </resources>

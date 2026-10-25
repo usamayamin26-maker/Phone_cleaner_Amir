@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The header of an inner screen (Figma 1:1914): the shared back button and the screen title,
+     on a 44 px row with a 20 px gutter. The title weight differs per screen in the design (Device
+     Info bold, the others semi-bold), so the activity sets it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/_35sdp"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/_16sdp">
+
+    <include
+        android:id="@+id/back_button"
+        layout="@layout/view_back_button" />
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto_semi_bold"
+        android:letterSpacing="-0.025"
+        android:textColor="@color/text_title"
+        android:textSize="@dimen/_14ssp"
+        app:lineHeight="@dimen/_17ssp" />
+
+</LinearLayout>

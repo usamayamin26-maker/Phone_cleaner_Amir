@@ -1,24 +1,38 @@
 package com.phone.cleaner.utils
 
 import android.content.Context
+import android.graphics.ImageDecoder
 import android.graphics.Rect
+import android.graphics.drawable.AnimatedImageDrawable
+import android.os.Build
 import android.text.format.Formatter
+import android.util.Log
 import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.ConfigurationCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import com.phone.cleaner.R
 import com.phone.cleaner.presentation.components.CompositeTouchDelegate
+import java.text.NumberFormat
+import java.util.Locale
+
+private const val TAG = "Extensions"
 
 // ---- String ----
 
-fun String?.orNotAvailable(): String = if (isNullOrBlank()) "-" else this
+/** The value, or the design's "-" from strings.xml when the device did not report one. */
+fun String?.orNotAvailable(context: Context): String =
+    if (isNullOrBlank()) context.getString(R.string.value_not_available) else this
 
 // ---- View ----
 
@@ -115,12 +129,48 @@ fun View.expandTouchTarget(minimumDp: Int = 48) {
     }
 }
 
+/**
+ * Plays an animated image (the Home robot GIF). [AnimatedImageDrawable] exists from API 28; below
+ * that, and if decoding fails, the view keeps its static `src`, which is the first frame.
+ */
+fun ImageView.playAnimatedImage(@DrawableRes resId: Int) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return
+    try {
+        val drawable = ImageDecoder.decodeDrawable(ImageDecoder.createSource(resources, resId))
+        setImageDrawable(drawable)
+        (drawable as? AnimatedImageDrawable)?.start()
+    } catch (e: Exception) {
+        Log.w(TAG, "Animated image not decoded, keeping the still frame", e)
+    }
+}
+
 // ---- Long ----
 
 /** A byte count as the platform writes it, in the app's language: "357 MB", "3.75 GB". */
 fun Long.toReadableSize(context: Context): String = Formatter.formatFileSize(context, this)
 
 // ---- Context ----
+
+/** The language the app is shown in, which is what numbers are written in. */
+val Context.appLocale: Locale
+    get() = ConfigurationCompat.getLocales(resources.configuration)[0] ?: Locale.getDefault()
+
+/**
+ * A number in the app's language and digits: "4.07", "٤٫٠٧". No thousands separator: the design
+ * writes "1080 x 2210", "4265 mV" and "5000 mah".
+ */
+fun Context.formatNumber(value: Number, maxFractionDigits: Int = 0, minFractionDigits: Int = 0): String =
+    NumberFormat.getInstance(appLocale).apply {
+        isGroupingUsed = false
+        maximumFractionDigits = maxFractionDigits
+        minimumFractionDigits = minFractionDigits
+    }.format(value)
+
+/** A 0..100 value as a percentage in the app's language: 56.31 -> "56.31%". */
+fun Context.formatPercent(value: Float, maxFractionDigits: Int = 2): String =
+    NumberFormat.getPercentInstance(appLocale).apply {
+        maximumFractionDigits = maxFractionDigits
+    }.format(value / 100.0)
 
 fun Context.toast(message: String, long: Boolean = false) {
     Toast.makeText(this, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).show()

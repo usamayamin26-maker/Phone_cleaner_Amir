@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">Smart Clean Pro</string>
+    <string name="app_name">AI Phone Cleaner</string>
+
+    <!-- Shared -->
+    <string name="cd_back">Back</string>
+    <!-- A value the device does not report. -->
+    <string name="value_not_available">-</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+
+    <!-- Home -->
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">Settings</string>
+    <string name="home_storage_usage">Storage Usage</string>
+    <string name="home_ram_usage">RAM Usage</string>
+    <!-- "56.31% used of 128 GB" / "4.03 GB used of 8 GB" -->
+    <string name="home_used_of">%1$s used of %2$s</string>
+    <string name="home_scan_now">Scan Now</string>
+    <string name="home_quick_actions">Quick Actions</string>
+    <string name="action_ai_junk_cleaner">Ai Junk Cleaner</string>
+    <string name="action_delete_duplicates">Delete Duplicates</string>
+    <string name="action_app_cleaner">App Cleaner</string>
+    <string name="action_wa_cleaner">WA Cleaner</string>
+
+    <!-- Device Info -->
+    <string name="device_info_title">Device Info</string>
+
+    <!-- Battery Info -->
+    <string name="battery_info_title">Battery Info</string>
 </resources>

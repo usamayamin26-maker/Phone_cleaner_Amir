@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:1918 (shared back button chevron), 20 x 20. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:autoMirrored="true"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <path
+        android:pathData="M12.5,15L7.5,10L12.5,5"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/icon_back"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

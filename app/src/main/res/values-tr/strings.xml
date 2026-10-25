@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Phone Cleaner</string>
+    <string name="cd_back">Geri</string>
+    <string name="value_not_available">-</string>
+    <string name="error_generic">Bir sorun oluştu. Lütfen tekrar deneyin.</string>
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">Ayarlar</string>
+    <string name="home_storage_usage">Depolama Kullanımı</string>
+    <string name="home_ram_usage">RAM Kullanımı</string>
+    <string name="home_used_of">%2$s alanın %1$s kadarı kullanılıyor</string>
+    <string name="home_scan_now">Şimdi Tara</string>
+    <string name="home_quick_actions">Hızlı İşlemler</string>
+    <string name="action_ai_junk_cleaner">YZ Gereksiz Dosya Temizleyici</string>
+    <string name="action_delete_duplicates">Kopyaları Sil</string>
+    <string name="action_app_cleaner">Uygulama Temizleyici</string>
+    <string name="action_wa_cleaner">WA Temizleyici</string>
+    <string name="device_info_title">Cihaz Bilgisi</string>
+    <string name="battery_info_title">Pil Bilgisi</string>
+</resources>

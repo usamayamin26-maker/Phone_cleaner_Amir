@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Phone Cleaner</string>
+    <string name="cd_back">वापस</string>
+    <string name="value_not_available">-</string>
+    <string name="error_generic">कुछ गलत हो गया। कृपया फिर से कोशिश करें।</string>
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">सेटिंग</string>
+    <string name="home_storage_usage">स्टोरेज उपयोग</string>
+    <string name="home_ram_usage">RAM उपयोग</string>
+    <string name="home_used_of">%2$s में से %1$s उपयोग में</string>
+    <string name="home_scan_now">अभी स्कैन करें</string>
+    <string name="home_quick_actions">त्वरित कार्य</string>
+    <string name="action_ai_junk_cleaner">AI जंक क्लीनर</string>
+    <string name="action_delete_duplicates">डुप्लिकेट हटाएँ</string>
+    <string name="action_app_cleaner">ऐप क्लीनर</string>
+    <string name="action_wa_cleaner">WA क्लीनर</string>
+    <string name="device_info_title">डिवाइस जानकारी</string>
+    <string name="battery_info_title">बैटरी जानकारी</string>
+</resources>

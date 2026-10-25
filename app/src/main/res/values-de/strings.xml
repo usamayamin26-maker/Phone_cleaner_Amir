@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Phone Cleaner</string>
+    <string name="cd_back">Zurück</string>
+    <string name="value_not_available">-</string>
+    <string name="error_generic">Etwas ist schiefgelaufen. Bitte versuche es erneut.</string>
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">Einstellungen</string>
+    <string name="home_storage_usage">Speichernutzung</string>
+    <string name="home_ram_usage">RAM-Nutzung</string>
+    <string name="home_used_of">%1$s von %2$s belegt</string>
+    <string name="home_scan_now">Jetzt scannen</string>
+    <string name="home_quick_actions">Schnellaktionen</string>
+    <string name="action_ai_junk_cleaner">KI-Junk-Reiniger</string>
+    <string name="action_delete_duplicates">Duplikate löschen</string>
+    <string name="action_app_cleaner">App-Reiniger</string>
+    <string name="action_wa_cleaner">WA-Reiniger</string>
+    <string name="device_info_title">Geräteinfo</string>
+    <string name="battery_info_title">Akkuinfo</string>
+</resources>

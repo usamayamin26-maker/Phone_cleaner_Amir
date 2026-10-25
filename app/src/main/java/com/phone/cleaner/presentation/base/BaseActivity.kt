@@ -1,7 +1,9 @@
 package com.phone.cleaner.presentation.base
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -30,8 +32,23 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     /** Set false on screens that draw their own insets (a header that bleeds behind the bars). */
     protected open val applyDefaultInsets: Boolean = true
 
+    /**
+     * True on a screen whose top is dark (the Home header), so the status bar icons are drawn
+     * light. The app is light only, so this never follows the phone's dark mode.
+     */
+    protected open val darkStatusBarContent: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        // The bar styles are fixed: the default follows the phone's dark mode, which would draw
+        // white status icons over this light-only app's light screens.
+        enableEdgeToEdge(
+            statusBarStyle = if (darkStatusBarContent) {
+                SystemBarStyle.dark(Color.TRANSPARENT)
+            } else {
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
+            },
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+        )
         super.onCreate(savedInstanceState)
         _binding = bindingInflater(layoutInflater)
         setContentView(binding.root)

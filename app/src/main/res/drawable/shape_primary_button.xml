@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:334: the primary call to action. A 97.5 degree gradient, which is left to right. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_on_primary">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/_58sdp" />
+            <gradient
+                android:angle="0"
+                android:centerColor="@color/primary_gradient_center"
+                android:endColor="@color/primary_gradient_end"
+                android:startColor="@color/primary_gradient_start"
+                android:type="linear" />
+        </shape>
+    </item>
+</ripple>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Phone Cleaner</string>
+    <string name="cd_back">뒤로</string>
+    <string name="value_not_available">-</string>
+    <string name="error_generic">문제가 발생했습니다. 다시 시도해 주세요.</string>
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">설정</string>
+    <string name="home_storage_usage">저장공간 사용량</string>
+    <string name="home_ram_usage">RAM 사용량</string>
+    <string name="home_used_of">%2$s 중 %1$s 사용</string>
+    <string name="home_scan_now">지금 검사</string>
+    <string name="home_quick_actions">빠른 실행</string>
+    <string name="action_ai_junk_cleaner">AI 정크 클리너</string>
+    <string name="action_delete_duplicates">중복 삭제</string>
+    <string name="action_app_cleaner">앱 클리너</string>
+    <string name="action_wa_cleaner">WA 클리너</string>
+    <string name="device_info_title">기기 정보</string>
+    <string name="battery_info_title">배터리 정보</string>
+</resources>

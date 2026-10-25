@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The one back button every inner screen uses (Figma 1:1916, from the Device Info header):
+     a 32 x 44 hit area with the 20 px chevron 6 px from its start. Include it with its own id;
+     the include's root takes the click, the spoken label and expandTouchTarget(). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_26sdp"
+    android:layout_height="@dimen/_35sdp"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:clickable="true"
+    android:contentDescription="@string/cd_back"
+    android:focusable="true">
+
+    <ImageView
+        android:layout_width="@dimen/_16sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_back" />
+
+</FrameLayout>

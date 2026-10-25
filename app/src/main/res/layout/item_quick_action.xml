@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One Home quick action (Figma 1:2337): 169 x 77.75, radius 16, translucent white with a white
+     border and a soft blue shadow; a 44 px gradient circle with the icon, then the label. Figma wraps
+     the labels at 73 to 82 px so each reads on two lines; a 61ssp cap gives the same breaks with
+     the Android Roboto metrics. It is ssp, a measure of the text, so it grows with the font size.
+     When a word no longer fits beside the icon (large font sizes, long words in some languages),
+     MainActivity stacks the label under the icon instead of breaking the word. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:minHeight="@dimen/_62sdp"
+    android:outlineAmbientShadowColor="@color/card_action_shadow"
+    android:outlineSpotShadowColor="@color/card_action_shadow"
+    app:cardBackgroundColor="@color/card_glass"
+    app:cardCornerRadius="@dimen/_13sdp"
+    app:cardElevation="@dimen/_4sdp"
+    app:rippleColor="@color/ripple_on_light"
+    app:strokeColor="@color/card_glass_stroke"
+    app:strokeWidth="@dimen/_1sdp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:id="@+id/action_row"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/_62sdp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:paddingVertical="@dimen/_10sdp">
+
+        <FrameLayout
+            android:id="@+id/action_icon_frame"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/shape_action_icon_bg">
+
+            <ImageView
+                android:id="@+id/action_icon"
+                android:layout_width="@dimen/_21sdp"
+                android:layout_height="@dimen/_21sdp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/action_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:hyphenationFrequency="normal"
+            android:maxWidth="@dimen/_61ssp"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_12ssp"
+            app:lineHeight="@dimen/_16ssp" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

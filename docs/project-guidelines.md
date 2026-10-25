@@ -169,9 +169,9 @@ Activities and fragments are split by role:
 
 ### Theme
 
-The theme parent is `Theme.Material3.DayNight.NoActionBar`. Dark mode is supported: anything that
-differs between light and dark is a resource with a `values-night/` counterpart, never a branch in
-code.
+The theme parent is `Theme.Material3.Light.NoActionBar`. The app is light only - there is no dark
+design and none is built - so it stays light whatever the phone's setting. There is no
+`values-night/` folder.
 
 ### Sizes and text sizes
 
@@ -190,9 +190,9 @@ ratio between the design frame and 300. Always convert:
 Figma px -> sdp/ssp: round(px * 300 / designFrameWidth)
 ```
 
-Never copy Figma px values 1:1. Read the frame width from the PhoneCleaner Figma file before the
-first screen and write it here. If the frames are 390px wide the factor is `300 / 390`: a 24px gap
-is `@dimen/_18sdp` and a 40px title is `@dimen/_31ssp`. Round to the nearest whole number, with a floor of 1; keep a 0 as 0, and keep
+Never copy Figma px values 1:1. The PhoneCleaner design draws its screens in 375px-wide frames
+(the 3x exports are 1125 px wide; confirm in Figma), so the factor is `300 / 375`: a 24px gap is
+`@dimen/_19sdp` and a 20px title is `@dimen/_16ssp`. Round to the nearest whole number, with a floor of 1; keep a 0 as 0, and keep
 hairline (1px) strokes at `@dimen/_1sdp` so borders stay visible.
 
 Screens that exist in the design keep the gutter measured from Figma; screens with no design
@@ -200,14 +200,24 @@ frame use a 14sdp gutter.
 
 ### Colors
 
-Every color used in the designs gets a named entry. `res/values/colors.xml` holds the light palette
-and `res/values-night/colors.xml` holds the dark one, with exactly the same names in both files.
+Every color used in the designs gets a named entry in `res/values/colors.xml`, named by its role.
 Never write a raw hex value in a layout, a style or code.
 
-### Strings
+### Strings and languages
+
+Localization: the same 18 languages as UniversalRemoteControl, done the same way - en (default) plus
+es, fr, de, pt, it, ja, ko, zh, ar, hi, ru, tr, nl, pl, sv, nb, da: a values-<tag>/strings.xml per
+language with every string translated, res/xml/locales_config.xml listing all 18 and
+android:localeConfig on the application, the stored language applied in BaseApp (already there),
+and a Language screen with the AppLanguage list (tag, flag emoji, native and English name string)
+as in that project. Every new string is added to all 18 files in the same task - never English-only.
+Arabic is right to left, so every screen is checked in Arabic.
+
+Names: the app (launcher label, app_name) is "AI Phone Cleaner"; the splash keeps the design's
+"Ai Junk Cleaner"; the Home header reads "Smart Cleaner Pro". Three separate strings.
 
 Never hardcode user-visible text in a layout or in code. Every such string lives in
-`res/values/strings.xml`, because localization is planned.
+`res/values/strings.xml`, with its translation in every `values-<tag>/strings.xml`.
 
 Where the design paints part of a sentence differently - a different colour, weight or a gradient -
 keep the whole sentence in one string and put the highlighted part in a second string, then apply
@@ -224,11 +234,11 @@ references it.
 
 - Drawables: `shape_` for XML shape drawables, `img_` for PNG or WEBP images, `ic_` for vector
   icons.
-- Fonts coming from the design go in `res/font`, one file per weight (`inter_bold.ttf`,
-  `inter_black.ttf`, ...). Every `TextView` names the concrete weight file the design asks for,
-  for example `android:fontFamily="@font/inter_black"`, never the `@font/inter` family.
+- Fonts go in `res/font`, one file per weight: `roboto_regular`, `roboto_medium`,
+  `roboto_semi_bold`, `roboto_bold`. Every `TextView` names the concrete weight file the design
+  asks for, for example `android:fontFamily="@font/roboto_semi_bold"`.
   The theme deliberately sets no `android:fontFamily`: a theme-level font family overrides the one
-  a view sets for itself, which silently renders every label at Inter Regular.
+  a view sets for itself, which silently renders every label in one weight.
 - Lottie JSON animations go in `res/raw`, played with `com.airbnb.android:lottie`.
 
 
@@ -239,19 +249,19 @@ it passes.
 
 ### Sizes
 
-- Convert every Figma value: `sdp` / `ssp` = `round(FigmaPx * 300 / 390)`. Never copy a Figma px
+- Convert every Figma value: `sdp` / `ssp` = `round(FigmaPx * 300 / 375)`. Never copy a Figma px
   value 1:1.
 
 ### Typography
 
-- Every `TextView` names its own weight file (`@font/inter_bold`, `@font/inter_semi_bold`, ...)
-  matching the Figma `fontWeight`. The theme sets no font family. Roboto is used only where Figma
-  uses it.
+- Every `TextView` names its own weight file - `@font/roboto_regular` (400), `@font/roboto_medium`
+  (500), `@font/roboto_semi_bold` (600), `@font/roboto_bold` (700) - matching the Figma
+  `fontWeight`. The design uses Roboto throughout. The theme sets no font family.
 - Every `TextView` sets `android:textColor` to a color resource. Nothing relies on a theme default.
 - `letterSpacing`, `textAllCaps` and line height are copied from Figma. Line height is set through
   `app:lineHeight` only, never `android:lineHeight`.
 - Line height is `ssp`: `app:lineHeight="@dimen/_16ssp"`, never `@dimen/_16sdp`, never `dp`, and never
-  a `lineSpacingMultiplier` in its place. Convert it with the same `round(FigmaPx * 300 / 390)` as
+  a `lineSpacingMultiplier` in its place. Convert it with the same `round(FigmaPx * 300 / 375)` as
   the text size.
   - **Why not sdp.** The text is `ssp`, which follows the user's font size (Settings > Display >
     Font size, up to 2.0 on a Pixel). `sdp` does not. With an `sdp` line height the glyphs grow and
@@ -271,12 +281,13 @@ it passes.
 - Gradient text uses `GradientTextView`. Two-tone text keeps the whole sentence in one string plus a
   highlight string, and applies the span in code.
 
-### Colors and modes
+### Colors
 
-- Every color — text, icon tint, fill, stroke, selected and pressed states — comes from a
-  light/dark pair read from both Figma frames. A resource named after a literal color ("white",
-  "black") is never used for something that flips between modes. Selected states get their own pair.
-  No mode checks in code.
+- Every color — text, icon tint, fill, stroke, selected and pressed states — is a named resource
+  read from Figma and named by its role (`text_primary`, `card_surface`), never by its value
+  ("white", "purple"). Selected and pressed states get their own resources.
+- The app is light only: there is no dark design and none is built. No values-night/ folder, no
+  mode checks in code.
 - Gradient angle and direction come from the Figma gradient handles. Diagonal is common, so never
   assume left to right.
 - Layers with opacity 0 or `visible: false` are not drawn. Use a transparent color resource when the
@@ -309,8 +320,8 @@ it passes.
 
 ### Verification before reporting
 
-- Run the screen on the test phone (a Pixel 6 Pro emulator if no phone is attached) in light mode
-  and in dark mode, screenshot both, and compare
+- Run the screen on the test phone (a Pixel 6 Pro emulator if none is attached), screenshot it
+  (with the phone itself in dark mode too, to prove the app stays light), and compare
   each against the Figma export side by side. List every remaining difference with its reason.
 - Check the screen once with the app in a right-to-left language (Arabic) and once on an API 26
   emulator at font size 2.0.

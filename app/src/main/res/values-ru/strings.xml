@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Phone Cleaner</string>
+    <string name="cd_back">Назад</string>
+    <string name="value_not_available">-</string>
+    <string name="error_generic">Что-то пошло не так. Повторите попытку.</string>
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">Настройки</string>
+    <string name="home_storage_usage">Использование памяти</string>
+    <string name="home_ram_usage">Использование ОЗУ</string>
+    <string name="home_used_of">Занято %1$s из %2$s</string>
+    <string name="home_scan_now">Сканировать</string>
+    <string name="home_quick_actions">Быстрые действия</string>
+    <string name="action_ai_junk_cleaner">ИИ-очистка мусора</string>
+    <string name="action_delete_duplicates">Удалить дубликаты</string>
+    <string name="action_app_cleaner">Очистка приложений</string>
+    <string name="action_wa_cleaner">Очистка WA</string>
+    <string name="device_info_title">Об устройстве</string>
+    <string name="battery_info_title">О батарее</string>
+</resources>

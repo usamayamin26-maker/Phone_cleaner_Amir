@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:2377 / 1:2381: the blue dot on the Home usage pills with its cyan glow. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:endColor="@color/usage_dot_glow_end"
+                android:gradientRadius="50%"
+                android:startColor="@color/usage_dot_glow"
+                android:type="radial" />
+        </shape>
+    </item>
+    <item
+        android:width="@dimen/_4sdp"
+        android:height="@dimen/_4sdp"
+        android:gravity="center">
+        <shape android:shape="oval">
+            <solid android:color="@color/usage_dot" />
+        </shape>
+    </item>
+</layer-list>

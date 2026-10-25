@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Phone Cleaner</string>
+    <string name="cd_back">Tillbaka</string>
+    <string name="value_not_available">-</string>
+    <string name="error_generic">Något gick fel. Försök igen.</string>
+    <string name="home_title">Smart Cleaner Pro</string>
+    <string name="cd_settings">Inställningar</string>
+    <string name="home_storage_usage">Lagringsanvändning</string>
+    <string name="home_ram_usage">RAM-användning</string>
+    <string name="home_used_of">%1$s av %2$s används</string>
+    <string name="home_scan_now">Skanna nu</string>
+    <string name="home_quick_actions">Snabbåtgärder</string>
+    <string name="action_ai_junk_cleaner">AI-skräprensare</string>
+    <string name="action_delete_duplicates">Ta bort dubbletter</string>
+    <string name="action_app_cleaner">Apprensare</string>
+    <string name="action_wa_cleaner">WA-rensare</string>
+    <string name="device_info_title">Enhetsinfo</string>
+    <string name="battery_info_title">Batteriinfo</string>
+</resources>
