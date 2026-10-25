@@ -10,6 +10,13 @@
     <string name="state_off">Desactivado</string>
     <string name="error_generic">Algo salió mal. Inténtalo de nuevo.</string>
     <string name="action_continue">Continuar</string>
+    <string name="permission_title">Se necesita permiso</string>
+    <string name="permission_message_media">%1$s necesita acceso a tus fotos y vídeos para encontrar lo que se puede limpiar. Tus archivos se quedan en tu dispositivo.</string>
+    <string name="permission_message_all_files">%1$s necesita acceso a todos tus archivos para encontrar lo que se puede limpiar. Tus archivos se quedan en tu dispositivo.</string>
+    <string name="permission_message_settings">El acceso a tus archivos está desactivado. Actívalo en Ajustes, en Permisos, para continuar. Tus archivos se quedan en tu dispositivo.</string>
+    <string name="permission_allow">Permitir ahora</string>
+    <string name="permission_open_settings">Abrir Ajustes</string>
+    <string name="permission_not_now">Ahora no</string>
     <string name="cd_settings">Ajustes</string>
     <string name="home_storage_usage">Uso de almacenamiento</string>
     <string name="home_ram_usage">Uso de RAM</string>

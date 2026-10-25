@@ -10,6 +10,13 @@
     <string name="state_off">Aus</string>
     <string name="error_generic">Etwas ist schiefgelaufen. Bitte versuche es erneut.</string>
     <string name="action_continue">Weiter</string>
+    <string name="permission_title">Berechtigung erforderlich</string>
+    <string name="permission_message_media">%1$s braucht Zugriff auf deine Fotos und Videos, um zu finden, was bereinigt werden kann. Deine Dateien bleiben auf deinem Gerät.</string>
+    <string name="permission_message_all_files">%1$s braucht Zugriff auf alle deine Dateien, um zu finden, was bereinigt werden kann. Deine Dateien bleiben auf deinem Gerät.</string>
+    <string name="permission_message_settings">Der Zugriff auf deine Dateien ist deaktiviert. Erlaube ihn in den Einstellungen unter Berechtigungen, um fortzufahren. Deine Dateien bleiben auf deinem Gerät.</string>
+    <string name="permission_allow">Jetzt erlauben</string>
+    <string name="permission_open_settings">Einstellungen öffnen</string>
+    <string name="permission_not_now">Nicht jetzt</string>
     <string name="cd_settings">Einstellungen</string>
     <string name="home_storage_usage">Speichernutzung</string>
     <string name="home_ram_usage">RAM-Nutzung</string>

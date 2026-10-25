@@ -17,13 +17,18 @@ import android.os.LocaleList
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
+import coil3.request.crossfade
+import coil3.video.VideoFrameDecoder
 import com.phone.cleaner.di.SharedModule
 import com.phone.cleaner.utils.SharedPref
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class BaseApp : Application() {
+class BaseApp : Application(), SingletonImageLoader.Factory {
 
     override fun onCreate() {
         super.onCreate()
@@ -48,6 +53,16 @@ class BaseApp : Application() {
 
         applyStoredLanguage()
     }
+
+    /**
+     * Coil's app-wide image loader. The cleaners show photos and videos from MediaStore content
+     * URIs; the video decoder turns a video into a frame from its start.
+     */
+    override fun newImageLoader(context: PlatformContext): ImageLoader =
+        ImageLoader.Builder(context)
+            .components { add(VideoFrameDecoder.Factory()) }
+            .crossfade(true)
+            .build()
 
     /**
      * Applies the language the user picked, here in the application, before the first activity

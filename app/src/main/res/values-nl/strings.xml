@@ -10,6 +10,13 @@
     <string name="state_off">Uit</string>
     <string name="error_generic">Er is iets misgegaan. Probeer het opnieuw.</string>
     <string name="action_continue">Doorgaan</string>
+    <string name="permission_title">Toestemming vereist</string>
+    <string name="permission_message_media">%1$s heeft toegang tot je foto\'s en video\'s nodig om te vinden wat opgeruimd kan worden. Je bestanden blijven op je apparaat.</string>
+    <string name="permission_message_all_files">%1$s heeft toegang tot al je bestanden nodig om te vinden wat opgeruimd kan worden. Je bestanden blijven op je apparaat.</string>
+    <string name="permission_message_settings">Toegang tot je bestanden staat uit. Sta het toe in Instellingen, onder Rechten, om door te gaan. Je bestanden blijven op je apparaat.</string>
+    <string name="permission_allow">Nu toestaan</string>
+    <string name="permission_open_settings">Instellingen openen</string>
+    <string name="permission_not_now">Niet nu</string>
     <string name="cd_settings">Instellingen</string>
     <string name="home_storage_usage">Opslaggebruik</string>
     <string name="home_ram_usage">RAM-gebruik</string>

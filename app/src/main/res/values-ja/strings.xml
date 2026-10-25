@@ -10,6 +10,13 @@
     <string name="state_off">オフ</string>
     <string name="error_generic">問題が発生しました。もう一度お試しください。</string>
     <string name="action_continue">続ける</string>
+    <string name="permission_title">権限が必要です</string>
+    <string name="permission_message_media">%1$s で整理できるものを探すには、写真と動画へのアクセスが必要です。ファイルは端末から出ません。</string>
+    <string name="permission_message_all_files">%1$s で整理できるものを探すには、すべてのファイルへのアクセスが必要です。ファイルは端末から出ません。</string>
+    <string name="permission_message_settings">ファイルへのアクセスがオフになっています。続けるには、設定の「権限」で許可してください。ファイルは端末から出ません。</string>
+    <string name="permission_allow">今すぐ許可</string>
+    <string name="permission_open_settings">設定を開く</string>
+    <string name="permission_not_now">後で</string>
     <string name="cd_settings">設定</string>
     <string name="home_storage_usage">ストレージ使用量</string>
     <string name="home_ram_usage">RAM使用量</string>

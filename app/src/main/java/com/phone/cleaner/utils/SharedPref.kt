@@ -39,4 +39,13 @@ class SharedPref(context: Context) {
     var isLocaleChangePending: Boolean
         get() = sharedPref.getBoolean("isLocaleChangePending", false)
         set(value) = prefEdit.putBoolean("isLocaleChangePending", value).apply()
+
+    /**
+     * Set the first time the storage permission dialog is launched and never cleared. Android
+     * answers "never asked" and "denied for good" the same way, so this is what tells them apart:
+     * asked before, no rationale owed and still not granted means the user has to go to settings.
+     */
+    var hasAskedStorageAccess: Boolean
+        get() = sharedPref.getBoolean("hasAskedStorageAccess", false)
+        set(value) = prefEdit.putBoolean("hasAskedStorageAccess", value).apply()
 }

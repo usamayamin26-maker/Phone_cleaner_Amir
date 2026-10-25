@@ -10,6 +10,13 @@
     <string name="state_off">إيقاف</string>
     <string name="error_generic">حدث خطأ ما. يُرجى المحاولة مرة أخرى.</string>
     <string name="action_continue">متابعة</string>
+    <string name="permission_title">الإذن مطلوب</string>
+    <string name="permission_message_media">يحتاج %1$s إلى الوصول إلى صورك ومقاطع الفيديو للعثور على ما يمكن تنظيفه. تبقى ملفاتك على جهازك.</string>
+    <string name="permission_message_all_files">يحتاج %1$s إلى الوصول إلى جميع ملفاتك للعثور على ما يمكن تنظيفه. تبقى ملفاتك على جهازك.</string>
+    <string name="permission_message_settings">الوصول إلى ملفاتك متوقف. اسمح به في الإعدادات ضمن الأذونات للمتابعة. تبقى ملفاتك على جهازك.</string>
+    <string name="permission_allow">السماح الآن</string>
+    <string name="permission_open_settings">فتح الإعدادات</string>
+    <string name="permission_not_now">ليس الآن</string>
     <string name="cd_settings">الإعدادات</string>
     <string name="home_storage_usage">استخدام التخزين</string>
     <string name="home_ram_usage">استخدام الذاكرة</string>

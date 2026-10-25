@@ -4,8 +4,10 @@ import androidx.room.Room
 import com.phone.cleaner.data.local.AppDatabase
 import com.phone.cleaner.data.repository.BatteryRepositoryImp
 import com.phone.cleaner.data.repository.DeviceInfoRepositoryImp
+import com.phone.cleaner.data.repository.StorageAccessRepositoryImp
 import com.phone.cleaner.domain.repository.BatteryRepository
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
+import com.phone.cleaner.domain.repository.StorageAccessRepository
 import com.phone.cleaner.domain.view_models.BatteryViewModel
 import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
 import com.phone.cleaner.domain.view_models.HomeViewModel
@@ -38,6 +40,9 @@ val SharedModule = module {
         Room.databaseBuilder(androidContext(), AppDatabase::class.java, Constants.DB_NAME).build()
     }
     single { get<AppDatabase>().aiScanResultDao() }
+
+    // ---- storage access, shared by every cleaner ----
+    single<StorageAccessRepository> { StorageAccessRepositoryImp(get()) }
 
     // ---- first run: splash, language, onboarding ----
     viewModel { SplashViewModel(get()) }

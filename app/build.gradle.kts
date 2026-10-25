@@ -128,4 +128,8 @@ dependencies {
 
     // lottie-anim
     implementation(libs.lottie)
+
+    // Coil 3: image thumbnails, with video frames through coil-video
+    implementation(libs.coil)
+    implementation(libs.coil.video)
 }

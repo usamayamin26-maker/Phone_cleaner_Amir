@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The app's one dialog (Figma 1:984 "Are You Sure?", 1:1881 uninstall, 1:2884 "Permission is
+     required"): a 332 px white card, radius 32, 20 px padding and 12 px between its parts - an
+     optional icon, the title, the message, the radius-16 primary button and a text button.
+     AppDialog fills it. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingHorizontal="@dimen/_18sdp"
+    android:paddingVertical="@dimen/_16sdp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="@color/dialog_shadow"
+        app:cardBackgroundColor="@color/dialog_surface"
+        app:cardCornerRadius="@dimen/_26sdp"
+        app:cardElevation="@dimen/_10sdp"
+        app:strokeColor="@color/dialog_stroke"
+        app:strokeWidth="@dimen/_1sdp"
+        tools:targetApi="28">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/_16sdp">
+
+            <!-- Uninstall shows the app's icon: 61 x 62, radius 13. -->
+            <ImageView
+                android:id="@+id/dialog_icon"
+                android:layout_width="@dimen/_49sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:importantForAccessibility="no"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_label_strong"
+                android:textSize="@dimen/_18ssp"
+                app:lineHeight="@dimen/_27ssp"
+                tools:text="@string/permission_title" />
+
+            <TextView
+                android:id="@+id/dialog_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_tertiary"
+                android:textSize="@dimen/_10ssp"
+                app:lineHeight="@dimen/_16ssp"
+                tools:text="@string/permission_message_settings" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dialog_primary"
+                style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_14ssp"
+                app:lineHeight="@dimen/_22ssp"
+                tools:text="@string/permission_allow" />
+
+            <!-- A text button, 44 px high. -->
+            <TextView
+                android:id="@+id/dialog_secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:gravity="center"
+                android:minHeight="@dimen/_35sdp"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_12ssp"
+                app:lineHeight="@dimen/_18ssp"
+                tools:text="@string/permission_not_now" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

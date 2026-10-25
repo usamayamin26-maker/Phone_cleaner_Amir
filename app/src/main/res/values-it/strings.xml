@@ -10,6 +10,13 @@
     <string name="state_off">Disattivo</string>
     <string name="error_generic">Si è verificato un problema. Riprova.</string>
     <string name="action_continue">Continua</string>
+    <string name="permission_title">Autorizzazione necessaria</string>
+    <string name="permission_message_media">%1$s ha bisogno di accedere a foto e video per trovare cosa si può pulire. I tuoi file restano sul dispositivo.</string>
+    <string name="permission_message_all_files">%1$s ha bisogno di accedere a tutti i tuoi file per trovare cosa si può pulire. I tuoi file restano sul dispositivo.</string>
+    <string name="permission_message_settings">L\'accesso ai file è disattivato. Consentilo in Impostazioni, sotto Autorizzazioni, per continuare. I tuoi file restano sul dispositivo.</string>
+    <string name="permission_allow">Consenti ora</string>
+    <string name="permission_open_settings">Apri Impostazioni</string>
+    <string name="permission_not_now">Non ora</string>
     <string name="cd_settings">Impostazioni</string>
     <string name="home_storage_usage">Uso della memoria</string>
     <string name="home_ram_usage">Uso della RAM</string>

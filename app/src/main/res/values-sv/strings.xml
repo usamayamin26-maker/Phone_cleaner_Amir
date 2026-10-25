@@ -10,6 +10,13 @@
     <string name="state_off">Av</string>
     <string name="error_generic">Något gick fel. Försök igen.</string>
     <string name="action_continue">Fortsätt</string>
+    <string name="permission_title">Behörighet krävs</string>
+    <string name="permission_message_media">%1$s behöver åtkomst till dina bilder och videor för att hitta det som kan rensas. Dina filer stannar på enheten.</string>
+    <string name="permission_message_all_files">%1$s behöver åtkomst till alla dina filer för att hitta det som kan rensas. Dina filer stannar på enheten.</string>
+    <string name="permission_message_settings">Åtkomst till dina filer är avstängd. Tillåt den i Inställningar under Behörigheter för att fortsätta. Dina filer stannar på enheten.</string>
+    <string name="permission_allow">Tillåt nu</string>
+    <string name="permission_open_settings">Öppna Inställningar</string>
+    <string name="permission_not_now">Inte nu</string>
     <string name="cd_settings">Inställningar</string>
     <string name="home_storage_usage">Lagringsanvändning</string>
     <string name="home_ram_usage">RAM-användning</string>

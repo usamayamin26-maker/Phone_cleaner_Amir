@@ -110,6 +110,12 @@
     <!-- Onboarding page indicator: the current page is a primary-gradient pill, the others dots. -->
     <color name="indicator_inactive">#334F7CFF</color>
 
+    <!-- Dialogs (Figma 1:984, 1:1881, 1:2884): a white card with a 75% white hairline and a violet
+         shadow over a dimmed, blurred screen. -->
+    <color name="dialog_surface">#FFFFFFFF</color>
+    <color name="dialog_stroke">#BFFFFFFF</color>
+    <color name="dialog_shadow">#596366F1</color>
+
     <!-- Pressed states -->
     <color name="ripple_on_light">#1F0041FF</color>
     <color name="ripple_on_primary">#33FFFFFF</color>

@@ -10,6 +10,13 @@
     <string name="state_off">Av</string>
     <string name="error_generic">Noe gikk galt. Prøv igjen.</string>
     <string name="action_continue">Fortsett</string>
+    <string name="permission_title">Tillatelse kreves</string>
+    <string name="permission_message_media">%1$s trenger tilgang til bildene og videoene dine for å finne det som kan ryddes. Filene dine blir på enheten.</string>
+    <string name="permission_message_all_files">%1$s trenger tilgang til alle filene dine for å finne det som kan ryddes. Filene dine blir på enheten.</string>
+    <string name="permission_message_settings">Tilgang til filene er slått av. Tillat det i Innstillinger under Tillatelser for å fortsette. Filene dine blir på enheten.</string>
+    <string name="permission_allow">Tillat nå</string>
+    <string name="permission_open_settings">Åpne Innstillinger</string>
+    <string name="permission_not_now">Ikke nå</string>
     <string name="cd_settings">Innstillinger</string>
     <string name="home_storage_usage">Lagringsbruk</string>
     <string name="home_ram_usage">RAM-bruk</string>

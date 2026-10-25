@@ -10,6 +10,13 @@
     <string name="state_off">बंद</string>
     <string name="error_generic">कुछ गलत हो गया। कृपया फिर से कोशिश करें।</string>
     <string name="action_continue">जारी रखें</string>
+    <string name="permission_title">अनुमति ज़रूरी है</string>
+    <string name="permission_message_media">साफ़ करने लायक चीज़ें ढूँढने के लिए %1$s को आपकी फ़ोटो और वीडियो का ऐक्सेस चाहिए। आपकी फ़ाइलें आपके डिवाइस पर ही रहती हैं।</string>
+    <string name="permission_message_all_files">साफ़ करने लायक चीज़ें ढूँढने के लिए %1$s को आपकी सभी फ़ाइलों का ऐक्सेस चाहिए। आपकी फ़ाइलें आपके डिवाइस पर ही रहती हैं।</string>
+    <string name="permission_message_settings">फ़ाइलों का ऐक्सेस बंद है। जारी रखने के लिए सेटिंग में अनुमतियों के तहत इसे चालू करें। आपकी फ़ाइलें आपके डिवाइस पर ही रहती हैं।</string>
+    <string name="permission_allow">अभी अनुमति दें</string>
+    <string name="permission_open_settings">सेटिंग खोलें</string>
+    <string name="permission_not_now">अभी नहीं</string>
     <string name="cd_settings">सेटिंग</string>
     <string name="home_storage_usage">स्टोरेज उपयोग</string>
     <string name="home_ram_usage">RAM उपयोग</string>

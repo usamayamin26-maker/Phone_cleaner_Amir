@@ -10,6 +10,13 @@
     <string name="state_off">Fra</string>
     <string name="error_generic">Noget gik galt. Prøv igen.</string>
     <string name="action_continue">Fortsæt</string>
+    <string name="permission_title">Tilladelse påkrævet</string>
+    <string name="permission_message_media">%1$s skal have adgang til dine billeder og videoer for at finde det, der kan ryddes op. Dine filer bliver på enheden.</string>
+    <string name="permission_message_all_files">%1$s skal have adgang til alle dine filer for at finde det, der kan ryddes op. Dine filer bliver på enheden.</string>
+    <string name="permission_message_settings">Adgang til dine filer er slået fra. Tillad det i Indstillinger under Tilladelser for at fortsætte. Dine filer bliver på enheden.</string>
+    <string name="permission_allow">Tillad nu</string>
+    <string name="permission_open_settings">Åbn Indstillinger</string>
+    <string name="permission_not_now">Ikke nu</string>
     <string name="cd_settings">Indstillinger</string>
     <string name="home_storage_usage">Lagerforbrug</string>
     <string name="home_ram_usage">RAM-forbrug</string>

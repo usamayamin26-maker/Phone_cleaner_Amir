@@ -10,6 +10,13 @@
     <string name="state_off">Wył.</string>
     <string name="error_generic">Coś poszło nie tak. Spróbuj ponownie.</string>
     <string name="action_continue">Dalej</string>
+    <string name="permission_title">Wymagane uprawnienie</string>
+    <string name="permission_message_media">Funkcja %1$s potrzebuje dostępu do zdjęć i filmów, aby znaleźć to, co można wyczyścić. Pliki zostają na urządzeniu.</string>
+    <string name="permission_message_all_files">Funkcja %1$s potrzebuje dostępu do wszystkich plików, aby znaleźć to, co można wyczyścić. Pliki zostają na urządzeniu.</string>
+    <string name="permission_message_settings">Dostęp do plików jest wyłączony. Zezwól na niego w Ustawieniach, w sekcji Uprawnienia, aby kontynuować. Pliki zostają na urządzeniu.</string>
+    <string name="permission_allow">Zezwól teraz</string>
+    <string name="permission_open_settings">Otwórz ustawienia</string>
+    <string name="permission_not_now">Nie teraz</string>
     <string name="cd_settings">Ustawienia</string>
     <string name="home_storage_usage">Wykorzystanie pamięci</string>
     <string name="home_ram_usage">Wykorzystanie RAM</string>

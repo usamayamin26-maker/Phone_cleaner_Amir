@@ -10,6 +10,13 @@
     <string name="state_off">Désactivé</string>
     <string name="error_generic">Un problème est survenu. Veuillez réessayer.</string>
     <string name="action_continue">Continuer</string>
+    <string name="permission_title">Autorisation requise</string>
+    <string name="permission_message_media">%1$s a besoin d\'accéder à vos photos et vidéos pour trouver ce qui peut être nettoyé. Vos fichiers restent sur votre appareil.</string>
+    <string name="permission_message_all_files">%1$s a besoin d\'accéder à tous vos fichiers pour trouver ce qui peut être nettoyé. Vos fichiers restent sur votre appareil.</string>
+    <string name="permission_message_settings">L\'accès à vos fichiers est désactivé. Autorisez-le dans les Paramètres, sous Autorisations, pour continuer. Vos fichiers restent sur votre appareil.</string>
+    <string name="permission_allow">Autoriser</string>
+    <string name="permission_open_settings">Ouvrir les Paramètres</string>
+    <string name="permission_not_now">Plus tard</string>
     <string name="cd_settings">Paramètres</string>
     <string name="home_storage_usage">Utilisation du stockage</string>
     <string name="home_ram_usage">Utilisation de la RAM</string>

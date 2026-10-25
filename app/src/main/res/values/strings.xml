@@ -17,6 +17,15 @@
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="action_continue">Continue</string>
 
+    <!-- Storage access (Figma 1:2884). %1$s is the feature asking, e.g. "Delete Duplicates". -->
+    <string name="permission_title">Permission is required</string>
+    <string name="permission_message_media">%1$s needs access to your photos and videos to find what can be cleaned. Your files stay on your device.</string>
+    <string name="permission_message_all_files">%1$s needs access to all your files to find what can be cleaned. Your files stay on your device.</string>
+    <string name="permission_message_settings">Access to your files is turned off. Allow it in Settings, under Permissions, to continue. Your files stay on your device.</string>
+    <string name="permission_allow">Allow Now</string>
+    <string name="permission_open_settings">Open Settings</string>
+    <string name="permission_not_now">Not Now</string>
+
     <!-- Home -->
     <string name="home_title" translatable="false">Smart Cleaner Pro</string>
     <string name="cd_settings">Settings</string>
