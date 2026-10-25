@@ -10,24 +10,39 @@ import androidx.annotation.StringRes
 import com.phone.cleaner.R
 import com.phone.cleaner.domain.entities.DeviceInfoContent
 import com.phone.cleaner.domain.entities.InfoListItem
+import com.phone.cleaner.utils.appLocale
 import com.phone.cleaner.utils.formatNumber
 import com.phone.cleaner.utils.formatPercent
 import com.phone.cleaner.utils.orNotAvailable
 import com.phone.cleaner.utils.toReadableSize
+import java.text.DateFormat
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 /**
  * Turns what the device reported into the label/value cards of a detail screen, in the app's
- * language. "Device Information" shows exactly the three rows of its design; the other sections
- * have no design and show the values a user can read something from.
+ * language. "Device Information" shows the three rows of its design, then model, brand, Android
+ * version and security patch in the same cards; the other sections have no design and show the
+ * values a user can read something from.
  */
 class DeviceInfoFormatter(private val context: Context) {
 
     fun format(content: DeviceInfoContent): List<InfoListItem> = when (content) {
-        is DeviceInfoContent.Device -> listOf(
-            row(R.string.label_screen_resolution, resolution(content.display)),
-            row(R.string.label_screen_size, screenSize(content.display)),
-            row(R.string.label_android_id, content.device.androidId),
-        )
+        is DeviceInfoContent.Device -> with(content.device) {
+            listOf(
+                row(R.string.label_screen_resolution, resolution(content.display)),
+                row(R.string.label_screen_size, screenSize(content.display)),
+                row(R.string.label_android_id, androidId),
+                row(R.string.label_model, model),
+                row(R.string.label_brand, brand.replaceFirstChar { it.titlecase(context.appLocale) }),
+                row(
+                    R.string.label_android_version,
+                    string(R.string.format_android_version, androidVersion, number(apiLevel)),
+                ),
+                row(R.string.label_security_patch, securityPatch?.let(::date)),
+            )
+        }
         is DeviceInfoContent.Processor -> with(content.processor) {
             listOf(
                 row(R.string.label_processor, socModel ?: hardware),
@@ -196,6 +211,14 @@ class DeviceInfoFormatter(private val context: Context) {
         } else {
             string(R.string.format_minutes, number(seconds / 60.0, 1))
         }
+    }
+
+    /** The build's "2026-09-05" as a date in the app's language; the raw text if it is not one. */
+    private fun date(isoDate: String): String = try {
+        val parsed = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).parse(isoDate)
+        if (parsed == null) isoDate else DateFormat.getDateInstance(DateFormat.MEDIUM, context.appLocale).format(parsed)
+    } catch (e: ParseException) {
+        isoDate
     }
 
     private fun yesNo(

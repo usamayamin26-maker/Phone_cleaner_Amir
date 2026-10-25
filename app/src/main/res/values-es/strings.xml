@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Atrás</string>
     <string name="value_not_available">-</string>
     <string name="value_yes">Sí</string>
@@ -10,14 +9,12 @@
     <string name="state_on">Activado</string>
     <string name="state_off">Desactivado</string>
     <string name="error_generic">Algo salió mal. Inténtalo de nuevo.</string>
-    <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Ajustes</string>
     <string name="home_storage_usage">Uso de almacenamiento</string>
     <string name="home_ram_usage">Uso de RAM</string>
     <string name="home_used_of">%1$s usado de %2$s</string>
     <string name="home_scan_now">Escanear ahora</string>
     <string name="home_quick_actions">Acciones rápidas</string>
-    <string name="action_ai_junk_cleaner">Limpiador de basura IA</string>
     <string name="action_delete_duplicates">Eliminar duplicados</string>
     <string name="action_app_cleaner">Limpiador de apps</string>
     <string name="action_wa_cleaner">Limpiador de WA</string>
@@ -33,6 +30,11 @@
     <string name="label_screen_resolution">Resolución de pantalla</string>
     <string name="label_screen_size">Tamaño de pantalla</string>
     <string name="label_android_id">ID de Android</string>
+    <string name="label_model">Modelo</string>
+    <string name="label_brand">Marca</string>
+    <string name="label_android_version">Versión de Android</string>
+    <string name="format_android_version">%1$s (API %2$s)</string>
+    <string name="label_security_patch">Parche de seguridad</string>
     <string name="format_resolution">%1$s × %2$s</string>
     <string name="format_inches">%1$s\"</string>
     <string name="label_processor">Procesador</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">뒤로</string>
     <string name="value_not_available">-</string>
     <string name="value_yes">예</string>
@@ -10,14 +9,12 @@
     <string name="state_on">켜짐</string>
     <string name="state_off">꺼짐</string>
     <string name="error_generic">문제가 발생했습니다. 다시 시도해 주세요.</string>
-    <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">설정</string>
     <string name="home_storage_usage">저장공간 사용량</string>
     <string name="home_ram_usage">RAM 사용량</string>
     <string name="home_used_of">%2$s 중 %1$s 사용</string>
     <string name="home_scan_now">지금 검사</string>
     <string name="home_quick_actions">빠른 실행</string>
-    <string name="action_ai_junk_cleaner">AI 정크 클리너</string>
     <string name="action_delete_duplicates">중복 삭제</string>
     <string name="action_app_cleaner">앱 클리너</string>
     <string name="action_wa_cleaner">WA 클리너</string>
@@ -33,6 +30,11 @@
     <string name="label_screen_resolution">화면 해상도</string>
     <string name="label_screen_size">화면 크기</string>
     <string name="label_android_id">Android ID</string>
+    <string name="label_model">모델</string>
+    <string name="label_brand">브랜드</string>
+    <string name="label_android_version">Android 버전</string>
+    <string name="format_android_version">%1$s (API %2$s)</string>
+    <string name="label_security_patch">보안 패치</string>
     <string name="format_resolution">%1$s × %2$s</string>
     <string name="format_inches">%1$s\"</string>
     <string name="label_processor">프로세서</string>

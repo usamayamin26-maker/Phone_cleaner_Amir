@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">戻る</string>
     <string name="value_not_available">-</string>
     <string name="value_yes">はい</string>
@@ -10,14 +9,12 @@
     <string name="state_on">オン</string>
     <string name="state_off">オフ</string>
     <string name="error_generic">問題が発生しました。もう一度お試しください。</string>
-    <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">設定</string>
     <string name="home_storage_usage">ストレージ使用量</string>
     <string name="home_ram_usage">RAM使用量</string>
     <string name="home_used_of">%2$s中%1$sを使用</string>
     <string name="home_scan_now">今すぐスキャン</string>
     <string name="home_quick_actions">クイックアクション</string>
-    <string name="action_ai_junk_cleaner">AIジャンククリーナー</string>
     <string name="action_delete_duplicates">重複を削除</string>
     <string name="action_app_cleaner">アプリクリーナー</string>
     <string name="action_wa_cleaner">WAクリーナー</string>
@@ -33,6 +30,11 @@
     <string name="label_screen_resolution">画面解像度</string>
     <string name="label_screen_size">画面サイズ</string>
     <string name="label_android_id">Android ID</string>
+    <string name="label_model">モデル</string>
+    <string name="label_brand">ブランド</string>
+    <string name="label_android_version">Android バージョン</string>
+    <string name="format_android_version">%1$s (API %2$s)</string>
+    <string name="label_security_patch">セキュリティパッチ</string>
     <string name="format_resolution">%1$s × %2$s</string>
     <string name="format_inches">%1$s\"</string>
     <string name="label_processor">プロセッサ</string>

@@ -216,6 +216,11 @@ Arabic is right to left, so every screen is checked in Arabic.
 Names: the app (launcher label, app_name) is "AI Phone Cleaner"; the splash keeps the design's
 "Ai Junk Cleaner"; the Home header reads "Smart Cleaner Pro". Three separate strings.
 
+Brand names are never translated: "AI Phone Cleaner", "Ai Junk Cleaner" and "Smart Cleaner Pro"
+stay in English in all 18 languages. They are `translatable="false"` in values/strings.xml and do
+not appear in any values-<tag>/strings.xml. Feature names (Device Info, Battery Info, Delete
+Duplicates, ...) are translated like any other text.
+
 Never hardcode user-visible text in a layout or in code. Every such string lives in
 `res/values/strings.xml`, with its translation in every `values-<tag>/strings.xml`.
 

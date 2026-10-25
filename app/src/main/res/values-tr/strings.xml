@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AI Phone Cleaner</string>
     <string name="cd_back">Geri</string>
     <string name="value_not_available">-</string>
     <string name="value_yes">Evet</string>
@@ -10,14 +9,12 @@
     <string name="state_on">Açık</string>
     <string name="state_off">Kapalı</string>
     <string name="error_generic">Bir sorun oluştu. Lütfen tekrar deneyin.</string>
-    <string name="home_title">Smart Cleaner Pro</string>
     <string name="cd_settings">Ayarlar</string>
     <string name="home_storage_usage">Depolama Kullanımı</string>
     <string name="home_ram_usage">RAM Kullanımı</string>
     <string name="home_used_of">%2$s alanın %1$s kadarı kullanılıyor</string>
     <string name="home_scan_now">Şimdi Tara</string>
     <string name="home_quick_actions">Hızlı İşlemler</string>
-    <string name="action_ai_junk_cleaner">YZ Gereksiz Dosya Temizleyici</string>
     <string name="action_delete_duplicates">Kopyaları Sil</string>
     <string name="action_app_cleaner">Uygulama Temizleyici</string>
     <string name="action_wa_cleaner">WA Temizleyici</string>
@@ -33,6 +30,11 @@
     <string name="label_screen_resolution">Ekran Çözünürlüğü</string>
     <string name="label_screen_size">Ekran Boyutu</string>
     <string name="label_android_id">Android Kimliği</string>
+    <string name="label_model">Model</string>
+    <string name="label_brand">Marka</string>
+    <string name="label_android_version">Android sürümü</string>
+    <string name="format_android_version">%1$s (API %2$s)</string>
+    <string name="label_security_patch">Güvenlik yaması</string>
     <string name="format_resolution">%1$s × %2$s</string>
     <string name="format_inches">%1$s\"</string>
     <string name="label_processor">İşlemci</string>
