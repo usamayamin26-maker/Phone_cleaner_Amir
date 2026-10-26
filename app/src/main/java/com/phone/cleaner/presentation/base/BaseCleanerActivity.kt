@@ -49,6 +49,12 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
 
     protected abstract val logTag: String
 
+    /** A section to open as soon as the results are in (Scan Now opens Junk Files this way). */
+    protected open val sectionToOpen: String? = null
+
+    /** [sectionToOpen], until it has been opened once or turned out not to be there. */
+    private var pendingSection: String? = null
+
     private val storageAccess: StorageAccessRepository by inject()
     private val sharedPref: SharedPref by inject()
 
@@ -80,6 +86,7 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
         // A fresh ViewModel has no results - first launch, or the process was killed and the
         // pages restored - so the screen starts again from scanning, whatever page was showing.
         if (!cleaner.hasStarted) {
+            pendingSection = sectionToOpen
             showScanning()
             // Driven from here, not from onStart: a one-shot event emitted during start-up is lost.
             accessGate.request()
@@ -144,6 +151,10 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
             state.isScanComplete && (current == null || current is CleanerScanFragment) -> {
                 Log.d(logTag, "Showing results")
                 supportFragmentManager.commit { replace(R.id.cleaner_container, CleanerResultsFragment()) }
+                pendingSection?.let { key ->
+                    pendingSection = null
+                    if (state.section(key) != null) openSection(key)
+                }
             }
         }
         if (state.error != null) {

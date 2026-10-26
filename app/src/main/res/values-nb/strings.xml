@@ -235,4 +235,22 @@
     <string name="rate_done">Ferdig</string>
     <string name="rate_thanks">Takk for tilbakemeldingen!</string>
     <string name="rate_star_description">%1$s av %2$s stjerner</string>
+
+    <string name="scan_now_title">Telefonrenser</string>
+    <string name="scan_now_completed">Skanningen er ferdig</string>
+    <string name="scan_now_again">Skann på nytt</string>
+    <string name="health_security">Systemsikkerhet</string>
+    <string name="health_vpn">VPN-tilkobling</string>
+    <string name="health_clean_title">Enheten er helt ryddet</string>
+    <string name="health_clean_message">Enheten har ingen søppelfiler</string>
+    <string name="health_junk_found_title">Søppelfiler funnet</string>
+    <string name="health_junk_found_message">%1$s kan ryddes. Trykk for å se gjennom.</string>
+    <string name="health_junk_found_message_no_size">Noe søppel kan ryddes. Trykk for å se gjennom.</string>
+    <string name="health_junk_access_message">Gi tilgang til alle filer for å se etter søppel.</string>
+    <string name="health_developer_off">Utvikleralternativer er av</string>
+    <string name="health_developer_on">Utvikleralternativer er på. Trykk for å se gjennom.</string>
+    <string name="health_usb_off">USB-feilsøking er av</string>
+    <string name="health_usb_on">USB-feilsøking er på. Trykk for å se gjennom.</string>
+    <string name="health_vpn_off">Ikke koblet til VPN</string>
+    <string name="health_vpn_on">Koblet til via VPN. Trykk for å se gjennom.</string>
 </resources>

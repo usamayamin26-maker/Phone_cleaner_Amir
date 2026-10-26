@@ -235,4 +235,22 @@
     <string name="rate_done">تم</string>
     <string name="rate_thanks">شكرًا لملاحظاتك!</string>
     <string name="rate_star_description">%1$s من %2$s نجوم</string>
+
+    <string name="scan_now_title">منظف الهاتف</string>
+    <string name="scan_now_completed">اكتمل الفحص</string>
+    <string name="scan_now_again">افحص مرة أخرى</string>
+    <string name="health_security">أمان النظام</string>
+    <string name="health_vpn">اتصال VPN</string>
+    <string name="health_clean_title">الجهاز نظيف تمامًا</string>
+    <string name="health_clean_message">لا توجد ملفات غير مرغوب فيها على الجهاز</string>
+    <string name="health_junk_found_title">تم العثور على ملفات غير مرغوب فيها</string>
+    <string name="health_junk_found_message">يمكن تنظيف %1$s. انقر للمراجعة.</string>
+    <string name="health_junk_found_message_no_size">توجد ملفات يمكن تنظيفها. انقر للمراجعة.</string>
+    <string name="health_junk_access_message">اسمح بالوصول إلى كل الملفات للبحث عن الملفات غير المرغوب فيها.</string>
+    <string name="health_developer_off">خيارات المطوّر متوقفة</string>
+    <string name="health_developer_on">خيارات المطوّر مفعّلة. انقر للمراجعة.</string>
+    <string name="health_usb_off">تصحيح أخطاء USB متوقف</string>
+    <string name="health_usb_on">تصحيح أخطاء USB مفعّل. انقر للمراجعة.</string>
+    <string name="health_vpn_off">غير متصل بشبكة VPN</string>
+    <string name="health_vpn_on">متصل عبر VPN. انقر للمراجعة.</string>
 </resources>

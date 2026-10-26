@@ -155,4 +155,12 @@
     <color name="rate_star_shade">#FFF4B400</color>
     <!-- No design: a star not chosen yet. -->
     <color name="rate_star_empty">#FFE8E8EE</color>
+    <!-- Scan Now (Figma 1:1648 / 1:1705). -->
+    <color name="health_security_icon">#FF448AFF</color>
+    <color name="text_check_detail">#C7000000</color>
+    <color name="scan_done_ring">#B3FFFFFF</color>
+    <color name="scan_again_base">#D9FFFFFF</color>
+    <color name="scan_again_start">#EBFFFFFF</color>
+    <color name="scan_again_center">#D9EEF2FF</color>
+    <color name="scan_again_end">#E6EDE9FE</color>
 </resources>

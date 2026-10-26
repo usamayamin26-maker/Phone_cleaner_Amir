@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One finding in a result card (Figma 1:1762): the text 26 px in from the card's icon edge (an
+     indent on the start side only, as the design draws it)
+     (12.5 px regular, 78% black), and at the end the tick when all is well or a chevron when it is
+     worth a look. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/_21sdp"
+    tools:ignore="RtlSymmetry">
+
+    <TextView
+        android:id="@+id/check_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto_regular"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text_check_detail"
+        android:textSize="@dimen/_10ssp"
+        app:lineHeight="@dimen/_15ssp"
+        tools:text="@string/health_developer_off" />
+
+    <include
+        android:id="@+id/check_ok"
+        layout="@layout/view_check_badge" />
+
+    <ImageView
+        android:id="@+id/check_review"
+        android:layout_width="@dimen/_16sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_chevron_forward"
+        android:visibility="gone"
+        app:tint="@color/icon_chevron_muted" />
+</LinearLayout>

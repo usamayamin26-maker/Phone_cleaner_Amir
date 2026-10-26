@@ -235,4 +235,22 @@
     <string name="rate_done">완료</string>
     <string name="rate_thanks">의견을 보내 주셔서 감사합니다!</string>
     <string name="rate_star_description">별 %2$s개 중 %1$s개</string>
+
+    <string name="scan_now_title">휴대전화 클리너</string>
+    <string name="scan_now_completed">검사 완료</string>
+    <string name="scan_now_again">다시 검사</string>
+    <string name="health_security">시스템 보안</string>
+    <string name="health_vpn">VPN 연결</string>
+    <string name="health_clean_title">기기가 깨끗하게 정리되었습니다</string>
+    <string name="health_clean_message">기기에 정크 파일이 없습니다</string>
+    <string name="health_junk_found_title">정크 파일이 있습니다</string>
+    <string name="health_junk_found_message">%1$s를 정리할 수 있습니다. 탭하여 확인하세요.</string>
+    <string name="health_junk_found_message_no_size">정리할 수 있는 정크 파일이 있습니다. 탭하여 확인하세요.</string>
+    <string name="health_junk_access_message">정크 파일을 확인하려면 모든 파일에 대한 액세스를 허용하세요.</string>
+    <string name="health_developer_off">개발자 옵션이 꺼져 있습니다</string>
+    <string name="health_developer_on">개발자 옵션이 켜져 있습니다. 탭하여 확인하세요.</string>
+    <string name="health_usb_off">USB 디버깅이 꺼져 있습니다</string>
+    <string name="health_usb_on">USB 디버깅이 켜져 있습니다. 탭하여 확인하세요.</string>
+    <string name="health_vpn_off">VPN에 연결되어 있지 않습니다</string>
+    <string name="health_vpn_on">VPN을 통해 연결되어 있습니다. 탭하여 확인하세요.</string>
 </resources>

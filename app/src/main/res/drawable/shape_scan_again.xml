@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:1737 "Scan Again": an 85% white pill (radius 28) under a white-to-lavender gradient,
+     with an 85% white hairline. Figma's gradient runs about 76 degrees; a shape draws multiples of
+     45, so it runs top to bottom here. The pill's two inner shadows are not drawn. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_on_light">
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/_22sdp" />
+                    <solid android:color="@color/scan_again_base" />
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/_22sdp" />
+                    <gradient
+                        android:angle="270"
+                        android:centerColor="@color/scan_again_center"
+                        android:endColor="@color/scan_again_end"
+                        android:startColor="@color/scan_again_start"
+                        android:type="linear" />
+                    <stroke
+                        android:width="@dimen/_1sdp"
+                        android:color="@color/scan_button_stroke" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</ripple>

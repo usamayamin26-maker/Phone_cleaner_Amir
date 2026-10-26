@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Scan Now, a read-only health check. Scanning (Figma 1:1648): the header 12 px under the status
+     bar, then 12 px apart the 205 px ring, a row per finished check and "Stop Scanning". Done
+     (1:1705): the 152 px "Scanning Completed" disc, "Scan Again" (172 x 49) 18 px under it, and the
+     three result cards 12 px apart with a 20 px gutter. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.junkcleaner.ScanNowActivity">
+
+    <com.phone.cleaner.presentation.components.ScreenBackgroundView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scan_now_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/scan_now_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_16sdp">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/view_inner_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp" />
+
+            <!-- Scanning -->
+            <LinearLayout
+                android:id="@+id/scan_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_164sdp"
+                    android:layout_height="@dimen/_164sdp"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <com.phone.cleaner.presentation.components.ProgressRingView
+                        android:id="@+id/progress_ring"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/progress_percent"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:letterSpacing="-0.025"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_30ssp"
+                        app:autoSizeMaxTextSize="@dimen/_30ssp"
+                        app:autoSizeMinTextSize="@dimen/_12ssp"
+                        app:autoSizeTextType="uniform"
+                        app:lineHeight="@dimen/_30ssp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_16sdp">
+
+                    <include
+                        android:id="@+id/row_security"
+                        layout="@layout/item_scan_now_row" />
+
+                    <include
+                        android:id="@+id/row_vpn"
+                        layout="@layout/item_scan_now_row" />
+
+                    <include
+                        android:id="@+id/row_junk"
+                        layout="@layout/item_scan_now_row" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/stop_button"
+                    style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded.Danger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:minWidth="@dimen/_169sdp"
+                    android:text="@string/cleaner_stop_scanning" />
+            </LinearLayout>
+
+            <!-- Done -->
+            <LinearLayout
+                android:id="@+id/done_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <!-- The disc's tick is the app's own (Figma 1:1734 has no exported path): white,
+                     70 px, then "Scanning Completed" in two lines, 12 px semi-bold. -->
+                <LinearLayout
+                    android:id="@+id/done_disc"
+                    android:layout_width="@dimen/_122sdp"
+                    android:layout_height="@dimen/_122sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/shape_scan_done_disc"
+                    android:elevation="@dimen/_18sdp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:outlineSpotShadowColor="@color/primary_button_shadow"
+                    android:paddingTop="@dimen/_20sdp"
+                    tools:targetApi="28">
+
+                    <ImageView
+                        android:layout_width="@dimen/_56sdp"
+                        android:layout_height="@dimen/_44sdp"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/_9sdp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_tick"
+                        app:tint="@color/icon_on_primary" />
+
+                    <!-- The disc is a fixed tile, so the label fits itself into what is left of it:
+                         the design's 12 px, smaller only when a large font would break a word. -->
+                    <TextView
+                        android:id="@+id/done_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_14sdp"
+                        android:layout_weight="1"
+                        android:accessibilityHeading="true"
+                        android:fontFamily="@font/roboto_semi_bold"
+                        android:gravity="center_horizontal"
+                        android:maxLines="2"
+                        android:text="@string/scan_now_completed"
+                        android:textColor="@color/text_on_primary"
+                        android:textSize="@dimen/_10ssp"
+                        app:autoSizeMaxTextSize="@dimen/_10ssp"
+                        app:autoSizeMinTextSize="@dimen/_6ssp"
+                        app:autoSizeTextType="uniform"
+                        app:lineHeight="@dimen/_13ssp" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/scan_again"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:background="@drawable/shape_scan_again"
+                    android:fontFamily="@font/roboto_semi_bold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:letterSpacing="-0.025"
+                    android:minWidth="@dimen/_138sdp"
+                    android:minHeight="@dimen/_39sdp"
+                    android:paddingHorizontal="@dimen/_19sdp"
+                    android:text="@string/scan_now_again"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14ssp"
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/ic_refresh"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="@dimen/_10sdp"
+                    app:iconSize="@dimen/_12sdp"
+                    app:iconTint="@color/icon_accent"
+                    app:lineHeight="@dimen/_22ssp" />
+
+                <!-- Junk (1:1746): the card's icon and title, the line under it 26 px in. -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_junk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="@dimen/_18sdp"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:rippleColor="@color/ripple_on_light"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- The tick when the device is clean; the file icon when there is junk to
+                                 review or access to give. -->
+                            <include
+                                android:id="@+id/junk_ok"
+                                layout="@layout/view_check_badge" />
+
+                            <ImageView
+                                android:id="@+id/junk_icon"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_file"
+                                android:visibility="gone"
+                                app:tint="@color/icon_accent" />
+
+                            <TextView
+                                android:id="@+id/junk_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_semi_bold"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/text_title"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_15ssp"
+                                tools:text="@string/health_clean_title" />
+
+                            <ImageView
+                                android:id="@+id/junk_review"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_chevron_forward"
+                                android:visibility="gone"
+                                app:tint="@color/icon_chevron_muted" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/junk_message"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/_21sdp"
+                            tools:ignore="RtlSymmetry"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/text_check_detail"
+                            android:textSize="@dimen/_10ssp"
+                            app:lineHeight="@dimen/_15ssp"
+                            tools:text="@string/health_clean_message" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- System Security (1:1754). -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="@dimen/_18sdp"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:rippleColor="@color/ripple_on_light"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
+
+                        <!-- An image and a label rather than a compound drawable: the icon is sized in
+                             sdp with the layout, which a compound drawable cannot be. -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="@dimen/_18sdp"
+                                android:layout_height="@dimen/_18sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_security" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_semi_bold"
+                                android:text="@string/health_security"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/text_title"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_15ssp" />
+                        </LinearLayout>
+
+                        <include
+                            android:id="@+id/check_developer"
+                            layout="@layout/item_health_check" />
+
+                        <include
+                            android:id="@+id/check_usb"
+                            layout="@layout/item_health_check" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- VPN Connection (1:1768). -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_vpn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:outlineSpotShadowColor="@color/card_shadow"
+                    app:cardBackgroundColor="@color/card_surface"
+                    app:cardCornerRadius="@dimen/_18sdp"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:rippleColor="@color/ripple_on_light"
+                    app:strokeWidth="0dp"
+                    tools:targetApi="28">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
+
+                        <!-- An image and a label rather than a compound drawable: the icon is sized in
+                             sdp with the layout, which a compound drawable cannot be. -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="@dimen/_14sdp"
+                                android:layout_height="@dimen/_14sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_vpn" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_semi_bold"
+                                android:text="@string/health_vpn"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/text_title"
+                                android:textSize="@dimen/_10ssp"
+                                app:lineHeight="@dimen/_15ssp" />
+                        </LinearLayout>
+
+                        <include
+                            android:id="@+id/check_vpn"
+                            layout="@layout/item_health_check" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

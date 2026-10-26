@@ -21,6 +21,7 @@ import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
 import com.phone.cleaner.presentation.deviceinfo.DeviceInfoActivity
 import com.phone.cleaner.presentation.duplicates.DuplicatesActivity
+import com.phone.cleaner.presentation.junkcleaner.ScanNowActivity
 import com.phone.cleaner.presentation.settings.SettingsActivity
 import com.phone.cleaner.presentation.whatsapp.WaCleanerActivity
 import com.phone.cleaner.utils.SharedPref
@@ -36,8 +37,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * The app's main screen: Home from the design. Every feature (Device Info, Battery Info, WA Cleaner,
- * ...) opens on top of it as its own activity. Scan Now opens the AI Junk Cleaner, like its quick
- * action.
+ * ...) opens on top of it as its own activity. Scan Now opens the health check; the AI Junk
+ * Cleaner quick action opens the AI cleaner.
  */
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -77,7 +78,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
         }
         scanNow.onClick {
-            startActivity(Intent(this@MainActivity, AiCleanerActivity::class.java))
+            startActivity(Intent(this@MainActivity, ScanNowActivity::class.java))
         }
         actionJunk.root.onClick {
             startActivity(Intent(this@MainActivity, AiCleanerActivity::class.java))

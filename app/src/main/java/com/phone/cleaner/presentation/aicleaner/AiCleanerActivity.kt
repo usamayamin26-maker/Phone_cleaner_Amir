@@ -1,6 +1,9 @@
 package com.phone.cleaner.presentation.aicleaner
 
+import android.content.Context
+import android.content.Intent
 import com.phone.cleaner.R
+import com.phone.cleaner.domain.entities.CleanerSectionType
 import com.phone.cleaner.domain.view_models.AiCleanerViewModel
 import com.phone.cleaner.presentation.base.BaseCleanerActivity
 import com.phone.cleaner.presentation.components.CleanerScreen
@@ -29,9 +32,18 @@ class AiCleanerActivity : BaseCleanerActivity() {
 
     override val logTag: String = TAG
 
+    override val sectionToOpen: String?
+        get() = intent.getStringExtra(EXTRA_SECTION)
+
     override fun onAllFilesAccessGranted() = cleaner.onJunkAccessGranted()
 
-    private companion object {
-        const val TAG = "AiCleanerActivity"
+    companion object {
+        private const val TAG = "AiCleanerActivity"
+        private const val EXTRA_SECTION = "section"
+
+        /** The AI Junk Cleaner, opened on its Junk Files section once the scan is done. */
+        fun junkFilesIntent(context: Context): Intent =
+            Intent(context, AiCleanerActivity::class.java)
+                .putExtra(EXTRA_SECTION, CleanerSectionType.JUNK_FILES.name)
     }
 }

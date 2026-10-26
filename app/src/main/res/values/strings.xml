@@ -319,4 +319,23 @@
     <string name="rate_star_description">%1$s of %2$s stars</string>
     <string name="rate_emoji_grin" translatable="false">😁</string>
     <string name="rate_emoji_love" translatable="false">😍</string>
+
+    <!-- Scan Now (Figma 1:1648 / 1:1705), a read-only health check. A setting that is on is something to review, not an alarm. -->
+    <string name="scan_now_title">Phone Cleaner</string>
+    <string name="scan_now_completed">Scanning Completed</string>
+    <string name="scan_now_again">Scan Again</string>
+    <string name="health_security">System Security</string>
+    <string name="health_vpn">VPN Connection</string>
+    <string name="health_clean_title">Device is fully cleaned</string>
+    <string name="health_clean_message">Device does not have any junk</string>
+    <string name="health_junk_found_title">Junk files found</string>
+    <string name="health_junk_found_message">%1$s can be cleaned. Tap to review.</string>
+    <string name="health_junk_found_message_no_size">Some junk can be cleaned. Tap to review.</string>
+    <string name="health_junk_access_message">Allow access to all files to check for junk.</string>
+    <string name="health_developer_off">Developer options are off</string>
+    <string name="health_developer_on">Developer options are on. Tap to review.</string>
+    <string name="health_usb_off">USB debugging is off</string>
+    <string name="health_usb_on">USB debugging is on. Tap to review.</string>
+    <string name="health_vpn_off">Not connected with VPN</string>
+    <string name="health_vpn_on">Connected through a VPN. Tap to review.</string>
 </resources>

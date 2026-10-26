@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:1732: the "Scanning Completed" disc - the primary gradient, almost left to right, with
+     a 70% white hairline. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/primary_gradient_center"
+        android:endColor="@color/primary_gradient_end"
+        android:startColor="@color/primary_gradient_start"
+        android:type="linear" />
+    <stroke
+        android:width="@dimen/_1sdp"
+        android:color="@color/scan_done_ring" />
+</shape>

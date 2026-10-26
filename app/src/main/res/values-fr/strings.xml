@@ -235,4 +235,22 @@
     <string name="rate_done">Terminé</string>
     <string name="rate_thanks">Merci pour votre avis !</string>
     <string name="rate_star_description">%1$s étoiles sur %2$s</string>
+
+    <string name="scan_now_title">Nettoyeur de téléphone</string>
+    <string name="scan_now_completed">Analyse terminée</string>
+    <string name="scan_now_again">Analyser à nouveau</string>
+    <string name="health_security">Sécurité du système</string>
+    <string name="health_vpn">Connexion VPN</string>
+    <string name="health_clean_title">L\'appareil est entièrement nettoyé</string>
+    <string name="health_clean_message">L\'appareil ne contient aucun fichier inutile</string>
+    <string name="health_junk_found_title">Fichiers inutiles trouvés</string>
+    <string name="health_junk_found_message">%1$s peuvent être libérés. Touchez pour vérifier.</string>
+    <string name="health_junk_found_message_no_size">Des fichiers inutiles peuvent être nettoyés. Touchez pour vérifier.</string>
+    <string name="health_junk_access_message">Autorisez l\'accès à tous les fichiers pour rechercher les fichiers inutiles.</string>
+    <string name="health_developer_off">Les options pour les développeurs sont désactivées</string>
+    <string name="health_developer_on">Les options pour les développeurs sont activées. Touchez pour vérifier.</string>
+    <string name="health_usb_off">Le débogage USB est désactivé</string>
+    <string name="health_usb_on">Le débogage USB est activé. Touchez pour vérifier.</string>
+    <string name="health_vpn_off">Non connecté à un VPN</string>
+    <string name="health_vpn_on">Connecté via un VPN. Touchez pour vérifier.</string>
 </resources>

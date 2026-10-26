@@ -6,6 +6,7 @@ import ai.jhw.deviceinfo.model.DeviceDetails
 import ai.jhw.deviceinfo.model.DisplayDetails
 import ai.jhw.deviceinfo.model.ProcessorDetails
 import ai.jhw.deviceinfo.model.RamDetails
+import ai.jhw.deviceinfo.model.SecurityStatus
 import ai.jhw.deviceinfo.model.StorageDetails
 import ai.jhw.deviceinfo.model.WifiDetails
 import ai.jhw.deviceinfo.utils.CameraReader
@@ -13,9 +14,11 @@ import ai.jhw.deviceinfo.utils.DisplayReader
 import ai.jhw.deviceinfo.utils.MemoryReader
 import ai.jhw.deviceinfo.utils.ProcessorReader
 import ai.jhw.deviceinfo.utils.RootChecker
+import ai.jhw.deviceinfo.utils.SecurityReader
 import ai.jhw.deviceinfo.utils.WifiReader
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.SystemClock
 import android.provider.Settings
@@ -62,4 +65,11 @@ class DeviceInfoRepositoryImpl(private val context: Context) : DeviceInfoReposit
 
     override suspend fun getCameras(): List<CameraDetails> =
         withContext(Dispatchers.IO) { CameraReader.read(context) }
+
+    override suspend fun getSecurityStatus(): SecurityStatus =
+        withContext(Dispatchers.IO) { SecurityReader(context).read() }
+
+    override fun developerSettingsIntent(): Intent = Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS)
+
+    override fun vpnSettingsIntent(): Intent = Intent(Settings.ACTION_VPN_SETTINGS)
 }

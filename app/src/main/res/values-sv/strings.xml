@@ -235,4 +235,22 @@
     <string name="rate_done">Klar</string>
     <string name="rate_thanks">Tack för din feedback!</string>
     <string name="rate_star_description">%1$s av %2$s stjärnor</string>
+
+    <string name="scan_now_title">Telefonrensare</string>
+    <string name="scan_now_completed">Skanningen är klar</string>
+    <string name="scan_now_again">Skanna igen</string>
+    <string name="health_security">Systemsäkerhet</string>
+    <string name="health_vpn">VPN-anslutning</string>
+    <string name="health_clean_title">Enheten är helt rensad</string>
+    <string name="health_clean_message">Enheten har inga skräpfiler</string>
+    <string name="health_junk_found_title">Skräpfiler hittades</string>
+    <string name="health_junk_found_message">%1$s kan rensas. Tryck för att granska.</string>
+    <string name="health_junk_found_message_no_size">Det finns skräp att rensa. Tryck för att granska.</string>
+    <string name="health_junk_access_message">Tillåt åtkomst till alla filer för att leta efter skräp.</string>
+    <string name="health_developer_off">Utvecklaralternativ är av</string>
+    <string name="health_developer_on">Utvecklaralternativ är på. Tryck för att granska.</string>
+    <string name="health_usb_off">USB-felsökning är av</string>
+    <string name="health_usb_on">USB-felsökning är på. Tryck för att granska.</string>
+    <string name="health_vpn_off">Inte ansluten till VPN</string>
+    <string name="health_vpn_on">Ansluten via VPN. Tryck för att granska.</string>
 </resources>

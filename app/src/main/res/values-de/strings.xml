@@ -235,4 +235,22 @@
     <string name="rate_done">Fertig</string>
     <string name="rate_thanks">Danke für Ihr Feedback!</string>
     <string name="rate_star_description">%1$s von %2$s Sternen</string>
+
+    <string name="scan_now_title">Handy-Reiniger</string>
+    <string name="scan_now_completed">Scan abgeschlossen</string>
+    <string name="scan_now_again">Erneut scannen</string>
+    <string name="health_security">Systemsicherheit</string>
+    <string name="health_vpn">VPN-Verbindung</string>
+    <string name="health_clean_title">Das Gerät ist vollständig bereinigt</string>
+    <string name="health_clean_message">Auf dem Gerät gibt es keinen Datenmüll</string>
+    <string name="health_junk_found_title">Junk-Dateien gefunden</string>
+    <string name="health_junk_found_message">%1$s können bereinigt werden. Zum Prüfen tippen.</string>
+    <string name="health_junk_found_message_no_size">Einiges kann bereinigt werden. Zum Prüfen tippen.</string>
+    <string name="health_junk_access_message">Erlaube den Zugriff auf alle Dateien, um nach Junk zu suchen.</string>
+    <string name="health_developer_off">Entwickleroptionen sind aus</string>
+    <string name="health_developer_on">Entwickleroptionen sind an. Zum Prüfen tippen.</string>
+    <string name="health_usb_off">USB-Debugging ist aus</string>
+    <string name="health_usb_on">USB-Debugging ist an. Zum Prüfen tippen.</string>
+    <string name="health_vpn_off">Nicht mit einem VPN verbunden</string>
+    <string name="health_vpn_on">Über ein VPN verbunden. Zum Prüfen tippen.</string>
 </resources>

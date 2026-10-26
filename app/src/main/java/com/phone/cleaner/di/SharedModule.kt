@@ -25,6 +25,7 @@ import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
 import com.phone.cleaner.domain.view_models.DuplicatesViewModel
 import com.phone.cleaner.domain.view_models.HomeViewModel
 import com.phone.cleaner.domain.view_models.LanguageViewModel
+import com.phone.cleaner.domain.view_models.ScanNowViewModel
 import com.phone.cleaner.domain.view_models.SettingsViewModel
 import com.phone.cleaner.domain.view_models.SplashViewModel
 import com.phone.cleaner.domain.view_models.WaCleanerViewModel
@@ -92,6 +93,9 @@ val SharedModule = module {
     single<AiCleanerRepository> { AiCleanerRepositoryImp(get(), get(), get()) }
     single<JunkRepository> { JunkRepositoryImp(get(), get()) }
     viewModel { AiCleanerViewModel(get(), get()) }
+
+    // ---- scan now: junk and device settings, read only ----
+    viewModel { ScanNowViewModel(get(), get()) }
 
     // ---- wa cleaner ----
     single<WhatsAppRepository> { WhatsAppRepositoryImp(get(), get()) }

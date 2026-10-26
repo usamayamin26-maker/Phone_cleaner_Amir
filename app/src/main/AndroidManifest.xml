@@ -65,6 +65,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".presentation.junkcleaner.ScanNowActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".presentation.deviceinfo.DeviceInfoActivity"
             android:exported="false" />
 

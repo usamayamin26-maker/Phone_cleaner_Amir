@@ -235,4 +235,22 @@
     <string name="rate_done">完了</string>
     <string name="rate_thanks">フィードバックをありがとうございます！</string>
     <string name="rate_star_description">%2$s 個中 %1$s 個の星</string>
+
+    <string name="scan_now_title">スマホクリーナー</string>
+    <string name="scan_now_completed">スキャン完了</string>
+    <string name="scan_now_again">もう一度スキャン</string>
+    <string name="health_security">システムのセキュリティ</string>
+    <string name="health_vpn">VPN 接続</string>
+    <string name="health_clean_title">デバイスはすっきりしています</string>
+    <string name="health_clean_message">不要なファイルはありません</string>
+    <string name="health_junk_found_title">不要なファイルがあります</string>
+    <string name="health_junk_found_message">%1$s を削除できます。タップして確認してください。</string>
+    <string name="health_junk_found_message_no_size">削除できる不要なファイルがあります。タップして確認してください。</string>
+    <string name="health_junk_access_message">不要なファイルを確認するには、すべてのファイルへのアクセスを許可してください。</string>
+    <string name="health_developer_off">開発者向けオプションはオフです</string>
+    <string name="health_developer_on">開発者向けオプションはオンです。タップして確認してください。</string>
+    <string name="health_usb_off">USB デバッグはオフです</string>
+    <string name="health_usb_on">USB デバッグはオンです。タップして確認してください。</string>
+    <string name="health_vpn_off">VPN に接続されていません</string>
+    <string name="health_vpn_on">VPN 経由で接続されています。タップして確認してください。</string>
 </resources>

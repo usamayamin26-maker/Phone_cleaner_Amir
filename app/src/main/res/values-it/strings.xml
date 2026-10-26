@@ -235,4 +235,22 @@
     <string name="rate_done">Fatto</string>
     <string name="rate_thanks">Grazie per il tuo feedback!</string>
     <string name="rate_star_description">%1$s stelle su %2$s</string>
+
+    <string name="scan_now_title">Pulizia telefono</string>
+    <string name="scan_now_completed">Scansione completata</string>
+    <string name="scan_now_again">Scansiona di nuovo</string>
+    <string name="health_security">Sicurezza del sistema</string>
+    <string name="health_vpn">Connessione VPN</string>
+    <string name="health_clean_title">Il dispositivo è completamente pulito</string>
+    <string name="health_clean_message">Il dispositivo non contiene file inutili</string>
+    <string name="health_junk_found_title">Trovati file spazzatura</string>
+    <string name="health_junk_found_message">Si possono liberare %1$s. Tocca per controllare.</string>
+    <string name="health_junk_found_message_no_size">Ci sono file inutili da pulire. Tocca per controllare.</string>
+    <string name="health_junk_access_message">Consenti l\'accesso a tutti i file per cercare file inutili.</string>
+    <string name="health_developer_off">Le opzioni sviluppatore sono disattivate</string>
+    <string name="health_developer_on">Le opzioni sviluppatore sono attive. Tocca per controllare.</string>
+    <string name="health_usb_off">Il debug USB è disattivato</string>
+    <string name="health_usb_on">Il debug USB è attivo. Tocca per controllare.</string>
+    <string name="health_vpn_off">Non connesso a una VPN</string>
+    <string name="health_vpn_on">Connesso tramite una VPN. Tocca per controllare.</string>
 </resources>

@@ -5,8 +5,10 @@ import ai.jhw.deviceinfo.model.DeviceDetails
 import ai.jhw.deviceinfo.model.DisplayDetails
 import ai.jhw.deviceinfo.model.ProcessorDetails
 import ai.jhw.deviceinfo.model.RamDetails
+import ai.jhw.deviceinfo.model.SecurityStatus
 import ai.jhw.deviceinfo.model.StorageDetails
 import ai.jhw.deviceinfo.model.WifiDetails
+import android.content.Intent
 import android.util.Log
 import com.phone.cleaner.domain.entities.ApiResult
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
@@ -31,6 +33,13 @@ class DeviceInfoRepositoryImp(
 
     override suspend fun getCameras(): ApiResult<List<CameraDetails>> =
         read("cameras") { deviceInfo.getCameras() }
+
+    override suspend fun getSecurityStatus(): ApiResult<SecurityStatus> =
+        read("security") { deviceInfo.getSecurityStatus() }
+
+    override fun developerSettingsIntent(): Intent = deviceInfo.developerSettingsIntent()
+
+    override fun vpnSettingsIntent(): Intent = deviceInfo.vpnSettingsIntent()
 
     private suspend fun <T> read(what: String, block: suspend () -> T): ApiResult<T> = try {
         ApiResult.Success(block())

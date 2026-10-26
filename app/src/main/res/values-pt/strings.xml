@@ -235,4 +235,22 @@
     <string name="rate_done">Concluir</string>
     <string name="rate_thanks">Obrigado pelo seu feedback!</string>
     <string name="rate_star_description">%1$s de %2$s estrelas</string>
+
+    <string name="scan_now_title">Limpador do telefone</string>
+    <string name="scan_now_completed">Verificação concluída</string>
+    <string name="scan_now_again">Verificar de novo</string>
+    <string name="health_security">Segurança do sistema</string>
+    <string name="health_vpn">Conexão VPN</string>
+    <string name="health_clean_title">O dispositivo está totalmente limpo</string>
+    <string name="health_clean_message">O dispositivo não tem arquivos inúteis</string>
+    <string name="health_junk_found_title">Arquivos inúteis encontrados</string>
+    <string name="health_junk_found_message">É possível liberar %1$s. Toque para revisar.</string>
+    <string name="health_junk_found_message_no_size">Há arquivos inúteis para limpar. Toque para revisar.</string>
+    <string name="health_junk_access_message">Permita o acesso a todos os arquivos para procurar arquivos inúteis.</string>
+    <string name="health_developer_off">As opções do desenvolvedor estão desativadas</string>
+    <string name="health_developer_on">As opções do desenvolvedor estão ativadas. Toque para revisar.</string>
+    <string name="health_usb_off">A depuração USB está desativada</string>
+    <string name="health_usb_on">A depuração USB está ativada. Toque para revisar.</string>
+    <string name="health_vpn_off">Não conectado a uma VPN</string>
+    <string name="health_vpn_on">Conectado por uma VPN. Toque para revisar.</string>
 </resources>

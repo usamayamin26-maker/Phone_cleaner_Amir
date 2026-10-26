@@ -235,4 +235,22 @@
     <string name="rate_done">Klaar</string>
     <string name="rate_thanks">Bedankt voor uw feedback!</string>
     <string name="rate_star_description">%1$s van %2$s sterren</string>
+
+    <string name="scan_now_title">Telefoonopruimer</string>
+    <string name="scan_now_completed">Scan voltooid</string>
+    <string name="scan_now_again">Opnieuw scannen</string>
+    <string name="health_security">Systeembeveiliging</string>
+    <string name="health_vpn">VPN-verbinding</string>
+    <string name="health_clean_title">Het apparaat is helemaal opgeschoond</string>
+    <string name="health_clean_message">Het apparaat heeft geen ongewenste bestanden</string>
+    <string name="health_junk_found_title">Ongewenste bestanden gevonden</string>
+    <string name="health_junk_found_message">%1$s kan worden opgeschoond. Tik om te bekijken.</string>
+    <string name="health_junk_found_message_no_size">Er is iets op te schonen. Tik om te bekijken.</string>
+    <string name="health_junk_access_message">Geef toegang tot alle bestanden om op ongewenste bestanden te controleren.</string>
+    <string name="health_developer_off">Ontwikkelaarsopties staan uit</string>
+    <string name="health_developer_on">Ontwikkelaarsopties staan aan. Tik om te bekijken.</string>
+    <string name="health_usb_off">USB-foutopsporing staat uit</string>
+    <string name="health_usb_on">USB-foutopsporing staat aan. Tik om te bekijken.</string>
+    <string name="health_vpn_off">Niet verbonden met een VPN</string>
+    <string name="health_vpn_on">Verbonden via een VPN. Tik om te bekijken.</string>
 </resources>

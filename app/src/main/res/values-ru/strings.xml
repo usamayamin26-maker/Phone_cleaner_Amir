@@ -235,4 +235,22 @@
     <string name="rate_done">Готово</string>
     <string name="rate_thanks">Спасибо за отзыв!</string>
     <string name="rate_star_description">%1$s из %2$s звёзд</string>
+
+    <string name="scan_now_title">Очистка телефона</string>
+    <string name="scan_now_completed">Сканирование завершено</string>
+    <string name="scan_now_again">Сканировать снова</string>
+    <string name="health_security">Безопасность системы</string>
+    <string name="health_vpn">VPN-подключение</string>
+    <string name="health_clean_title">Устройство полностью очищено</string>
+    <string name="health_clean_message">На устройстве нет ненужных файлов</string>
+    <string name="health_junk_found_title">Найдены ненужные файлы</string>
+    <string name="health_junk_found_message">Можно освободить %1$s. Нажмите, чтобы посмотреть.</string>
+    <string name="health_junk_found_message_no_size">Есть что очистить. Нажмите, чтобы посмотреть.</string>
+    <string name="health_junk_access_message">Разрешите доступ ко всем файлам, чтобы найти ненужные.</string>
+    <string name="health_developer_off">Параметры разработчика выключены</string>
+    <string name="health_developer_on">Параметры разработчика включены. Нажмите, чтобы посмотреть.</string>
+    <string name="health_usb_off">Отладка по USB выключена</string>
+    <string name="health_usb_on">Отладка по USB включена. Нажмите, чтобы посмотреть.</string>
+    <string name="health_vpn_off">Не подключено к VPN</string>
+    <string name="health_vpn_on">Подключено через VPN. Нажмите, чтобы посмотреть.</string>
 </resources>

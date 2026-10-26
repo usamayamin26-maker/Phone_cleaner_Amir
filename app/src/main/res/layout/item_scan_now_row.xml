@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A finished check on the scanning page (Figma 1:1678): the white row card, radius 22, 16 px
+     padding; the icon, 6 px after it the label (12.5 px semi-bold), and the tick at the end. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:outlineSpotShadowColor="@color/card_shadow"
+    app:cardBackgroundColor="@color/card_surface"
+    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardElevation="@dimen/_3sdp"
+    app:strokeWidth="0dp"
+    tools:targetApi="28">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_13sdp">
+
+        <ImageView
+            android:id="@+id/row_icon"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:importantForAccessibility="no"
+            tools:src="@drawable/ic_security" />
+
+        <TextView
+            android:id="@+id/row_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/_10ssp"
+            app:lineHeight="@dimen/_15ssp"
+            tools:text="@string/health_security" />
+
+        <include layout="@layout/view_check_badge" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

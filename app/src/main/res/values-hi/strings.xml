@@ -235,4 +235,22 @@
     <string name="rate_done">हो गया</string>
     <string name="rate_thanks">आपकी प्रतिक्रिया के लिए धन्यवाद!</string>
     <string name="rate_star_description">%2$s में से %1$s स्टार</string>
+
+    <string name="scan_now_title">फ़ोन क्लीनर</string>
+    <string name="scan_now_completed">स्कैन पूरा हुआ</string>
+    <string name="scan_now_again">फिर से स्कैन करें</string>
+    <string name="health_security">सिस्टम सुरक्षा</string>
+    <string name="health_vpn">VPN कनेक्शन</string>
+    <string name="health_clean_title">डिवाइस पूरी तरह साफ़ है</string>
+    <string name="health_clean_message">डिवाइस में कोई जंक नहीं है</string>
+    <string name="health_junk_found_title">जंक फ़ाइलें मिलीं</string>
+    <string name="health_junk_found_message">%1$s साफ़ किया जा सकता है। देखने के लिए टैप करें।</string>
+    <string name="health_junk_found_message_no_size">कुछ जंक साफ़ किया जा सकता है। देखने के लिए टैप करें।</string>
+    <string name="health_junk_access_message">जंक जांचने के लिए सभी फ़ाइलों तक पहुंच दें।</string>
+    <string name="health_developer_off">डेवलपर विकल्प बंद हैं</string>
+    <string name="health_developer_on">डेवलपर विकल्प चालू हैं। देखने के लिए टैप करें।</string>
+    <string name="health_usb_off">USB डीबगिंग बंद है</string>
+    <string name="health_usb_on">USB डीबगिंग चालू है। देखने के लिए टैप करें।</string>
+    <string name="health_vpn_off">VPN से कनेक्ट नहीं है</string>
+    <string name="health_vpn_on">VPN के ज़रिए कनेक्ट है। देखने के लिए टैप करें।</string>
 </resources>

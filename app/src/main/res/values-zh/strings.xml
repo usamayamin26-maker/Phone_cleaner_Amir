@@ -235,4 +235,22 @@
     <string name="rate_done">完成</string>
     <string name="rate_thanks">感谢您的反馈！</string>
     <string name="rate_star_description">%2$s 星中的 %1$s 星</string>
+
+    <string name="scan_now_title">手机清理</string>
+    <string name="scan_now_completed">扫描完成</string>
+    <string name="scan_now_again">重新扫描</string>
+    <string name="health_security">系统安全</string>
+    <string name="health_vpn">VPN 连接</string>
+    <string name="health_clean_title">设备已完全清理</string>
+    <string name="health_clean_message">设备上没有垃圾文件</string>
+    <string name="health_junk_found_title">发现垃圾文件</string>
+    <string name="health_junk_found_message">可清理 %1$s。点按查看。</string>
+    <string name="health_junk_found_message_no_size">有可清理的垃圾文件。点按查看。</string>
+    <string name="health_junk_access_message">允许访问所有文件以检查垃圾文件。</string>
+    <string name="health_developer_off">开发者选项已关闭</string>
+    <string name="health_developer_on">开发者选项已开启。点按查看。</string>
+    <string name="health_usb_off">USB 调试已关闭</string>
+    <string name="health_usb_on">USB 调试已开启。点按查看。</string>
+    <string name="health_vpn_off">未连接 VPN</string>
+    <string name="health_vpn_on">已通过 VPN 连接。点按查看。</string>
 </resources>

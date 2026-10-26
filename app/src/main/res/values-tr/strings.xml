@@ -235,4 +235,22 @@
     <string name="rate_done">Tamam</string>
     <string name="rate_thanks">Geri bildiriminiz için teşekkürler!</string>
     <string name="rate_star_description">%2$s yıldızdan %1$s</string>
+
+    <string name="scan_now_title">Telefon Temizleyici</string>
+    <string name="scan_now_completed">Tarama tamamlandı</string>
+    <string name="scan_now_again">Yeniden tara</string>
+    <string name="health_security">Sistem Güvenliği</string>
+    <string name="health_vpn">VPN Bağlantısı</string>
+    <string name="health_clean_title">Cihaz tamamen temiz</string>
+    <string name="health_clean_message">Cihazda gereksiz dosya yok</string>
+    <string name="health_junk_found_title">Gereksiz dosyalar bulundu</string>
+    <string name="health_junk_found_message">%1$s temizlenebilir. İncelemek için dokunun.</string>
+    <string name="health_junk_found_message_no_size">Temizlenebilecek gereksiz dosyalar var. İncelemek için dokunun.</string>
+    <string name="health_junk_access_message">Gereksiz dosyaları kontrol etmek için tüm dosyalara erişime izin verin.</string>
+    <string name="health_developer_off">Geliştirici seçenekleri kapalı</string>
+    <string name="health_developer_on">Geliştirici seçenekleri açık. İncelemek için dokunun.</string>
+    <string name="health_usb_off">USB hata ayıklama kapalı</string>
+    <string name="health_usb_on">USB hata ayıklama açık. İncelemek için dokunun.</string>
+    <string name="health_vpn_off">VPN\'e bağlı değil</string>
+    <string name="health_vpn_on">VPN üzerinden bağlı. İncelemek için dokunun.</string>
 </resources>

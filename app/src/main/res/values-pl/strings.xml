@@ -235,4 +235,22 @@
     <string name="rate_done">Gotowe</string>
     <string name="rate_thanks">Dziękujemy za opinię!</string>
     <string name="rate_star_description">%1$s z %2$s gwiazdek</string>
+
+    <string name="scan_now_title">Czyszczenie telefonu</string>
+    <string name="scan_now_completed">Skanowanie zakończone</string>
+    <string name="scan_now_again">Skanuj ponownie</string>
+    <string name="health_security">Bezpieczeństwo systemu</string>
+    <string name="health_vpn">Połączenie VPN</string>
+    <string name="health_clean_title">Urządzenie jest w pełni wyczyszczone</string>
+    <string name="health_clean_message">Na urządzeniu nie ma zbędnych plików</string>
+    <string name="health_junk_found_title">Znaleziono zbędne pliki</string>
+    <string name="health_junk_found_message">Można zwolnić %1$s. Kliknij, aby przejrzeć.</string>
+    <string name="health_junk_found_message_no_size">Są pliki do wyczyszczenia. Kliknij, aby przejrzeć.</string>
+    <string name="health_junk_access_message">Zezwól na dostęp do wszystkich plików, aby sprawdzić zbędne pliki.</string>
+    <string name="health_developer_off">Opcje programisty są wyłączone</string>
+    <string name="health_developer_on">Opcje programisty są włączone. Kliknij, aby przejrzeć.</string>
+    <string name="health_usb_off">Debugowanie USB jest wyłączone</string>
+    <string name="health_usb_on">Debugowanie USB jest włączone. Kliknij, aby przejrzeć.</string>
+    <string name="health_vpn_off">Brak połączenia z VPN</string>
+    <string name="health_vpn_on">Połączono przez VPN. Kliknij, aby przejrzeć.</string>
 </resources>
