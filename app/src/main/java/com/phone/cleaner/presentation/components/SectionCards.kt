@@ -61,9 +61,11 @@ class SectionCards(
             context.getString(section.type.countTitle, context.formatNumber(section.files.size))
         }
         sectionCheck.visibleIf(!needsAccess)
-        // Without its check, the title starts where the check would.
+        // Without its check, the title starts where the check would. The gap is the layout's
+        // own 14 px (11sdp): read back from the params it comes out 0 on Android 8 once a start
+        // margin has been written, so every re-bind put the title against the check.
         sectionTitle.updateLayoutParams<LinearLayout.LayoutParams> {
-            marginStart = if (needsAccess) 0 else marginEnd
+            marginStart = if (needsAccess) 0 else context.resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._11sdp)
         }
         sectionMessage.visibleIf(needsAccess)
         sectionPreviewsScroll.visibleIf(!needsAccess)
