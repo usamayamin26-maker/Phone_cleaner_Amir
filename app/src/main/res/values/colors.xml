@@ -146,4 +146,13 @@
     <color name="pdf_icon_mark">#FFFF2116</color>
     <color name="pdf_icon_page">#FFF5F5F5</color>
     <color name="pdf_icon_text">#FF2C2C2C</color>
+    <!-- Rate Us (Figma 1:4356 / 1:4395). -->
+    <color name="rate_title_text">#FF000000</color>
+    <color name="rate_message_text">#FF666464</color>
+    <color name="rate_emoji_ring">#FFF4B400</color>
+    <color name="rate_star">#FFFDD835</color>
+    <color name="rate_star_highlight">#FFFFFF8D</color>
+    <color name="rate_star_shade">#FFF4B400</color>
+    <!-- No design: a star not chosen yet. -->
+    <color name="rate_star_empty">#FFE8E8EE</color>
 </resources>

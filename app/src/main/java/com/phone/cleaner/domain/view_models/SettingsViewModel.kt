@@ -10,7 +10,14 @@ import kotlinx.coroutines.launch
 sealed interface SettingsUiEvent {
     data object OpenLanguage : SettingsUiEvent
     data object ShareApp : SettingsUiEvent
+    /** Show Rate Us. */
     data object RateApp : SettingsUiEvent
+
+    /** Four or five stars: the app's Play Store page, where the review is written. */
+    data object OpenStore : SettingsUiEvent
+
+    /** One to three stars: thank the user; the store is not opened. */
+    data object ThankForRating : SettingsUiEvent
     data object OpenPrivacyPolicy : SettingsUiEvent
 }
 
@@ -29,9 +36,16 @@ class SettingsViewModel : ViewModel() {
 
     fun onRateClicked() = emit(SettingsUiEvent.RateApp)
 
+    /** Rate Us's Done with [stars] chosen. */
+    fun onRated(stars: Int) = emit(if (stars >= STORE_FROM_STARS) SettingsUiEvent.OpenStore else SettingsUiEvent.ThankForRating)
+
     fun onPrivacyPolicyClicked() = emit(SettingsUiEvent.OpenPrivacyPolicy)
 
     private fun emit(event: SettingsUiEvent) {
         viewModelScope.launch { _events.emit(event) }
+    }
+
+    private companion object {
+        const val STORE_FROM_STARS = 4
     }
 }

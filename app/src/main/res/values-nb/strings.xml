@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">Kapasitet (ca.)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">Innstillingene for batterisparing er ikke tilgjengelige på denne telefonen.</string>
+
+    <string name="rate_title">Takk!</string>
+    <string name="rate_message">Vi skal jobbe hardere for at du skal bli enda mer fornøyd.</string>
+    <string name="rate_done">Ferdig</string>
+    <string name="rate_thanks">Takk for tilbakemeldingen!</string>
+    <string name="rate_star_description">%1$s av %2$s stjerner</string>
 </resources>

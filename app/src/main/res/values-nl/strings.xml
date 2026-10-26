@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">Capaciteit (ca.)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">De instellingen voor Batterijbesparing zijn niet beschikbaar op deze telefoon.</string>
+
+    <string name="rate_title">Bedankt!</string>
+    <string name="rate_message">We blijven werken om u nog tevredener te maken.</string>
+    <string name="rate_done">Klaar</string>
+    <string name="rate_thanks">Bedankt voor uw feedback!</string>
+    <string name="rate_star_description">%1$s van %2$s sterren</string>
 </resources>

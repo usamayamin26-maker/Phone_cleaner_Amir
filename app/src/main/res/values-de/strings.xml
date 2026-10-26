@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">Kapazität (ca.)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">Die Energiespar-Einstellungen sind auf diesem Telefon nicht verfügbar.</string>
+
+    <string name="rate_title">Danke!</string>
+    <string name="rate_message">Wir arbeiten weiter daran, Sie noch zufriedener zu machen.</string>
+    <string name="rate_done">Fertig</string>
+    <string name="rate_thanks">Danke für Ihr Feedback!</string>
+    <string name="rate_star_description">%1$s von %2$s Sternen</string>
 </resources>

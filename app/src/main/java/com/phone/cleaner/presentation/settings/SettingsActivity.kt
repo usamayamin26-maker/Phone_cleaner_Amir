@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation.settings
 
+import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.util.Log
@@ -14,6 +15,7 @@ import com.phone.cleaner.databinding.ItemSettingsRowBinding
 import com.phone.cleaner.domain.view_models.SettingsUiEvent
 import com.phone.cleaner.domain.view_models.SettingsViewModel
 import com.phone.cleaner.presentation.base.BaseActivity
+import com.phone.cleaner.presentation.components.RateUsDialog
 import com.phone.cleaner.presentation.onboarding.LanguageActivity
 import com.phone.cleaner.utils.Constants
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
@@ -34,6 +36,8 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
     override val applyDefaultInsets: Boolean = false
 
     private val viewModel: SettingsViewModel by viewModel()
+
+    private var dialog: Dialog? = null
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
@@ -63,7 +67,12 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
         when (event) {
             SettingsUiEvent.OpenLanguage -> startActivity(LanguageActivity.fromSettings(this))
             SettingsUiEvent.ShareApp -> shareApp()
-            SettingsUiEvent.RateApp -> rateApp()
+            SettingsUiEvent.RateApp -> {
+                dialog?.dismiss()
+                dialog = RateUsDialog.show(this, viewModel::onRated)
+            }
+            SettingsUiEvent.OpenStore -> openStore()
+            SettingsUiEvent.ThankForRating -> showToast(getString(R.string.rate_thanks))
             SettingsUiEvent.OpenPrivacyPolicy -> openLink(getString(R.string.privacy_policy_url))
         }
     }
@@ -77,8 +86,12 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
         startActivity(Intent.createChooser(send, getString(R.string.share_app_chooser)))
     }
 
-    /** The Play Store app's page for this app; the Play Store website where there is no store app. */
-    private fun rateApp() {
+    /**
+     * The Play Store app's page for this app; the Play Store website where there is no store app.
+     * Not the In-App Review card: Play's guidelines do not allow asking for a rating first and
+     * showing the card only to happy users, which is what Rate Us does.
+     */
+    private fun openStore() {
         try {
             startActivity(Intent(Intent.ACTION_VIEW, (Constants.PLAY_STORE_APP_URL + BuildConfig.APPLICATION_ID).toUri()))
         } catch (e: ActivityNotFoundException) {
@@ -94,6 +107,12 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
             Log.w(TAG, "Nothing can open $url", e)
             showToast(getString(R.string.link_open_failed))
         }
+    }
+
+    override fun onDestroy() {
+        dialog?.dismiss()
+        dialog = null
+        super.onDestroy()
     }
 
     private companion object {

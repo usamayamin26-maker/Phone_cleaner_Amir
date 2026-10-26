@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Figma 1:4363: the 120 px yellow ring round the heart-eyes emoji, 1 px. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <stroke
+        android:width="@dimen/_1sdp"
+        android:color="@color/rate_emoji_ring" />
+</shape>

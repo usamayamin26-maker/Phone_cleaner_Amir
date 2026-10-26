@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">Ёмкость (прибл.)</string>
     <string name="format_mah">%1$s мА·ч</string>
     <string name="battery_saver_unavailable">Настройки энергосбережения недоступны на этом телефоне.</string>
+
+    <string name="rate_title">Спасибо!</string>
+    <string name="rate_message">Мы будем стараться, чтобы вы были ещё довольнее.</string>
+    <string name="rate_done">Готово</string>
+    <string name="rate_thanks">Спасибо за отзыв!</string>
+    <string name="rate_star_description">%1$s из %2$s звёзд</string>
 </resources>

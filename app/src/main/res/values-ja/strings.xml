@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">容量（推定）</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">このスマートフォンではバッテリーセーバーの設定を利用できません。</string>
+
+    <string name="rate_title">ありがとうございます！</string>
+    <string name="rate_message">さらにご満足いただけるよう努めます。</string>
+    <string name="rate_done">完了</string>
+    <string name="rate_thanks">フィードバックをありがとうございます！</string>
+    <string name="rate_star_description">%2$s 個中 %1$s 個の星</string>
 </resources>

@@ -310,4 +310,13 @@
     <string name="battery_capacity_approx">Capacity (approx.)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">Battery Saver settings are not available on this phone.</string>
+
+    <!-- Rate Us (Figma 1:4356 / 1:4395). The emoji are its icon, not words. -->
+    <string name="rate_title">Thanks!</string>
+    <string name="rate_message">We will work harder to make you more satisfied.</string>
+    <string name="rate_done">Done</string>
+    <string name="rate_thanks">Thank you for your feedback!</string>
+    <string name="rate_star_description">%1$s of %2$s stars</string>
+    <string name="rate_emoji_grin" translatable="false">😁</string>
+    <string name="rate_emoji_love" translatable="false">😍</string>
 </resources>

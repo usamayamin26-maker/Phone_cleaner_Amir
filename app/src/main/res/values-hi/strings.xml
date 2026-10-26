@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">क्षमता (अनुमानित)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">इस फ़ोन पर बैटरी सेवर सेटिंग उपलब्ध नहीं है।</string>
+
+    <string name="rate_title">धन्यवाद!</string>
+    <string name="rate_message">हम आपको और संतुष्ट करने के लिए और मेहनत करेंगे।</string>
+    <string name="rate_done">हो गया</string>
+    <string name="rate_thanks">आपकी प्रतिक्रिया के लिए धन्यवाद!</string>
+    <string name="rate_star_description">%2$s में से %1$s स्टार</string>
 </resources>

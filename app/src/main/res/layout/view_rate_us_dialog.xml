@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rate Us (Figma 1:4356 / 1:4395). The frame is a 500 px component; it is drawn at the width of
+     the app's other dialogs (332 px), so its own values are scaled by 332 / 500 before the usual
+     sdp conversion: radius 38, the emoji 34 px from the top in its 120 px ring, "Thanks!" 32 px
+     bold, the message 20 px semi-bold, five 48 x 46 stars 13 px apart. Its buttons are the shared
+     211 x 50 primary button and the 44 px text button, at their own size. The blue wave behind the
+     emoji (1:4357) is not drawn: the file has no geometry for it. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingHorizontal="@dimen/_18sdp"
+    android:paddingVertical="@dimen/_16sdp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="@color/dialog_shadow"
+        app:cardBackgroundColor="@color/dialog_surface"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_10sdp"
+        app:strokeColor="@color/dialog_stroke"
+        app:strokeWidth="@dimen/_1sdp"
+        tools:targetApi="28">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_18sdp"
+            android:paddingBottom="@dimen/_18sdp">
+
+            <!-- The emoji (Figma 1:4362 / 1:4426): heart eyes in a yellow ring once four or five
+                 stars are chosen, a grin otherwise. -->
+            <FrameLayout
+                android:id="@+id/rate_emoji_ring"
+                android:layout_width="@dimen/_64sdp"
+                android:layout_height="@dimen/_64sdp">
+
+                <TextView
+                    android:id="@+id/rate_emoji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_regular"
+                    android:importantForAccessibility="no"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/rate_title_text"
+                    android:textSize="@dimen/_46sdp"
+                    tools:text="@string/rate_emoji_grin" />
+            </FrameLayout>
+
+            <!-- Figma's line height (20 px) is smaller than its 32 px text; 1.25 x the text keeps
+                 the glyphs whole. -->
+            <TextView
+                android:id="@+id/rate_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:accessibilityHeading="true"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.003"
+                android:text="@string/rate_title"
+                android:textColor="@color/rate_title_text"
+                android:textSize="@dimen/_17ssp"
+                app:lineHeight="@dimen/_21ssp"
+                tools:targetApi="28" />
+
+            <TextView
+                android:id="@+id/rate_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_41sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:gravity="center_horizontal"
+                android:text="@string/rate_message"
+                android:textColor="@color/rate_message_text"
+                android:textSize="@dimen/_11ssp"
+                app:lineHeight="@dimen/_12ssp" />
+
+            <!-- Each star's spoken label ("3 of 5 stars") is set in code. -->
+            <LinearLayout
+                android:id="@+id/rate_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/rate_star_1"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_star_rate_empty"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/rate_star_2"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_star_rate_empty"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/rate_star_3"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_star_rate_empty"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/rate_star_4"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_star_rate_empty"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/rate_star_5"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_star_rate_empty"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/rate_done"
+                style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:minWidth="@dimen/_169sdp"
+                android:text="@string/rate_done"
+                android:textSize="@dimen/_13ssp"
+                app:lineHeight="@dimen/_22ssp" />
+
+            <TextView
+                android:id="@+id/rate_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:gravity="center"
+                android:minHeight="@dimen/_35sdp"
+                android:text="@string/action_cancel"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_12ssp"
+                app:lineHeight="@dimen/_18ssp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

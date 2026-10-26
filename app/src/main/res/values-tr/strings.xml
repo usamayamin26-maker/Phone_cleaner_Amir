@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">Kapasite (yaklaşık)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">Pil Tasarrufu ayarları bu telefonda kullanılamıyor.</string>
+
+    <string name="rate_title">Teşekkürler!</string>
+    <string name="rate_message">Sizi daha da memnun etmek için daha çok çalışacağız.</string>
+    <string name="rate_done">Tamam</string>
+    <string name="rate_thanks">Geri bildiriminiz için teşekkürler!</string>
+    <string name="rate_star_description">%2$s yıldızdan %1$s</string>
 </resources>

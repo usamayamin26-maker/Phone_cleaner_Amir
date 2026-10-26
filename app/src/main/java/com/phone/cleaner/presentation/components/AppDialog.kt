@@ -115,12 +115,21 @@ object AppDialog {
             }
         }
         dialog.setOnCancelListener { onCancel() }
+        dialog.applyDialogWindow(spec.scrim)
+        dialog.show()
+        return dialog
+    }
 
-        dialog.window?.apply {
+    /**
+     * The window every dialog of the app uses: transparent, full width (the card keeps its own
+     * margins), the screen behind dimmed by [scrim] and, on Android 12+, blurred by 12 px.
+     */
+    fun Dialog.applyDialogWindow(scrim: Scrim) {
+        window?.apply {
             setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-            setDimAmount(spec.scrim.dimAmount)
+            setDimAmount(scrim.dimAmount)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
                 attributes = attributes.apply {
@@ -128,7 +137,5 @@ object AppDialog {
                 }
             }
         }
-        dialog.show()
-        return dialog
     }
 }

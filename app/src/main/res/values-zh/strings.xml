@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">容量（估算）</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">此手机不提供省电模式设置。</string>
+
+    <string name="rate_title">谢谢！</string>
+    <string name="rate_message">我们会更加努力，让您更满意。</string>
+    <string name="rate_done">完成</string>
+    <string name="rate_thanks">感谢您的反馈！</string>
+    <string name="rate_star_description">%2$s 星中的 %1$s 星</string>
 </resources>

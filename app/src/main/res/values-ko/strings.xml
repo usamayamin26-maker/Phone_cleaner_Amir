@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">용량(추정)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">이 휴대전화에서는 배터리 세이버 설정을 사용할 수 없습니다.</string>
+
+    <string name="rate_title">감사합니다!</string>
+    <string name="rate_message">더 만족하실 수 있도록 더욱 노력하겠습니다.</string>
+    <string name="rate_done">완료</string>
+    <string name="rate_thanks">의견을 보내 주셔서 감사합니다!</string>
+    <string name="rate_star_description">별 %2$s개 중 %1$s개</string>
 </resources>

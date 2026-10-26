@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">السعة (تقريبية)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">إعدادات توفير شحن البطارية غير متاحة على هذا الهاتف.</string>
+
+    <string name="rate_title">شكرًا!</string>
+    <string name="rate_message">سنعمل بجهد أكبر لنرضيك أكثر.</string>
+    <string name="rate_done">تم</string>
+    <string name="rate_thanks">شكرًا لملاحظاتك!</string>
+    <string name="rate_star_description">%1$s من %2$s نجوم</string>
 </resources>

@@ -229,4 +229,10 @@
     <string name="battery_capacity_approx">Capacité (approx.)</string>
     <string name="format_mah">%1$s mAh</string>
     <string name="battery_saver_unavailable">Les paramètres de l\'économiseur de batterie ne sont pas disponibles sur ce téléphone.</string>
+
+    <string name="rate_title">Merci !</string>
+    <string name="rate_message">Nous travaillerons encore plus pour vous satisfaire.</string>
+    <string name="rate_done">Terminé</string>
+    <string name="rate_thanks">Merci pour votre avis !</string>
+    <string name="rate_star_description">%1$s étoiles sur %2$s</string>
 </resources>
