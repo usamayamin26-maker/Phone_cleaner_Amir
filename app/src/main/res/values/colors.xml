@@ -142,4 +142,8 @@
     <!-- Pressed states -->
     <color name="ripple_on_light">#1F0041FF</color>
     <color name="ripple_on_primary">#33FFFFFF</color>
+    <!-- The PDF icon (resources/ic_pdf.svg). -->
+    <color name="pdf_icon_mark">#FFFF2116</color>
+    <color name="pdf_icon_page">#FFF5F5F5</color>
+    <color name="pdf_icon_text">#FF2C2C2C</color>
 </resources>

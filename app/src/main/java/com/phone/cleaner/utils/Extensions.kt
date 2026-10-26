@@ -204,7 +204,7 @@ fun ImageView.loadFilePreview(
             setPadding(inset, inset, inset, inset)
             scaleType = ImageView.ScaleType.FIT_CENTER
             imageTintList = null
-            setImageResource(R.drawable.img_pdf)
+            setImageResource(R.drawable.ic_pdf)
         }
         else -> {
             dispose()
@@ -212,23 +212,6 @@ fun ImageView.loadFilePreview(
             scaleType = ImageView.ScaleType.FIT_CENTER
             imageTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.icon_accent))
             setImageResource(R.drawable.ic_file)
-        }
-    }
-}
-
-/**
- * Scales the image to the view's width and pins it to the top, [offsetTopPx] down (negative: up,
- * cut by the view's top), so a tall image is cut at the bottom (the robot on a cleaner's results
- * card). The view needs `scaleType="matrix"`.
- */
-fun ImageView.scaleToWidthFromTop(offsetTopPx: Int = 0) {
-    addOnLayoutChangeListener { view, _, _, _, _, _, _, _, _ ->
-        val image = (view as ImageView).drawable ?: return@addOnLayoutChangeListener
-        if (image.intrinsicWidth <= 0 || view.width == 0) return@addOnLayoutChangeListener
-        val scale = view.width.toFloat() / image.intrinsicWidth
-        view.imageMatrix = Matrix().apply {
-            setScale(scale, scale)
-            postTranslate(0f, offsetTopPx.toFloat())
         }
     }
 }

@@ -21,12 +21,9 @@ class DuplicatesActivity : BaseCleanerActivity() {
         title = R.string.action_delete_duplicates,
         scanTitle = R.string.cleaner_loading_title,
         scanTextPadded = true,
-        robot = R.drawable.img_robo_duplicate,
-        robotWidth = com.intuit.sdp.R.dimen._123sdp,
+        robotCard = R.drawable.img_robo_card_duplicate,
         chips = CleanerScreen.Chips.SIZES,
         emptyMessage = R.string.duplicates_none,
-        robotMarginStart = com.intuit.sdp.R.dimen._12sdp,
-        robotOffsetTop = com.intuit.sdp.R.dimen._minus17sdp,
     )
 
     /** Photos and videos through MediaStore; Android is not asked for audio. */

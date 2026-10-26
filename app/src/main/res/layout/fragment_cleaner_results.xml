@@ -35,26 +35,34 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_16sdp">
 
-            <!-- The robot card. In Figma the card is an image fill (not in resources/), so only the
-                 robot is drawn: scaled to its width and cut by the card's bottom, as the design
-                 shows it. -->
+            <!-- The robot card (Figma 1:554 / 1:350 / 1:1064): the card's exported artwork, 335 x 146
+                 at 3x, with the chips drawn over it. The space keeps the artwork's ratio as the
+                 card's height; larger chips (a large font) make the card taller. -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/robot_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/_117sdp">
+                android:layout_height="wrap_content">
 
-                <!-- 0dp tall between the card's edges: the chips decide the card's height. -->
-                <ImageView
-                    android:id="@+id/robot"
-                    android:layout_width="@dimen/_120sdp"
+                <Space
+                    android:id="@+id/robot_card_ratio"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/_6sdp"
-                    android:importantForAccessibility="no"
-                    android:scaleType="matrix"
-                    tools:src="@drawable/img_robo_duplicate"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1005:438"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/robot"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="matrix"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/img_robo_card_duplicate" />
 
                 <LinearLayout
                     android:id="@+id/chips"

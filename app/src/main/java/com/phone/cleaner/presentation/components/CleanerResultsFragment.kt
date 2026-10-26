@@ -1,11 +1,13 @@
 package com.phone.cleaner.presentation.components
 
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Matrix
+import android.graphics.drawable.BitmapDrawable
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
 import androidx.core.view.updateLayoutParams
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.FragmentCleanerResultsBinding
@@ -19,7 +21,6 @@ import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
 import com.phone.cleaner.utils.gone
 import com.phone.cleaner.utils.onClick
-import com.phone.cleaner.utils.scaleToWidthFromTop
 import com.phone.cleaner.utils.toReadableSize
 import com.phone.cleaner.utils.visibleIf
 
@@ -37,6 +38,9 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
 
     private var cards: SectionCards? = null
 
+    /** Where the robot sits in the card's artwork; measured once. */
+    private var robotArtBounds: Pair<Int, Int>? = null
+
     override fun setupViews() = with(binding) {
         val screen = host.screen
         header.root.applyStatusBarTopMargin()
@@ -45,13 +49,8 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
         header.backButton.root.onClick { requireActivity().finish() }
         header.backButton.root.expandTouchTarget()
 
-        robot.setImageResource(screen.robot)
-        robot.updateLayoutParams<ConstraintLayout.LayoutParams> {
-            width = resources.getDimensionPixelSize(screen.robotWidth)
-            marginStart = screen.robotMarginStart?.let(resources::getDimensionPixelSize) ?: 0
-        }
-        robot.scaleToWidthFromTop(screen.robotOffsetTop?.let(resources::getDimensionPixelSize) ?: 0)
-        keepRobotClearOfChips()
+        robot.setImageResource(screen.robotCard)
+        robotCard.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> placeRobotArt() }
         when (screen.chips) {
             CleanerScreen.Chips.SIZES -> {
                 chipImages.chipIcon.setImageResource(R.drawable.ic_image)
@@ -113,21 +112,44 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
     }
 
     /**
-     * The chips grow with the font size; at a large one they would run over the robot. The robot
-     * then gives way: it is narrowed to the room left beside the chips, keeping the design's gap.
+     * Draws the card's artwork at the card's width, as the design does. Two cases move it:
+     * - Right to left, the chips sit on the other side, so the artwork is shifted until its robot
+     *   is at the mirrored place. It is moved, not flipped, so the robot and its logos read right.
+     * - At a large font the chips grow towards the robot; the artwork then shrinks until the robot
+     *   is clear of them again, standing on the card's bottom edge.
      */
-    private fun keepRobotClearOfChips() = with(binding) {
-        val designWidth = resources.getDimensionPixelSize(host.screen.robotWidth)
-        val gap = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._6sdp)
-        chips.addOnLayoutChangeListener { view, _, _, _, _, _, _, _, _ ->
-            val card = view.parent as? ViewGroup ?: return@addOnLayoutChangeListener
-            val robotStart = robot.marginStart
-            val chipsStart = if (card.layoutDirection == View.LAYOUT_DIRECTION_RTL) card.width - view.right else view.left
-            val width = minOf(designWidth, chipsStart - robotStart - gap).coerceAtLeast(0)
-            if (robot.layoutParams.width != width) {
-                robot.updateLayoutParams<ConstraintLayout.LayoutParams> { this.width = width }
-            }
+    private fun placeRobotArt() = with(binding) {
+        val drawable = robot.drawable as? BitmapDrawable ?: return@with
+        val bitmap = drawable.bitmap
+        if (robot.width == 0 || bitmap.width == 0 || drawable.intrinsicWidth <= 0) return@with
+        // The matrix works on the drawable's own size, which differs from the bitmap's pixels when
+        // Android scales the image to the screen's density; the robot's columns are converted.
+        val toDrawable = drawable.intrinsicWidth.toFloat() / bitmap.width
+        val (startColumn, endColumn) = robotArtBounds ?: bitmap.opaqueColumns().also { robotArtBounds = it }
+        val artStart = startColumn * toDrawable
+        val artEnd = endColumn * toDrawable
+        val rtl = robotCard.layoutDirection == View.LAYOUT_DIRECTION_RTL
+        val chipsStart = if (rtl) robotCard.width - chips.right else chips.left
+        val room = (chipsStart - resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._6sdp)).toFloat()
+        val scale = minOf(robot.width.toFloat() / drawable.intrinsicWidth, room / artEnd)
+        val dx = if (rtl) robot.width - (artStart + artEnd) * scale else 0f
+        val dy = robot.height - drawable.intrinsicHeight * scale
+        robot.imageMatrix = Matrix().apply {
+            setScale(scale, scale)
+            postTranslate(dx, dy)
         }
+    }
+
+    /** The first and last columns of the artwork that hold the robot, in bitmap pixels. */
+    private fun Bitmap.opaqueColumns(): Pair<Int, Int> {
+        val column = IntArray(height)
+        fun isOpaque(x: Int): Boolean {
+            getPixels(column, 0, 1, x, 0, 1, height)
+            return column.any { Color.alpha(it) > ALPHA_THRESHOLD }
+        }
+        val first = (0 until width).firstOrNull(::isOpaque) ?: 0
+        val last = (width - 1 downTo 0).firstOrNull(::isOpaque) ?: (width - 1)
+        return first to last + 1
     }
 
     private fun ViewSizeChipBinding.setSize(bytes: Long) {
@@ -143,5 +165,6 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
 
     private companion object {
         const val DISABLED_ALPHA = 0.5f
+        const val ALPHA_THRESHOLD = 8
     }
 }

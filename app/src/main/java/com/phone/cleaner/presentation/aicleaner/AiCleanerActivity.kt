@@ -20,11 +20,9 @@ class AiCleanerActivity : BaseCleanerActivity() {
         title = R.string.action_ai_junk_cleaner,
         scanTitle = R.string.cleaner_loading_title,
         scanTextPadded = false,
-        robot = R.drawable.img_robo_junk,
-        robotWidth = com.intuit.sdp.R.dimen._106sdp,
+        robotCard = R.drawable.img_robo_card_ai,
         chips = CleanerScreen.Chips.SIZES,
         emptyMessage = R.string.ai_cleaner_none,
-        robotMarginStart = com.intuit.sdp.R.dimen._7sdp,
     )
 
     override val accessLevel = StorageAccessGate.Level.MEDIA

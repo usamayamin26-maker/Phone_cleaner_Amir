@@ -20,11 +20,9 @@ class WaCleanerActivity : BaseCleanerActivity() {
         title = R.string.action_wa_cleaner,
         scanTitle = R.string.wa_scanning_title,
         scanTextPadded = true,
-        robot = R.drawable.img_robo_wa,
-        robotWidth = com.intuit.sdp.R.dimen._148sdp,
+        robotCard = R.drawable.img_robo_card_wa,
         chips = CleanerScreen.Chips.TOTAL_AND_STATUS,
         emptyMessage = R.string.wa_cleaner_none,
-        robotOffsetTop = com.intuit.sdp.R.dimen._minus3sdp,
     )
 
     override val accessLevel = StorageAccessGate.Level.ALL_FILES
