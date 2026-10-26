@@ -57,6 +57,17 @@ android {
                 "proguard-rules.pro"
             )
         }
+        // The release build exactly (same R8, resource shrinking and rules), but signed with the
+        // debug key and installed beside the debug app, so a minified build can be tested on a
+        // device without the release keystore. The library modules have no staging type and
+        // fall back to their release variant.
+        create("staging") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            applicationIdSuffix = ".staging"
+            versionNameSuffix = "-staging"
+            matchingFallbacks += listOf("release")
+        }
     }
 
     compileOptions {
