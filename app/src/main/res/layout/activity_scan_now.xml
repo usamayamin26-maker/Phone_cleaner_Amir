@@ -89,9 +89,6 @@
                         android:id="@+id/row_vpn"
                         layout="@layout/item_scan_now_row" />
 
-                    <include
-                        android:id="@+id/row_junk"
-                        layout="@layout/item_scan_now_row" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -214,11 +211,14 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-                            <!-- The tick when the device is clean; the file icon when there is junk to
-                                 review or access to give. -->
-                            <include
+                            <!-- The design's "check-list" image (1:1750, 20 px) when the device is clean;
+                                 the file icon when there is junk to review or access to give. -->
+                            <ImageView
                                 android:id="@+id/junk_ok"
-                                layout="@layout/view_check_badge" />
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/img_scan_check" />
 
                             <ImageView
                                 android:id="@+id/junk_icon"
@@ -357,11 +357,12 @@
                             android:orientation="horizontal"
                             tools:ignore="UseCompoundDrawables">
 
+                            <!-- Figma 1:1771, 18 px. -->
                             <ImageView
                                 android:layout_width="@dimen/_14sdp"
                                 android:layout_height="@dimen/_14sdp"
                                 android:importantForAccessibility="no"
-                                android:src="@drawable/ic_vpn" />
+                                android:src="@drawable/img_scan_chart_done" />
 
                             <TextView
                                 android:layout_width="0dp"

@@ -2,7 +2,7 @@
 <!-- One finding in a result card (Figma 1:1762): the text 26 px in from the card's icon edge (an
      indent on the start side only, as the design draws it)
      (12.5 px regular, 78% black), and at the end the tick when all is well or a chevron when it is
-     worth a look. -->
+     worth a look. The tick is the design's "check-list" image (1:1764), 20 px. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,9 +27,12 @@
         app:lineHeight="@dimen/_15ssp"
         tools:text="@string/health_developer_off" />
 
-    <include
+    <ImageView
         android:id="@+id/check_ok"
-        layout="@layout/view_check_badge" />
+        android:layout_width="@dimen/_16sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/img_scan_check" />
 
     <ImageView
         android:id="@+id/check_review"

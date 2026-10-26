@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- A finished check in Scan Now. Stand-in: Figma's ticks are images that are not exported (1:1684
-     "Group 7", a blue gradient badge; 1:1750 "check-list 1"), so the app's own selected-check disc
+<!-- The tick at the end of a finished check on the Scan Now scanning page. Stand-in: Figma's badge
+     there (1:1684 "Group 7", a blue gradient) is not exported, so the app's own selected-check disc
      is used. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -4,9 +4,12 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.LinearLayout
+import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import com.phone.cleaner.BuildConfig
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.ActivityScanNowBinding
@@ -70,10 +73,10 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         header.backButton.root.onClick { stopAndLeave() }
         header.backButton.root.expandTouchTarget()
 
-        rowSecurity.bind(R.drawable.ic_security, R.string.health_security)
-        rowVpn.bind(R.drawable.ic_vpn, R.string.health_vpn)
-        rowJunk.bind(R.drawable.ic_file, R.string.cleaner_title_junk_files)
-        rowJunk.rowIcon.setColorFilter(getColor(R.color.icon_accent))
+        // The design's two rows (1:1678, 1:1687) at their sizes: the security icon 23 px, the chart
+        // 18 px. Junk has no row: the scan is over the moment junk is done.
+        rowSecurity.bind(R.drawable.ic_security, R.string.health_security, com.intuit.sdp.R.dimen._18sdp)
+        rowVpn.bind(R.drawable.img_scan_chart, R.string.health_vpn, com.intuit.sdp.R.dimen._14sdp)
 
         stopButton.onClick { stopAndLeave() }
         scanAgain.onClick { viewModel.startScan() }
@@ -111,7 +114,6 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         // A row for each finished check, as the design shows them appearing.
         rowSecurity.root.visibleIf(state.security != null)
         rowVpn.root.visibleIf(state.security != null)
-        rowJunk.root.visibleIf(state.junk != null)
 
         renderJunk(state.junk)
         val security = state.security
@@ -155,7 +157,7 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         }
         val actionable = junk is JunkStatus.Found || junk == JunkStatus.NeedsAccess
         junkReview.visibleIf(actionable)
-        junkOk.root.visibleIf(!actionable)
+        junkOk.visibleIf(!actionable)
         junkIcon.visibleIf(actionable)
         cardJunk.isClickable = actionable
     }
@@ -182,15 +184,20 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         finish()
     }
 
-    private fun ItemScanNowRowBinding.bind(@DrawableRes icon: Int, @StringRes label: Int) {
+    private fun ItemScanNowRowBinding.bind(@DrawableRes icon: Int, @StringRes label: Int, @DimenRes size: Int) {
         rowIcon.setImageResource(icon)
+        val px = resources.getDimensionPixelSize(size)
+        rowIcon.updateLayoutParams<LinearLayout.LayoutParams> {
+            width = px
+            height = px
+        }
         rowLabel.setText(label)
     }
 
     /** A finding: the tick when all is well, a chevron to the settings when it is worth a look. */
     private fun ItemHealthCheckBinding.bind(isOn: Boolean, @StringRes off: Int, @StringRes on: Int) {
         checkText.setText(if (isOn) on else off)
-        checkOk.root.visibleIf(!isOn)
+        checkOk.visibleIf(!isOn)
         checkReview.visibleIf(isOn)
         ViewCompat.setStateDescription(root, checkText.text)
     }
