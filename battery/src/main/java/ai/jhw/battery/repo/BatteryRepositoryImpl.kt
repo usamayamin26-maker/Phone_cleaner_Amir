@@ -134,7 +134,9 @@ class BatteryRepositoryImpl(private val context: Context) : BatteryRepository {
         if (chargeCounter != null && levelPercent != null && levelPercent > 0) {
             val estimate = (chargeCounter.toLong() * 100 / levelPercent / 1000).toInt()
             Log.d(TAG, "Capacity estimated from charge counter: $estimate mAh")
-            return estimate to CapacitySource.CHARGE_COUNTER_ESTIMATE
+            // Emulators and some devices report a token counter (0 or 10 mAh): no phone battery
+            // is that small, so such an estimate is no estimate at all.
+            if (estimate >= MIN_PLAUSIBLE_MAH) return estimate to CapacitySource.CHARGE_COUNTER_ESTIMATE
         }
         return null to CapacitySource.UNKNOWN
     }
@@ -167,5 +169,6 @@ class BatteryRepositoryImpl(private val context: Context) : BatteryRepository {
 
     private companion object {
         const val TAG = "BatteryRepositoryImpl"
+        const val MIN_PLAUSIBLE_MAH = 500
     }
 }
