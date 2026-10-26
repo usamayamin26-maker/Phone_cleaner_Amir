@@ -52,13 +52,13 @@ class CleanerSectionsFragment : BaseFragment<FragmentCleanerSectionsBinding>() {
         super.onDestroyView()
     }
 
-    private fun render(state: CleanerUiState) = with(binding) {
+    private fun render(state: CleanerUiState): Unit = with(binding) {
         val section = state.section(key)
         if (section == null) {
             // Everything in it was deleted: back to the results, once.
             if (!isLeaving) parentFragmentManager.popBackStack()
             isLeaving = true
-            return
+            return@with
         }
         val context = requireContext()
         header.headerTitle.setText(section.type.pageTitle)
