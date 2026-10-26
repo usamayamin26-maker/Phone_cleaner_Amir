@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation.whatsapp
 
+import com.phone.cleaner.BuildConfig
 import com.phone.cleaner.R
 import com.phone.cleaner.domain.view_models.WaCleanerViewModel
 import com.phone.cleaner.presentation.base.BaseCleanerActivity
@@ -29,7 +30,17 @@ class WaCleanerActivity : BaseCleanerActivity() {
 
     override val logTag: String = TAG
 
+    override fun setupViews() {
+        // Debug builds only (adb: am start ... --el debug_scan_step_delay_ms 300): slows the scan
+        // down so its page can be checked. In release BuildConfig.DEBUG is false and this is gone.
+        if (BuildConfig.DEBUG) {
+            cleaner.debugStepDelayMs = intent.getLongExtra(EXTRA_DEBUG_STEP_DELAY_MS, 0L)
+        }
+        super.setupViews()
+    }
+
     private companion object {
         const val TAG = "WaCleanerActivity"
+        const val EXTRA_DEBUG_STEP_DELAY_MS = "debug_scan_step_delay_ms"
     }
 }

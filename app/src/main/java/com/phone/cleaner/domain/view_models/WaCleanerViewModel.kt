@@ -10,6 +10,7 @@ import com.phone.cleaner.domain.entities.ApiResult
 import com.phone.cleaner.domain.entities.CleanerSection
 import com.phone.cleaner.domain.entities.CleanerSectionType
 import com.phone.cleaner.domain.repository.WhatsAppRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.update
 
 /**
@@ -23,8 +24,15 @@ class WaCleanerViewModel(
 
     override val tag: String = TAG
 
+    /**
+     * Debug builds only: a pause after each step of the scan, so the scanning page can be seen
+     * and checked (a real scan finishes in under a second). Release builds never set it.
+     */
+    var debugStepDelayMs: Long = 0L
+
     override suspend fun scan() {
         repository.scan().collect { event ->
+            if (debugStepDelayMs > 0) delay(debugStepDelayMs)
             when (event) {
                 is WhatsAppScanEvent.Progress -> mutableState.update { it.copy(progress = event.fraction) }
                 is WhatsAppScanEvent.Completed -> mutableState.update { state ->
