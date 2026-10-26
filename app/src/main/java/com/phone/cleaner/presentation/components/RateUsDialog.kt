@@ -12,15 +12,25 @@ import com.phone.cleaner.utils.formatNumber
 import com.phone.cleaner.utils.onClick
 
 /**
- * Rate Us (Figma 1:4356 / 1:4395): an emoji, the thanks, five stars, "Done" and "Cancel". Done is
- * enabled once a star is chosen and hands the rating to [onRated]; what follows is the screen's
- * decision. The emoji turns to heart eyes, in its yellow ring, at four or five stars.
+ * Rate Us (Figma 1:4356 / 1:4395): an emoji, the thanks, five stars, "Done" and "Cancel". Before a
+ * star is chosen it shows the design's default (1:4395's smiling face) and Done is disabled. A star
+ * sets the rating and the emoji for it, from sad (one) to heart eyes in the yellow ring (five).
+ * Done hands the rating to [onRated]; what follows is the screen's decision.
  */
 object RateUsDialog {
 
     private const val STARS = 5
-    private const val HAPPY_FROM = 4
     private const val DISABLED_ALPHA = 0.5f
+
+    /** One emoji per star count; the default is 1:4395's, before any star is chosen. */
+    private val EMOJI = listOf(
+        R.drawable.img_rate_emoji_1,
+        R.drawable.img_rate_emoji_2,
+        R.drawable.img_rate_emoji_3,
+        R.drawable.img_rate_emoji_4,
+        R.drawable.img_rate_emoji_5,
+    )
+    private val DEFAULT_EMOJI = R.drawable.img_rate_emoji_4
 
     fun show(context: Context, onRated: (stars: Int) -> Unit): Dialog {
         val binding = ViewRateUsDialogBinding.inflate(LayoutInflater.from(context))
@@ -39,9 +49,8 @@ object RateUsDialog {
                     context.getString(if (chosen) R.string.state_selected else R.string.state_not_selected),
                 )
             }
-            val happy = rating >= HAPPY_FROM
-            rateEmoji.setText(if (happy) R.string.rate_emoji_love else R.string.rate_emoji_grin)
-            rateEmojiRing.setBackgroundResource(if (happy) R.drawable.shape_rate_emoji_ring else 0)
+            rateEmoji.setImageResource(EMOJI.getOrNull(rating - 1) ?: DEFAULT_EMOJI)
+            rateEmojiRing.setBackgroundResource(if (rating == STARS) R.drawable.shape_rate_emoji_ring else 0)
             rateDone.isEnabled = rating > 0
             rateDone.alpha = if (rateDone.isEnabled) 1f else DISABLED_ALPHA
         }

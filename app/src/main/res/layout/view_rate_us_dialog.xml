@@ -4,7 +4,7 @@
      sdp conversion: radius 38, the emoji 34 px from the top in its 120 px ring, "Thanks!" 32 px
      bold, the message 20 px semi-bold, five 48 x 46 stars 13 px apart. Its buttons are the shared
      211 x 50 primary button and the 44 px text button, at their own size. The blue wave behind the
-     emoji (1:4357) is not drawn: the file has no geometry for it. -->
+     emoji (1:4357) is not drawn: no image of it was exported. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -37,24 +37,21 @@
             android:paddingTop="@dimen/_18sdp"
             android:paddingBottom="@dimen/_18sdp">
 
-            <!-- The emoji (Figma 1:4362 / 1:4426): heart eyes in a yellow ring once four or five
-                 stars are chosen, a grin otherwise. -->
+            <!-- The emoji for the rating (Figma 1:4362 / 1:4426): 109 px in its 120 px frame, one
+                 image per star count; at five stars it sits in the yellow ring (1:4363). -->
             <FrameLayout
                 android:id="@+id/rate_emoji_ring"
                 android:layout_width="@dimen/_64sdp"
                 android:layout_height="@dimen/_64sdp">
 
-                <TextView
+                <ImageView
                     android:id="@+id/rate_emoji"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_58sdp"
+                    android:layout_height="@dimen/_58sdp"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto_regular"
                     android:importantForAccessibility="no"
-                    android:includeFontPadding="false"
-                    android:textColor="@color/rate_title_text"
-                    android:textSize="@dimen/_46sdp"
-                    tools:text="@string/rate_emoji_grin" />
+                    android:scaleType="fitCenter"
+                    tools:src="@drawable/img_rate_emoji_4" />
             </FrameLayout>
 
             <!-- Figma's line height (20 px) is smaller than its 32 px text; 1.25 x the text keeps
