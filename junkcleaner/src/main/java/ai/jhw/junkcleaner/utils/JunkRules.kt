@@ -45,9 +45,14 @@ internal object JunkRules {
     /** A thumbnail inside a .thumbnails folder, as opposed to one of MediaStore's markers. */
     fun isThumbnail(file: File): Boolean = file.isFile && file.name !in THUMBNAIL_MARKERS
 
+    /**
+     * The root, the standard folders and their standard subfolders, and every hidden folder at the
+     * top level: those belong to the system or an app, even when empty. MediaProvider keeps its
+     * trash in an empty /sdcard/.trash-storage, for one.
+     */
     fun isProtectedFolder(dir: File, root: File): Boolean =
         dir == root ||
-            (dir.parentFile == root && dir.name in STANDARD_FOLDERS) ||
+            (dir.parentFile == root && (dir.name in STANDARD_FOLDERS || dir.name.startsWith("."))) ||
             dir.relativeTo(root).invariantSeparatorsPath in STANDARD_SUBFOLDERS
 
     /** The Android/ folder, where apps keep their own files. */
