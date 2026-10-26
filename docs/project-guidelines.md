@@ -285,7 +285,8 @@ it passes.
     Figma line height. A two-decimal multiplier fitted to each view's current pitch was measured
     1 to 8 px off at font scale 1.0 on every one of the 43 views.
   - A unit test that fails on any line height that is not `sp` is added with the first screen.
-- Gradient text uses `GradientTextView`. Two-tone text keeps the whole sentence in one string plus a
+- Gradient text is drawn with a gradient span (add a shared component the first time a design needs
+  it). Two-tone text keeps the whole sentence in one string plus a
   highlight string, and applies the span in code.
 
 ### Colors
