@@ -215,11 +215,12 @@ and a Language screen with the AppLanguage list (tag, flag emoji, native and Eng
 as in that project. Every new string is added to all 18 files in the same task - never English-only.
 Arabic is right to left, so every screen is checked in Arabic.
 
-Names: the app (launcher label, app_name) is "AI Phone Cleaner"; the splash keeps the design's
-"Ai Junk Cleaner"; the Home header reads "Smart Cleaner Pro". Three separate strings.
+Names: the app (launcher label, app_name) is "AI Phone Cleaner"; the feature is "AI Junk Cleaner"
+everywhere (Home quick action, onboarding, the cleaner's screen header) and only the splash keeps
+"Ai Junk Cleaner"; the Home header reads "Smart Cleaner Pro". Four separate strings.
 
-Brand names are never translated: "AI Phone Cleaner", "Ai Junk Cleaner" and "Smart Cleaner Pro"
-stay in English in all 18 languages. They are `translatable="false"` in values/strings.xml and do
+Brand names are never translated: "AI Phone Cleaner", "AI Junk Cleaner", the splash's "Ai Junk
+Cleaner" and "Smart Cleaner Pro" stay in English in all 18 languages. They are `translatable="false"` in values/strings.xml and do
 not appear in any values-<tag>/strings.xml. Feature names (Device Info, Battery Info, Delete
 Duplicates, ...) are translated like any other text.
 

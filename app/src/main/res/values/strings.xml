@@ -44,7 +44,7 @@
     <string name="home_used_of">%1$s used of %2$s</string>
     <string name="home_scan_now">Scan Now</string>
     <string name="home_quick_actions">Quick Actions</string>
-    <string name="action_ai_junk_cleaner" translatable="false">Ai Junk Cleaner</string>
+    <string name="action_ai_junk_cleaner" translatable="false">AI Junk Cleaner</string>
     <string name="action_delete_duplicates">Delete Duplicates</string>
     <string name="action_app_cleaner">App Cleaner</string>
     <string name="action_wa_cleaner">WA Cleaner</string>
