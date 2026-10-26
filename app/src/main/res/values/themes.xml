@@ -64,6 +64,12 @@
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/_13ssp</item>
         <item name="lineHeight">@dimen/_22ssp</item>
+        <!-- The sparkle 10 px after the label, 21 px (Figma 1:43). -->
+        <item name="icon">@drawable/ic_cleaning_star</item>
+        <item name="iconGravity">textEnd</item>
+        <item name="iconPadding">@dimen/_8sdp</item>
+        <item name="iconSize">@dimen/_17sdp</item>
+        <item name="iconTint">@color/icon_on_primary</item>
     </style>
 
 </resources>

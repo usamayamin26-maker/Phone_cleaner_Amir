@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources/ic_cleaning_star.svg: the sparkle after "Stop Scanning" (Figma 1:43). Figma draws
+     the 27-unit artwork at 21 px with a 1.67 px stroke, so the stroke here is 1.67 x 27 / 21. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="27dp"
+    android:height="27dp"
+    android:viewportWidth="27"
+    android:viewportHeight="27">
+    <path
+        android:pathData="M12.3941 3.16576C12.4423 2.90769 12.5793 2.6746 12.7812 2.50687C12.9832 2.33913 13.2375 2.24731 13.5 2.24731C13.7625 2.24731 14.0168 2.33913 14.2188 2.50687C14.4207 2.6746 14.5577 2.90769 14.6059 3.16576L15.7883 9.41851C15.8722 9.86305 16.0883 10.272 16.4082 10.5918C16.7281 10.9117 17.137 11.1278 17.5815 11.2118L23.8343 12.3941C24.0923 12.4423 24.3254 12.5793 24.4931 12.7812C24.6609 12.9832 24.7527 13.2375 24.7527 13.5C24.7527 13.7625 24.6609 14.0168 24.4931 14.2188C24.3254 14.4207 24.0923 14.5577 23.8343 14.6059L17.5815 15.7883C17.137 15.8722 16.7281 16.0883 16.4082 16.4082C16.0883 16.7281 15.8722 17.137 15.7883 17.5815L14.6059 23.8343C14.5577 24.0923 14.4207 24.3254 14.2188 24.4931C14.0168 24.6609 13.7625 24.7527 13.5 24.7527C13.2375 24.7527 12.9832 24.6609 12.7812 24.4931C12.5793 24.3254 12.4423 24.0923 12.3941 23.8343L11.2118 17.5815C11.1278 17.137 10.9117 16.7281 10.5918 16.4082C10.272 16.0883 9.86305 15.8722 9.41851 15.7883L3.16576 14.6059C2.90769 14.5577 2.6746 14.4207 2.50687 14.2188C2.33913 14.0168 2.24731 13.7625 2.24731 13.5C2.24731 13.2375 2.33913 12.9832 2.50687 12.7812C2.6746 12.5793 2.90769 12.4423 3.16576 12.3941L9.41851 11.2118C9.86305 11.1278 10.272 10.9117 10.5918 10.5918C10.9117 10.272 11.1278 9.86305 11.2118 9.41851L12.3941 3.16576Z"
+        android:strokeWidth="2.14"
+        android:strokeColor="@color/icon_on_primary"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M22.5 2.25V6.75"
+        android:strokeWidth="2.14"
+        android:strokeColor="@color/icon_on_primary"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M24.75 4.5H20.25"
+        android:strokeWidth="2.14"
+        android:strokeColor="@color/icon_on_primary"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M4.5 24.75C5.74264 24.75 6.75 23.7426 6.75 22.5C6.75 21.2574 5.74264 20.25 4.5 20.25C3.25736 20.25 2.25 21.2574 2.25 22.5C2.25 23.7426 3.25736 24.75 4.5 24.75Z"
+        android:strokeWidth="2.14"
+        android:strokeColor="@color/icon_on_primary"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>
