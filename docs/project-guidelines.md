@@ -370,6 +370,14 @@ compress a file it did not create.
   record in the task report that it happened.
 - Stop and report rather than carrying on when the debug connection drops, a tap lands outside the
   app under test, or the owner picks the device up mid-run.
+- Never write, overwrite or delete any file on the phone outside a path created for the run.
+  Temporary files (UI dumps, logs, probes) go to a fresh unique path under /data/local/tmp/ (for
+  example /data/local/tmp/pc_<timestamp>/), checked to be absent before the first write and removed
+  at the end - never /sdcard/ui.xml or any other fixed name on shared storage. On 2026-10-27 a UI
+  dump to /sdcard/ui.xml overwrote and then deleted a file of that name that was already there.
+- Logcat filters are narrow enough to log no installed-app names, account names or file names of
+  the owner's data. If something personal slips into a log, delete those lines and the local copy
+  at once, clear the phone's log, and say so in the report.
 - Never queue a tap before a screenshot has confirmed what is actually on screen. One
   `adb shell input tap` per screenshot, and the screenshot comes first.
 - Change the app's language through its own language screen, never with
