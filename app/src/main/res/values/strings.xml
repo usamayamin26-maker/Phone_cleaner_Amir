@@ -334,6 +334,7 @@
     <string name="health_developer_on">Developer options are on. Tap to review.</string>
     <string name="health_usb_off">USB debugging is off</string>
     <string name="health_usb_on">USB debugging is on. Tap to review.</string>
+    <string name="health_check_unknown">Couldn’t check — open Developer options</string>
     <string name="health_vpn_off">Not connected with VPN</string>
     <string name="health_vpn_on">Connected through a VPN. Tap to review.</string>
 </resources>

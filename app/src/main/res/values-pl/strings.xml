@@ -251,6 +251,7 @@
     <string name="health_developer_on">Opcje programisty są włączone. Kliknij, aby przejrzeć.</string>
     <string name="health_usb_off">Debugowanie USB jest wyłączone</string>
     <string name="health_usb_on">Debugowanie USB jest włączone. Kliknij, aby przejrzeć.</string>
+    <string name="health_check_unknown">Nie udało się sprawdzić — otwórz Opcje programisty</string>
     <string name="health_vpn_off">Brak połączenia z VPN</string>
     <string name="health_vpn_on">Połączono przez VPN. Kliknij, aby przejrzeć.</string>
 </resources>

@@ -251,6 +251,7 @@
     <string name="health_developer_on">開発者向けオプションはオンです。タップして確認してください。</string>
     <string name="health_usb_off">USB デバッグはオフです</string>
     <string name="health_usb_on">USB デバッグはオンです。タップして確認してください。</string>
+    <string name="health_check_unknown">確認できません — 開発者向けオプションを開く</string>
     <string name="health_vpn_off">VPN に接続されていません</string>
     <string name="health_vpn_on">VPN 経由で接続されています。タップして確認してください。</string>
 </resources>

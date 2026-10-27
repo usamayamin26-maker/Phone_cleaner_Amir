@@ -251,6 +251,7 @@
     <string name="health_developer_on">डेवलपर विकल्प चालू हैं। देखने के लिए टैप करें।</string>
     <string name="health_usb_off">USB डीबगिंग बंद है</string>
     <string name="health_usb_on">USB डीबगिंग चालू है। देखने के लिए टैप करें।</string>
+    <string name="health_check_unknown">जाँच नहीं हो सकी — डेवलपर विकल्प खोलें</string>
     <string name="health_vpn_off">VPN से कनेक्ट नहीं है</string>
     <string name="health_vpn_on">VPN के ज़रिए कनेक्ट है। देखने के लिए टैप करें।</string>
 </resources>

@@ -53,6 +53,10 @@ sealed interface ScanNowUiEvent {
     data class OpenSettings(val intent: Intent) : ScanNowUiEvent
 }
 
+/** Something to go and look at: either of the two developer settings is on, or could not be read. */
+val SecurityStatus.needsDeveloperSettings: Boolean
+    get() = developerOptionsOn != false || usbDebuggingOn != false
+
 /**
  * Scan Now (Figma 1:1648 / 1:1705): a read-only health check. Junk comes from the Smart Scan,
  * Developer options, USB debugging and VPN from the device's settings. Nothing here deletes or
@@ -138,10 +142,13 @@ class ScanNowViewModel(
         }
     }
 
-    /** Both developer settings are switched off on the same system page. */
+    /**
+     * Both developer settings are switched off on the same system page. A setting the app may not
+     * read leads there too: the user can see for themselves what the app could not.
+     */
     fun onSecurityClicked() {
         val security = _state.value.security ?: return
-        if (security.developerOptionsOn || security.usbDebuggingOn) {
+        if (security.needsDeveloperSettings) {
             emit(ScanNowUiEvent.OpenSettings(deviceInfoRepository.developerSettingsIntent()))
         }
     }

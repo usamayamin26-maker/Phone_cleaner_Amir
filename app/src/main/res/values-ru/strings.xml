@@ -251,6 +251,7 @@
     <string name="health_developer_on">Параметры разработчика включены. Нажмите, чтобы посмотреть.</string>
     <string name="health_usb_off">Отладка по USB выключена</string>
     <string name="health_usb_on">Отладка по USB включена. Нажмите, чтобы посмотреть.</string>
+    <string name="health_check_unknown">Не удалось проверить — откройте «Для разработчиков»</string>
     <string name="health_vpn_off">Не подключено к VPN</string>
     <string name="health_vpn_on">Подключено через VPN. Нажмите, чтобы посмотреть.</string>
 </resources>

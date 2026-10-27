@@ -251,6 +251,7 @@
     <string name="health_developer_on">开发者选项已开启。点按查看。</string>
     <string name="health_usb_off">USB 调试已关闭</string>
     <string name="health_usb_on">USB 调试已开启。点按查看。</string>
+    <string name="health_check_unknown">无法检查 — 请打开开发者选项</string>
     <string name="health_vpn_off">未连接 VPN</string>
     <string name="health_vpn_on">已通过 VPN 连接。点按查看。</string>
 </resources>

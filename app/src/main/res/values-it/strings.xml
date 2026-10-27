@@ -251,6 +251,7 @@
     <string name="health_developer_on">Le opzioni sviluppatore sono attive. Tocca per controllare.</string>
     <string name="health_usb_off">Il debug USB è disattivato</string>
     <string name="health_usb_on">Il debug USB è attivo. Tocca per controllare.</string>
+    <string name="health_check_unknown">Impossibile verificare — apri Opzioni sviluppatore</string>
     <string name="health_vpn_off">Non connesso a una VPN</string>
     <string name="health_vpn_on">Connesso tramite una VPN. Tocca per controllare.</string>
 </resources>

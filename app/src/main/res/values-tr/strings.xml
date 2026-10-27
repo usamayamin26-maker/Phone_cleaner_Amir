@@ -251,6 +251,7 @@
     <string name="health_developer_on">Geliştirici seçenekleri açık. İncelemek için dokunun.</string>
     <string name="health_usb_off">USB hata ayıklama kapalı</string>
     <string name="health_usb_on">USB hata ayıklama açık. İncelemek için dokunun.</string>
+    <string name="health_check_unknown">Kontrol edilemedi — Geliştirici seçeneklerini açın</string>
     <string name="health_vpn_off">VPN\'e bağlı değil</string>
     <string name="health_vpn_on">VPN üzerinden bağlı. İncelemek için dokunun.</string>
 </resources>

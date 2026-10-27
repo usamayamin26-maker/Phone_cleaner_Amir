@@ -20,6 +20,7 @@ import com.phone.cleaner.domain.view_models.JunkStatus
 import com.phone.cleaner.domain.view_models.ScanNowUiEvent
 import com.phone.cleaner.domain.view_models.ScanNowUiState
 import com.phone.cleaner.domain.view_models.ScanNowViewModel
+import com.phone.cleaner.domain.view_models.needsDeveloperSettings
 import com.phone.cleaner.presentation.aicleaner.AiCleanerActivity
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.components.StorageAccessGate
@@ -116,24 +117,29 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         rowVpn.root.visibleIf(state.security != null)
 
         renderJunk(state.junk)
+        // Nothing was read at all: the cards stay away rather than showing findings nobody made.
         val security = state.security
-        checkDeveloper.bind(
-            isOn = security?.developerOptionsOn == true,
-            off = R.string.health_developer_off,
-            on = R.string.health_developer_on,
-        )
-        checkUsb.bind(
-            isOn = security?.usbDebuggingOn == true,
-            off = R.string.health_usb_off,
-            on = R.string.health_usb_on,
-        )
-        checkVpn.bind(
-            isOn = security?.vpnConnected == true,
-            off = R.string.health_vpn_off,
-            on = R.string.health_vpn_on,
-        )
-        cardSecurity.isClickable = security?.developerOptionsOn == true || security?.usbDebuggingOn == true
-        cardVpn.isClickable = security?.vpnConnected == true
+        cardSecurity.visibleIf(security != null)
+        cardVpn.visibleIf(security != null)
+        if (security != null) {
+            checkDeveloper.bind(
+                isOn = security.developerOptionsOn,
+                off = R.string.health_developer_off,
+                on = R.string.health_developer_on,
+            )
+            checkUsb.bind(
+                isOn = security.usbDebuggingOn,
+                off = R.string.health_usb_off,
+                on = R.string.health_usb_on,
+            )
+            checkVpn.bind(
+                isOn = security.vpnConnected,
+                off = R.string.health_vpn_off,
+                on = R.string.health_vpn_on,
+            )
+            cardSecurity.isClickable = security.needsDeveloperSettings
+            cardVpn.isClickable = security.vpnConnected
+        }
     }
 
     private fun renderJunk(junk: JunkStatus?) = with(binding) {
@@ -194,11 +200,21 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         rowLabel.setText(label)
     }
 
-    /** A finding: the tick when all is well, a chevron to the settings when it is worth a look. */
-    private fun ItemHealthCheckBinding.bind(isOn: Boolean, @StringRes off: Int, @StringRes on: Int) {
-        checkText.setText(if (isOn) on else off)
-        checkOk.visibleIf(!isOn)
-        checkReview.visibleIf(isOn)
+    /**
+     * A finding: the tick when all is well, a chevron to the settings when it is worth a look.
+     * A null [isOn] is a setting this phone does not let the app read - the row says so and leads
+     * to the settings screen, because a tick would claim something the app never checked.
+     */
+    private fun ItemHealthCheckBinding.bind(isOn: Boolean?, @StringRes off: Int, @StringRes on: Int) {
+        checkText.setText(
+            when (isOn) {
+                true -> on
+                false -> off
+                null -> R.string.health_check_unknown
+            },
+        )
+        checkOk.visibleIf(isOn == false)
+        checkReview.visibleIf(isOn != false)
         ViewCompat.setStateDescription(root, checkText.text)
     }
 

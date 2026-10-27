@@ -251,6 +251,7 @@
     <string name="health_developer_on">Utvecklaralternativ är på. Tryck för att granska.</string>
     <string name="health_usb_off">USB-felsökning är av</string>
     <string name="health_usb_on">USB-felsökning är på. Tryck för att granska.</string>
+    <string name="health_check_unknown">Kunde inte kontrollera — öppna Utvecklaralternativ</string>
     <string name="health_vpn_off">Inte ansluten till VPN</string>
     <string name="health_vpn_on">Ansluten via VPN. Tryck för att granska.</string>
 </resources>
