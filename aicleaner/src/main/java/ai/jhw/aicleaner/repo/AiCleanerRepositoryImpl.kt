@@ -12,7 +12,10 @@ import ai.jhw.storage.model.FileItem
 import ai.jhw.storage.model.FileKind
 import android.content.Context
 import android.util.Log
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
@@ -32,6 +35,9 @@ class AiCleanerRepositoryImpl(
     /** One model at a time: the interpreter is not thread-safe. */
     private val lock = Mutex()
     private var classifier: JunkClassifier? = null
+
+    /** Runs [release] off the caller's thread, so it can wait for an in-flight inference. */
+    private val releaseScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun scan(known: Map<String, KnownVerdict>, includeVideos: Boolean): Flow<AiScanEvent> = flow {
         val media = buildList {
@@ -77,9 +83,22 @@ class AiCleanerRepositoryImpl(
 
     override suspend fun delete(files: List<FileItem>): DeleteOutcome = storage.delete(files)
 
+    /**
+     * Frees the model - but only once no inference is running.
+     *
+     * Called from ViewModel.onCleared() on the main thread, usually while a scan is still in the
+     * middle of interpreter.run() on a Dispatchers.Default thread (cancelling the scan does not stop
+     * native code). Closing the interpreter there freed its native memory under that run and
+     * crashed the process with SIGSEGV in libLiteRt.so. Taking the same lock as [classify] makes the
+     * close wait for the current inference to finish; a later scan simply creates a new model.
+     */
     override fun release() {
-        classifier?.close()
-        classifier = null
+        releaseScope.launch {
+            lock.withLock {
+                classifier?.close()
+                classifier = null
+            }
+        }
     }
 
     /** The model's junk probability for [item], or null when its thumbnail cannot be read. */
