@@ -255,6 +255,9 @@
     <string name="health_usb_on">USB デバッグはオンです。タップして確認してください。</string>
     <string name="health_developer_unknown">開発者向けオプション: 確認できません — タップして開く</string>
     <string name="health_usb_unknown">USB デバッグ: 確認できません — タップして開く</string>
+    <string name="health_wireless_off">ワイヤレス デバッグはオフです</string>
+    <string name="health_wireless_on">ワイヤレス デバッグはオンです。タップして確認してください。</string>
+    <string name="health_wireless_unknown">ワイヤレス デバッグ: 確認できません — タップして開く</string>
     <string name="health_vpn_off">VPN に接続されていません</string>
     <string name="health_vpn_on">VPN 経由で接続されています。タップして確認してください。</string>
 </resources>

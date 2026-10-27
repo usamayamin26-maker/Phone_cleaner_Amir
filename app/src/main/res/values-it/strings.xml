@@ -255,6 +255,9 @@
     <string name="health_usb_on">Il debug USB è attivo. Tocca per controllare.</string>
     <string name="health_developer_unknown">Opzioni sviluppatore: impossibile verificare — tocca per aprire</string>
     <string name="health_usb_unknown">Debug USB: impossibile verificare — tocca per aprire</string>
+    <string name="health_wireless_off">Il debug wireless è disattivato</string>
+    <string name="health_wireless_on">Il debug wireless è attivo. Tocca per controllare.</string>
+    <string name="health_wireless_unknown">Debug wireless: impossibile verificare — tocca per aprire</string>
     <string name="health_vpn_off">Non connesso a una VPN</string>
     <string name="health_vpn_on">Connesso tramite una VPN. Tocca per controllare.</string>
 </resources>

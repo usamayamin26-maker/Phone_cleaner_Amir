@@ -255,6 +255,9 @@
     <string name="health_usb_on">USB डीबगिंग चालू है। देखने के लिए टैप करें।</string>
     <string name="health_developer_unknown">डेवलपर विकल्प: जाँच नहीं हो सकी — खोलने के लिए टैप करें</string>
     <string name="health_usb_unknown">USB डीबगिंग: जाँच नहीं हो सकी — खोलने के लिए टैप करें</string>
+    <string name="health_wireless_off">वायरलेस डीबगिंग बंद है</string>
+    <string name="health_wireless_on">वायरलेस डीबगिंग चालू है। देखने के लिए टैप करें।</string>
+    <string name="health_wireless_unknown">वायरलेस डीबगिंग: जाँच नहीं हो सकी — खोलने के लिए टैप करें</string>
     <string name="health_vpn_off">VPN से कनेक्ट नहीं है</string>
     <string name="health_vpn_on">VPN के ज़रिए कनेक्ट है। देखने के लिए टैप करें।</string>
 </resources>

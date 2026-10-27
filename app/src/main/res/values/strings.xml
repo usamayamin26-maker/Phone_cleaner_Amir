@@ -338,6 +338,9 @@
     <string name="health_usb_on">USB debugging is on. Tap to review.</string>
     <string name="health_developer_unknown">Developer options: couldn’t check — tap to open</string>
     <string name="health_usb_unknown">USB debugging: couldn’t check — tap to open</string>
+    <string name="health_wireless_off">Wireless debugging is off</string>
+    <string name="health_wireless_on">Wireless debugging is on. Tap to review.</string>
+    <string name="health_wireless_unknown">Wireless debugging: couldn’t check — tap to open</string>
     <string name="health_vpn_off">Not connected with VPN</string>
     <string name="health_vpn_on">Connected through a VPN. Tap to review.</string>
 </resources>

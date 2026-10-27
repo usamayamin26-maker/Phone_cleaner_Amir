@@ -255,6 +255,9 @@
     <string name="health_usb_on">USB hata ayıklama açık. İncelemek için dokunun.</string>
     <string name="health_developer_unknown">Geliştirici seçenekleri: kontrol edilemedi — açmak için dokunun</string>
     <string name="health_usb_unknown">USB hata ayıklama: kontrol edilemedi — açmak için dokunun</string>
+    <string name="health_wireless_off">Kablosuz hata ayıklama kapalı</string>
+    <string name="health_wireless_on">Kablosuz hata ayıklama açık. İncelemek için dokunun.</string>
+    <string name="health_wireless_unknown">Kablosuz hata ayıklama: kontrol edilemedi — açmak için dokunun</string>
     <string name="health_vpn_off">VPN\'e bağlı değil</string>
     <string name="health_vpn_on">VPN üzerinden bağlı. İncelemek için dokunun.</string>
 </resources>

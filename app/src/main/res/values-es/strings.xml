@@ -255,6 +255,9 @@
     <string name="health_usb_on">La depuración por USB está activada. Toca para revisar.</string>
     <string name="health_developer_unknown">Opciones para desarrolladores: no se pudo comprobar — toca para abrir</string>
     <string name="health_usb_unknown">Depuración por USB: no se pudo comprobar — toca para abrir</string>
+    <string name="health_wireless_off">La depuración inalámbrica está desactivada</string>
+    <string name="health_wireless_on">La depuración inalámbrica está activada. Toca para revisar.</string>
+    <string name="health_wireless_unknown">Depuración inalámbrica: no se pudo comprobar — toca para abrir</string>
     <string name="health_vpn_off">No conectado a una VPN</string>
     <string name="health_vpn_on">Conectado a través de una VPN. Toca para revisar.</string>
 </resources>

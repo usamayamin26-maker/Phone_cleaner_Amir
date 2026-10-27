@@ -331,6 +331,12 @@
                         <include
                             android:id="@+id/check_usb"
                             layout="@layout/item_health_check" />
+
+                        <!-- No design row: Wireless debugging is the third developer setting, built
+                             like the two above it. -->
+                        <include
+                            android:id="@+id/check_wireless"
+                            layout="@layout/item_health_check" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 

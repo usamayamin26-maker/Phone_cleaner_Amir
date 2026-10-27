@@ -255,6 +255,9 @@
     <string name="health_usb_on">Отладка по USB включена. Нажмите, чтобы посмотреть.</string>
     <string name="health_developer_unknown">Параметры разработчика: не удалось проверить — нажмите, чтобы открыть</string>
     <string name="health_usb_unknown">Отладка по USB: не удалось проверить — нажмите, чтобы открыть</string>
+    <string name="health_wireless_off">Отладка по Wi-Fi выключена</string>
+    <string name="health_wireless_on">Отладка по Wi-Fi включена. Нажмите, чтобы посмотреть.</string>
+    <string name="health_wireless_unknown">Отладка по Wi-Fi: не удалось проверить — нажмите, чтобы открыть</string>
     <string name="health_vpn_off">Не подключено к VPN</string>
     <string name="health_vpn_on">Подключено через VPN. Нажмите, чтобы посмотреть.</string>
 </resources>

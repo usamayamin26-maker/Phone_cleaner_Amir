@@ -134,6 +134,12 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
                 on = R.string.health_usb_on,
                 unknown = R.string.health_usb_unknown,
             )
+            checkWireless.bind(
+                isOn = security.wirelessDebuggingOn,
+                off = R.string.health_wireless_off,
+                on = R.string.health_wireless_on,
+                unknown = R.string.health_wireless_unknown,
+            )
             checkVpn.bind(
                 isOn = security.vpnConnected,
                 off = R.string.health_vpn_off,

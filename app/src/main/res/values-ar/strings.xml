@@ -255,6 +255,9 @@
     <string name="health_usb_on">تصحيح أخطاء USB مفعّل. انقر للمراجعة.</string>
     <string name="health_developer_unknown">خيارات المطوّر: تعذر التحقق — انقر للفتح</string>
     <string name="health_usb_unknown">تصحيح أخطاء USB: تعذر التحقق — انقر للفتح</string>
+    <string name="health_wireless_off">تصحيح الأخطاء اللاسلكي متوقف</string>
+    <string name="health_wireless_on">تصحيح الأخطاء اللاسلكي مفعّل. انقر للمراجعة.</string>
+    <string name="health_wireless_unknown">تصحيح الأخطاء اللاسلكي: تعذر التحقق — انقر للفتح</string>
     <string name="health_vpn_off">غير متصل بشبكة VPN</string>
     <string name="health_vpn_on">متصل عبر VPN. انقر للمراجعة.</string>
 </resources>
