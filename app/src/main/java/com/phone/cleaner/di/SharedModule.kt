@@ -56,7 +56,9 @@ val SharedModule = module {
 
     // ---- local database ----
     single {
-        Room.databaseBuilder(androidContext(), AppDatabase::class.java, Constants.DB_NAME).build()
+        Room.databaseBuilder(androidContext(), AppDatabase::class.java, Constants.DB_NAME)
+            .addMigrations(AppDatabase.MIGRATION_1_2)
+            .build()
     }
     single { get<AppDatabase>().aiScanResultDao() }
 

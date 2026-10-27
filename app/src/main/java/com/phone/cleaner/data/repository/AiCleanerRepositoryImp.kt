@@ -24,7 +24,8 @@ class AiCleanerRepositoryImp(
 ) : AiCleanerRepository {
 
     override fun scan(): Flow<AiScanEvent> = flow {
-        val known = aiScanResultDao.getAll().associate { it.path to KnownVerdict(it.dateModified, it.isJunk) }
+        val known = aiScanResultDao.getAll()
+            .associate { it.path to KnownVerdict(it.dateModified, it.junkProbability) }
         val pending = ArrayList<AiScanResultEntity>()
         var classified = 0
         val startedAt = System.currentTimeMillis()
@@ -33,7 +34,7 @@ class AiCleanerRepositoryImp(
                 when (event) {
                     is AiScanEvent.Classified -> {
                         classified++
-                        pending += AiScanResultEntity(event.item.path, event.item.dateModified, event.isJunk)
+                        pending += AiScanResultEntity(event.item.path, event.item.dateModified, event.junkProbability)
                         // Stored in batches, so a long scan that is stopped keeps what it learnt.
                         if (pending.size >= BATCH) flush(pending)
                     }
@@ -43,7 +44,7 @@ class AiCleanerRepositoryImp(
                         Log.d(
                             TAG,
                             "AI scan: ${known.size} cached, $classified classified, ${event.junk.size} junk, " +
-                                "${event.missingPaths.size} gone, ${System.currentTimeMillis() - startedAt} ms",
+                                "${event.missingPaths.size} dropped, ${System.currentTimeMillis() - startedAt} ms",
                         )
                     }
                     is AiScanEvent.Progress -> Unit

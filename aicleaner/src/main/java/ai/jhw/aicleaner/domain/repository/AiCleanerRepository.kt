@@ -10,10 +10,17 @@ import kotlinx.coroutines.flow.Flow
  * AI (Artificial Intelligence) Junk Cleaner: a LiteRT (TensorFlow Lite) model, run on the phone,
  * picks out memes and forwarded junk images (and video frames) from the gallery. Nothing leaves
  * the device. Needs media access. Cancelling the collector stops the scan between two files.
+ *
+ * The camera folders are left out of the scan entirely, and a file counts as junk only at or above
+ * the module's own confidence threshold (`AiJunkRules`). What is cached is the model's
+ * probability, not the verdict, so that threshold can change without re-scanning.
  */
 interface AiCleanerRepository {
 
-    /** [known] maps a file path to the verdict the app stored for it earlier. */
+    /**
+     * [known] maps a file path to the verdict the app stored for it earlier. A verdict whose
+     * probability is unknown is classified again.
+     */
     fun scan(known: Map<String, KnownVerdict>, includeVideos: Boolean = true): Flow<AiScanEvent>
 
     suspend fun delete(files: List<FileItem>): DeleteOutcome

@@ -14,6 +14,10 @@ import java.nio.channels.FileChannel
  * The meme / junk-image model from the old source (softmax_fit_gene.tflite in src/main/assets):
  * a 224x224 RGB (Red Green Blue) input scaled to -1..1, two output scores.
  *
+ * The two scores are already a probability pair: measured on a device over the whole of a gallery
+ * (2026-10-27), every pair summed to 1.0. So [junkProbability] is simply the junk one, and the
+ * caller decides from it; see [AiJunkRules.JUNK_THRESHOLD].
+ *
  * Which output means "junk": score 0 ([JUNK_INDEX]), "Meme" in labels.txt. Verified on an
  * emulator (2026-10-25): 10 of 10 test memes (captioned, two-panel, a forwarded quote) came out
  * junk, and none of the 18 other files - photographs (some as WhatsApp copies), videos and
@@ -30,8 +34,16 @@ internal class JunkClassifier(context: Context) {
     private val output = Array(1) { FloatArray(2) }
     private val pixels = IntArray(SIZE * SIZE)
 
-    /** [bitmap] must already be [SIZE] x [SIZE]. */
-    fun isJunk(bitmap: Bitmap): Boolean {
+    /**
+     * How sure the model is that [bitmap] is junk, 0..1. [bitmap] must already be [SIZE] x [SIZE].
+     *
+     * The score is taken as it comes. Putting the pair through a softmax here - which looks right,
+     * since two scores and a decision usually mean logits - squeezes every verdict into 0.2689 to
+     * 0.7311, because softmax of a pair that already sums to 1 can never leave that range. Measured
+     * that way, nothing in a 4,007-file gallery reached 0.75 and no threshold above 0.73 could ever
+     * match anything.
+     */
+    fun junkProbability(bitmap: Bitmap): Float {
         input.rewind()
         bitmap.getPixels(pixels, 0, SIZE, 0, 0, SIZE, SIZE)
         for (pixel in pixels) {
@@ -40,8 +52,7 @@ internal class JunkClassifier(context: Context) {
             input.putFloat(((pixel and 0xFF) - MEAN) / STD)
         }
         interpreter.run(input, output)
-        val scores = output[0]
-        return scores[JUNK_INDEX] > scores[1 - JUNK_INDEX]
+        return output[0][JUNK_INDEX]
     }
 
     fun close() = interpreter.close()

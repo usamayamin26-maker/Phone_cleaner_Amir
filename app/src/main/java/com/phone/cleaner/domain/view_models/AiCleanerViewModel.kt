@@ -23,8 +23,12 @@ import java.util.Locale
 /**
  * AI Junk Cleaner (Figma 1:3 / 1:349 / 1:48 / 1:142 / 1:208): the model's junk photos and videos,
  * grouped by the folder they are in, the large files, and the Smart Scan's junk files when All
- * files access is granted. The model's verdicts and the recommended junk start selected; large
- * files are the user's own and start unselected.
+ * files access is granted.
+ *
+ * Only the Smart Scan's recommended junk starts selected. The model's verdicts never do, in any
+ * section or group: a guess about someone's photographs is a suggestion to look at, not a
+ * selection to delete, so the user ticks what goes and Delete stays disabled until they have.
+ * Large files are the user's own and start unselected for the same reason.
  */
 class AiCleanerViewModel(
     private val repository: AiCleanerRepository,
@@ -85,7 +89,7 @@ class AiCleanerViewModel(
                 progress = 1f,
                 sections = sections,
                 junkCategories = categories,
-                selectedPaths = aiJunk.map { it.path }.toSet() + recommendedJunk(),
+                selectedPaths = recommendedJunk(),
                 error = large.message,
             )
         }
