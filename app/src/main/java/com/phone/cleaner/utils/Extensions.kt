@@ -4,14 +4,14 @@ import ai.jhw.storage.model.FileItem
 import ai.jhw.storage.model.FileKind
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.ImageDecoder
 import android.graphics.Matrix
 import android.graphics.Outline
 import android.graphics.Rect
-import android.graphics.drawable.AnimatedImageDrawable
-import android.os.Build
+import android.text.Layout
+import android.text.StaticLayout
+import android.text.TextPaint
 import android.text.format.Formatter
-import android.util.Log
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.TouchDelegate
 import android.view.View
@@ -19,8 +19,8 @@ import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
@@ -31,6 +31,7 @@ import androidx.core.view.doOnAttach
 import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import androidx.core.widget.TextViewCompat
 import coil3.dispose
 import coil3.load
 import coil3.request.error
@@ -38,10 +39,10 @@ import coil3.request.placeholder
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.ViewSwitchBinding
 import com.phone.cleaner.presentation.components.CompositeTouchDelegate
+import java.text.BreakIterator
 import java.text.NumberFormat
 import java.util.Locale
-
-private const val TAG = "Extensions"
+import kotlin.math.roundToInt
 
 // ---- String ----
 
@@ -166,18 +167,52 @@ fun View.clipToRoundRect(radiusPx: Float) {
 }
 
 /**
- * Plays an animated image (the Home robot GIF). [AnimatedImageDrawable] exists from API 28; below
- * that, and if decoding fails, the view keeps its static `src`, which is the first frame.
+ * The largest text size, no larger than the current one, at which the text fits [width] without
+ * breaking inside a word and, laid out at that width, is no taller than [maxHeight]. A word is a
+ * run between two line-break opportunities, so a Japanese or Chinese label, which may break
+ * between characters, is not shrunk for having no spaces. Used where a label sits in a box the
+ * design fixes, so a large font size or a long word cannot break a word in two.
  */
-fun ImageView.playAnimatedImage(@DrawableRes resId: Int) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return
-    try {
-        val drawable = ImageDecoder.decodeDrawable(ImageDecoder.createSource(resources, resId))
-        setImageDrawable(drawable)
-        (drawable as? AnimatedImageDrawable)?.start()
-    } catch (e: Exception) {
-        Log.w(TAG, "Animated image not decoded, keeping the still frame", e)
+fun TextView.fittingTextSize(width: Int, maxHeight: Int = Int.MAX_VALUE): Float {
+    if (width <= 0 || text.isEmpty()) return textSize
+    val probe = TextPaint(paint)
+    val lineHeightPerSize = lineHeight / textSize
+    val smallest = textSize / 4
+    var size = textSize
+    while (size > smallest) {
+        probe.textSize = size
+        val lines = StaticLayout.Builder.obtain(text, 0, text.length, probe, width)
+            .setBreakStrategy(breakStrategy)
+            .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE)
+            .build()
+            .lineCount
+        val fits = probe.widestWord(text) <= width && lines * size * lineHeightPerSize <= maxHeight
+        if (fits) break
+        size *= 0.95f
     }
+    return size
+}
+
+/** Sets a size from [fittingTextSize], shrinking the line height in step. */
+fun TextView.applyFittingTextSize(sizePx: Float) {
+    if (sizePx >= textSize) return
+    val lineHeightPx = lineHeight * sizePx / textSize
+    setTextSize(TypedValue.COMPLEX_UNIT_PX, sizePx)
+    TextViewCompat.setLineHeight(this, lineHeightPx.roundToInt())
+}
+
+private fun TextPaint.widestWord(text: CharSequence): Float {
+    val string = text.toString()
+    val breaks = BreakIterator.getLineInstance(textLocale).apply { setText(string) }
+    var widest = 0f
+    var start = breaks.first()
+    var end = breaks.next()
+    while (end != BreakIterator.DONE) {
+        widest = maxOf(widest, measureText(string.substring(start, end).trimEnd()))
+        start = end
+        end = breaks.next()
+    }
+    return widest
 }
 
 /**

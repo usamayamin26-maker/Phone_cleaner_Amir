@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Scan Now circle (Figma 34:39). Figma fills it with an image; sampled from home_v2.png it
+     runs from light blue at the start to deep blue at the end, with no vertical change. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/scan_gradient_center"
+        android:endColor="@color/scan_gradient_end"
+        android:startColor="@color/scan_gradient_start" />
+</shape>

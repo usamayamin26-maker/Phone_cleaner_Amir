@@ -1,62 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One Home quick action (Figma 1:2337): 169 x 77.75, radius 16, translucent white with a white
-     border and a soft blue shadow; a 44 px gradient circle with the icon, then the label. Figma wraps
-     the labels at 73 to 82 px so each reads on two lines; a 61ssp cap gives the same breaks with
-     the Android Roboto metrics. It is ssp, a measure of the text, so it grows with the font size.
-     When a word no longer fits beside the icon (large font sizes, long words in some languages),
-     MainActivity stacks the label under the icon instead of breaking the word. -->
+<!-- One Home quick action (Figma 34:63): 157 x 100, white, radius 18, padding 14, with a 10% #172B4D
+     shadow. The 40 px icon tile (radius 14) and the 18 px arrow circle share a row, centred on
+     each other; the label sits 12 px under them. MainActivity tints the tile, icon, arrow and
+     circle per card, and shrinks the labels together if a word would not fit the card. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="0dp"
     android:layout_height="match_parent"
     android:layout_weight="1"
-    android:minHeight="@dimen/_62sdp"
+    android:minHeight="@dimen/_80sdp"
     android:outlineAmbientShadowColor="@color/card_action_shadow"
     android:outlineSpotShadowColor="@color/card_action_shadow"
-    app:cardBackgroundColor="@color/card_glass"
-    app:cardCornerRadius="@dimen/_13sdp"
-    app:cardElevation="@dimen/_4sdp"
+    app:cardBackgroundColor="@color/card_surface"
+    app:cardCornerRadius="@dimen/_14sdp"
+    app:cardElevation="@dimen/_5sdp"
     app:rippleColor="@color/ripple_on_light"
-    app:strokeColor="@color/card_glass_stroke"
-    app:strokeWidth="@dimen/_1sdp"
+    app:strokeWidth="0dp"
     tools:targetApi="28">
 
-    <LinearLayout
-        android:id="@+id/action_row"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:minHeight="@dimen/_62sdp"
-        android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/_14sdp"
-        android:paddingVertical="@dimen/_10sdp">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_11sdp">
 
         <FrameLayout
-            android:id="@+id/action_icon_frame"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:background="@drawable/shape_action_icon_bg">
+            android:id="@+id/action_icon_tile"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="@drawable/shape_qa_icon_tile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/action_icon"
-                android:layout_width="@dimen/_21sdp"
-                android:layout_height="@dimen/_21sdp"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
                 android:layout_gravity="center"
                 android:importantForAccessibility="no" />
         </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/action_arrow_circle"
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="@dimen/_14sdp"
+            android:background="@drawable/shape_qa_arrow_circle"
+            app:layout_constraintBottom_toBottomOf="@id/action_icon_tile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/action_icon_tile">
+
+            <ImageView
+                android:id="@+id/action_arrow"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_9sdp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_qa_arrow" />
+        </FrameLayout>
+
         <TextView
             android:id="@+id/action_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_9sdp"
-            android:hyphenationFrequency="normal"
-            android:maxWidth="@dimen/_61ssp"
-            android:fontFamily="@font/roboto_semi_bold"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/_12ssp"
-            app:lineHeight="@dimen/_16ssp" />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:hyphenationFrequency="none"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_action"
+            android:textDirection="locale"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/action_icon_tile"
+            app:lineHeight="@dimen/_13ssp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

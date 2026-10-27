@@ -45,7 +45,6 @@
     <!-- Cards -->
     <color name="card_surface">#FFFFFFFF</color>
     <color name="card_glass">#FFFDFDFF</color>
-    <color name="card_glass_stroke">#D9FFFFFF</color>
     <color name="card_power_stroke">#FFE8EEFF</color>
     <!-- Settings and Language rows (Figma 1:4241): 72% white, composited as card_glass, with a
          12% blue hairline. The selected language is a 72% violet-to-blue gradient (1:4308),
@@ -59,7 +58,6 @@
     <!-- The round tile behind a Settings icon or a language flag. -->
     <color name="circle_tile_fill">#FFEEF2FF</color>
     <color name="circle_tile_stroke">#1F4F7CFF</color>
-    <color name="card_action_shadow">#FF4F7CFF</color>
     <!-- Spot shadow under the white cards: Figma's drop shadow is 8% black, lighter than the
          platform default, so the shadow colour is dimmed (API 28+; older versions keep the
          default). -->
@@ -70,20 +68,47 @@
     <color name="battery_header_start">#FFCFEBFF</color>
     <color name="battery_header_end">#FFD9CDFC</color>
 
-    <!-- Home -->
-    <color name="usage_pill_surface">#FFFFFFFF</color>
-    <color name="usage_dot">#FF4F7CFF</color>
-    <color name="usage_dot_glow">#FF67C7FF</color>
-    <color name="usage_dot_glow_end">#0067C7FF</color>
-    <color name="robot_circle_fill">#FFFFFFFF</color>
-    <color name="robot_circle_stroke">#91FFFFFF</color>
-    <color name="robot_shadow">#2E6366F1</color>
-    <color name="robot_shadow_end">#006366F1</color>
-    <color name="scan_button_surface">#FFFFFFFF</color>
-    <color name="scan_button_stroke">#D9FFFFFF</color>
-    <color name="action_icon_start">#FFFFFFFF</color>
-    <color name="action_icon_end">#FF95D8FF</color>
-    <color name="action_icon_stroke">#BFFFFFFF</color>
+    <!-- Home (Figma 34:8). The screen is white under a #638BFF-to-white gradient that runs straight
+         down over the top 39% of the frame (317 of 812 px). -->
+    <color name="home_background">#FFFFFFFF</color>
+    <color name="home_gradient_start">#FF638BFF</color>
+    <color name="home_gradient_end">#FFFFFFFF</color>
+    <!-- Storage Usage is 80% black and RAM Usage text_primary in Figma (34:141, 34:146). -->
+    <color name="text_usage_storage">#CC000000</color>
+    <color name="usage_icon_tile">#FFFFFFFF</color>
+    <!-- Scan Now (34:39): a white ring with a blue glow round a blue gradient circle. The gradient
+         is an image fill in Figma, so its colours are sampled from home_v2.png (unverified). -->
+    <color name="scan_ring">#FFFFFFFF</color>
+    <color name="scan_shadow">#FF0005FF</color>
+    <color name="scan_gradient_start">#FF5BBFF5</color>
+    <color name="scan_gradient_center">#FF0A9FF2</color>
+    <color name="scan_gradient_end">#FF0080F1</color>
+    <color name="icon_on_scan">#FFFFFFFF</color>
+    <color name="text_on_scan">#FFFFFFFF</color>
+    <color name="ripple_on_scan">#33FFFFFF</color>
+    <!-- Quick action cards (34:63): white, with a 10% #172B4D shadow; dimmed here because Android
+         adds its own spot alpha (API 28+). Each card has an accent for its icon and arrow, a 10%
+         tint of it for the icon tile and a pale fill for the arrow circle. -->
+    <color name="card_action_shadow">#99172B4D</color>
+    <color name="text_action">#FF172B4D</color>
+    <color name="qa_ai_junk_accent">#FF168BEE</color>
+    <color name="qa_ai_junk_tile">#1A168BEE</color>
+    <color name="qa_ai_junk_arrow_fill">#FFE8F3FD</color>
+    <color name="qa_duplicates_accent">#FF8E51FF</color>
+    <color name="qa_duplicates_tile">#1A8E51FF</color>
+    <color name="qa_duplicates_arrow_fill">#FFF4EEFF</color>
+    <color name="qa_app_cleaner_accent">#FF615FFF</color>
+    <color name="qa_app_cleaner_tile">#1A615FFF</color>
+    <color name="qa_app_cleaner_arrow_fill">#FFEFEFFF</color>
+    <color name="qa_wa_accent">#FF00BC7D</color>
+    <color name="qa_wa_tile">#1A00BC7D</color>
+    <color name="qa_wa_arrow_fill">#FFE6F8F2</color>
+    <color name="qa_device_info_accent">#FF38BDF8</color>
+    <color name="qa_device_info_tile">#1A38BDF8</color>
+    <color name="qa_device_info_arrow_fill">#FFEBF8FE</color>
+    <color name="qa_battery_info_accent">#FFFE9A00</color>
+    <color name="qa_battery_info_tile">#1AFE9A00</color>
+    <color name="qa_battery_info_arrow_fill">#FFFFF5E6</color>
 
     <!-- The design's switch (view_switch): Power Saving Mode, Keep best one. The "on" thumb is
          Figma 1:867. -->
@@ -159,6 +184,7 @@
     <color name="health_security_icon">#FF448AFF</color>
     <color name="text_check_detail">#C7000000</color>
     <color name="scan_done_ring">#B3FFFFFF</color>
+    <color name="scan_button_stroke">#D9FFFFFF</color>
     <color name="scan_again_base">#D9FFFFFF</color>
     <color name="scan_again_start">#EBFFFFFF</color>
     <color name="scan_again_center">#D9EEF2FF</color>

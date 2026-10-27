@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources/ic_qa_battery_info.svg (Figma 34:127), 20 x 20. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <path
+        android:pathData="M9.1665 5.83325L6.6665 9.99992H9.99984L7.49984 14.1666"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/qa_battery_info_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M12.3802 5H13.3335C13.7756 5 14.1995 5.17559 14.512 5.48816C14.8246 5.80072 15.0002 6.22464 15.0002 6.66667V13.3333C15.0002 13.7754 14.8246 14.1993 14.512 14.5118C14.1995 14.8244 13.7756 15 13.3335 15H10.8877"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/qa_battery_info_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M18.3335 11.6666V8.33325"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/qa_battery_info_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M4.28317 15H3.33317C2.89114 15 2.46722 14.8244 2.15466 14.5118C1.8421 14.1993 1.6665 13.7754 1.6665 13.3333V6.66667C1.6665 6.22464 1.8421 5.80072 2.15466 5.48816C2.46722 5.17559 2.89114 5 3.33317 5H5.77984"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/qa_battery_info_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

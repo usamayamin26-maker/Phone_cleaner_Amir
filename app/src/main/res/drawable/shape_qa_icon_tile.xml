@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A quick action's 40 px icon tile (Figma 34:65), radius 14; each card tints it with its own
+     colour through backgroundTint. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_11sdp" />
+    <solid android:color="@color/card_surface" />
+</shape>

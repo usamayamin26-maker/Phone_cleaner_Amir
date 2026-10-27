@@ -15,6 +15,12 @@
 
     <style name="Theme.PhoneCleaner" parent="Base.Theme.PhoneCleaner" />
 
+    <!-- Home is white under its header gradient, not screen_background; the window paints it, so
+         the layout does not paint a second background over it. -->
+    <style name="Theme.PhoneCleaner.Home">
+        <item name="android:windowBackground">@color/home_background</item>
+    </style>
+
     <!-- The system splash (core-splashscreen) that covers the cold start: the splash background
          and logo, until SplashActivity draws the design's splash in the same place. -->
     <style name="Theme.PhoneCleaner.Splash" parent="Theme.SplashScreen">

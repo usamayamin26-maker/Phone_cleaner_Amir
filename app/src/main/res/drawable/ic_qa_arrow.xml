@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources/ic_qa_arrow.svg (Figma 34:72), 6 x 11. Tinted per card in MainActivity; mirrored right to left. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="6dp"
+    android:height="11dp"
+    android:autoMirrored="true"
+    android:viewportWidth="6"
+    android:viewportHeight="11">
+    <path
+        android:pathData="M0.733398 9.7334L5.2334 5.2334L0.733398 0.733398"
+        android:strokeWidth="1.46667"
+        android:strokeColor="@color/qa_ai_junk_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

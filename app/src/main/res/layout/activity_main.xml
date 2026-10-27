@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Home (Figma 1:2286). The header is a vertical chain of Figma gaps, so a larger font pushes it
-     down instead of piling it up: the title 9 px under the status bar, the usage pills 10 px and
-     the robot circle 24.6 px under the title, Scan Now 26 px under the circle. The blue header is
-     the exported ellipse (762 x 588, top 267 px above the frame) cropped to the part inside the
-     frame; it runs from the top of the screen, behind the status bar, to 90.5 px below the top of
-     Scan Now, where the ellipse ends in Figma. -->
+<!-- Home (Figma 34:8, "home v2"). The window is white (Theme.PhoneCleaner.Home), under a #638BFF-to-white gradient that covers the top 317 px
+     and runs behind the status bar. Everything hangs from the status bar in a chain of Figma gaps,
+     so a larger font pushes it down instead of piling it up: the title 9 px under the status bar,
+     Storage and RAM Usage 10 px and the Scan Now ring 29 px under the title, Quick Actions 33 px
+     under the ring (or under the usage text, if a large font makes that longer). The usage text
+     stays beside the ring: each block ends where the ring begins. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,43 +13,30 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-    <com.phone.cleaner.presentation.components.ScreenBackgroundView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clipChildren="false">
+
+            <View
+                android:id="@+id/header_background"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_254sdp"
+                android:background="@drawable/shape_home_background"
+                android:importantForAccessibility="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- The bottom of the status bar; everything below hangs from it. -->
             <Space
                 android:id="@+id/status_anchor"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Where the ellipse ends: Figma y 321, 90.5 px below the top of Scan Now. -->
-            <Space
-                android:id="@+id/header_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_72sdp"
-                app:layout_constraintTop_toTopOf="@id/scan_now" />
-
-            <ImageView
-                android:id="@+id/header_background"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:importantForAccessibility="no"
-                android:scaleType="fitXY"
-                android:src="@drawable/img_home_header"
-                app:layout_constraintBottom_toTopOf="@id/header_bottom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -70,6 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@id/status_anchor"
                 app:lineHeight="@dimen/_17ssp" />
 
+            <!-- Figma 34:31: a 40 px button with the 22 px gear at its end. -->
             <FrameLayout
                 android:id="@+id/settings_button"
                 android:layout_width="@dimen/_32sdp"
@@ -89,117 +77,216 @@
                     android:src="@drawable/ic_setting" />
             </FrameLayout>
 
-            <include
-                android:id="@+id/storage_pill"
-                layout="@layout/item_usage_pill"
-                android:layout_width="wrap_content"
+            <!-- Storage Usage (Figma 34:137): a 14 px white tile with the icon, 8 px gap, then the
+                 semi-bold title over the light value, both on a 14.8 px line. -->
+            <LinearLayout
+                android:id="@+id/storage_usage"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@id/scan_now"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_title" />
+                app:layout_constraintTop_toBottomOf="@id/home_title">
 
-            <include
-                android:id="@+id/ram_pill"
-                layout="@layout/item_usage_pill"
-                android:layout_width="wrap_content"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
+                    app:cardBackgroundColor="@color/usage_icon_tile"
+                    app:cardCornerRadius="@dimen/_3sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_6sdp"
+                        android:layout_height="@dimen/_7sdp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_home_storage" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/storage_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_semi_bold"
+                        android:text="@string/home_storage_usage"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_usage_storage"
+                        android:textDirection="locale"
+                        android:textSize="@dimen/_8ssp"
+                        app:lineHeight="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/storage_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_usage_storage"
+                        android:textDirection="locale"
+                        android:textSize="@dimen/_6ssp"
+                        app:lineHeight="@dimen/_12ssp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- RAM Usage (Figma 34:142): the same, at the end, with a 5.5 px gap after the tile. -->
+            <LinearLayout
+                android:id="@+id/ram_usage"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_9sdp"
-                android:layout_marginEnd="@dimen/_17sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:gravity="end"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_title" />
+                app:layout_constraintStart_toEndOf="@id/scan_now"
+                app:layout_constraintTop_toBottomOf="@id/home_title">
 
-            <View
-                android:id="@+id/robot_circle"
-                android:layout_width="@dimen/_88sdp"
-                android:layout_height="@dimen/_88sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@drawable/shape_robot_circle"
-                android:importantForAccessibility="no"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_title" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
+                    app:cardBackgroundColor="@color/usage_icon_tile"
+                    app:cardCornerRadius="@dimen/_3sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:strokeWidth="0dp">
 
-            <View
-                android:id="@+id/robot_shadow"
-                android:layout_width="@dimen/_112sdp"
-                android:layout_height="@dimen/_11sdp"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:background="@drawable/shape_robot_shadow"
-                android:importantForAccessibility="no"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/robot_circle" />
+                    <ImageView
+                        android:layout_width="@dimen/_7sdp"
+                        android:layout_height="@dimen/_7sdp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_home_ram" />
+                </com.google.android.material.card.MaterialCardView>
 
-            <ImageView
-                android:id="@+id/robot"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_98sdp"
-                android:importantForAccessibility="no"
-                android:scaleType="fitCenter"
-                android:src="@drawable/img_robot"
-                app:layout_constraintBottom_toBottomOf="@id/robot_circle"
-                app:layout_constraintEnd_toEndOf="@id/robot_circle"
-                app:layout_constraintStart_toStartOf="@id/robot_circle"
-                app:layout_constraintTop_toTopOf="@id/robot_circle" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:orientation="vertical">
 
-            <com.google.android.material.button.MaterialButton
+                    <TextView
+                        android:id="@+id/ram_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_semi_bold"
+                        android:text="@string/home_ram_usage"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_primary"
+                        android:textDirection="locale"
+                        android:textSize="@dimen/_8ssp"
+                        app:lineHeight="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/ram_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_primary"
+                        android:textDirection="locale"
+                        android:textSize="@dimen/_6ssp"
+                        app:lineHeight="@dimen/_12ssp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Scan Now (Figma 34:39): a 112 px gradient circle inside an 11.6 px white ring, 136 px
+                 across, with a blue glow; the broom and the label are centred in the circle. -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/scan_now"
+                android:layout_width="@dimen/_108sdp"
+                android:layout_height="@dimen/_108sdp"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:outlineAmbientShadowColor="@color/scan_shadow"
+                android:outlineSpotShadowColor="@color/scan_shadow"
+                app:cardBackgroundColor="@color/scan_ring"
+                app:cardCornerRadius="@dimen/_54sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:rippleColor="@color/ripple_on_scan"
+                app:strokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_title"
+                tools:targetApi="28">
+
+                <!-- An ImageView and not a compound drawable: a compound drawable keeps the vector's
+                     own dp size, and the broom is sized in sdp like the rest of the screen. -->
+                <LinearLayout
+                    android:id="@+id/scan_now_circle"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_scan_gradient"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/scan_now_icon"
+                        android:layout_width="@dimen/_26sdp"
+                        android:layout_height="@dimen/_27sdp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_scan_broom" />
+
+                    <TextView
+                        android:id="@+id/scan_now_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:hyphenationFrequency="none"
+                        android:maxWidth="@dimen/_69sdp"
+                        android:text="@string/home_scan_now"
+                        android:textColor="@color/text_on_scan"
+                        android:textSize="@dimen/_13ssp"
+                        app:lineHeight="@dimen/_22ssp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/header_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_21sdp"
-                android:fontFamily="@font/roboto_regular"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:letterSpacing="0"
-                android:minWidth="@dimen/_138sdp"
-                android:minHeight="@dimen/_39sdp"
-                android:paddingHorizontal="@dimen/_19sdp"
-                android:text="@string/home_scan_now"
-                android:textAllCaps="false"
-                android:textColor="@color/text_accent"
-                android:textSize="@dimen/_13ssp"
-                app:backgroundTint="@color/scan_button_surface"
-                app:cornerRadius="@dimen/_13sdp"
-                app:elevation="0dp"
-                app:icon="@drawable/ic_scan_now"
-                app:iconGravity="textStart"
-                app:iconPadding="@dimen/_10sdp"
-                app:iconSize="@dimen/_13sdp"
-                app:iconTint="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/robot_circle"
-                app:lineHeight="@dimen/_22ssp"
-                app:rippleColor="@color/ripple_on_light"
-                app:strokeColor="@color/scan_button_stroke"
-                app:strokeWidth="@dimen/_1sdp" />
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="scan_now,storage_usage,ram_usage" />
 
             <TextView
                 android:id="@+id/quick_actions_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_38sdp"
+                android:layout_marginTop="@dimen/_26sdp"
                 android:fontFamily="@font/roboto_semi_bold"
                 android:letterSpacing="-0.025"
                 android:text="@string/home_quick_actions"
+                android:textAlignment="viewStart"
                 android:textColor="@color/text_primary"
+                android:textDirection="locale"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scan_now"
+                app:layout_constraintTop_toBottomOf="@id/header_bottom"
                 app:lineHeight="@dimen/_18ssp" />
 
-            <!-- Each row's children are all match_parent in height, so LinearLayout sizes both cards
-                 to the taller one; the gap is the second card's start margin, not a Space, which
-                 would stop that. -->
+            <!-- Figma 34:62: two columns, 157 and 158 px wide with a 16.5 px gap, 20 px from the start
+                 and 23.5 px from the end, rows 10.25 px apart. Each row's cards are match_parent in
+                 height, so LinearLayout sizes both to the taller one; the gap is the second card's
+                 start margin, not a Space, which would stop that. No parent on the way up clips,
+                 so the card shadows are drawn whole. -->
             <LinearLayout
                 android:id="@+id/quick_actions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_19sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
@@ -213,6 +300,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:baselineAligned="false"
+                    android:clipChildren="false"
                     android:orientation="horizontal">
 
                     <include
@@ -224,15 +312,16 @@
                         layout="@layout/item_quick_action"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_13sdp"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:baselineAligned="false"
+                    android:clipChildren="false"
                     android:orientation="horizontal">
 
                     <include
@@ -244,15 +333,16 @@
                         layout="@layout/item_quick_action"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_13sdp"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:baselineAligned="false"
+                    android:clipChildren="false"
                     android:orientation="horizontal">
 
                     <include
@@ -264,7 +354,7 @@
                         layout="@layout/item_quick_action"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_13sdp"
                         android:layout_weight="1" />
                 </LinearLayout>
             </LinearLayout>

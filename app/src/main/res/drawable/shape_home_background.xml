@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home (Figma 34:8): the frame's fill runs straight down from #638BFF to white. This shape is the
+     top 39% of the frame, where the gradient ends; the rest of the screen is home_background. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="270"
+        android:endColor="@color/home_gradient_end"
+        android:startColor="@color/home_gradient_start" />
+</shape>

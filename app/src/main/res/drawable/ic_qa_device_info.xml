@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources/ic_qa_device_info.svg (Figma 34:116), 20 x 20. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <path
+        android:pathData="M5.83317 1.66675H14.1665C15.087 1.66675 15.8332 2.41294 15.8332 3.33341V16.6667C15.8332 17.5872 15.087 18.3334 14.1665 18.3334H5.83317C4.9127 18.3334 4.1665 17.5872 4.1665 16.6667V3.33341C4.1665 2.41294 4.9127 1.66675 5.83317 1.66675Z"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/qa_device_info_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M10 15H10.0083"
+        android:strokeWidth="1.66667"
+        android:strokeColor="@color/qa_device_info_accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>
