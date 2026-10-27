@@ -99,6 +99,13 @@ fun View.applySystemBarInsets() {
  */
 fun View.applyStatusBarTopMargin() {
     val designGap = (layoutParams as ViewGroup.MarginLayoutParams).topMargin
+    // Apply the window's current insets right away when they are known (a fragment swapped into an
+    // activity that is already on screen). Waiting for the listener drew the first frame with the
+    // header under the status bar and then moved it down: the header "flicker" on scan complete.
+    knownWindowInsets()?.let { insets ->
+        val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+        updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin = designGap + statusBar }
+    }
     ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
         val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
         view.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin = designGap + statusBar }
@@ -110,6 +117,13 @@ fun View.applyStatusBarTopMargin() {
 /** The bottom counterpart of [applyStatusBarTopMargin], for a call to action above the gesture bar. */
 fun View.applyNavigationBarBottomMargin() {
     val designGap = (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+    knownWindowInsets()?.let { insets ->
+        val navigationBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+        updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = designGap + navigationBar
+            (this as? ConstraintLayout.LayoutParams)?.goneBottomMargin = designGap + navigationBar
+        }
+    }
     ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
         val navigationBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
         view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -281,4 +295,21 @@ fun Context.formatPercent(value: Float, maxFractionDigits: Int = 2): String =
 
 fun Context.toast(message: String, long: Boolean = false) {
     Toast.makeText(this, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).show()
+}
+
+/**
+ * The window insets as they are now, before this view is attached: from the view itself if it is
+ * attached, otherwise from its activity's window. Null on an activity's first layout, where the
+ * listener's first dispatch arrives before anything is drawn anyway.
+ */
+private fun View.knownWindowInsets(): WindowInsetsCompat? {
+    ViewCompat.getRootWindowInsets(this)?.let { return it }
+    var c: android.content.Context? = context
+    while (c is android.content.ContextWrapper) {
+        if (c is android.app.Activity) {
+            return ViewCompat.getRootWindowInsets(c.window.decorView)
+        }
+        c = c.baseContext
+    }
+    return null
 }

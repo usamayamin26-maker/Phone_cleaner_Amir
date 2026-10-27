@@ -76,7 +76,7 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:clipToPadding="false"
                 android:nestedScrollingEnabled="false"
-                android:paddingHorizontal="@dimen/_16sdp"
+                android:paddingHorizontal="@dimen/_14sdp"
                 android:paddingBottom="@dimen/_22sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_info_row" />

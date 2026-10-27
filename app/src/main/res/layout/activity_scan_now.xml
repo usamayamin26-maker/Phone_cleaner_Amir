@@ -14,10 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- Header fixed above the scroll, at the same place on every inner screen, so it never moves
+         when the scan finishes and the content below changes. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_inner_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scan_now_scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipToPadding="false"
         android:fillViewport="true">
 
@@ -30,13 +44,6 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingBottom="@dimen/_16sdp">
-
-            <include
-                android:id="@+id/header"
-                layout="@layout/view_inner_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp" />
 
             <!-- Scanning -->
             <LinearLayout
@@ -79,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/_16sdp">
+                    android:paddingHorizontal="@dimen/_14sdp">
 
                     <include
                         android:id="@+id/row_security"
@@ -189,7 +196,7 @@
                     android:id="@+id/card_junk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:outlineSpotShadowColor="@color/card_shadow"
                     app:cardBackgroundColor="@color/card_surface"
@@ -273,7 +280,7 @@
                     android:id="@+id/card_security"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:outlineSpotShadowColor="@color/card_shadow"
                     app:cardBackgroundColor="@color/card_surface"
@@ -332,7 +339,7 @@
                     android:id="@+id/card_vpn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:outlineSpotShadowColor="@color/card_shadow"
                     app:cardBackgroundColor="@color/card_surface"
@@ -385,4 +392,6 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
 </FrameLayout>

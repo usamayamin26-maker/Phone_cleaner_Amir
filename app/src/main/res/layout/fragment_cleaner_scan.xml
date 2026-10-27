@@ -4,11 +4,25 @@
      side padding, 8 px apart) and the red "Stop Scanning" (211 x 50). Delete Duplicates and WA
      Cleaner pad the text block by 12 px above and below; the AI cleaner's frame does not, and the
      fragment sets its two gaps to 12 px. -->
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Header fixed above the scroll (same place as the results screen), so finishing the scan
+     never moves it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_inner_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
     android:clipToPadding="false"
     android:fillViewport="true">
 
@@ -21,13 +35,6 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingBottom="@dimen/_16sdp">
-
-        <include
-            android:id="@+id/header"
-            layout="@layout/view_inner_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp" />
 
         <FrameLayout
             android:layout_width="@dimen/_164sdp"
@@ -93,3 +100,5 @@
             android:text="@string/cleaner_stop_scanning" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

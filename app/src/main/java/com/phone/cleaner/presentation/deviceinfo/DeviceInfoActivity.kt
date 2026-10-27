@@ -2,7 +2,6 @@ package com.phone.cleaner.presentation.deviceinfo
 
 import android.content.Intent
 import android.view.LayoutInflater
-import androidx.core.content.res.ResourcesCompat
 import com.phone.cleaner.R
 import com.phone.cleaner.databinding.ActivityDeviceInfoBinding
 import com.phone.cleaner.domain.entities.DeviceInfoSection
@@ -30,8 +29,6 @@ class DeviceInfoActivity : BaseActivity<ActivityDeviceInfoBinding>() {
         sections.applyNavigationBarBottomMargin()
 
         header.headerTitle.setText(R.string.device_info_title)
-        // The list screen's title is bold in the design; the detail screens' are semi-bold.
-        header.headerTitle.typeface = ResourcesCompat.getFont(this@DeviceInfoActivity, R.font.roboto_bold)
         header.backButton.root.onClick { finish() }
         header.backButton.root.expandTouchTarget()
 

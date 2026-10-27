@@ -76,7 +76,7 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
             gridAdapter.onFileClick = { host.cleaner.onFileClicked(key, it) }
         } else {
             // Figma 1:1189: a 20 px gutter, rows 12 px apart.
-            val side = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._16sdp)
+            val side = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._14sdp)
             items.setPaddingRelative(side, items.paddingTop, side, items.paddingBottom)
             items.layoutManager = LinearLayoutManager(requireContext())
             items.adapter = fileAdapter

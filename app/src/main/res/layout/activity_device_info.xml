@@ -30,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingHorizontal="@dimen/_14sdp"
         android:paddingTop="@dimen/_5sdp"
         android:paddingBottom="@dimen/_6sdp"
         app:layout_constraintBottom_toBottomOf="parent"
