@@ -33,6 +33,7 @@ import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.fittingTextSize
 import com.phone.cleaner.utils.formatPercent
 import com.phone.cleaner.utils.onClick
+import com.phone.cleaner.utils.keepTogether
 import com.phone.cleaner.utils.toReadableSize
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -113,16 +114,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         state.storage?.memory?.let { storage ->
             binding.storageValue.text = getString(
                 R.string.home_used_of,
-                formatPercent(storage.usedPercent),
-                storage.totalBytes.toReadableSize(this),
+                formatPercent(storage.usedPercent).keepTogether(),
+                storage.totalBytes.toReadableSize(this).keepTogether(),
             )
             binding.storageUsage.fitUsageText(binding.storageValue)
         }
         state.ram?.memory?.let { ram ->
             binding.ramValue.text = getString(
                 R.string.home_used_of,
-                ram.usedBytes.toReadableSize(this),
-                ram.totalBytes.toReadableSize(this),
+                ram.usedBytes.toReadableSize(this).keepTogether(),
+                ram.totalBytes.toReadableSize(this).keepTogether(),
             )
             binding.ramUsage.fitUsageText(binding.ramValue)
         }

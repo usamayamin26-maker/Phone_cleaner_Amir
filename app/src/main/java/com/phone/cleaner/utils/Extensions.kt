@@ -270,6 +270,12 @@ fun ImageView.loadFilePreview(
 /** A byte count as the platform writes it, in the app's language: "357 MB", "3.75 GB". */
 fun Long.toReadableSize(context: Context): String = Formatter.formatFileSize(context, this)
 
+/**
+ * Joins a value and its unit with no-break spaces ("256 GB", "26,57 %"), so a line that wraps
+ * breaks between words of the sentence and never between a number and its unit.
+ */
+fun String.keepTogether(): String = replace(' ', '\u00A0')
+
 // ---- Context ----
 
 /** The language the app is shown in, which is what numbers are written in. */
