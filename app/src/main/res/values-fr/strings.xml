@@ -253,7 +253,8 @@
     <string name="health_developer_on">Les options pour les développeurs sont activées. Touchez pour vérifier.</string>
     <string name="health_usb_off">Le débogage USB est désactivé</string>
     <string name="health_usb_on">Le débogage USB est activé. Touchez pour vérifier.</string>
-    <string name="health_check_unknown">Vérification impossible — ouvrez les options pour développeurs</string>
+    <string name="health_developer_unknown">Options pour les développeurs : vérification impossible — appuyez pour ouvrir</string>
+    <string name="health_usb_unknown">Débogage USB : vérification impossible — appuyez pour ouvrir</string>
     <string name="health_vpn_off">Non connecté à un VPN</string>
     <string name="health_vpn_on">Connecté via un VPN. Touchez pour vérifier.</string>
 </resources>

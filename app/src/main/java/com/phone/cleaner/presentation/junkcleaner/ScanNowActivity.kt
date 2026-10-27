@@ -126,11 +126,13 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
                 isOn = security.developerOptionsOn,
                 off = R.string.health_developer_off,
                 on = R.string.health_developer_on,
+                unknown = R.string.health_developer_unknown,
             )
             checkUsb.bind(
                 isOn = security.usbDebuggingOn,
                 off = R.string.health_usb_off,
                 on = R.string.health_usb_on,
+                unknown = R.string.health_usb_unknown,
             )
             checkVpn.bind(
                 isOn = security.vpnConnected,
@@ -202,15 +204,21 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
 
     /**
      * A finding: the tick when all is well, a chevron to the settings when it is worth a look.
-     * A null [isOn] is a setting this phone does not let the app read - the row says so and leads
-     * to the settings screen, because a tick would claim something the app never checked.
+     * A null [isOn] is a setting this phone does not let the app read - the row says so in its own
+     * [unknown] words and leads to the settings screen, because a tick would claim something the
+     * app never checked. A setting that is always readable (the VPN) never needs [unknown].
      */
-    private fun ItemHealthCheckBinding.bind(isOn: Boolean?, @StringRes off: Int, @StringRes on: Int) {
+    private fun ItemHealthCheckBinding.bind(
+        isOn: Boolean?,
+        @StringRes off: Int,
+        @StringRes on: Int,
+        @StringRes unknown: Int = off,
+    ) {
         checkText.setText(
             when (isOn) {
                 true -> on
                 false -> off
-                null -> R.string.health_check_unknown
+                null -> unknown
             },
         )
         checkOk.visibleIf(isOn == false)

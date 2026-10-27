@@ -253,7 +253,8 @@
     <string name="health_developer_on">Las opciones para desarrolladores están activadas. Toca para revisar.</string>
     <string name="health_usb_off">La depuración por USB está desactivada</string>
     <string name="health_usb_on">La depuración por USB está activada. Toca para revisar.</string>
-    <string name="health_check_unknown">No se pudo comprobar — abre Opciones de desarrollador</string>
+    <string name="health_developer_unknown">Opciones para desarrolladores: no se pudo comprobar — toca para abrir</string>
+    <string name="health_usb_unknown">Depuración por USB: no se pudo comprobar — toca para abrir</string>
     <string name="health_vpn_off">No conectado a una VPN</string>
     <string name="health_vpn_on">Conectado a través de una VPN. Toca para revisar.</string>
 </resources>

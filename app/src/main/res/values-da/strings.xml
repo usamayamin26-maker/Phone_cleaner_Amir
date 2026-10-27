@@ -253,7 +253,8 @@
     <string name="health_developer_on">Udviklerindstillinger er slået til. Tryk for at gennemgå.</string>
     <string name="health_usb_off">USB-fejlretning er slået fra</string>
     <string name="health_usb_on">USB-fejlretning er slået til. Tryk for at gennemgå.</string>
-    <string name="health_check_unknown">Kunne ikke kontrolleres — åbn Udviklerindstillinger</string>
+    <string name="health_developer_unknown">Udviklerindstillinger: kunne ikke kontrolleres — tryk for at åbne</string>
+    <string name="health_usb_unknown">USB-fejlretning: kunne ikke kontrolleres — tryk for at åbne</string>
     <string name="health_vpn_off">Ikke forbundet til VPN</string>
     <string name="health_vpn_on">Forbundet via VPN. Tryk for at gennemgå.</string>
 </resources>

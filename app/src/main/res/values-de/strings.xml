@@ -253,7 +253,8 @@
     <string name="health_developer_on">Entwickleroptionen sind an. Zum Prüfen tippen.</string>
     <string name="health_usb_off">USB-Debugging ist aus</string>
     <string name="health_usb_on">USB-Debugging ist an. Zum Prüfen tippen.</string>
-    <string name="health_check_unknown">Konnte nicht geprüft werden — Entwickleroptionen öffnen</string>
+    <string name="health_developer_unknown">Entwickleroptionen: konnte nicht geprüft werden — zum Öffnen tippen</string>
+    <string name="health_usb_unknown">USB-Debugging: konnte nicht geprüft werden — zum Öffnen tippen</string>
     <string name="health_vpn_off">Nicht mit einem VPN verbunden</string>
     <string name="health_vpn_on">Über ein VPN verbunden. Zum Prüfen tippen.</string>
 </resources>

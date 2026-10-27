@@ -253,7 +253,8 @@
     <string name="health_developer_on">Ontwikkelaarsopties staan aan. Tik om te bekijken.</string>
     <string name="health_usb_off">USB-foutopsporing staat uit</string>
     <string name="health_usb_on">USB-foutopsporing staat aan. Tik om te bekijken.</string>
-    <string name="health_check_unknown">Kon dit niet controleren — open Ontwikkelaarsopties</string>
+    <string name="health_developer_unknown">Ontwikkelaarsopties: kon niet controleren — tik om te openen</string>
+    <string name="health_usb_unknown">USB-foutopsporing: kon niet controleren — tik om te openen</string>
     <string name="health_vpn_off">Niet verbonden met een VPN</string>
     <string name="health_vpn_on">Verbonden via een VPN. Tik om te bekijken.</string>
 </resources>
