@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">图库 (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA 照片 (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA 视频 (%1$s)</string>
+    <string name="cleaner_screenshots_count">屏幕截图 (%1$s)</string>
     <string name="cleaner_title_downloads">下载</string>
     <string name="cleaner_title_gallery">图库</string>
     <string name="cleaner_title_wa_photos">WA 照片</string>
     <string name="cleaner_title_wa_videos">WA 视频</string>
+    <string name="cleaner_title_screenshots">屏幕截图</string>
     <string name="ai_cleaner_none">未发现垃圾照片或视频。</string>
     <string name="wa_scanning_title">正在扫描 WhatsApp</string>
     <string name="wa_scan_completed">扫描完成</string>

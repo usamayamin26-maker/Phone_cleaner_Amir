@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">Galerie (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA-Fotos (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA-Videos (%1$s)</string>
+    <string name="cleaner_screenshots_count">Screenshots (%1$s)</string>
     <string name="cleaner_title_downloads">Downloads</string>
     <string name="cleaner_title_gallery">Galerie</string>
     <string name="cleaner_title_wa_photos">WA-Fotos</string>
     <string name="cleaner_title_wa_videos">WA-Videos</string>
+    <string name="cleaner_title_screenshots">Screenshots</string>
     <string name="ai_cleaner_none">Keine überflüssigen Fotos oder Videos gefunden.</string>
     <string name="wa_scanning_title">WhatsApp wird gescannt</string>
     <string name="wa_scan_completed">Scan abgeschlossen</string>

@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">ギャラリー (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA の写真 (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA の動画 (%1$s)</string>
+    <string name="cleaner_screenshots_count">スクリーンショット (%1$s)</string>
     <string name="cleaner_title_downloads">ダウンロード</string>
     <string name="cleaner_title_gallery">ギャラリー</string>
     <string name="cleaner_title_wa_photos">WA の写真</string>
     <string name="cleaner_title_wa_videos">WA の動画</string>
+    <string name="cleaner_title_screenshots">スクリーンショット</string>
     <string name="ai_cleaner_none">不要な写真や動画は見つかりませんでした。</string>
     <string name="wa_scanning_title">WhatsApp をスキャン中</string>
     <string name="wa_scan_completed">スキャン完了</string>

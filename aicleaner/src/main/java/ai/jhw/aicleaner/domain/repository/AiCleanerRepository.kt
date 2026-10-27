@@ -8,12 +8,13 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * AI (Artificial Intelligence) Junk Cleaner: a LiteRT (TensorFlow Lite) model, run on the phone,
- * picks out memes and forwarded junk images (and video frames) from the gallery. Nothing leaves
- * the device. Needs media access. Cancelling the collector stops the scan between two files.
+ * picks out memes and forwarded junk images (and video frames). Nothing leaves the device. Needs
+ * media access. Cancelling the collector stops the scan between two files.
  *
- * The camera folders are left out of the scan entirely, and a file counts as junk only at or above
- * the module's own confidence threshold (`AiJunkRules`). What is cached is the model's
- * probability, not the verdict, so that threshold can change without re-scanning.
+ * The model only looks where forwarded media lands - WhatsApp's and WhatsApp Business's media and
+ * Download (`AiJunkRules`) - and a file counts as junk only at or above the module's own confidence
+ * threshold. What is cached is the model's probability, not the verdict, so that threshold can
+ * change without re-scanning.
  */
 interface AiCleanerRepository {
 
@@ -22,6 +23,9 @@ interface AiCleanerRepository {
      * probability is unknown is classified again.
      */
     fun scan(known: Map<String, KnownVerdict>, includeVideos: Boolean = true): Flow<AiScanEvent>
+
+    /** The photos and videos in the Screenshots folders, newest first. No model is involved. */
+    suspend fun getScreenshots(): List<FileItem>
 
     suspend fun delete(files: List<FileItem>): DeleteOutcome
 

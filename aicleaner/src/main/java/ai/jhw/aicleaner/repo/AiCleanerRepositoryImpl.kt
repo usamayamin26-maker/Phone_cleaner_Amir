@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 class AiCleanerRepositoryImpl(
     private val context: Context,
@@ -37,16 +38,12 @@ class AiCleanerRepositoryImpl(
             addAll(storage.queryMedia(FileKind.IMAGE))
             if (includeVideos) addAll(storage.queryMedia(FileKind.VIDEO))
         }
-        // The user's own camera output is never a candidate, so it is not even classified.
-        val items = media.filterNot { AiJunkRules.isCameraFolder(it.path) }
+        // Only where forwarded media lands; the user's own folders are not even classified.
+        val items = media.filter { AiJunkRules.isCandidate(it.path) }
         val candidates = items.mapTo(HashSet()) { it.path }
         val junk = ArrayList<FileItem>()
         var unreadable = 0
-        Log.d(
-            TAG,
-            "Scanning ${items.size} candidates of ${media.size} media files " +
-                "(${media.size - items.size} in camera folders), ${known.size} verdicts known",
-        )
+        Log.d(TAG, "Scanning ${items.size} candidates of ${media.size} media files, ${known.size} verdicts known")
 
         items.forEachIndexed { index, item ->
             currentCoroutineContext().ensureActive()
@@ -71,6 +68,12 @@ class AiCleanerRepositoryImpl(
             )
         )
     }.flowOn(Dispatchers.Default)
+
+    override suspend fun getScreenshots(): List<FileItem> = withContext(Dispatchers.Default) {
+        (storage.queryMedia(FileKind.IMAGE) + storage.queryMedia(FileKind.VIDEO))
+            .filter { AiJunkRules.isScreenshot(it.path) }
+            .sortedByDescending { it.dateModified }
+    }
 
     override suspend fun delete(files: List<FileItem>): DeleteOutcome = storage.delete(files)
 

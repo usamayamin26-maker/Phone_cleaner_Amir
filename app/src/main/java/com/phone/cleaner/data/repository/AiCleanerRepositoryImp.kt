@@ -57,6 +57,10 @@ class AiCleanerRepositoryImp(
         }
     }
 
+    override suspend fun getScreenshots(): ApiResult<List<FileItem>> = call("screenshots") {
+        aiCleaner.getScreenshots()
+    }
+
     override suspend fun getLargeFiles(): ApiResult<List<FileItem>> = call("large files") {
         storage.getLargeFiles()
     }

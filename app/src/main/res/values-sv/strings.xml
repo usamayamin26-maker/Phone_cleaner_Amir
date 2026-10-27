@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">Galleri (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA-foton (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA-videor (%1$s)</string>
+    <string name="cleaner_screenshots_count">Skärmbilder (%1$s)</string>
     <string name="cleaner_title_downloads">Nedladdningar</string>
     <string name="cleaner_title_gallery">Galleri</string>
     <string name="cleaner_title_wa_photos">WA-foton</string>
     <string name="cleaner_title_wa_videos">WA-videor</string>
+    <string name="cleaner_title_screenshots">Skärmbilder</string>
     <string name="ai_cleaner_none">Inga onödiga foton eller videor hittades.</string>
     <string name="wa_scanning_title">Skannar WhatsApp</string>
     <string name="wa_scan_completed">Skanningen är klar</string>

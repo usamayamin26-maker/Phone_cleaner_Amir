@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">Galleri (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA-billeder (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA-videoer (%1$s)</string>
+    <string name="cleaner_screenshots_count">Skærmbilleder (%1$s)</string>
     <string name="cleaner_title_downloads">Overførsler</string>
     <string name="cleaner_title_gallery">Galleri</string>
     <string name="cleaner_title_wa_photos">WA-billeder</string>
     <string name="cleaner_title_wa_videos">WA-videoer</string>
+    <string name="cleaner_title_screenshots">Skærmbilleder</string>
     <string name="ai_cleaner_none">Der blev ikke fundet unødvendige billeder eller videoer.</string>
     <string name="wa_scanning_title">Scanner WhatsApp</string>
     <string name="wa_scan_completed">Scanningen er fuldført</string>

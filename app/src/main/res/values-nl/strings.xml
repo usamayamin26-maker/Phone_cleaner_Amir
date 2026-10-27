@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">Galerij (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA-foto\'s (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA-video\'s (%1$s)</string>
+    <string name="cleaner_screenshots_count">Screenshots (%1$s)</string>
     <string name="cleaner_title_downloads">Downloads</string>
     <string name="cleaner_title_gallery">Galerij</string>
     <string name="cleaner_title_wa_photos">WA-foto\'s</string>
     <string name="cleaner_title_wa_videos">WA-video\'s</string>
+    <string name="cleaner_title_screenshots">Screenshots</string>
     <string name="ai_cleaner_none">Geen overbodige foto\'s of video\'s gevonden.</string>
     <string name="wa_scanning_title">WhatsApp scannen</string>
     <string name="wa_scan_completed">Scan voltooid</string>

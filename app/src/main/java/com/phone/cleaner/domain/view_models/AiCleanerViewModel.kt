@@ -21,14 +21,14 @@ import kotlinx.coroutines.flow.update
 import java.util.Locale
 
 /**
- * AI Junk Cleaner (Figma 1:3 / 1:349 / 1:48 / 1:142 / 1:208): the model's junk photos and videos,
- * grouped by the folder they are in, the large files, and the Smart Scan's junk files when All
- * files access is granted.
+ * AI Junk Cleaner (Figma 1:3 / 1:349 / 1:48 / 1:142 / 1:208): the model's junk photos and videos
+ * from WhatsApp and Download, grouped by the folder they are in, the screenshots, the large files,
+ * and the Smart Scan's junk files when All files access is granted.
  *
  * Only the Smart Scan's recommended junk starts selected. The model's verdicts never do, in any
  * section or group: a guess about someone's photographs is a suggestion to look at, not a
  * selection to delete, so the user ticks what goes and Delete stays disabled until they have.
- * Large files are the user's own and start unselected for the same reason.
+ * Screenshots and large files are the user's own and start unselected for the same reason.
  */
 class AiCleanerViewModel(
     private val repository: AiCleanerRepository,
@@ -76,12 +76,13 @@ class AiCleanerViewModel(
                 is AiScanEvent.Classified -> Unit
             }
         }
+        val screenshots = repository.getScreenshots()
         val large = repository.getLargeFiles()
         val junk = junkScan.await()
 
         val categories = junk?.categories.orEmpty()
         junkItems = categories.filter { it.isAvailable }.flatMap { it.items }.associateBy { it.path }
-        val sections = sectionsOf(aiJunk, large.data.orEmpty(), junk)
+        val sections = sectionsOf(aiJunk, screenshots.data.orEmpty(), large.data.orEmpty(), junk)
         mutableState.update { state ->
             state.copy(
                 isScanning = false,
@@ -90,7 +91,7 @@ class AiCleanerViewModel(
                 sections = sections,
                 junkCategories = categories,
                 selectedPaths = recommendedJunk(),
-                error = large.message,
+                error = screenshots.message ?: large.message,
             )
         }
     }
@@ -163,7 +164,12 @@ class AiCleanerViewModel(
     private fun recommendedJunk(): Set<String> =
         junkItems.values.filter { it.isRecommended }.map { it.path }.toSet()
 
-    private fun sectionsOf(aiJunk: List<FileItem>, large: List<FileItem>, junk: JunkScanResult?) = buildList {
+    private fun sectionsOf(
+        aiJunk: List<FileItem>,
+        screenshots: List<FileItem>,
+        large: List<FileItem>,
+        junk: JunkScanResult?,
+    ) = buildList {
         val images = aiJunk.filter { it.kind == FileKind.IMAGE }
         val videos = aiJunk.filter { it.kind == FileKind.VIDEO }
         if (images.isNotEmpty()) {
@@ -172,6 +178,7 @@ class AiCleanerViewModel(
         if (videos.isNotEmpty()) {
             add(CleanerSection(CleanerSectionType.VIDEOS, videos, groups = folderGroups(CleanerSectionType.VIDEOS, videos)))
         }
+        if (screenshots.isNotEmpty()) add(CleanerSection(CleanerSectionType.SCREENSHOTS, screenshots))
         if (large.isNotEmpty()) add(CleanerSection(CleanerSectionType.LARGE_FILES, large))
 
         val needsAccess = junk != null && junk.categories.isNotEmpty() &&
@@ -184,8 +191,8 @@ class AiCleanerViewModel(
     }
 
     /**
-     * The design's groups inside Images (Figma 1:48): Downloads, Gallery and WA Photos. Anything
-     * that is neither downloaded nor from WhatsApp is the gallery.
+     * The design's groups inside Images (Figma 1:48): Downloads, Gallery and WA Photos. The model
+     * only looks at WhatsApp and Download now, so Gallery is left for a file in neither.
      */
     private fun folderGroups(parent: CleanerSectionType, files: List<FileItem>): List<CleanerSection> {
         val whatsApp = if (parent == CleanerSectionType.IMAGES) CleanerSectionType.WA_PHOTOS else CleanerSectionType.WA_VIDEOS

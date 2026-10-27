@@ -8,8 +8,9 @@ import com.phone.cleaner.domain.entities.ApiResult
 import kotlinx.coroutines.flow.Flow
 
 /**
- * AI (Artificial Intelligence) Junk Cleaner: the on-device model's verdicts on photos and videos,
- * the large files shown beside them, and the delete path. Scanning never deletes.
+ * AI (Artificial Intelligence) Junk Cleaner: the on-device model's verdicts on forwarded photos
+ * and videos, the screenshots and large files shown beside them, and the delete path. Scanning
+ * never deletes.
  */
 interface AiCleanerRepository {
 
@@ -19,6 +20,9 @@ interface AiCleanerRepository {
      * the phone are dropped from the cache. Cancelling the collection stops the scan.
      */
     fun scan(): Flow<AiScanEvent>
+
+    /** The photos and videos in the Screenshots folders, newest first - no AI verdict. */
+    suspend fun getScreenshots(): ApiResult<List<FileItem>>
 
     /** Files of 50 MB and more, largest first. */
     suspend fun getLargeFiles(): ApiResult<List<FileItem>>

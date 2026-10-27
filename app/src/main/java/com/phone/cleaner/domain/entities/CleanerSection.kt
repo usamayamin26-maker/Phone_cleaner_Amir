@@ -25,6 +25,9 @@ enum class CleanerSectionType(val isMedia: Boolean) {
     WA_PHOTOS(true),
     WA_VIDEOS(true),
 
+    /** The AI cleaner's screenshots: listed as they are, with no verdict. */
+    SCREENSHOTS(true),
+
     /** The Smart Scan's junk on the AI cleaner's results. */
     JUNK_FILES(false),
 }

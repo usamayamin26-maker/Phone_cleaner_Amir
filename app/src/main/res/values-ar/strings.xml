@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">المعرض (%1$s)</string>
     <string name="cleaner_wa_photos_count">صور واتساب (%1$s)</string>
     <string name="cleaner_wa_videos_count">فيديوهات واتساب (%1$s)</string>
+    <string name="cleaner_screenshots_count">لقطات الشاشة (%1$s)</string>
     <string name="cleaner_title_downloads">التنزيلات</string>
     <string name="cleaner_title_gallery">المعرض</string>
     <string name="cleaner_title_wa_photos">صور واتساب</string>
     <string name="cleaner_title_wa_videos">فيديوهات واتساب</string>
+    <string name="cleaner_title_screenshots">لقطات الشاشة</string>
     <string name="ai_cleaner_none">لم يتم العثور على صور أو فيديوهات غير مرغوب فيها.</string>
     <string name="wa_scanning_title">جارٍ فحص واتساب</string>
     <string name="wa_scan_completed">اكتمل الفحص</string>

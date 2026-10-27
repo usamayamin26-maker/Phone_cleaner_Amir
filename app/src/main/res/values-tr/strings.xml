@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">Galeri (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA Fotoğrafları (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA Videoları (%1$s)</string>
+    <string name="cleaner_screenshots_count">Ekran görüntüleri (%1$s)</string>
     <string name="cleaner_title_downloads">İndirilenler</string>
     <string name="cleaner_title_gallery">Galeri</string>
     <string name="cleaner_title_wa_photos">WA Fotoğrafları</string>
     <string name="cleaner_title_wa_videos">WA Videoları</string>
+    <string name="cleaner_title_screenshots">Ekran görüntüleri</string>
     <string name="ai_cleaner_none">Gereksiz fotoğraf veya video bulunamadı.</string>
     <string name="wa_scanning_title">WhatsApp taranıyor</string>
     <string name="wa_scan_completed">Tarama tamamlandı</string>

@@ -94,10 +94,12 @@
     <string name="cleaner_gallery_count">गैलरी (%1$s)</string>
     <string name="cleaner_wa_photos_count">WA फ़ोटो (%1$s)</string>
     <string name="cleaner_wa_videos_count">WA वीडियो (%1$s)</string>
+    <string name="cleaner_screenshots_count">स्क्रीनशॉट (%1$s)</string>
     <string name="cleaner_title_downloads">डाउनलोड</string>
     <string name="cleaner_title_gallery">गैलरी</string>
     <string name="cleaner_title_wa_photos">WA फ़ोटो</string>
     <string name="cleaner_title_wa_videos">WA वीडियो</string>
+    <string name="cleaner_title_screenshots">स्क्रीनशॉट</string>
     <string name="ai_cleaner_none">कोई बेकार फ़ोटो या वीडियो नहीं मिला।</string>
     <string name="wa_scanning_title">WhatsApp स्कैन हो रहा है</string>
     <string name="wa_scan_completed">स्कैन पूरा हुआ</string>
