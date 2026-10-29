@@ -230,12 +230,21 @@
                     android:orientation="vertical"
                     tools:ignore="UseCompoundDrawables">
 
-                    <ImageView
+                    <!-- The broom animation (res/raw/home_scan_broom.json, cropped to a 720 x 720 box
+                         around the broom and its sparkles). At rest the broom fills about two
+                         thirds of the box's height, so a 40sdp box draws it at the design's 27sdp;
+                         the negative margins take back the box's empty top and bottom so the label
+                         keeps the design's gap. -->
+                    <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/scan_now_icon"
-                        android:layout_width="@dimen/_26sdp"
-                        android:layout_height="@dimen/_27sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        android:layout_marginBottom="@dimen/_minus5sdp"
                         android:importantForAccessibility="no"
-                        android:src="@drawable/ic_scan_broom" />
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/home_scan_broom" />
 
                     <TextView
                         android:id="@+id/scan_now_label"
