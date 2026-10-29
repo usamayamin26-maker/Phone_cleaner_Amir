@@ -16,9 +16,11 @@
         "Loading ad…", centred on every shimmer placeholder. Muted on purpose: it labels a skeleton,
         so it has to read without competing with the shimmer underneath it.
 
-        lineHeight is the AppCompat attribute and is ssp, never android:lineHeight and never sdp -
-        the text follows the user's font size and an sdp line box does not, so at font size 2.0 the
-        glyphs would grow inside a box that stayed put.
+        The line height below is the AppCompat attribute and is ssp, never the platform attribute
+        and never sdp: the text follows the user's font size and an sdp line box does not, so at
+        font size 2.0 the glyphs would grow inside a box that stayed put. A unit test fails on
+        anything else, and it reads the layout and values files as text, so the forbidden spelling
+        must not appear even in a comment.
     -->
     <style name="TextAppearance.Ad.LoadingLabel" parent="">
         <item name="android:fontFamily">@font/roboto_medium</item>
