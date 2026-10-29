@@ -164,6 +164,10 @@
     <color name="dialog_stroke">#BFFFFFFF</color>
     <color name="dialog_shadow">#596366F1</color>
 
+    <!-- The exit sheet (no design frame; built from the dialog card): its grabber, the design's
+         dark text colour at 20%. -->
+    <color name="sheet_grabber">#33171A2B</color>
+
     <!-- Pressed states -->
     <color name="ripple_on_light">#1F0041FF</color>
     <color name="ripple_on_primary">#33FFFFFF</color>

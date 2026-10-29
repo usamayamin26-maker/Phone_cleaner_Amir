@@ -261,4 +261,14 @@
     <string name="health_vpn_off">VPN से कनेक्ट नहीं है</string>
     <string name="health_vpn_on">VPN के ज़रिए कनेक्ट है। देखने के लिए टैप करें।</string>
     <string name="notification_channel_general">सामान्य</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">ऐप से बाहर निकलना है?</string>
+    <string name="exit_message">आप कभी भी वापस आ सकते हैं.</string>
+    <string name="exit_stay">रुकें</string>
+    <string name="exit_confirm">बाहर निकलें</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">एक अपडेट डाउनलोड हो गया है।</string>
+    <string name="in_app_update_restart">रीस्टार्ट करें</string>
 </resources>

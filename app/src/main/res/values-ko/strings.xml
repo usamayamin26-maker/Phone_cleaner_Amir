@@ -261,4 +261,14 @@
     <string name="health_vpn_off">VPN에 연결되어 있지 않습니다</string>
     <string name="health_vpn_on">VPN을 통해 연결되어 있습니다. 탭하여 확인하세요.</string>
     <string name="notification_channel_general">일반</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">앱을 종료할까요?</string>
+    <string name="exit_message">언제든 다시 돌아올 수 있습니다.</string>
+    <string name="exit_stay">계속 보기</string>
+    <string name="exit_confirm">종료</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">업데이트가 다운로드되었습니다.</string>
+    <string name="in_app_update_restart">다시 시작</string>
 </resources>

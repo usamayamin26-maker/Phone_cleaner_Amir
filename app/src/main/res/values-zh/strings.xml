@@ -261,4 +261,14 @@
     <string name="health_vpn_off">未连接 VPN</string>
     <string name="health_vpn_on">已通过 VPN 连接。点按查看。</string>
     <string name="notification_channel_general">常规</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">退出应用？</string>
+    <string name="exit_message">你随时可以回来。</string>
+    <string name="exit_stay">留下</string>
+    <string name="exit_confirm">退出</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">更新已下载。</string>
+    <string name="in_app_update_restart">重新启动</string>
 </resources>

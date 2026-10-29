@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Stay" on the exit sheet: the primary button's radius-16 shape, in the Settings row's white
+     card with its blue hairline, so the two buttons read as a pair without competing. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_on_light">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/_13sdp" />
+            <solid android:color="@color/card_glass" />
+            <stroke
+                android:width="@dimen/_1sdp"
+                android:color="@color/card_row_stroke" />
+        </shape>
+    </item>
+</ripple>

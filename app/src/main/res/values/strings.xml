@@ -344,4 +344,14 @@
     <string name="health_vpn_off">Not connected with VPN</string>
     <string name="health_vpn_on">Connected through a VPN. Tap to review.</string>
     <string name="notification_channel_general">General</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">Leave the app?</string>
+    <string name="exit_message">You can come back any time.</string>
+    <string name="exit_stay">Stay</string>
+    <string name="exit_confirm">Exit</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">An update has been downloaded.</string>
+    <string name="in_app_update_restart">Restart</string>
 </resources>

@@ -261,4 +261,14 @@
     <string name="health_vpn_off">Niet verbonden met een VPN</string>
     <string name="health_vpn_on">Verbonden via een VPN. Tik om te bekijken.</string>
     <string name="notification_channel_general">Algemeen</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">App verlaten?</string>
+    <string name="exit_message">Je kunt altijd terugkomen.</string>
+    <string name="exit_stay">Blijven</string>
+    <string name="exit_confirm">Sluiten</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">Er is een update gedownload.</string>
+    <string name="in_app_update_restart">Opnieuw starten</string>
 </resources>

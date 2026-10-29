@@ -4,9 +4,11 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -15,7 +17,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.core.view.marginEnd
 import androidx.core.view.marginStart
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.ActivityMainBinding
 import com.phone.cleaner.databinding.ItemQuickActionBinding
 import com.phone.cleaner.domain.view_models.HomeUiState
@@ -24,11 +28,14 @@ import com.phone.cleaner.presentation.aicleaner.AiCleanerActivity
 import com.phone.cleaner.presentation.appmanager.AppCleanerActivity
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
+import com.phone.cleaner.presentation.components.EXIT_SHEET_SCREEN_KEY
+import com.phone.cleaner.presentation.components.exitBottomSheet
 import com.phone.cleaner.presentation.deviceinfo.DeviceInfoActivity
 import com.phone.cleaner.presentation.duplicates.DuplicatesActivity
 import com.phone.cleaner.presentation.junkcleaner.ScanNowActivity
 import com.phone.cleaner.presentation.settings.SettingsActivity
 import com.phone.cleaner.presentation.whatsapp.WaCleanerActivity
+import com.phone.cleaner.utils.InAppUpdateManager
 import com.phone.cleaner.utils.SharedPref
 import com.phone.cleaner.utils.applyFittingTextSize
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
@@ -63,12 +70,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val notificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
+    /** Held only so a second back press does not stack a second sheet, and to close it on destroy. */
+    private var exitSheet: BottomSheetDialog? = null
+
+    /** Google Play in-app update (`in_app_update_type` in the ads Remote Config JSON). */
+    private val inAppUpdate = InAppUpdateManager(this)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Once per launch, not on a recreate (a language change recreates the whole stack).
+        if (savedInstanceState == null) inAppUpdate.checkForUpdate()
+    }
+
     override fun setupViews() = with(binding) {
         // From now on a launch is not a first run: the splash goes straight to Home.
         sharedPref.hasOpenedMainScreen = true
 
         statusAnchor.applyStatusBarTopMargin()
+        // The pinned slot is the bottom-most view of the window, so it clears the gesture bar. The
+        // quick actions keep their own clearance as the end of the scrolling content: their bottom
+        // points at the parent, not at the slot, so they cannot hand it over through a gone margin,
+        // and with an ad showing the inset is simply extra scrollable space behind it.
         quickActions.applyNavigationBarBottomMargin()
+        adSlotBottom.applyNavigationBarBottomMargin()
 
         settingsButton.expandTouchTarget()
 
@@ -81,30 +105,93 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         fitLabelsToTheirBoxes()
 
+        // Every one of these opens a screen, so each goes behind the destination's own entry
+        // interstitial. The gear is a screen button; Scan Now and the six cards are Home's own
+        // navigation row and share counter_quick_action, so the console can let one in every N
+        // taps of that row show an ad without touching the buttons on the inner screens.
         settingsButton.onClick {
-            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+            withEntryAd("is_show_admob_settings_btn_inter") { open(SettingsActivity::class.java) }
         }
         scanNow.onClick {
-            startActivity(Intent(this@MainActivity, ScanNowActivity::class.java))
+            withEntryAd("is_show_admob_scan_now_btn_inter", COUNTER_QUICK_ACTION) {
+                open(ScanNowActivity::class.java)
+            }
         }
         actionJunk.root.onClick {
-            startActivity(Intent(this@MainActivity, AiCleanerActivity::class.java))
+            withEntryAd("is_show_admob_ai_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
+                open(AiCleanerActivity::class.java)
+            }
         }
         actionWaCleaner.root.onClick {
-            startActivity(Intent(this@MainActivity, WaCleanerActivity::class.java))
+            withEntryAd("is_show_admob_wa_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
+                open(WaCleanerActivity::class.java)
+            }
         }
         actionDuplicates.root.onClick {
-            startActivity(Intent(this@MainActivity, DuplicatesActivity::class.java))
+            withEntryAd("is_show_admob_duplicates_btn_inter", COUNTER_QUICK_ACTION) {
+                open(DuplicatesActivity::class.java)
+            }
         }
         actionAppCleaner.root.onClick {
-            startActivity(Intent(this@MainActivity, AppCleanerActivity::class.java))
+            withEntryAd("is_show_admob_app_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
+                open(AppCleanerActivity::class.java)
+            }
         }
         actionDeviceInfo.root.onClick {
-            startActivity(Intent(this@MainActivity, DeviceInfoActivity::class.java))
+            withEntryAd("is_show_admob_device_info_btn_inter", COUNTER_QUICK_ACTION) {
+                open(DeviceInfoActivity::class.java)
+            }
         }
         actionBatteryInfo.root.onClick {
-            startActivity(Intent(this@MainActivity, BatteryInfoActivity::class.java))
+            withEntryAd("is_show_admob_battery_info_btn_inter", COUNTER_QUICK_ACTION) {
+                open(BatteryInfoActivity::class.java)
+            }
         }
+
+        setupBackPress()
+    }
+
+    private fun open(screen: Class<*>) = startActivity(Intent(this, screen))
+
+    /**
+     * Back on Home asks before leaving, through the exit sheet. Through the dispatcher rather than
+     * `onBackPressed`, which is deprecated and is not what the predictive-back gesture consults.
+     */
+    private fun setupBackPress() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = showExitSheet()
+        })
+    }
+
+    /**
+     * One sheet at a time: back is easy to press twice, and without this the second press builds a
+     * second sheet behind the first, whose Exit would then be waiting after the first is dismissed.
+     */
+    private fun showExitSheet() {
+        if (exitSheet?.isShowing == true) return
+        exitSheet = exitBottomSheet(this, layoutInflater) { finish() }.also { it.show() }
+    }
+
+    /**
+     * The slots are bound from here rather than once at creation: Home is visible from now on, and
+     * coming back to it from a feature screen is exactly when a cached ad should be re-attached or
+     * an expired one replaced.
+     */
+    private fun bindAdSlots() {
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+    }
+
+    /**
+     * The sheet holds this activity's window, so it goes down with it; the ads package asks the
+     * host to forget the keys it owns, and the exit slot's key is this activity's.
+     */
+    override fun onDestroy() {
+        exitSheet?.dismiss()
+        exitSheet = null
+        AdsController.forgetSlots(SCREEN_KEY, EXIT_SHEET_SCREEN_KEY)
+        super.onDestroy()
     }
 
     override fun observeState() {
@@ -115,6 +202,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onResume()
         // RAM in use changes all the time; the cards show it as of now.
         viewModel.loadUsage()
+        bindAdSlots()
         maybeAskNotificationPermission()
     }
 
@@ -229,5 +317,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val tile = getChildAt(0)
         val text = getChildAt(1)
         return width - paddingStart - paddingEnd - tile.width - text.marginStart - text.marginEnd
+    }
+
+    private companion object {
+        /** This screen's ad slots and its entry in the ad caches. */
+        const val SCREEN_KEY = "home"
+
+        /** Scan Now and the six quick action cards: Home's own navigation row, counted together. */
+        const val COUNTER_QUICK_ACTION = "counter_quick_action"
     }
 }

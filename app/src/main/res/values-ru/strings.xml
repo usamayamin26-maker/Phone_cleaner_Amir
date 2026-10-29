@@ -261,4 +261,14 @@
     <string name="health_vpn_off">Не подключено к VPN</string>
     <string name="health_vpn_on">Подключено через VPN. Нажмите, чтобы посмотреть.</string>
     <string name="notification_channel_general">Общие</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">Выйти из приложения?</string>
+    <string name="exit_message">Вы можете вернуться в любой момент.</string>
+    <string name="exit_stay">Остаться</string>
+    <string name="exit_confirm">Выйти</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">Обновление загружено.</string>
+    <string name="in_app_update_restart">Перезапустить</string>
 </resources>

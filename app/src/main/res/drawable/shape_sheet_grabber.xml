@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The exit sheet's grabber: the platform's handle, in the design's dark text colour at 20%. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/sheet_grabber" />
+    <corners android:radius="@dimen/_2sdp" />
+</shape>

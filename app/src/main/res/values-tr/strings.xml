@@ -261,4 +261,14 @@
     <string name="health_vpn_off">VPN\'e bağlı değil</string>
     <string name="health_vpn_on">VPN üzerinden bağlı. İncelemek için dokunun.</string>
     <string name="notification_channel_general">Genel</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">Uygulamadan çıkılsın mı?</string>
+    <string name="exit_message">İstediğiniz zaman dönebilirsiniz.</string>
+    <string name="exit_stay">Kal</string>
+    <string name="exit_confirm">Çık</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">Bir güncelleme indirildi.</string>
+    <string name="in_app_update_restart">Yeniden başlat</string>
 </resources>

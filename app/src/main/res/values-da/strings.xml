@@ -261,4 +261,14 @@
     <string name="health_vpn_off">Ikke forbundet til VPN</string>
     <string name="health_vpn_on">Forbundet via VPN. Tryk for at gennemgå.</string>
     <string name="notification_channel_general">Generelt</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">Forlad appen?</string>
+    <string name="exit_message">Du kan komme tilbage, når du vil.</string>
+    <string name="exit_stay">Bliv</string>
+    <string name="exit_confirm">Afslut</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">En opdatering er hentet.</string>
+    <string name="in_app_update_restart">Genstart</string>
 </resources>

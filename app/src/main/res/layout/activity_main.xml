@@ -5,7 +5,11 @@
      Storage and RAM Usage 10 px and the Scan Now ring 29 px under the title, Quick Actions 33 px
      under the ring (or under the usage text, if a large font makes that longer). The usage text
      stays beside the ring: each block ends where the ring begins. -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- The root is a ConstraintLayout rather than a frame so the bottom ad slot can be pinned to the
+     window's bottom with the scroll ending at its top: the slot stays put while Home scrolls, and
+     while it is GONE (which is every launch with exit of its flags at 0) the scroll runs to the
+     parent's bottom through layout_goneMarginBottom, exactly as it did before. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -14,8 +18,14 @@
     tools:context=".presentation.MainActivity">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/home_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/ad_slot_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginBottom="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -268,6 +278,29 @@
                 app:barrierDirection="bottom"
                 app:constraint_referenced_ids="scan_now,storage_usage,ram_usage" />
 
+            <!--
+                Home's three ad slots, each with constraints and no margin of any kind: the 14sdp
+                gutter and the vertical gap are the slot's own, in one place for every screen
+                (ads/README.md, "Where a slot's spacing lives"). All three start GONE, so with
+                home_* at 0 Home measures exactly as it did before they were added.
+
+                Top sits between the header block (the usage pair and the Scan Now ring) and the
+                Quick Actions title; mid closes the scrolling content under the cards; bottom is
+                pinned to the window, outside the scroll.
+            -->
+            <com.phone.cleaner.ads.AdSlotView
+                android:id="@+id/ad_slot_top"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_bottom"
+                app:nativeMarginHorizontal="@dimen/_14sdp"
+                tools:visibility="visible" />
+
             <TextView
                 android:id="@+id/quick_actions_title"
                 android:layout_width="0dp"
@@ -283,7 +316,8 @@
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header_bottom"
+                app:layout_constraintTop_toBottomOf="@id/ad_slot_top"
+                app:layout_goneMarginTop="@dimen/_26sdp"
                 app:lineHeight="@dimen/_18ssp" />
 
             <!-- Figma 34:62: two columns, 157 and 158 px wide with a 16.5 px gap, 20 px from the start
@@ -370,7 +404,38 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- The mid slot closes the scrolling content under the cards. Its top anchor is the
+                 grid's bottom edge and its own bottom points at the parent, so nothing is
+                 cross-constrained: with the slot GONE the grid's own 16sdp bottom margin is still
+                 the end of the content, exactly as before. -->
+            <com.phone.cleaner.ads.AdSlotView
+                android:id="@+id/ad_slot_mid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quick_actions"
+                app:nativeMarginHorizontal="@dimen/_14sdp"
+                tools:visibility="visible" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-</FrameLayout>
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

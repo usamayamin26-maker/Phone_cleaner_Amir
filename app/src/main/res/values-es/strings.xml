@@ -261,4 +261,14 @@
     <string name="health_vpn_off">No conectado a una VPN</string>
     <string name="health_vpn_on">Conectado a través de una VPN. Toca para revisar.</string>
     <string name="notification_channel_general">General</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">¿Salir de la app?</string>
+    <string name="exit_message">Puedes volver cuando quieras.</string>
+    <string name="exit_stay">Quedarme</string>
+    <string name="exit_confirm">Salir</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">Se ha descargado una actualización.</string>
+    <string name="in_app_update_restart">Reiniciar</string>
 </resources>

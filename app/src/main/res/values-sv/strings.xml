@@ -261,4 +261,14 @@
     <string name="health_vpn_off">Inte ansluten till VPN</string>
     <string name="health_vpn_on">Ansluten via VPN. Tryck för att granska.</string>
     <string name="notification_channel_general">Allmänt</string>
+
+    <!-- The exit sheet, on Back from Home. -->
+    <string name="exit_title">Lämna appen?</string>
+    <string name="exit_message">Du kan komma tillbaka när du vill.</string>
+    <string name="exit_stay">Stanna</string>
+    <string name="exit_confirm">Avsluta</string>
+
+    <!-- Google Play in-app update (in_app_update_type in the ads Remote Config JSON). -->
+    <string name="in_app_update_downloaded">En uppdatering har laddats ned.</string>
+    <string name="in_app_update_restart">Starta om</string>
 </resources>

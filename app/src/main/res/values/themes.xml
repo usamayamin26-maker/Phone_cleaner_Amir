@@ -29,6 +29,25 @@
         <item name="postSplashScreenTheme">@style/Theme.PhoneCleaner</item>
     </style>
 
+    <!--
+        The exit sheet's window. Material owns the navigation-bar clearance for a sheet and the
+        sheet's layout must not add it a second time: enableEdgeToEdge runs the surface behind the
+        bar and pads the content itself, so the sheet's own paddingBottom is the whole of the gap
+        and nothing in code touches the inset. The window is transparent because the sheet draws
+        its own shape (shape_bottom_sheet), top corners only.
+    -->
+    <style name="Theme.PhoneCleaner.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.PhoneCleaner.BottomSheet</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="enableEdgeToEdge">true</item>
+    </style>
+
+    <style name="Widget.PhoneCleaner.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
     <!-- The design's primary call to action ("Delete 357.47 MB", "Scan Again"): a pill with the
          blue-to-violet gradient and bold white text. Shared by every cleaner screen. -->
     <style name="Widget.PhoneCleaner.PrimaryButton" parent="Widget.Material3.Button">

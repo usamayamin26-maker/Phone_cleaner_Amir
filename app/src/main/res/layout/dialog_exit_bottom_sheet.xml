@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The exit sheet, shown on Back from Home. The Figma file draws no sheet, so this is built from
+    what the design already uses: the dialog card of view_app_dialog.xml - dialog_surface on a
+    radius-26 corner with the dialog_stroke hairline, a 16sdp gutter, a roboto_bold title over a
+    roboto_medium body, and its button row - reshaped for a sheet. Top corners only, a grabber above
+    the title, and the two buttons share the width instead of sitting centred, because in a sheet
+    they are the only thing to aim at.
+
+    The native slot between the body and the buttons is the same AdSlotView every screen uses, bound
+    by ExitBottomSheet under the slot key "exit_bottom". It starts GONE, so with exit_bottom_* at 0
+    the sheet is exactly the sheet with no ad in it: a GONE child of a LinearLayout takes its margins
+    with it, so no gap is left behind. The slot carries its own 14sdp gutter, 2sdp wider than this
+    sheet's 16sdp content - the package's one-gutter-for-every-slot rule.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sheet_exit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bottom_sheet"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/_14sdp">
+
+    <View
+        android:layout_width="@dimen/_31sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:background="@drawable/shape_sheet_grabber"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/exit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/exit_title"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text_label_strong"
+        android:textDirection="locale"
+        android:textSize="@dimen/_16ssp"
+        app:lineHeight="@dimen/_24ssp" />
+
+    <TextView
+        android:id="@+id/exit_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/exit_message"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text_tertiary"
+        android:textDirection="locale"
+        android:textSize="@dimen/_11ssp"
+        app:lineHeight="@dimen/_17ssp" />
+
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/button_exit_stay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_sheet_secondary_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:gravity="center"
+            android:minHeight="@dimen/_40sdp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:text="@string/exit_stay"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_13ssp"
+            app:lineHeight="@dimen/_20ssp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_exit_confirm"
+            style="@style/Widget.PhoneCleaner.PrimaryButton.Rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:text="@string/exit_confirm" />
+    </LinearLayout>
+
+</LinearLayout>
