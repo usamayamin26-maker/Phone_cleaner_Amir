@@ -397,6 +397,64 @@ change. Small values go in `SharedPref`; kotlinx.serialization goes through `Ser
 Logging uses `android.util.Log` — in the app and in every library module. Each class declares its
 own private `TAG` constant and logs through it. Do not add a logging library.
 
+## Ads
+
+AdMob with mediation, driven by one Firebase Remote Config JSON parameter, **`PhoneCleanerAds`**.
+The package is `app/src/main/java/com/phone/cleaner/ads/` - UniversalRemoteControl's `ads/` bundle,
+the same file for file. **Only `AppAds.kt` is this app's**: the parameter name and the default JSON.
+Nothing else in the package is edited per app, and no screen calls a loader or a manager directly -
+`AdsController` is the one entry point. How the package works and how to use it from a screen:
+`app/src/main/java/com/phone/cleaner/ads/README.md`.
+
+**The one rule: consent -> SDK -> config -> any ad.** `AdsBootstrap` owns that order, and
+`AdsController.slot()` waits on it, so nothing is requested before UMP (User Messaging Platform)
+consent has settled. `AdsController.init` runs in `BaseApp`; `AdsController.start` runs in
+`SplashActivity`, because the consent form needs an Activity.
+
+- **Inline slots.** Every screen has a top and a bottom slot, and a mid slot where it scrolls past
+  two blocks of content (Home, Settings, Scan Now, a cleaner's results, Device Information, Battery
+  Info). A slot is an `AdSlotView` in the screen's XML with constraints and **no `layout_margin*`**:
+  the gutter and the vertical gap belong to the slot, not the host. Each slot reads
+  `<screen>_<position>_banner` (0 off, 1..5 banner modes) and `_native` (0 off, 1..5 layouts); the
+  native wins if both are on, and both at 0 collapses the slot so the screen measures as it did
+  before. Bound from `onResume`, forgotten in `onDestroy` / `onDestroyView`.
+- **Full screen.** The splash ad (`splash_ad_preference`, loaded behind a Continue button and never
+  shown on its own), an entry interstitial on every button that opens a screen
+  (`is_show_admob_<screen>_btn_inter`), a back interstitial on every inner screen
+  (`is_show_admob_<screen>_back_inter`), the onboarding full-screen native, and the resume app open
+  ad on a real return from background.
+- **Counters.** `counter_quick_action` (Home's Scan Now and the six quick action cards),
+  `counter_screen_buttons` (a button that opens a screen from an inner screen) and
+  `counter_back_btn`. 0 never shows, 1 shows on every qualifying click, N on every Nth; a missing
+  key reads as 1 and counters are never persisted.
+- **Where a full-screen ad must never appear.** No full-screen ad while a cleaner's scan is
+  running: a scanning page binds inline slots only, and its Stop Scanning and its back go straight
+  through. Nothing opens over the "Are You Sure?" delete dialog or over a system consent dialog -
+  the delete flow asks for no ad at all, and the launch-flow interstitials are the only ones posted
+  behind a frame.
+- **This app deletes files, so an ad never sits between the user and a delete.** The ad is on the
+  way *in* to a screen and on the way *out* of it, never on Delete, Clean or Uninstall.
+- **Ads are not live yet:** the manifest carries Google's test AdMob application id and every unit
+  id in the JSON is blank, so the app requests nothing but Google's test units (which
+  `AdUnitIds` substitutes in debug builds anyway). The real app id and unit ids are item 3 of
+  `docs/release-checklist.md`.
+
+## Remote Config JSON files
+
+| File | What it is |
+|---|---|
+| `PhoneCleanerAds.json` | The console value of the `PhoneCleanerAds` parameter, equal to `AppAds.DEFAULT_JSON`. Every flag 0 and every unit id blank, so a build that never reaches the console shows no ad. A key added on one side only is a key that reads as off. |
+
+Numbers in the console are unquoted: `"home_top_banner": 1`, never `"1"`. A quoted number on a
+screen key reads as its default (off); on one of the package's typed keys it is a parse error and
+**every ad in the app goes off**, with one line under `RemoteConfigManager`.
+
+## Other
+
+- In-app updates (Google Play): `in_app_update_type` in the ads JSON - 0 off, 1 flexible, 2
+  immediate. It ships at 0. `utils/InAppUpdateManager.kt`, one instance per `MainActivity`.
+- Firebase: Analytics, Crashlytics, Remote Config, Cloud Messaging.
+
 ## Writing conventions
 
 - Spell out an abbreviation in full the first time it appears in a comment or document, for example
