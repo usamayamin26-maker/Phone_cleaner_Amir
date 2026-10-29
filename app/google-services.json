@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "916117543833",
+    "project_id": "cleaner-app-a8476",
+    "storage_bucket": "cleaner-app-a8476.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916117543833:android:be63d79106f883421dd108",
+        "android_client_info": {
+          "package_name": "com.jhw.aicleaner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBYh47GVr4MbGIJYGWU9nVt48UhKh3_ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

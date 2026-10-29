@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Trådløs feilsøking: kunne ikke sjekke — trykk for å åpne</string>
     <string name="health_vpn_off">Ikke koblet til VPN</string>
     <string name="health_vpn_on">Koblet til via VPN. Trykk for å se gjennom.</string>
+    <string name="notification_channel_general">Generelt</string>
 </resources>

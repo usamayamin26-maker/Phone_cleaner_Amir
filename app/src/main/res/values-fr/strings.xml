@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Débogage sans fil : vérification impossible — appuyez pour ouvrir</string>
     <string name="health_vpn_off">Non connecté à un VPN</string>
     <string name="health_vpn_on">Connecté via un VPN. Touchez pour vérifier.</string>
+    <string name="notification_channel_general">Général</string>
 </resources>

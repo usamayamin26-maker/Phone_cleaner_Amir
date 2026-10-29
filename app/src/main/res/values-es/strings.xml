@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Depuración inalámbrica: no se pudo comprobar — toca para abrir</string>
     <string name="health_vpn_off">No conectado a una VPN</string>
     <string name="health_vpn_on">Conectado a través de una VPN. Toca para revisar.</string>
+    <string name="notification_channel_general">General</string>
 </resources>

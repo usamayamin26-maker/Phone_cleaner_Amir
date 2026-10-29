@@ -48,4 +48,9 @@ class SharedPref(context: Context) {
     var hasAskedStorageAccess: Boolean
         get() = sharedPref.getBoolean("hasAskedStorageAccess", false)
         set(value) = prefEdit.putBoolean("hasAskedStorageAccess", value).apply()
+
+    /** Set the first time Home asks for POST_NOTIFICATIONS (Android 13+), and never cleared. */
+    var isNotificationPermissionAsked: Boolean
+        get() = sharedPref.getBoolean("isNotificationPermissionAsked", false)
+        set(value) = prefEdit.putBoolean("isNotificationPermissionAsked", value).apply()
 }

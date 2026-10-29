@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">वायरलेस डीबगिंग: जाँच नहीं हो सकी — खोलने के लिए टैप करें</string>
     <string name="health_vpn_off">VPN से कनेक्ट नहीं है</string>
     <string name="health_vpn_on">VPN के ज़रिए कनेक्ट है। देखने के लिए टैप करें।</string>
+    <string name="notification_channel_general">सामान्य</string>
 </resources>

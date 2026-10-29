@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Отладка по Wi-Fi: не удалось проверить — нажмите, чтобы открыть</string>
     <string name="health_vpn_off">Не подключено к VPN</string>
     <string name="health_vpn_on">Подключено через VPN. Нажмите, чтобы посмотреть.</string>
+    <string name="notification_channel_general">Общие</string>
 </resources>

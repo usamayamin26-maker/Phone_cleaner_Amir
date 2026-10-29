@@ -23,6 +23,7 @@ import coil3.SingletonImageLoader
 import coil3.request.crossfade
 import coil3.video.VideoFrameDecoder
 import com.phone.cleaner.di.SharedModule
+import com.phone.cleaner.messaging.NotificationChannels
 import com.phone.cleaner.utils.SharedPref
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
@@ -32,6 +33,7 @@ class BaseApp : Application(), SingletonImageLoader.Factory {
 
     override fun onCreate() {
         super.onCreate()
+        NotificationChannels.ensureCreated(this)
 
         startKoin {
             androidContext(this@BaseApp)

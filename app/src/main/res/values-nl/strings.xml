@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Draadloze foutopsporing: kon niet controleren — tik om te openen</string>
     <string name="health_vpn_off">Niet verbonden met een VPN</string>
     <string name="health_vpn_on">Verbonden via een VPN. Tik om te bekijken.</string>
+    <string name="notification_channel_general">Algemeen</string>
 </resources>

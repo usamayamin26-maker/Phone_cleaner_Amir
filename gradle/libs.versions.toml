@@ -26,6 +26,11 @@ room = "2.8.5"
 sdp = "1.1.1"
 ssp = "1.1.1"
 lottie = "6.7.1"
+
+# firebase - same versions as UniversalRemoteControl
+firebaseBom = "34.19.0"
+googleServices = "4.5.0"
+firebaseCrashlyticsPlugin = "3.0.8"
 # Coil 3 - thumbnails of photos, video frames and app icons.
 coil = "3.6.3"
 # LiteRT is the renamed TensorFlow Lite runtime (org.tensorflow:tensorflow-lite moved here).
@@ -62,6 +67,12 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 intuit-sdp = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "sdp" }
 intuit-ssp = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "ssp" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+
+# firebase - versions come from the BoM
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
 coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
 coil-video = { group = "io.coil-kt.coil3", name = "coil-video", version.ref = "coil" }
 
@@ -73,3 +84,5 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }

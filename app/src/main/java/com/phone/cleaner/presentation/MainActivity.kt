@@ -1,9 +1,13 @@
 package com.phone.cleaner.presentation
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -55,6 +59,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel: HomeViewModel by viewModel()
     private val sharedPref: SharedPref by inject()
+
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     override fun setupViews() = with(binding) {
         // From now on a launch is not a first run: the splash goes straight to Home.
@@ -108,6 +115,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onResume()
         // RAM in use changes all the time; the cards show it as of now.
         viewModel.loadUsage()
+        maybeAskNotificationPermission()
+    }
+
+    /**
+     * Android 13+ needs POST_NOTIFICATIONS for FCM (Firebase Cloud Messaging) notifications. Asked
+     * once, the first time Home is on screen, from the activity itself rather than a one-shot
+     * event (the project's never-from-onStart rule). Denying it changes nothing else in the app.
+     */
+    private fun maybeAskNotificationPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
+        if (sharedPref.isNotificationPermissionAsked) return
+        val granted = ContextCompat.checkSelfPermission(
+            this, Manifest.permission.POST_NOTIFICATIONS
+        ) == PackageManager.PERMISSION_GRANTED
+        if (granted) return
+
+        sharedPref.isNotificationPermissionAsked = true
+        notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 
     private fun render(state: HomeUiState) {

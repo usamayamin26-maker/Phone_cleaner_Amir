@@ -189,4 +189,7 @@
     <color name="scan_again_start">#EBFFFFFF</color>
     <color name="scan_again_center">#D9EEF2FF</color>
     <color name="scan_again_end">#E6EDE9FE</color>
+
+    <!-- The tint Android puts behind the notification small icon in the shade. -->
+    <color name="notification_accent">@color/primary_gradient_start</color>
 </resources>

@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Debugowanie bezprzewodowe: nie udało się sprawdzić — kliknij, aby otworzyć</string>
     <string name="health_vpn_off">Brak połączenia z VPN</string>
     <string name="health_vpn_on">Połączono przez VPN. Kliknij, aby przejrzeć.</string>
+    <string name="notification_channel_general">Ogólne</string>
 </resources>

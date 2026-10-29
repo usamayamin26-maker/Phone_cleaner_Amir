@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Debugging über WLAN: konnte nicht geprüft werden — zum Öffnen tippen</string>
     <string name="health_vpn_off">Nicht mit einem VPN verbunden</string>
     <string name="health_vpn_on">Über ein VPN verbunden. Zum Prüfen tippen.</string>
+    <string name="notification_channel_general">Allgemein</string>
 </resources>

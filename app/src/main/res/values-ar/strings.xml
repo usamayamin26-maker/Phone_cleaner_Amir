@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">تصحيح الأخطاء اللاسلكي: تعذر التحقق — انقر للفتح</string>
     <string name="health_vpn_off">غير متصل بشبكة VPN</string>
     <string name="health_vpn_on">متصل عبر VPN. انقر للمراجعة.</string>
+    <string name="notification_channel_general">عام</string>
 </resources>

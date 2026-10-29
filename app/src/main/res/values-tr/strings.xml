@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Kablosuz hata ayıklama: kontrol edilemedi — açmak için dokunun</string>
     <string name="health_vpn_off">VPN\'e bağlı değil</string>
     <string name="health_vpn_on">VPN üzerinden bağlı. İncelemek için dokunun.</string>
+    <string name="notification_channel_general">Genel</string>
 </resources>

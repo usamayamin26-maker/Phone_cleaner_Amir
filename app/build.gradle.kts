@@ -7,7 +7,8 @@ plugins {
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
 
-    // Firebase (google-services, crashlytics) is added together with google-services.json.
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -18,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.phone.cleaner"
+        applicationId = "com.jhw.aicleaner"
 
         minSdk = 24
         targetSdk = 36
@@ -58,13 +59,14 @@ android {
             )
         }
         // The release build exactly (same R8, resource shrinking and rules), but signed with the
-        // debug key and installed beside the debug app, so a minified build can be tested on a
-        // device without the release keystore. The library modules have no staging type and
+        // debug key, so a minified build can be tested on a device without the release keystore.
+        // No applicationIdSuffix: google-services.json only knows com.jhw.aicleaner, and the
+        // google-services plugin fails a variant whose package it has no client for. Staging
+        // therefore installs over the debug app. The library modules have no staging type and
         // fall back to their release variant.
         create("staging") {
             initWith(getByName("release"))
             signingConfig = signingConfigs.getByName("debug")
-            applicationIdSuffix = ".staging"
             versionNameSuffix = "-staging"
             matchingFallbacks += listOf("release")
         }
@@ -139,6 +141,12 @@ dependencies {
 
     // lottie-anim
     implementation(libs.lottie)
+
+    // firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.messaging)
 
     // Coil 3: image thumbnails, with video frames through coil-video
     implementation(libs.coil)

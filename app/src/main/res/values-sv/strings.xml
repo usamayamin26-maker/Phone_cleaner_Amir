@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">Trådlös felsökning: kunde inte kontrollera — tryck för att öppna</string>
     <string name="health_vpn_off">Inte ansluten till VPN</string>
     <string name="health_vpn_on">Ansluten via VPN. Tryck för att granska.</string>
+    <string name="notification_channel_general">Allmänt</string>
 </resources>

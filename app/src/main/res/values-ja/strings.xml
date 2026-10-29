@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">ワイヤレス デバッグ: 確認できません — タップして開く</string>
     <string name="health_vpn_off">VPN に接続されていません</string>
     <string name="health_vpn_on">VPN 経由で接続されています。タップして確認してください。</string>
+    <string name="notification_channel_general">一般</string>
 </resources>

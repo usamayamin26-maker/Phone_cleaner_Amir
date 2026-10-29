@@ -260,4 +260,5 @@
     <string name="health_wireless_unknown">无线调试：无法检查 — 点按即可打开</string>
     <string name="health_vpn_off">未连接 VPN</string>
     <string name="health_vpn_on">已通过 VPN 连接。点按查看。</string>
+    <string name="notification_channel_general">常规</string>
 </resources>

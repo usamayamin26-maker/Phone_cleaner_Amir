@@ -59,6 +59,10 @@ presentation/{base,components,adapters,onboarding,home,deviceinfo,battery,junkcl
 There is no `core` package. Base classes such as `BaseActivity` and `BaseFragment` live in
 `presentation/base/`, and shared custom views live in `presentation/components/`.
 
+- FCM (Firebase Cloud Messaging) lives in `messaging/`: `AppFirebaseMessagingService` and
+  `NotificationChannels`, as in UniversalRemoteControl. Firebase Analytics and Crashlytics need no
+  code: the plugins and the BoM in `:app` set them up. The applicationId is `com.jhw.aicleaner`
+  (it must match `app/google-services.json`); the Kotlin namespace stays `com.phone.cleaner`.
 - Room lives in `data/local/`: `AppDatabase.kt`, `dao/`, `entities/`.
 - Repository interfaces live in `domain/repository/`; their `*RepositoryImp` implementations live in
   `data/repository/` and wrap the feature library modules (and the DAOs (Data Access Objects)).
