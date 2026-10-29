@@ -138,6 +138,36 @@ fun View.applyNavigationBarBottomMargin() {
 }
 
 /**
+ * The bottom clearance of a call to action that sits **directly above an ad slot**: the slot is the
+ * bottom-most content and pays for the gesture bar itself, so this view keeps its Figma gap while
+ * the slot is there and pays the inset only when the slot is gone (every launch until an ad
+ * actually arrives, and every launch with that slot's flags at 0).
+ *
+ * Without it the clearance is counted twice and the button floats a gesture bar's height above the
+ * ad. [applyNavigationBarBottomMargin] goes on the slot; this one on whatever is above it.
+ */
+fun View.applyNavigationBarBottomMarginAboveSlot() {
+    val designGap = (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+    knownWindowInsets()?.let { insets ->
+        val navigationBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+        updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = designGap
+            (this as? ConstraintLayout.LayoutParams)?.goneBottomMargin = designGap + navigationBar
+        }
+    }
+    ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
+        val navigationBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+        view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = designGap
+            // Used instead of bottomMargin while the slot this view points at is GONE.
+            (this as? ConstraintLayout.LayoutParams)?.goneBottomMargin = designGap + navigationBar
+        }
+        insets
+    }
+    doOnAttach { ViewCompat.requestApplyInsets(it) }
+}
+
+/**
  * Grows a control's touch area to the platform's 48dp minimum without moving it, for controls the
  * design draws smaller than that. Several small controls under one parent each keep their own
  * enlarged area through [CompositeTouchDelegate].

@@ -17,4 +17,11 @@ enum class OnboardingPage(
     DUPLICATES(R.string.action_delete_duplicates, R.string.onboarding_duplicates_subtitle, R.drawable.img_boarding_2),
     WHATSAPP(R.string.onboarding_whatsapp_title, R.string.onboarding_whatsapp_subtitle, R.drawable.img_boarding_3),
     BATTERY(R.string.battery_info_title, R.string.onboarding_battery_subtitle, R.drawable.img_boarding_4),
+    ;
+
+    /**
+     * This page's ad slot keys and its entry in the ad caches: `onboarding1` to `onboarding4`,
+     * one-based, the way the Remote Config keys are written.
+     */
+    val screenKey: String get() = "onboarding${ordinal + 1}"
 }

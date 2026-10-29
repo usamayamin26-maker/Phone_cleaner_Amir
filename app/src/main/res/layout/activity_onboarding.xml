@@ -37,14 +37,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lineHeight="@dimen/_16ssp" />
 
+    <!--
+        Ad slots, one pair for all four pages: each page has its own
+        onboarding<n>_top_* / _bottom_* keys and its own entry in the ad caches, and
+        OnboardingActivity forgets the outgoing page's key before binding the incoming one, so a
+        late ad for the page just left is only cached. Both start GONE, so with this screen's banner/native keys at 0 it measures
+        exactly as it did before they were added. The slot carries constraints and no margin of any
+        kind: the 14sdp gutter and the vertical gap are the slot's own, in one place for every
+        screen in the app (ads/README.md, "Where a slot's spacing lives").
+    -->
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_top"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skip_button"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ad_slot_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skip_button" />
+        app:layout_constraintTop_toBottomOf="@id/ad_slot_top"
+        app:layout_goneMarginBottom="0dp"
+        app:layout_goneMarginTop="0dp" />
 
     <LinearLayout
         android:id="@+id/controls"
@@ -108,5 +132,18 @@
             android:minHeight="@dimen/_41sdp"
             android:text="@string/onboarding_next" />
     </LinearLayout>
+
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

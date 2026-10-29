@@ -9,6 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.utils.toast
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
@@ -71,6 +72,33 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
     protected fun showToast(message: String) = requireContext().toast(message)
+
+    /**
+     * Opens a screen or an inner page behind its entry interstitial, the fragment counterpart of
+     * `BaseActivity.withEntryAd`. [open] always runs, so a tap is never swallowed.
+     *
+     * It lives here because the interstitial needs an Activity and a fragment only has a host.
+     * Without one [open] simply runs: navigation is never the thing that gets dropped.
+     */
+    protected fun withEntryAd(
+        flag: String,
+        counter: String = AdsController.Counter.SCREEN_BUTTONS,
+        open: () -> Unit,
+    ) {
+        val host = activity
+        if (host == null || host.isFinishing) {
+            open()
+            return
+        }
+        AdsController.interstitial(host, flag, counter) {
+            // The ad outlives a quick back press: only navigate if this fragment is still attached.
+            if (isAdded && view != null) open()
+        }
+    }
+
+    /** Leaves an inner page behind its back interstitial; [action] always runs. */
+    protected fun leaveWithAd(flag: String, action: () -> Unit) =
+        AdsController.back(this, flag, action)
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -66,7 +66,7 @@ val SharedModule = module {
     single<StorageAccessRepository> { StorageAccessRepositoryImp(get()) }
 
     // ---- first run: splash, language, onboarding ----
-    viewModel { SplashViewModel(get()) }
+    viewModel { SplashViewModel() }
     viewModel { LanguageViewModel(get()) }
     factory { LanguageAdapter() }
     factory { OnboardingAdapter() }

@@ -22,6 +22,9 @@ import coil3.PlatformContext
 import coil3.SingletonImageLoader
 import coil3.request.crossfade
 import coil3.video.VideoFrameDecoder
+import com.phone.cleaner.ads.AdsController
+import com.phone.cleaner.ads.AdsSetup
+import com.phone.cleaner.ads.AppAds
 import com.phone.cleaner.di.SharedModule
 import com.phone.cleaner.messaging.NotificationChannels
 import com.phone.cleaner.utils.SharedPref
@@ -54,6 +57,18 @@ class BaseApp : Application(), SingletonImageLoader.Factory {
         }
 
         applyStoredLanguage()
+
+        // The ads package registers the resume app open ad and the full-screen state tracking
+        // itself from here; consent, the Mobile Ads SDK and the config fetch start in
+        // SplashActivity (AdsController.start), because the consent form needs an Activity.
+        AdsController.init(
+            this,
+            AdsSetup(
+                remoteConfigKey = AppAds.REMOTE_CONFIG_KEY,
+                defaultJson = AppAds.DEFAULT_JSON,
+                isDebug = BuildConfig.DEBUG,
+            ),
+        )
     }
 
     /**

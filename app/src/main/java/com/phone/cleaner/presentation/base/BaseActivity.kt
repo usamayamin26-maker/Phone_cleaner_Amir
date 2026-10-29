@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.utils.applySystemBarInsets
 import com.phone.cleaner.utils.toast
 import kotlinx.coroutines.flow.Flow
@@ -82,6 +83,29 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
     protected fun showToast(message: String) = toast(message)
+
+    /**
+     * Opens a screen behind its entry interstitial.
+     *
+     * [flag] is the destination's own `is_show_admob_*_btn_inter` and [counter] the group of buttons
+     * it belongs to. [open] always runs - straight away when the flag is off, the counter says no,
+     * the unit id is blank or the ad fails - so a tap can never be swallowed.
+     */
+    protected fun withEntryAd(
+        flag: String,
+        counter: String = AdsController.Counter.SCREEN_BUTTONS,
+        open: () -> Unit,
+    ) = AdsController.interstitial(this, flag, counter) {
+        // The ad outlives a quick finish: only navigate while this activity is still here.
+        if (!isFinishing && !isDestroyed) open()
+    }
+
+    /**
+     * Leaves an inner screen behind its back interstitial. [flag] is the screen's own
+     * `is_show_admob_*_back_inter`; the whole group shares `counter_back_btn`. [action] always runs.
+     */
+    protected fun leaveWithAd(flag: String, action: () -> Unit = { finish() }) =
+        AdsController.back(this, flag, action)
 
     override fun onDestroy() {
         super.onDestroy()
