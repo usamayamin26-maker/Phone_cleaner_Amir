@@ -31,6 +31,21 @@ lottie = "6.7.1"
 firebaseBom = "34.19.0"
 googleServices = "4.5.0"
 firebaseCrashlyticsPlugin = "3.0.8"
+# AdMob and its mediation - same versions as UniversalRemoteControl. Each adapter's version is
+# <partner SDK version>.<adapter revision> and pulls its partner SDK transitively, except Unity,
+# whose SDK Google stopped bundling: it stays on the version its adapter was built against. The
+# whole set is built for play-services-ads 25.4.0/25.5.0, so a GMA bump means bumping these too.
+playServicesAds = "25.5.0"
+userMessagingPlatform = "4.0.0"
+shimmer = "0.5.0"
+appUpdate = "2.1.0"
+unityAds = "4.21.0"
+mediationUnity = "4.21.0.0"
+mediationMintegral = "17.1.81.1"
+mediationPangle = "8.3.0.4.0"
+mediationFacebook = "6.22.0.1"
+mediationApplovin = "13.6.4.2"
+mediationYandex = "8.6.0.0"
 # Coil 3 - thumbnails of photos, video frames and app icons.
 coil = "3.6.3"
 # LiteRT is the renamed TensorFlow Lite runtime (org.tensorflow:tensorflow-lite moved here).
@@ -73,6 +88,26 @@ firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.r
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config" }
+
+# admob - the ads/ package. Remote Config above drives every placement; UMP (User Messaging
+# Platform) runs the consent form; shimmer draws the loading placeholder in an ad slot.
+play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
+user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "userMessagingPlatform" }
+shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
+
+# Google Play in-app updates, driven by in_app_update_type in the ads JSON.
+play-app-update = { group = "com.google.android.play", name = "app-update", version.ref = "appUpdate" }
+
+# AdMob mediation. No code: the Mobile Ads SDK discovers the adapters at initialize(). Mintegral
+# and Pangle resolve only through the two repositories in settings.gradle.kts.
+unity-ads = { group = "com.unity3d.ads", name = "unity-ads", version.ref = "unityAds" }
+mediation-unity = { group = "com.google.ads.mediation", name = "unity", version.ref = "mediationUnity" }
+mediation-mintegral = { group = "com.google.ads.mediation", name = "mintegral", version.ref = "mediationMintegral" }
+mediation-pangle = { group = "com.google.ads.mediation", name = "pangle", version.ref = "mediationPangle" }
+mediation-facebook = { group = "com.google.ads.mediation", name = "facebook", version.ref = "mediationFacebook" }
+mediation-applovin = { group = "com.google.ads.mediation", name = "applovin", version.ref = "mediationApplovin" }
+mediation-yandex = { group = "com.yandex.ads.adapter", name = "admob-mobileads", version.ref = "mediationYandex" }
 coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
 coil-video = { group = "io.coil-kt.coil3", name = "coil-video", version.ref = "coil" }
 

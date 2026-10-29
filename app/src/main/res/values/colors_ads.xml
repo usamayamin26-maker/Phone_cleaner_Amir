@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Colours for the ads bundle. Part of the self-contained `ads` package: every colour the ad
+    layouts, drawables and NativeAdStyler need is named here by its role, so the bundle keeps
+    pasting into another project without dragging a palette with it.
+
+    This app is light only, so there is no values-night counterpart. Where the app's own palette
+    already has the role, the entry is an alias onto it (values/colors.xml, read from Figma) rather
+    than a second copy of the same hex: an ad has to look like it belongs on the screen it sits on.
+    The four that are not aliases have no counterpart in the design, which draws no ad, and each
+    says below what it is for.
+
+    These are only the fallbacks. When the matching native_ad_* Remote Config parameter holds a
+    valid "#RRGGBB" / "#AARRGGBB" value, NativeAdStyler overrides them at runtime.
+-->
+<resources>
+
+    <!-- Native ad card: fill and 1sdp outline (bg_ad_placeholder) -->
+    <color name="native_ad_card_bg">@color/card_surface</color>
+    <color name="native_ad_card_border">@color/card_row_stroke</color>
+
+    <!-- Full-screen native ad: dialog root, the ad's own root and the nav bar strip -->
+    <color name="native_ad_full_screen_bg">@color/screen_background</color>
+
+    <!-- "Ad" tag (bg_native_ad_tag); the border takes the tag text colour unless overridden -->
+    <color name="native_ad_tag_text">@color/text_secondary</color>
+    <color name="native_ad_tag_bg">@color/icon_tile_fill</color>
+
+    <!-- Headline and description -->
+    <color name="native_ad_heading">@color/text_primary</color>
+    <color name="native_ad_description">@color/text_secondary</color>
+
+    <!-- Call to action (bg_native_ad_button) -->
+    <color name="native_ad_button_text">@color/text_on_primary</color>
+    <color name="native_ad_button_bg">@color/primary_gradient_center</color>
+
+    <!-- Loading placeholders: the shimmer skeleton blocks -->
+    <color name="ad_placeholder_skeleton">@color/thumbnail_placeholder</color>
+
+    <!-- "Loading ad…" centred on a shimmer placeholder. Not an alias: it has to read as a label on
+         a skeleton without competing with the shimmer under it, so it is text_secondary at 60%. -->
+    <color name="ad_loading_label">#995F6475</color>
+
+    <!-- "Ad Loading.." dialog and the full-screen dialog's close button -->
+    <color name="ad_dialog_text">@color/text_primary</color>
+    <color name="ad_dialog_muted">@color/text_secondary</color>
+    <color name="ad_dialog_progress">@color/primary_gradient_center</color>
+
+    <!-- Behind the large ad's 16:9 media, so a letterboxed creative sits on a neutral field.
+         Not an alias: the design has no black, and a pale field would show the letterbox. -->
+    <color name="ad_media_bg">#FF000000</color>
+
+    <!-- Opaque backdrop drawn under a full-screen app open ad. Not an alias: it exists to hide the
+         screen behind the translucent AdActivity, so it cannot be the app's own background. -->
+    <color name="ad_backdrop">#FF000000</color>
+
+</resources>

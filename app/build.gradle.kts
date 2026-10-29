@@ -147,6 +147,28 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.messaging)
+    implementation(libs.firebase.config)
+
+    // admob - the ads/ package: AdMob, the UMP (User Messaging Platform) consent form and the
+    // shimmer placeholder an ad slot shows while its request is in flight.
+    implementation(libs.play.services.ads)
+    implementation(libs.user.messaging.platform)
+    implementation(libs.shimmer)
+
+    // in-app updates (Google Play), driven by in_app_update_type in the ads Remote Config JSON
+    implementation(libs.play.app.update)
+
+    // ---------- AdMob mediation ----------
+    // No code: the Mobile Ads SDK discovers the adapters at initialize(), and consent reaches them
+    // through UMP. The work is in the console - each network's ad source mapped per ad unit - and
+    // Yandex goes in as a custom event, not a mediation partner. See ads/README.md.
+    implementation(libs.unity.ads)
+    implementation(libs.mediation.unity)
+    implementation(libs.mediation.mintegral)
+    implementation(libs.mediation.pangle)
+    implementation(libs.mediation.facebook)   // Meta Audience Network
+    implementation(libs.mediation.applovin)   // AppLovin network, via AdMob
+    implementation(libs.mediation.yandex)
 
     // Coil 3: image thumbnails, with video frames through coil-video
     implementation(libs.coil)

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Strings for the ads bundle. Kept in their own file rather than in strings.xml so the whole
+    `ads` package copies into another project as one set of files.
+-->
+<resources>
+
+    <!-- The "Ad" badge every native ad must carry. Google requires the disclosure, so it is
+         translated rather than left out. -->
+    <string name="ad_attribution">广告</string>
+
+    <!-- Shown in the dialog while a button-triggered interstitial loads -->
+    <string name="ad_loading_dialog_message">正在加载广告…</string>
+
+    <!-- Centred on the full-screen native ad's shimmer while the request is in flight -->
+    <string name="ad_loading_placeholder">正在加载广告…</string>
+
+    <!-- Spoken label of the full-screen native ad's close button -->
+    <string name="ad_close">关闭</string>
+
+</resources>

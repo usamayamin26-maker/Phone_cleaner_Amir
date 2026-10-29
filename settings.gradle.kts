@@ -21,6 +21,16 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        // AdMob mediation: two partner SDKs are not published to Maven Central or Google's
+        // repository, so the adapters pulled in by :app cannot resolve without these. Both are
+        // scoped to their own group, so nothing else is ever looked up against them.
+        maven("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea") {
+            content { includeGroupByRegex("com\\.mbridge\\.msdk.*") }
+        }
+        maven("https://artifact.bytedance.com/repository/pangle/") {
+            content { includeGroup("com.pangle.global") }
+        }
     }
 }
 
