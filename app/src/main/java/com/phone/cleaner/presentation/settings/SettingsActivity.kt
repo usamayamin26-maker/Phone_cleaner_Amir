@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.activity.addCallback
 import androidx.core.net.toUri
 import com.phone.cleaner.BuildConfig
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.ActivitySettingsBinding
 import com.phone.cleaner.databinding.ItemSettingsRowBinding
 import com.phone.cleaner.domain.view_models.SettingsUiEvent
@@ -19,6 +21,7 @@ import com.phone.cleaner.presentation.components.RateUsDialog
 import com.phone.cleaner.presentation.onboarding.LanguageActivity
 import com.phone.cleaner.utils.Constants
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.onClick
@@ -41,11 +44,16 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
-        rows.applyNavigationBarBottomMargin()
+        // The slot is the bottom-most view, so it clears the gesture bar; the scroll pays only
+        // while the slot is gone, through its own gone margin.
+        adSlotBottom.applyNavigationBarBottomMargin()
+        rowsScroll.applyNavigationBarBottomMarginAboveSlot()
 
         header.headerTitle.setText(R.string.settings_title)
-        header.backButton.root.onClick { finish() }
+        header.backButton.root.onClick { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
         header.backButton.root.expandTouchTarget()
+        // System back does exactly what the screen's own back button does.
+        onBackPressedDispatcher.addCallback(this@SettingsActivity) { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
 
         rowLanguage.bind(R.drawable.ic_language, R.string.language_title) { viewModel.onLanguageClicked() }
         rowShare.bind(R.drawable.ic_share, R.string.settings_share_app) { viewModel.onShareClicked() }
@@ -57,6 +65,14 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
         viewModel.events.collectEvents(::handle)
     }
 
+    /** Bound from here, not once at creation, so coming back from Language re-attaches the ads. */
+    override fun onResume() {
+        super.onResume()
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+    }
+
     private fun ItemSettingsRowBinding.bind(@DrawableRes icon: Int, @StringRes title: Int, onClick: () -> Unit) {
         rowIcon.setImageResource(icon)
         rowTitle.setText(title)
@@ -65,7 +81,9 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
 
     private fun handle(event: SettingsUiEvent) {
         when (event) {
-            SettingsUiEvent.OpenLanguage -> startActivity(LanguageActivity.fromSettings(this))
+            SettingsUiEvent.OpenLanguage -> withEntryAd("is_show_admob_language_btn_inter") {
+                startActivity(LanguageActivity.fromSettings(this))
+            }
             SettingsUiEvent.ShareApp -> shareApp()
             SettingsUiEvent.RateApp -> {
                 dialog?.dismiss()
@@ -79,6 +97,8 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
 
     /** The system share sheet with a line about the app and its Play Store page. */
     private fun shareApp() {
+        // The share sheet is another app: coming back from it is not a return from background.
+        AdsController.skipNextResume()
         val link = Constants.PLAY_STORE_WEB_URL + BuildConfig.APPLICATION_ID
         val send = Intent(Intent.ACTION_SEND)
             .setType("text/plain")
@@ -92,6 +112,8 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
      * showing the card only to happy users, which is what Rate Us does.
      */
     private fun openStore() {
+        // The Play Store is another app; see shareApp().
+        AdsController.skipNextResume()
         try {
             startActivity(Intent(Intent.ACTION_VIEW, (Constants.PLAY_STORE_APP_URL + BuildConfig.APPLICATION_ID).toUri()))
         } catch (e: ActivityNotFoundException) {
@@ -101,6 +123,8 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
     }
 
     private fun openLink(url: String) {
+        // A browser is another app; see shareApp().
+        AdsController.skipNextResume()
         try {
             startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
         } catch (e: ActivityNotFoundException) {
@@ -112,10 +136,16 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
     override fun onDestroy() {
         dialog?.dismiss()
         dialog = null
+        AdsController.forgetSlots(SCREEN_KEY)
         super.onDestroy()
     }
 
     private companion object {
         const val TAG = "SettingsActivity"
+
+        /** This screen's ad slots and its entry in the ad caches. */
+        const val SCREEN_KEY = "settings"
+
+        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_settings_back_inter"
     }
 }

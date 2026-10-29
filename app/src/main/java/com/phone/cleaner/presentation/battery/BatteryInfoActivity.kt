@@ -8,10 +8,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Switch
+import androidx.activity.addCallback
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.ActivityBatteryInfoBinding
 import com.phone.cleaner.domain.entities.BatteryDetails
 import com.phone.cleaner.domain.view_models.BatteryUiEvent
@@ -19,6 +21,7 @@ import com.phone.cleaner.domain.view_models.BatteryUiState
 import com.phone.cleaner.domain.view_models.BatteryViewModel
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
@@ -45,11 +48,16 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
-        contentColumn.applyNavigationBarBottomMargin()
+        // The slot is the bottom-most view, so it clears the gesture bar; the scroll pays only
+        // while the slot is gone, through its own gone margin.
+        adSlotBottom.applyNavigationBarBottomMargin()
+        content.applyNavigationBarBottomMarginAboveSlot()
 
         header.headerTitle.setText(R.string.battery_info_title)
-        header.backButton.root.onClick { finish() }
+        header.backButton.root.onClick { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
         header.backButton.root.expandTouchTarget()
+        // System back does exactly what the screen's own back button does.
+        onBackPressedDispatcher.addCallback(this@BatteryInfoActivity) { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
 
         powerSaving.contentDescription = getString(R.string.battery_power_saving)
         powerSaving.onClick { viewModel.onPowerSavingClicked() }
@@ -74,6 +82,11 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
         viewModel.events.collectEvents(::handle)
     }
 
+    override fun onDestroy() {
+        AdsController.forgetSlots(SCREEN_KEY)
+        super.onDestroy()
+    }
+
     override fun onStart() {
         super.onStart()
         viewModel.startObserving()
@@ -83,6 +96,11 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
         super.onResume()
         // Back from the Battery Saver settings: show what the user chose there.
         viewModel.refresh()
+        // The slots are bound here too, so coming back re-attaches a cached ad or replaces an
+        // expired one.
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
     }
 
     override fun onStop() {
@@ -147,6 +165,9 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
     private fun handle(event: BatteryUiEvent) {
         when (event) {
             is BatteryUiEvent.OpenBatterySaverSettings -> try {
+                // The Battery Saver settings are another app: coming back is not a return from
+                // background, so no resume app open ad.
+                AdsController.skipNextResume()
                 startActivity(event.intent)
             } catch (e: ActivityNotFoundException) {
                 Log.w(TAG, "No Battery Saver settings screen", e)
@@ -167,5 +188,10 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
 
     private companion object {
         const val TAG = "BatteryInfoActivity"
+
+        /** This screen's ad slots and its entry in the ad caches. */
+        const val SCREEN_KEY = "battery_info"
+
+        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_battery_info_back_inter"
     }
 }

@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.activity.addCallback
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.ActivityDeviceInfoDetailBinding
 import com.phone.cleaner.domain.entities.DeviceInfoSection
 import com.phone.cleaner.domain.view_models.DeviceInfoUiState
@@ -12,6 +14,7 @@ import com.phone.cleaner.domain.view_models.DeviceInfoViewModel
 import com.phone.cleaner.presentation.adapters.InfoListAdapter
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.onClick
@@ -43,11 +46,18 @@ class DeviceInfoDetailActivity : BaseActivity<ActivityDeviceInfoDetailBinding>()
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
-        contentColumn.applyNavigationBarBottomMargin()
+        // The slot is the bottom-most view, so it clears the gesture bar; the scroll pays only
+        // while the slot is gone, through its own gone margin.
+        adSlotBottom.applyNavigationBarBottomMargin()
+        content.applyNavigationBarBottomMarginAboveSlot()
 
         header.headerTitle.setText(section.title)
-        header.backButton.root.onClick { finish() }
+        header.backButton.root.onClick { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
         header.backButton.root.expandTouchTarget()
+        // System back does exactly what the screen's own back button does.
+        onBackPressedDispatcher.addCallback(this@DeviceInfoDetailActivity) {
+            leaveWithAd(BACK_INTERSTITIAL_FLAG)
+        }
 
         headerImage.setImageResource(section.icon)
         rows.adapter = adapter
@@ -57,6 +67,18 @@ class DeviceInfoDetailActivity : BaseActivity<ActivityDeviceInfoDetailBinding>()
 
     override fun observeState() {
         viewModel.state.collectState(::render)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+    }
+
+    override fun onDestroy() {
+        AdsController.forgetSlots(SCREEN_KEY)
+        super.onDestroy()
     }
 
     private fun render(state: DeviceInfoUiState) {
@@ -72,6 +94,11 @@ class DeviceInfoDetailActivity : BaseActivity<ActivityDeviceInfoDetailBinding>()
     companion object {
         private const val TAG = "DeviceInfoDetailActivity"
         private const val EXTRA_SECTION = "section"
+
+        /** This screen's ad slots and its entry in the ad caches. */
+        private const val SCREEN_KEY = "device_info_detail"
+
+        private const val BACK_INTERSTITIAL_FLAG = "is_show_admob_device_info_detail_back_inter"
 
         fun intent(context: Context, section: DeviceInfoSection): Intent =
             Intent(context, DeviceInfoDetailActivity::class.java).putExtra(EXTRA_SECTION, section.name)

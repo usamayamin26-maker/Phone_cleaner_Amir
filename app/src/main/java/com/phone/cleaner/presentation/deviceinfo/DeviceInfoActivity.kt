@@ -2,13 +2,16 @@ package com.phone.cleaner.presentation.deviceinfo
 
 import android.content.Intent
 import android.view.LayoutInflater
+import androidx.activity.addCallback
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.ActivityDeviceInfoBinding
 import com.phone.cleaner.domain.entities.DeviceInfoSection
 import com.phone.cleaner.presentation.adapters.DeviceInfoSectionAdapter
 import com.phone.cleaner.presentation.base.BaseActivity
 import com.phone.cleaner.presentation.battery.BatteryInfoActivity
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.onClick
@@ -26,22 +29,54 @@ class DeviceInfoActivity : BaseActivity<ActivityDeviceInfoBinding>() {
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
-        sections.applyNavigationBarBottomMargin()
+        // The slot is the bottom-most view, so it clears the gesture bar; the list pays only while
+        // the slot is gone, through its own gone margin.
+        adSlotBottom.applyNavigationBarBottomMargin()
+        sections.applyNavigationBarBottomMarginAboveSlot()
 
         header.headerTitle.setText(R.string.device_info_title)
-        header.backButton.root.onClick { finish() }
+        header.backButton.root.onClick { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
         header.backButton.root.expandTouchTarget()
+        // System back does exactly what the screen's own back button does.
+        onBackPressedDispatcher.addCallback(this@DeviceInfoActivity) { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
 
         adapter.onSectionClick = ::open
         sections.adapter = adapter
     }
 
+    /** Bound from here, not once at creation, so coming back from a detail re-attaches the ads. */
+    override fun onResume() {
+        super.onResume()
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+    }
+
+    override fun onDestroy() {
+        AdsController.forgetSlots(SCREEN_KEY)
+        super.onDestroy()
+    }
+
+    /** A section opens behind the destination's own entry interstitial. */
     private fun open(section: DeviceInfoSection) {
-        val intent = if (section == DeviceInfoSection.BATTERY) {
-            Intent(this, BatteryInfoActivity::class.java)
+        val flag = if (section == DeviceInfoSection.BATTERY) {
+            "is_show_admob_battery_info_btn_inter"
         } else {
-            DeviceInfoDetailActivity.intent(this, section)
+            "is_show_admob_device_info_detail_btn_inter"
         }
-        startActivity(intent)
+        withEntryAd(flag) {
+            val intent = if (section == DeviceInfoSection.BATTERY) {
+                Intent(this, BatteryInfoActivity::class.java)
+            } else {
+                DeviceInfoDetailActivity.intent(this, section)
+            }
+            startActivity(intent)
+        }
+    }
+
+    private companion object {
+        /** This screen's ad slots and its entry in the ad caches. */
+        const val SCREEN_KEY = "device_info"
+
+        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_device_info_back_inter"
     }
 }

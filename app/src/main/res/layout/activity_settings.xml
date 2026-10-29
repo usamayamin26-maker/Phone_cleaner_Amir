@@ -26,15 +26,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+        Ad slots. They all start GONE, so with this screen's banner/native keys at 0 it measures
+        exactly as it did before they were added. The slot carries constraints and no margin of any
+        kind: the 14sdp gutter and the vertical gap are the slot's own, in one place for every
+        screen in the app (ads/README.md, "Where a slot's spacing lives").
+    -->
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_top"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/rows_scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ad_slot_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header">
+        app:layout_constraintTop_toBottomOf="@id/ad_slot_top"
+        app:layout_goneMarginBottom="0dp"
+        app:layout_goneMarginTop="0dp">
 
         <LinearLayout
             android:id="@+id/rows"
@@ -53,6 +74,19 @@
                 android:id="@+id/row_share"
                 layout="@layout/item_settings_row" />
 
+            <!-- The mid slot, between the first two rows and the last two. A GONE child of a
+                 LinearLayout takes its margins with it, so with settings_mid_* at 0 the four rows
+                 sit exactly as they did. -->
+            <com.phone.cleaner.ads.AdSlotView
+                android:id="@+id/ad_slot_mid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:visibility="gone"
+                app:nativeMarginHorizontal="@dimen/_14sdp"
+                tools:visibility="visible" />
+
             <include
                 android:id="@+id/row_rate"
                 layout="@layout/item_settings_row" />
@@ -62,5 +96,18 @@
                 layout="@layout/item_settings_row" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
