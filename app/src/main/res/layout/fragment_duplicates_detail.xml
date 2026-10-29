@@ -18,6 +18,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Keep best one (1:692): a 56 px card, radius 28, 16 px padding, label and the switch. -->
+    <!--
+        Ad slots. They start GONE, so with this screen's banner/native keys at 0 it measures
+        exactly as it did before they were added. The slot carries constraints and no margin of any
+        kind: the 14sdp gutter and the vertical gap are the slot's own, in one place for every
+        screen in the app (ads/README.md, "Where a slot's spacing lives").
+    -->
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_top"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/keep_best"
         android:layout_width="0dp"
@@ -30,7 +49,8 @@
         app:cardElevation="@dimen/_3sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/ad_slot_top"
+        app:layout_goneMarginTop="@dimen/_5sdp"
         app:rippleColor="@color/ripple_on_light"
         app:strokeColor="@color/card_row_stroke"
         app:strokeWidth="@dimen/_1sdp"
@@ -85,7 +105,7 @@
         android:clipToPadding="false"
         android:paddingTop="@dimen/_6sdp"
         android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ad_slot_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -102,5 +122,18 @@
             app:lineHeight="@dimen/_19ssp"
             tools:text="Delete 2 · 357.47 MB" />
     </FrameLayout>
+
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

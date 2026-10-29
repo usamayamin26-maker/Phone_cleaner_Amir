@@ -34,7 +34,27 @@ data class CleanerScreen(
     val chips: Chips,
     /** Shown on the results when nothing was found. */
     @param:StringRes val emptyMessage: Int,
+    /**
+     * This cleaner's prefix in the ads Remote Config keys and in the ad caches: `ai_cleaner`,
+     * `wa_cleaner` or `duplicates`. Each of the four pages adds its own suffix - `_scan`,
+     * `_results`, `_groups`, `_detail` - so a page's ad is requested once and re-attached from the
+     * cache when the user comes back to it, and a late ad for a page already left is only cached.
+     */
+    val adsKey: String,
 ) {
+
+    /** `admob_<adsKey>_banner_id` / `_native_id`: all four pages share this cleaner's unit group. */
+    val adsUnits: String get() = adsKey
+
+    /** Back out of the cleaner itself, from the results page. */
+    val adsBackFlag: String get() = "is_show_admob_${adsKey}_back_inter"
+
+    /** Opening one of the cleaner's inner pages (a section, a folder group). */
+    val adsPageEntryFlag: String get() = "is_show_admob_${adsKey}_detail_btn_inter"
+
+    /** Back out of one of those inner pages, to the page it was opened from. */
+    val adsPageBackFlag: String get() = "is_show_admob_${adsKey}_detail_back_inter"
+
     enum class Chips {
         /** Images, videos and files, each with its icon and size (Figma 1:555). */
         SIZES,

@@ -24,6 +24,7 @@ class WaCleanerActivity : BaseCleanerActivity() {
         robotCard = R.drawable.img_robo_card_wa,
         chips = CleanerScreen.Chips.TOTAL_AND_STATUS,
         emptyMessage = R.string.wa_cleaner_none,
+        adsKey = "wa_cleaner",
     )
 
     override val accessLevel = StorageAccessGate.Level.ALL_FILES

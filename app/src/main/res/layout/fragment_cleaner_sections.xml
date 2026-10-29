@@ -4,6 +4,7 @@
      own check and "View All", and "Delete" (211 x 50) for the section's selection. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,14 +17,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+        Ad slots. They start GONE, so with this screen's banner/native keys at 0 it measures
+        exactly as it did before they were added. The slot carries constraints and no margin of any
+        kind: the 14sdp gutter and the vertical gap are the slot's own, in one place for every
+        screen in the app (ads/README.md, "Where a slot's spacing lives").
+    -->
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_top"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/groups_scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
         app:layout_constraintBottom_toTopOf="@id/delete_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header">
+        app:layout_constraintTop_toBottomOf="@id/ad_slot_top"
+        app:layout_goneMarginTop="0dp">
 
         <LinearLayout
             android:id="@+id/groups"
@@ -44,7 +66,7 @@
         android:clipToPadding="false"
         android:paddingTop="@dimen/_6sdp"
         android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ad_slot_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -52,5 +74,18 @@
             android:id="@+id/delete_button"
             layout="@layout/view_delete_button" />
     </FrameLayout>
+
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

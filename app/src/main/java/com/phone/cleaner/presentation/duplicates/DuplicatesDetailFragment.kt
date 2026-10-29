@@ -8,6 +8,7 @@ import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.FragmentDuplicatesDetailBinding
 import com.phone.cleaner.databinding.ViewSelectAllBinding
 import com.phone.cleaner.domain.entities.CleanerSectionType
@@ -15,8 +16,10 @@ import com.phone.cleaner.domain.view_models.CleanerUiState
 import com.phone.cleaner.domain.view_models.DuplicatesViewModel
 import com.phone.cleaner.presentation.adapters.DuplicateGroupAdapter
 import com.phone.cleaner.presentation.base.BaseFragment
+import com.phone.cleaner.presentation.components.CleanerHost
 import com.phone.cleaner.presentation.components.pageTitle
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
@@ -52,10 +55,14 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
-        deleteContainer.applyNavigationBarBottomMargin()
+        // The slot is the bottom-most view of the page, so it clears the gesture bar; Delete pays
+        // only while the slot is gone, through its own gone margin.
+        adSlotBottom.applyNavigationBarBottomMargin()
+        deleteContainer.applyNavigationBarBottomMarginAboveSlot()
         header.headerTitle.setText(section.pageTitle)
-        header.backButton.root.onClick { parentFragmentManager.popBackStack() }
+        header.backButton.root.onClick { leavePage() }
         header.backButton.root.expandTouchTarget()
+        AdsController.routeSystemBack(this@DuplicatesDetailFragment, header.backButton.root)
 
         selectAll = ViewSelectAllBinding.inflate(layoutInflater, header.headerTrailing, true).also {
             it.root.onClick(intervalMs = 0) { viewModel.onSelectAllClicked(section.name) }
@@ -76,6 +83,8 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
 
         groups.adapter = groupAdapter
         groupAdapter.onFileClick = { viewModel.onFileClicked(section.name, it) }
+        // No ad on Delete: it opens the design's "Are You Sure?" and nothing of the app's goes
+        // between the user and that dialog.
         deleteButton.onClick { viewModel.onDeleteClicked(section.name) }
     }
 
@@ -83,9 +92,32 @@ class DuplicatesDetailFragment : BaseFragment<FragmentDuplicatesDetailBinding>()
         viewModel.state.collectState(::render)
     }
 
+    /**
+     * This page's slots. Its key is `duplicates_detail`, the same key the shared file page uses -
+     * only one of the two is ever on screen (a section opens one or the other, never both on top of
+     * each other), so they cannot be handed the same ad at the same time.
+     */
+    override fun onResume() {
+        super.onResume()
+        val screen = (requireActivity() as CleanerHost).screen
+        AdsController.slot(requireActivity(), binding.adSlotTop, "${screen.adsKey}_detail_top", screen.adsUnits)
+        AdsController.slot(requireActivity(), binding.adSlotBottom, "${screen.adsKey}_detail_bottom", screen.adsUnits)
+    }
+
     override fun onDestroyView() {
         selectAll = null
+        AdsController.forgetSlots("${(requireActivity() as CleanerHost).screen.adsKey}_detail")
         super.onDestroyView()
+    }
+
+    /**
+     * Back to the results, behind the page back interstitial. [isLeaving] guards the automatic pop
+     * (everything in the section was deleted), which must not wait behind an ad.
+     */
+    private fun leavePage() {
+        if (isLeaving) return
+        val screen = (requireActivity() as CleanerHost).screen
+        leaveWithAd(screen.adsPageBackFlag) { parentFragmentManager.popBackStack() }
     }
 
     private fun render(state: CleanerUiState) = with(binding) {

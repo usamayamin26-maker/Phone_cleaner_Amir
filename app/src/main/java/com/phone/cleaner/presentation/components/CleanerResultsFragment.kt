@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.FragmentCleanerResultsBinding
 import com.phone.cleaner.databinding.ViewSizeChipBinding
 import com.phone.cleaner.domain.entities.CleanerSectionType
 import com.phone.cleaner.domain.view_models.CleanerUiState
 import com.phone.cleaner.presentation.base.BaseFragment
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
@@ -44,10 +46,16 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
     override fun setupViews() = with(binding) {
         val screen = host.screen
         header.root.applyStatusBarTopMargin()
+        // The pinned slot is the bottom-most view of the page, so it clears the gesture bar. The
+        // scrolling content keeps its own clearance for the launches where the slot is GONE.
         resultsContent.applyNavigationBarBottomMargin()
+        adSlotBottom.applyNavigationBarBottomMargin()
         header.headerTitle.setText(screen.title)
-        header.backButton.root.onClick { requireActivity().finish() }
+        // Back out of the cleaner, behind its back interstitial. The scan is over on this page, so
+        // nothing is in flight; it is also where system back lands, which does the same thing.
+        header.backButton.root.onClick { leaveCleaner() }
         header.backButton.root.expandTouchTarget()
+        AdsController.routeSystemBack(this@CleanerResultsFragment, header.backButton.root)
 
         robot.setImageResource(screen.robotCard)
         robotCard.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> placeRobotArt() }
@@ -69,9 +77,12 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
         cards = SectionCards(
             container = resultsSections,
             onCheck = { host.cleaner.onSectionCheckClicked(it) },
-            onOpen = { host.openSection(it) },
+            // A section's page is an inner screen, so it opens behind the cleaner's page entry ad.
+            onOpen = { key -> withEntryAd(screen.adsPageEntryFlag) { host.openSection(key) } },
             onAllowAccess = { host.requestAllFilesAccess() },
         )
+        // No ad on Delete: it opens the design's "Are You Sure?" and nothing of the app's goes
+        // between the user and that dialog.
         deleteButton.onClick { host.cleaner.onDeleteClicked(null) }
     }
 
@@ -79,10 +90,23 @@ class CleanerResultsFragment : BaseFragment<FragmentCleanerResultsBinding>() {
         host.cleaner.state.collectState(::render)
     }
 
+    /** Bound from here, not once at creation, so a cached ad is re-attached when the page returns. */
+    override fun onResume() {
+        super.onResume()
+        val screen = host.screen
+        AdsController.slot(requireActivity(), binding.adSlotTop, "${screen.adsKey}_results_top", screen.adsUnits)
+        AdsController.slot(requireActivity(), binding.adSlotMid, "${screen.adsKey}_results_mid", screen.adsUnits)
+        AdsController.slot(requireActivity(), binding.adSlotBottom, "${screen.adsKey}_results_bottom", screen.adsUnits)
+    }
+
     override fun onDestroyView() {
         cards = null
+        AdsController.forgetSlots("${host.screen.adsKey}_results")
         super.onDestroyView()
     }
+
+    /** Leaves the whole cleaner behind its back interstitial. */
+    private fun leaveCleaner() = leaveWithAd(host.screen.adsBackFlag) { requireActivity().finish() }
 
     private fun render(state: CleanerUiState) = with(binding) {
         val context = requireContext()

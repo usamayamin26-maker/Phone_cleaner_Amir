@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.domain.repository.StorageAccessRepository
 import com.phone.cleaner.utils.SharedPref
 
@@ -156,6 +157,8 @@ class StorageAccessGate(
             launchSettings(allFilesIntent)
         } else {
             sharedPref.hasAskedStorageAccess = true
+            // The system permission dialog is another window; no ad may open over it.
+            AdsController.skipNextResume()
             permissionLauncher.launch(repository.mediaPermissions(mediaKinds))
         }
     }
@@ -168,6 +171,9 @@ class StorageAccessGate(
     }
 
     private fun launchSettings(intent: Intent) {
+        // A settings page is another app: coming back from it is not a return from background, so
+        // it must not show the resume app open ad over the screen the user was granting access for.
+        AdsController.skipNextResume()
         try {
             settingsLauncher.launch(intent)
         } catch (e: ActivityNotFoundException) {

@@ -24,6 +24,7 @@ class DuplicatesActivity : BaseCleanerActivity() {
         robotCard = R.drawable.img_robo_card_duplicate,
         chips = CleanerScreen.Chips.SIZES,
         emptyMessage = R.string.duplicates_none,
+        adsKey = "duplicates",
     )
 
     /** Photos and videos through MediaStore; Android is not asked for audio. */

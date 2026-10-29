@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.FragmentCleanerPageBinding
 import com.phone.cleaner.databinding.ViewSelectAllBinding
 import com.phone.cleaner.domain.entities.CleanerSection
@@ -22,6 +23,7 @@ import com.phone.cleaner.presentation.adapters.CleanerFileAdapter
 import com.phone.cleaner.presentation.adapters.CleanerGridAdapter
 import com.phone.cleaner.presentation.base.BaseFragment
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
+import com.phone.cleaner.utils.applyNavigationBarBottomMarginAboveSlot
 import com.phone.cleaner.utils.applyStatusBarTopMargin
 import com.phone.cleaner.utils.expandTouchTarget
 import com.phone.cleaner.utils.formatNumber
@@ -52,9 +54,13 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
 
     override fun setupViews() = with(binding) {
         header.root.applyStatusBarTopMargin()
-        deleteContainer.applyNavigationBarBottomMargin()
-        header.backButton.root.onClick { parentFragmentManager.popBackStack() }
+        // The slot is the bottom-most view of the page, so it clears the gesture bar; Delete pays
+        // only while the slot is gone, through its own gone margin.
+        adSlotBottom.applyNavigationBarBottomMargin()
+        deleteContainer.applyNavigationBarBottomMarginAboveSlot()
+        header.backButton.root.onClick { leavePage() }
         header.backButton.root.expandTouchTarget()
+        AdsController.routeSystemBack(this@CleanerPageFragment, header.backButton.root)
 
         selectAll = ViewSelectAllBinding.inflate(layoutInflater, header.headerTrailing, true).also {
             it.root.onClick(intervalMs = 0) { host.cleaner.onSelectAllClicked(key) }
@@ -82,6 +88,8 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
             items.adapter = fileAdapter
             fileAdapter.onFileClick = { host.cleaner.onFileClicked(key, it) }
         }
+        // No ad on Delete: it opens the design's "Are You Sure?" and nothing of the app's goes
+        // between the user and that dialog.
         deleteButton.root.onClick { host.cleaner.onDeleteClicked(key) }
     }
 
@@ -89,9 +97,31 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
         host.cleaner.state.collectState(::render)
     }
 
+    /**
+     * This page's slots. Its key is `<cleaner>_detail`, the same key the duplicates page uses -
+     * only one of the two is ever on screen (a duplicate section opens one or the other, never both
+     * on top of each other), so they cannot be handed the same ad at the same time.
+     */
+    override fun onResume() {
+        super.onResume()
+        val screen = host.screen
+        AdsController.slot(requireActivity(), binding.adSlotTop, "${screen.adsKey}_detail_top", screen.adsUnits)
+        AdsController.slot(requireActivity(), binding.adSlotBottom, "${screen.adsKey}_detail_bottom", screen.adsUnits)
+    }
+
     override fun onDestroyView() {
         selectAll = null
+        AdsController.forgetSlots("${host.screen.adsKey}_detail")
         super.onDestroyView()
+    }
+
+    /**
+     * Back to where the page was opened from, behind the page back interstitial. [isLeaving] guards
+     * the automatic pop (everything in the section was deleted), which must not wait behind an ad.
+     */
+    private fun leavePage() {
+        if (isLeaving) return
+        leaveWithAd(host.screen.adsPageBackFlag) { parentFragmentManager.popBackStack() }
     }
 
     private fun render(state: CleanerUiState): Unit = with(binding) {

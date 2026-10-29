@@ -19,6 +19,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!--
+        Ad slots. Both start GONE, so with <cleaner>_scan_* at 0 this page measures exactly as it
+        did before they were added, and the slot carries no margin of any kind: the 14sdp gutter and
+        the vertical gap are the slot's own (ads/README.md, "Where a slot's spacing lives").
+
+        Inline only. **No full-screen ad while a scan runs** - see CleanerScanFragment.
+    -->
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
+
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -100,5 +117,15 @@
             android:text="@string/cleaner_stop_scanning" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+
+    <com.phone.cleaner.ads.AdSlotView
+        android:id="@+id/ad_slot_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:visibility="gone"
+        app:nativeMarginHorizontal="@dimen/_14sdp"
+        tools:visibility="visible" />
 
 </LinearLayout>

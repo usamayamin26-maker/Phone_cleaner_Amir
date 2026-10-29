@@ -26,6 +26,7 @@ class AiCleanerActivity : BaseCleanerActivity() {
         robotCard = R.drawable.img_robo_card_ai,
         chips = CleanerScreen.Chips.SIZES,
         emptyMessage = R.string.ai_cleaner_none,
+        adsKey = "ai_cleaner",
     )
 
     override val accessLevel = StorageAccessGate.Level.MEDIA

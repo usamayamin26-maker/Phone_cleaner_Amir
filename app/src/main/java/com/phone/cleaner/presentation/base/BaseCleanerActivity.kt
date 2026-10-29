@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.phone.cleaner.R
+import com.phone.cleaner.ads.AdsController
 import com.phone.cleaner.databinding.ActivityCleanerBinding
 import com.phone.cleaner.domain.entities.CleanerSection
 import com.phone.cleaner.domain.repository.StorageAccessRepository
@@ -166,8 +167,13 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
     private fun handle(event: CleanerUiEvent) {
         when (event) {
             is CleanerUiEvent.ConfirmDelete -> confirmDelete(event.count, event.bytes)
-            is CleanerUiEvent.RequestConsent ->
+            is CleanerUiEvent.RequestConsent -> {
+                // Android's own delete confirmation. It is another window, and **no ad of any kind
+                // may open over it**: the user is being asked to confirm a delete, and the resume
+                // app open ad would otherwise fire when the app comes back to the foreground.
+                AdsController.skipNextResume()
                 consentLauncher.launch(IntentSenderRequest.Builder(event.intentSender).build())
+            }
             is CleanerUiEvent.Deleted -> showToast(
                 if (event.failedCount > 0) {
                     getString(R.string.cleaner_delete_partial, event.freedBytes.toReadableSize(this))
@@ -178,7 +184,13 @@ abstract class BaseCleanerActivity : BaseActivity<ActivityCleanerBinding>(), Cle
         }
     }
 
-    /** The design's "Are You Sure?", naming how many files and how much space are about to go. */
+    /**
+     * The design's "Are You Sure?", naming how many files and how much space are about to go.
+     *
+     * **No ad is shown anywhere on this path.** Delete opens this dialog directly, the dialog's own
+     * buttons open nothing but the delete, and the system consent that may follow is covered by
+     * [AdsController.skipNextResume] above.
+     */
     private fun confirmDelete(count: Int, bytes: Long) {
         val message = getString(R.string.dialog_delete_message) + "\n" +
             getString(R.string.dialog_delete_summary, formatNumber(count), bytes.toReadableSize(this))
