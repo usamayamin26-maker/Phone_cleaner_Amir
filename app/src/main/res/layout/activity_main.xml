@@ -336,7 +336,6 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/quick_actions_title">
@@ -404,10 +403,18 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- The mid slot closes the scrolling content under the cards. Its top anchor is the
-                 grid's bottom edge and its own bottom points at the parent, so nothing is
-                 cross-constrained: with the slot GONE the grid's own 16sdp bottom margin is still
-                 the end of the content, exactly as before. -->
+            <!--
+                The mid slot closes the scrolling content under the cards: its top anchor is the
+                grid's bottom edge and its own bottom points at the parent.
+
+                The grid deliberately has **no** bottom constraint. It used to be anchored to the
+                parent's bottom as well, which in this wrap_content ConstraintLayout means
+                "centre between the two anchors": harmless while the grid was the last thing in the
+                scroll, but the moment this slot made the content taller the grid drifted down and
+                left a gap under the Quick Actions title (measured with home_mid_native on). With
+                only a top constraint the grid sits under its title, and its own 16sdp bottom margin
+                is still the end of the content when this slot is GONE.
+            -->
             <com.phone.cleaner.ads.AdSlotView
                 android:id="@+id/ad_slot_mid"
                 android:layout_width="0dp"
