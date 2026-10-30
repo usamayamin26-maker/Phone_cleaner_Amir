@@ -195,7 +195,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         private const val DONE_INTERSTITIAL_UNIT = "admob_language_done_btn_inter_id"
 
         /** Only reachable from Settings, where this screen has a back button. */
-        private const val BACK_INTERSTITIAL_FLAG = "is_show_admob_language_back_inter"
+        private const val BACK_INTERSTITIAL_FLAG = "is_show_language_back_inter"
 
         fun fromSettings(context: Context): Intent =
             Intent(context, LanguageActivity::class.java).putExtra(EXTRA_FROM_SETTINGS, true)

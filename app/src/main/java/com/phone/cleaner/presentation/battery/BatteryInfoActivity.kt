@@ -192,6 +192,6 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
         /** This screen's ad slots and its entry in the ad caches. */
         const val SCREEN_KEY = "battery_info"
 
-        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_battery_info_back_inter"
+        const val BACK_INTERSTITIAL_FLAG = "is_show_battery_info_back_inter"
     }
 }

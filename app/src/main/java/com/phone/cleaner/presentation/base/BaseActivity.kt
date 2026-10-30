@@ -87,7 +87,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     /**
      * Opens a screen behind its entry interstitial.
      *
-     * [flag] is the destination's own `is_show_admob_*_btn_inter` and [counter] the group of buttons
+     * [flag] is the destination's own `is_show_*_btn_inter` and [counter] the group of buttons
      * it belongs to. [open] always runs - straight away when the flag is off, the counter says no,
      * the unit id is blank or the ad fails - so a tap can never be swallowed.
      */
@@ -102,7 +102,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     /**
      * Leaves an inner screen behind its back interstitial. [flag] is the screen's own
-     * `is_show_admob_*_back_inter`; the whole group shares `counter_back_btn`. [action] always runs.
+     * `is_show_*_back_inter`; the whole group shares `counter_back_btn`. [action] always runs.
      */
     protected fun leaveWithAd(flag: String, action: () -> Unit = { finish() }) =
         AdsController.back(this, flag, action)

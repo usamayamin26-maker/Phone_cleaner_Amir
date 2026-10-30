@@ -110,40 +110,40 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         // navigation row and share counter_quick_action, so the console can let one in every N
         // taps of that row show an ad without touching the buttons on the inner screens.
         settingsButton.onClick {
-            withEntryAd("is_show_admob_settings_btn_inter") { open(SettingsActivity::class.java) }
+            withEntryAd("is_show_settings_btn_inter") { open(SettingsActivity::class.java) }
         }
         scanNow.onClick {
-            withEntryAd("is_show_admob_scan_now_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_scan_now_btn_inter", COUNTER_QUICK_ACTION) {
                 open(ScanNowActivity::class.java)
             }
         }
         actionJunk.root.onClick {
-            withEntryAd("is_show_admob_ai_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_ai_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
                 open(AiCleanerActivity::class.java)
             }
         }
         actionWaCleaner.root.onClick {
-            withEntryAd("is_show_admob_wa_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_wa_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
                 open(WaCleanerActivity::class.java)
             }
         }
         actionDuplicates.root.onClick {
-            withEntryAd("is_show_admob_duplicates_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_duplicates_btn_inter", COUNTER_QUICK_ACTION) {
                 open(DuplicatesActivity::class.java)
             }
         }
         actionAppCleaner.root.onClick {
-            withEntryAd("is_show_admob_app_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_app_cleaner_btn_inter", COUNTER_QUICK_ACTION) {
                 open(AppCleanerActivity::class.java)
             }
         }
         actionDeviceInfo.root.onClick {
-            withEntryAd("is_show_admob_device_info_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_device_info_btn_inter", COUNTER_QUICK_ACTION) {
                 open(DeviceInfoActivity::class.java)
             }
         }
         actionBatteryInfo.root.onClick {
-            withEntryAd("is_show_admob_battery_info_btn_inter", COUNTER_QUICK_ACTION) {
+            withEntryAd("is_show_battery_info_btn_inter", COUNTER_QUICK_ACTION) {
                 open(BatteryInfoActivity::class.java)
             }
         }

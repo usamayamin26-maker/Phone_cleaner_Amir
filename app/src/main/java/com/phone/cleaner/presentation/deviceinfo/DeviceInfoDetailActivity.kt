@@ -98,7 +98,7 @@ class DeviceInfoDetailActivity : BaseActivity<ActivityDeviceInfoDetailBinding>()
         /** This screen's ad slots and its entry in the ad caches. */
         private const val SCREEN_KEY = "device_info_detail"
 
-        private const val BACK_INTERSTITIAL_FLAG = "is_show_admob_device_info_detail_back_inter"
+        private const val BACK_INTERSTITIAL_FLAG = "is_show_device_info_detail_back_inter"
 
         fun intent(context: Context, section: DeviceInfoSection): Intent =
             Intent(context, DeviceInfoDetailActivity::class.java).putExtra(EXTRA_SECTION, section.name)

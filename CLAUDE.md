@@ -650,8 +650,8 @@ consent has settled. `AdsController.init` runs in `BaseApp`; `AdsController.star
   before. Bound from `onResume`, forgotten in `onDestroy` / `onDestroyView`.
 - **Full screen.** The splash ad (`splash_ad_preference`, loaded behind a Continue button and never
   shown on its own), an entry interstitial on every button that opens a screen
-  (`is_show_admob_<screen>_btn_inter`), a back interstitial on every inner screen
-  (`is_show_admob_<screen>_back_inter`), the onboarding full-screen native, and the resume app open
+  (`is_show_<screen>_btn_inter`), a back interstitial on every inner screen
+  (`is_show_<screen>_back_inter`), the onboarding full-screen native, and the resume app open
   ad on a real return from background.
 - **Counters.** `counter_quick_action` (Home's Scan Now and the six quick action cards),
   `counter_screen_buttons` (a button that opens a screen from an inner screen) and

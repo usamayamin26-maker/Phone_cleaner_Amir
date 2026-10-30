@@ -201,7 +201,7 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
     private fun handle(event: ScanNowUiEvent) {
         when (event) {
             // The junk card opens the AI Junk Cleaner, so it takes that screen's entry ad.
-            ScanNowUiEvent.OpenJunkFiles -> withEntryAd("is_show_admob_ai_cleaner_btn_inter") {
+            ScanNowUiEvent.OpenJunkFiles -> withEntryAd("is_show_ai_cleaner_btn_inter") {
                 startActivity(AiCleanerActivity.junkFilesIntent(this))
             }
             ScanNowUiEvent.RequestAllFilesAccess -> allFilesGate.request()
@@ -279,6 +279,6 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         /** This screen's ad slots and its entry in the ad caches. */
         const val SCREEN_KEY = "scan_now"
 
-        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_scan_now_back_inter"
+        const val BACK_INTERSTITIAL_FLAG = "is_show_scan_now_back_inter"
     }
 }

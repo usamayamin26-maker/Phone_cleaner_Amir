@@ -59,9 +59,9 @@ class DeviceInfoActivity : BaseActivity<ActivityDeviceInfoBinding>() {
     /** A section opens behind the destination's own entry interstitial. */
     private fun open(section: DeviceInfoSection) {
         val flag = if (section == DeviceInfoSection.BATTERY) {
-            "is_show_admob_battery_info_btn_inter"
+            "is_show_battery_info_btn_inter"
         } else {
-            "is_show_admob_device_info_detail_btn_inter"
+            "is_show_device_info_detail_btn_inter"
         }
         withEntryAd(flag) {
             val intent = if (section == DeviceInfoSection.BATTERY) {
@@ -77,6 +77,6 @@ class DeviceInfoActivity : BaseActivity<ActivityDeviceInfoBinding>() {
         /** This screen's ad slots and its entry in the ad caches. */
         const val SCREEN_KEY = "device_info"
 
-        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_device_info_back_inter"
+        const val BACK_INTERSTITIAL_FLAG = "is_show_device_info_back_inter"
     }
 }

@@ -47,13 +47,13 @@ data class CleanerScreen(
     val adsUnits: String get() = adsKey
 
     /** Back out of the cleaner itself, from the results page. */
-    val adsBackFlag: String get() = "is_show_admob_${adsKey}_back_inter"
+    val adsBackFlag: String get() = "is_show_${adsKey}_back_inter"
 
     /** Opening one of the cleaner's inner pages (a section, a folder group). */
-    val adsPageEntryFlag: String get() = "is_show_admob_${adsKey}_detail_btn_inter"
+    val adsPageEntryFlag: String get() = "is_show_${adsKey}_detail_btn_inter"
 
     /** Back out of one of those inner pages, to the page it was opened from. */
-    val adsPageBackFlag: String get() = "is_show_admob_${adsKey}_detail_back_inter"
+    val adsPageBackFlag: String get() = "is_show_${adsKey}_detail_back_inter"
 
     enum class Chips {
         /** Images, videos and files, each with its icon and size (Figma 1:555). */

@@ -137,6 +137,6 @@ class AppCleanerActivity : BaseActivity<ActivityAppCleanerBinding>() {
         /** This screen's ad slots and its entry in the ad caches. */
         const val SCREEN_KEY = "app_cleaner"
 
-        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_app_cleaner_back_inter"
+        const val BACK_INTERSTITIAL_FLAG = "is_show_app_cleaner_back_inter"
     }
 }

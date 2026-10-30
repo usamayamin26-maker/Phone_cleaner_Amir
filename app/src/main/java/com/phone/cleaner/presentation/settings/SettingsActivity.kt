@@ -81,7 +81,7 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
 
     private fun handle(event: SettingsUiEvent) {
         when (event) {
-            SettingsUiEvent.OpenLanguage -> withEntryAd("is_show_admob_language_btn_inter") {
+            SettingsUiEvent.OpenLanguage -> withEntryAd("is_show_language_btn_inter") {
                 startActivity(LanguageActivity.fromSettings(this))
             }
             SettingsUiEvent.ShareApp -> shareApp()
@@ -146,6 +146,6 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
         /** This screen's ad slots and its entry in the ad caches. */
         const val SCREEN_KEY = "settings"
 
-        const val BACK_INTERSTITIAL_FLAG = "is_show_admob_settings_back_inter"
+        const val BACK_INTERSTITIAL_FLAG = "is_show_settings_back_inter"
     }
 }
