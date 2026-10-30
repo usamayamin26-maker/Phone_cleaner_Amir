@@ -5,20 +5,19 @@
     android:background="@drawable/bg_ad_placeholder"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="@dimen/_20sdp">
+    android:padding="20dp">
 
     <ProgressBar
-        android:layout_width="@dimen/_24sdp"
-        android:layout_height="@dimen/_24sdp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:indeterminateTint="@color/ad_dialog_progress" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:fontFamily="@font/roboto_medium"
+        android:layout_marginStart="14dp"
         android:text="@string/ad_loading_dialog_message"
         android:textColor="@color/ad_dialog_text"
-        android:textSize="@dimen/_14ssp" />
+        android:textSize="14sp" />
 
 </LinearLayout>

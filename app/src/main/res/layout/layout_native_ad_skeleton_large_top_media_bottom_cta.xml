@@ -38,8 +38,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="@dimen/_110sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="110dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +47,8 @@
 
         <View
             android:id="@+id/skeletonIcon"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/bg_ad_skeleton_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,9 +56,9 @@
         <View
             android:id="@+id/skeletonHeading"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_14sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_height="14dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/bg_ad_skeleton_bar"
             app:layout_constraintBottom_toTopOf="@id/skeletonTag"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,13 +66,13 @@
             app:layout_constraintStart_toEndOf="@id/skeletonIcon"
             app:layout_constraintTop_toTopOf="@id/skeletonIcon"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintWidth_max="@dimen/_160sdp" />
+            app:layout_constraintWidth_max="160dp" />
 
         <View
             android:id="@+id/skeletonTag"
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_width="22dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/bg_ad_skeleton_bar"
             app:layout_constraintBottom_toBottomOf="@id/skeletonIcon"
             app:layout_constraintStart_toStartOf="@id/skeletonHeading"
@@ -81,9 +81,9 @@
         <View
             android:id="@+id/skeletonDescription"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_6sdp"
-            android:layout_marginEnd="@dimen/_50sdp"
+            android:layout_height="10dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/bg_ad_skeleton_bar"
             app:layout_constraintBottom_toBottomOf="@id/skeletonTag"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
         <View
             android:id="@+id/skeletonButton"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="50dp"
             android:background="@drawable/bg_ad_skeleton_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

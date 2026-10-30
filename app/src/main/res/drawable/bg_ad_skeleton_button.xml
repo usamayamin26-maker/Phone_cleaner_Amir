@@ -3,5 +3,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <solid android:color="@color/ad_placeholder_skeleton" />
-    <corners android:radius="@dimen/_12sdp" />
+    <corners android:radius="12dp" />
 </shape>

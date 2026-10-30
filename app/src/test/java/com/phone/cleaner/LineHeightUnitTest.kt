@@ -19,7 +19,15 @@ class LineHeightUnitTest {
         get() = resDir.walkTopDown()
             .filter { it.isFile && it.extension == "xml" }
             .filter { it.parentFile?.name?.let { dir -> dir.startsWith("layout") || dir.startsWith("values") } == true }
+            .filterNot { adsBundle.matches(it.name) }
             .toList()
+
+    // The ads bundle is UniversalRemoteControl's files verbatim, raw dp and sp and comments included
+    // (CLAUDE.md, "Ads"), so it is not held to this app's line height rules.
+    private val adsBundle = Regex(
+        "(native_ad_.*|layout_native_ad_.*|layout_banner_ad_.*|layout_ad_slot_.*|view_ad_slot|" +
+            "dialog_ad_loading|dialog_full_screen_native_ad|(styles|attrs|ids|strings)_ads)\\.xml"
+    )
 
     @Test
     fun resourcesAreFound() {

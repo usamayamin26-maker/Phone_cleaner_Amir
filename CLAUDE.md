@@ -60,6 +60,16 @@ user-visible text outside values/strings.xml (translated into all 18 languages);
 res/font and Lottie JSON in res/raw. Theme parent is Theme.Material3.Light.NoActionBar: the app is light
 only, whatever the phone's setting.
 
+The ads bundle is the one exception to the sdp/ssp, color-naming and font rules: its layouts,
+drawables and values files (native_ad_*, layout_native_ad_skeleton_*, the shimmer placeholders,
+dialog_ad_loading, dialog_full_screen_native_ad, bg_ad_*, bg_native_ad_*, ic_ad_close,
+styles_ads.xml, attrs_ads.xml, ids_ads.xml, strings_ads.xml, view_ad_slot, layout_ad_slot_*) are
+UniversalRemoteControl's files verbatim, raw dp and sp included. The only change allowed is the
+font: Inter weight files -> this app's Roboto weight files. The only sdp in the bundle is the four
+values in layout_ad_slot_banner.xml / layout_ad_slot_native.xml (ads/README.md). Never convert,
+restyle or rename them; colors_ads.xml is this app's, aliasing the palette. LineHeightUnitTest
+skips these files. See "Ads" in "Project guidelines" below.
+
 Localization: the same 18 languages as UniversalRemoteControl, done the same way - en (default) plus
 es, fr, de, pt, it, ja, ko, zh, ar, hi, ru, tr, nl, pl, sv, nb, da: a values-<tag>/strings.xml per
 language with every string translated, res/xml/locales_config.xml listing all 18 and
@@ -635,6 +645,17 @@ the same file for file. **Only `AppAds.kt` is this app's**: the parameter name a
 Nothing else in the package is edited per app, and no screen calls a loader or a manager directly -
 `AdsController` is the one entry point. How the package works and how to use it from a screen:
 `app/src/main/java/com/phone/cleaner/ads/README.md`.
+
+**The ads resources are verbatim too.** The native ad layouts, skeletons, shimmer placeholders,
+`dialog_ad_loading`, `dialog_full_screen_native_ad`, `native_ad_full_screen`, the ad drawables
+(`bg_ad_*`, `bg_native_ad_*`, `ic_ad_close`), `view_ad_slot`, `layout_ad_slot_*` and
+`styles_ads.xml` / `attrs_ads.xml` / `ids_ads.xml` / `strings_ads.xml` are UniversalRemoteControl's
+files with raw `dp` and `sp`; the sdp, ssp, color and font rules above do not apply to them. The
+one change is the font, Inter -> this app's Roboto weight files. The four `sdp` values in
+`layout_ad_slot_banner.xml` / `layout_ad_slot_native.xml` are UniversalRemoteControl's own and
+stay. `colors_ads.xml` is the one file this app owns, mapping the bundle's color names onto the
+app palette. `LineHeightUnitTest` skips the bundle files. A diff against UniversalRemoteControl's
+copy shows only font names.
 
 **The one rule: consent -> SDK -> config -> any ad.** `AdsBootstrap` owns that order, and
 `AdsController.slot()` waits on it, so nothing is requested before UMP (User Messaging Platform)
