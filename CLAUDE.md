@@ -1134,7 +1134,7 @@ it is done and say where it landed.
 | # | Item | Waiting on | Notes |
 |---|---|---|---|
 | 1 | Privacy policy URL | done | `privacy_policy_url` in values/strings.xml is https://aiphonecleaner1.blogspot.com/2026/10/privacy-policy-of-ai-phone-cleaner.html (Settings > Privacy & Policy). The same link goes in the Play Console store listing. |
-| 2 | App icon | designer | Adaptive icon (separate foreground and background layers) and the 512 x 512 Play Store icon. The launcher icon is still Android Studio's default. |
+| 2 | App icon | done | Adaptive icon in the mipmaps (the full artwork as the foreground over `ic_launcher_background` #104DB2) and the 512 x 512 Play Store icon at `app/src/main/ic_launcher-playstore.png`. No monochrome layer: a themed icon needs a one-colour silhouette from the designer; without one Android 13+ shows the normal icon. |
 | 3 | AdMob mediation and console | owner | Done in code: the real AdMob app id is in the manifest and the real unit ids are in `PhoneCleanerAds`. Still to do in the consoles: create the `PhoneCleanerAds` parameter in Firebase Remote Config from `docs/PhoneCleanerAds.json`, add each mediation network's ad source per unit (Yandex as a custom event, see `ads/README.md`), set `in_app_update_type`, then turn the placements on one at a time. |
 | 4 | Release keystore and signing | owner | Same pattern as UniversalRemoteControl (`jks/`, passwords in `keystore.properties`, never committed). Then an R8 run of the real `release` build; `staging` already passes. |
 | 5 | Play Console permission declarations and Data safety | to be written | All files access (MANAGE_EXTERNAL_STORAGE), Usage access (PACKAGE_USAGE_STATS), REQUEST_DELETE_PACKAGES; Data safety: no data collected or shared, all processing on device. |
