@@ -15,13 +15,23 @@ build/
 .cxx
 local.properties
 
-# Kotlin compiler session files.
 .kotlin/
+/app/release/
 
-# Signing credentials. The keystore itself may be committed (see jks/); these passwords
-# never are - together they are everything needed to sign a build as this app.
+*.apk
+*.aab
+*.ap_
+output-metadata.json
 keystore.properties
 
-# Android Studio's "Generate Signed Bundle / APK" wizard writes here. Tens of megabytes
-# per build, and committing them puts every one of them in the history permanently.
-/app/release/
+# Profiling, logs and OS files
+*.hprof
+*.log
+.DS_Store
+
+# Claude Code: local settings and the per-task report stay local.
+# CLAUDE.md is committed (the global git ignore lists it, hence the "!").
+.claude/
+/docs/prompt-history/
+/docs/last-prompt-result.md
+!/CLAUDE.md

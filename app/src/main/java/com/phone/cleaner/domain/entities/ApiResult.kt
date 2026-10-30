@@ -2,7 +2,7 @@ package com.phone.cleaner.domain.entities
 
 /**
  * What every repository returns. There is no backend yet, so this lives here; it moves to
- * `data/remote/` unchanged when the network layer from docs/architecture.md arrives.
+ * `data/remote/` unchanged when the network layer from CLAUDE.md ("Reference implementation") arrives.
  */
 sealed class ApiResult<T>(
     val data: T? = null,

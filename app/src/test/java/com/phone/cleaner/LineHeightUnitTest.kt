@@ -8,7 +8,7 @@ import java.io.File
  * Every line height in the app is `ssp`, set through `app:lineHeight` (or a style's `lineHeight`
  * item). The text is `ssp` and follows the user's font size; an `sdp` or `dp` line box does not, so
  * at font size 2.0 the lines of a paragraph overlap. `android:lineHeight` and
- * `lineSpacingMultiplier` are not used at all. See "Typography" in docs/project-guidelines.md.
+ * `lineSpacingMultiplier` are not used at all. See "Typography" in CLAUDE.md ("Project guidelines").
  */
 class LineHeightUnitTest {
 
