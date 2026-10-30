@@ -263,8 +263,8 @@
     <string name="notification_channel_general">一般</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">アプリを終了しますか？</string>
-    <string name="exit_message">いつでも戻ってこられます。</string>
+    <string name="exit_title">お待ちください！本当によろしいですか？</string>
+    <string name="exit_message">もう少しで完了です！最適な結果を得るため、スキャンが終わるまでお待ちください。今終了すると、処理が完了しない場合があります。</string>
     <string name="exit_stay">続ける</string>
     <string name="exit_confirm">終了</string>
 

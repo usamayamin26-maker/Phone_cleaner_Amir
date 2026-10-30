@@ -263,8 +263,8 @@
     <string name="notification_channel_general">सामान्य</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">ऐप से बाहर निकलना है?</string>
-    <string name="exit_message">आप कभी भी वापस आ सकते हैं.</string>
+    <string name="exit_title">रुकिए! क्या आप पक्का हैं?</string>
+    <string name="exit_message">बस थोड़ा और! सबसे अच्छे नतीजों के लिए स्कैन पूरा होने दें. अभी बाहर निकलने से कुछ काम अधूरे रह सकते हैं.</string>
     <string name="exit_stay">रुकें</string>
     <string name="exit_confirm">बाहर निकलें</string>
 

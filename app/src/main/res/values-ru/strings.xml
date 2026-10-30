@@ -263,8 +263,8 @@
     <string name="notification_channel_general">Общие</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">Выйти из приложения?</string>
-    <string name="exit_message">Вы можете вернуться в любой момент.</string>
+    <string name="exit_title">Подождите! Вы уверены?</string>
+    <string name="exit_message">Почти готово! Дождитесь окончания сканирования, чтобы получить лучший результат. Если выйти сейчас, что-то может остаться незавершённым.</string>
     <string name="exit_stay">Остаться</string>
     <string name="exit_confirm">Выйти</string>
 

@@ -263,8 +263,8 @@
     <string name="notification_channel_general">常规</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">退出应用？</string>
-    <string name="exit_message">你随时可以回来。</string>
+    <string name="exit_title">等一下！确定要退出吗？</string>
+    <string name="exit_message">就快完成了！请等待扫描结束以获得最佳效果。现在退出可能会导致部分操作未完成。</string>
     <string name="exit_stay">留下</string>
     <string name="exit_confirm">退出</string>
 

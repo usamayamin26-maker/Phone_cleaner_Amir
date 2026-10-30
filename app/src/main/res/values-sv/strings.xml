@@ -263,8 +263,8 @@
     <string name="notification_channel_general">Allmänt</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">Lämna appen?</string>
-    <string name="exit_message">Du kan komma tillbaka när du vill.</string>
+    <string name="exit_title">Vänta! Är du säker?</string>
+    <string name="exit_message">Nästan klart! Låt genomsökningen bli klar för bästa resultat. Om du avslutar nu kan något bli ofullständigt.</string>
     <string name="exit_stay">Stanna</string>
     <string name="exit_confirm">Avsluta</string>
 

@@ -346,8 +346,8 @@
     <string name="notification_channel_general">General</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">Leave the app?</string>
-    <string name="exit_message">You can come back any time.</string>
+    <string name="exit_title">Wait! Are you sure?</string>
+    <string name="exit_message">Almost there! Let the scan finish for the best results. Exiting now may leave things incomplete.</string>
     <string name="exit_stay">Stay</string>
     <string name="exit_confirm">Exit</string>
 

@@ -263,8 +263,8 @@
     <string name="notification_channel_general">Ogólne</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">Zamknąć aplikację?</string>
-    <string name="exit_message">Możesz wrócić w każdej chwili.</string>
+    <string name="exit_title">Chwileczkę! Na pewno?</string>
+    <string name="exit_message">Już prawie! Poczekaj na zakończenie skanowania, by uzyskać najlepsze wyniki. Wyjście teraz może sprawić, że coś pozostanie niedokończone.</string>
     <string name="exit_stay">Zostań</string>
     <string name="exit_confirm">Zamknij</string>
 

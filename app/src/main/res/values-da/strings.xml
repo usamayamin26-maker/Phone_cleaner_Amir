@@ -263,8 +263,8 @@
     <string name="notification_channel_general">Generelt</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">Forlad appen?</string>
-    <string name="exit_message">Du kan komme tilbage, når du vil.</string>
+    <string name="exit_title">Vent! Er du sikker?</string>
+    <string name="exit_message">Næsten færdig! Lad scanningen blive færdig for at få de bedste resultater. Hvis du afslutter nu, kan noget forblive ufærdigt.</string>
     <string name="exit_stay">Bliv</string>
     <string name="exit_confirm">Afslut</string>
 

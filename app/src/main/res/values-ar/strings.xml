@@ -263,8 +263,8 @@
     <string name="notification_channel_general">عام</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">مغادرة التطبيق؟</string>
-    <string name="exit_message">يمكنك العودة في أي وقت.</string>
+    <string name="exit_title">انتظر! هل أنت متأكد؟</string>
+    <string name="exit_message">أوشكت على الانتهاء! دع الفحص يكتمل للحصول على أفضل النتائج. قد يؤدي الخروج الآن إلى ترك بعض الأمور غير مكتملة.</string>
     <string name="exit_stay">البقاء</string>
     <string name="exit_confirm">خروج</string>
 

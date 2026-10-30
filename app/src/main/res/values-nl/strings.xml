@@ -263,8 +263,8 @@
     <string name="notification_channel_general">Algemeen</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">App verlaten?</string>
-    <string name="exit_message">Je kunt altijd terugkomen.</string>
+    <string name="exit_title">Wacht! Weet je het zeker?</string>
+    <string name="exit_message">Bijna klaar! Laat de scan afronden voor het beste resultaat. Als je nu afsluit, kan er iets onvoltooid blijven.</string>
     <string name="exit_stay">Blijven</string>
     <string name="exit_confirm">Sluiten</string>
 

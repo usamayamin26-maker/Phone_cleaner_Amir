@@ -263,8 +263,8 @@
     <string name="notification_channel_general">Genel</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">Uygulamadan çıkılsın mı?</string>
-    <string name="exit_message">İstediğiniz zaman dönebilirsiniz.</string>
+    <string name="exit_title">Bekleyin! Emin misiniz?</string>
+    <string name="exit_message">Neredeyse bitti! En iyi sonuç için taramanın tamamlanmasına izin verin. Şimdi çıkarsanız bazı işlemler yarım kalabilir.</string>
     <string name="exit_stay">Kal</string>
     <string name="exit_confirm">Çık</string>
 

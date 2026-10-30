@@ -263,8 +263,8 @@
     <string name="notification_channel_general">General</string>
 
     <!-- The exit sheet, on Back from Home. -->
-    <string name="exit_title">¿Salir de la app?</string>
-    <string name="exit_message">Puedes volver cuando quieras.</string>
+    <string name="exit_title">¡Espera! ¿Estás seguro?</string>
+    <string name="exit_message">¡Ya casi está! Deja que el análisis termine para obtener los mejores resultados. Si sales ahora, algunas cosas pueden quedar incompletas.</string>
     <string name="exit_stay">Quedarme</string>
     <string name="exit_confirm">Salir</string>
 
