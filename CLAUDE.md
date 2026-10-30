@@ -691,13 +691,13 @@ consent has settled. `AdsController.init` runs in `BaseApp`; `AdsController.star
 - **Unit ids.** The manifest carries the app's real AdMob application id, and the real unit ids
   are in `AppAds.DEFAULT_JSON` and `docs/PhoneCleanerAds.json` (debug builds still request
   Google's test units: `AdUnitIds` substitutes them). The launch flow has its own units - splash
-  (app open, inter, native, banner), language native, onboarding native. **From Home on every
+  (app open, inter, native, banner), language (banner, native, Done inter) and onboarding
+  (banner, native, full-screen native, Get Started inter). **From Home on every
   screen uses the shared `admob_app_banner_id` / `admob_app_native_id` / `admob_app_inter_id`**, so
   no screen after the launch flow passes `units` to `AdsController.slot` and there are no
   per-screen `admob_<screen>_*_id` keys. The resume app open ad has `admob_resume_app_open_id`.
-  The launch-flow keys left blank (language banner, language Done inter, onboarding banner,
-  onboarding full-screen native, onboarding Get Started inter) fall back to the shared ids. The
-  app has no rewarded placement, so the rewarded and rewarded interstitial units are not used.
+  A launch-flow key left blank would fall back to the shared ids; none is blank now. The app has
+  no rewarded placement, so the rewarded and rewarded interstitial units are not used.
 
 ### Remote Config JSON files
 

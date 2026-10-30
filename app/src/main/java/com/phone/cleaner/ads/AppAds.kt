@@ -231,13 +231,13 @@ object AppAds {
           "admob_splash_native_id": "ca-app-pub-6439059775801210/2817820664",
           "admob_splash_app_open_id": "ca-app-pub-6439059775801210/5354026652",
           "admob_splash_inter_id": "ca-app-pub-6439059775801210/3636078317",
-          "admob_language_banner_id": "",
+          "admob_language_banner_id": "ca-app-pub-6439059775801210/2215781909",
           "admob_language_native_id": "ca-app-pub-6439059775801210/2322996640",
-          "admob_language_done_btn_inter_id": "",
-          "admob_onboarding_banner_id": "",
+          "admob_language_done_btn_inter_id": "ca-app-pub-6439059775801210/5493129043",
+          "admob_onboarding_banner_id": "ca-app-pub-6439059775801210/7391040785",
           "admob_onboarding_native_id": "ca-app-pub-6439059775801210/1504738999",
-          "admob_onboarding_full_screen_native_id": "",
-          "admob_onboarding_get_started_inter_id": ""
+          "admob_onboarding_full_screen_native_id": "ca-app-pub-6439059775801210/3002697074",
+          "admob_onboarding_get_started_inter_id": "ca-app-pub-6439059775801210/2891016435"
         }
     """
 }
