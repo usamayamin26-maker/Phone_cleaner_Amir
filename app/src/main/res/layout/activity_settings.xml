@@ -76,7 +76,8 @@
 
             <!-- The mid slot, between the first two rows and the last two. A GONE child of a
                  LinearLayout takes its margins with it, so with settings_mid_* at 0 the four rows
-                 sit exactly as they did. -->
+                 sit exactly as they did. The column already carries the 14sdp gutter, so the slot
+                 adds no side margin of its own and a native lines up with the rows. -->
             <com.phone.cleaner.ads.AdSlotView
                 android:id="@+id/ad_slot_mid"
                 android:layout_width="match_parent"
@@ -84,7 +85,6 @@
                 android:paddingTop="@dimen/_4sdp"
                 android:paddingBottom="@dimen/_4sdp"
                 android:visibility="gone"
-                app:nativeMarginHorizontal="@dimen/_14sdp"
                 tools:visibility="visible" />
 
             <include

@@ -665,7 +665,10 @@ consent has settled. `AdsController.init` runs in `BaseApp`; `AdsController.star
 - **Inline slots.** Every screen has a top and a bottom slot, and a mid slot where it scrolls past
   two blocks of content (Home, Settings, Scan Now, a cleaner's results, Device Information, Battery
   Info). A slot is an `AdSlotView` in the screen's XML with constraints and **no `layout_margin*`**:
-  the gutter and the vertical gap belong to the slot, not the host. Each slot reads
+  the gutter and the vertical gap belong to the slot, not the host. The exception is a mid slot
+  inside content that already has the gutter (Settings' rows, a cleaner's results): it adds no side
+  margin and lines up with the cards around it; Home's takes the quick-action grid's edges
+  (16sdp start, 19sdp end), while its top and bottom slots stay at 14sdp. Each slot reads
   `<screen>_<position>_banner` (0 off, 1..5 banner modes) and `_native` (0 off, 1..5 layouts); the
   native wins if both are on, and both at 0 collapses the slot so the screen measures as it did
   before. Bound from `onResume`, forgotten in `onDestroy` / `onDestroyView`.

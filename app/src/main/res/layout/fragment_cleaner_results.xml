@@ -114,7 +114,9 @@
 
             <!-- The mid slot, between the robot card and the section cards. A GONE child of a
                  LinearLayout takes its margins with it, so with <cleaner>_results_mid_* at 0 the
-                 card and the sections sit exactly as they did. -->
+                 card and the sections sit exactly as they did. The column already carries the 14sdp
+                 gutter, so the slot adds no side margin of its own and a native lines up with the
+                 cards. -->
             <com.phone.cleaner.ads.AdSlotView
                 android:id="@+id/ad_slot_mid"
                 android:layout_width="match_parent"
@@ -122,7 +124,6 @@
                 android:paddingTop="@dimen/_4sdp"
                 android:paddingBottom="@dimen/_4sdp"
                 android:visibility="gone"
-                app:nativeMarginHorizontal="@dimen/_14sdp"
                 tools:visibility="visible" />
 
             <!-- 12 px under the robot card, whichever sections are left to show. -->

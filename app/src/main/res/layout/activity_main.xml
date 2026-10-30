@@ -414,6 +414,10 @@
                 left a gap under the Quick Actions title (measured with home_mid_native on). With
                 only a top constraint the grid sits under its title, and its own 16sdp bottom margin
                 is still the end of the content when this slot is GONE.
+
+                Its sides are the grid's, not the parent's, and it adds no side margin of its own: a
+                native here lines up with the cards (16sdp start, 19sdp end, Figma 34:62) instead
+                of the 14sdp the top and bottom slots use.
             -->
             <com.phone.cleaner.ads.AdSlotView
                 android:id="@+id/ad_slot_mid"
@@ -423,10 +427,9 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/quick_actions"
+                app:layout_constraintStart_toStartOf="@id/quick_actions"
                 app:layout_constraintTop_toBottomOf="@id/quick_actions"
-                app:nativeMarginHorizontal="@dimen/_14sdp"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
