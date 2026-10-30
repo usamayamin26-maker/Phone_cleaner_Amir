@@ -27,10 +27,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_goneMarginBottom="0dp">
 
+        <!-- The bottom padding is the gap under the last row of quick actions (Figma 16 px). It
+             has to be on the content itself: the scroll view clips at the content's edge, so
+             without it the bottom cards' shadows were cut off. A bottom margin on the grid does
+             nothing here (nothing is constrained to its bottom), and the mid ad slot below it
+             is usually gone. -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipChildren="false">
+            android:clipChildren="false"
+            android:paddingBottom="@dimen/_16sdp">
 
             <View
                 android:id="@+id/header_background"
@@ -332,7 +338,7 @@
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_19sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_8sdp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical"
