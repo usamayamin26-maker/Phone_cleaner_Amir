@@ -1133,7 +1133,7 @@ it is done and say where it landed.
 
 | # | Item | Waiting on | Notes |
 |---|---|---|---|
-| 1 | Privacy policy URL | company | `privacy_policy_url` in values/strings.xml is still `PLACEHOLDER_PRIVACY_URL`. The policy must say every scan and the AI model run on the phone and no file or data leaves it. Play requires the link. |
+| 1 | Privacy policy URL | done | `privacy_policy_url` in values/strings.xml is https://aiphonecleaner1.blogspot.com/2026/10/privacy-policy-of-ai-phone-cleaner.html (Settings > Privacy & Policy). The same link goes in the Play Console store listing. |
 | 2 | App icon | designer | Adaptive icon (separate foreground and background layers) and the 512 x 512 Play Store icon. The launcher icon is still Android Studio's default. |
 | 3 | AdMob mediation and console | owner | Done in code: the real AdMob app id is in the manifest and the real unit ids are in `PhoneCleanerAds`. Still to do in the consoles: create the `PhoneCleanerAds` parameter in Firebase Remote Config from `docs/PhoneCleanerAds.json`, add each mediation network's ad source per unit (Yandex as a custom event, see `ads/README.md`), set `in_app_update_type`, then turn the placements on one at a time. |
 | 4 | Release keystore and signing | owner | Same pattern as UniversalRemoteControl (`jks/`, passwords in `keystore.properties`, never committed). Then an R8 run of the real `release` build; `staging` already passes. |
