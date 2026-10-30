@@ -98,9 +98,9 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
         viewModel.refresh()
         // The slots are bound here too, so coming back re-attaches a cached ad or replaces an
         // expired one.
-        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top")
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid")
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom")
     }
 
     override fun onStop() {

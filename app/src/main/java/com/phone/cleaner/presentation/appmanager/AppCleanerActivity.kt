@@ -71,8 +71,8 @@ class AppCleanerActivity : BaseActivity<ActivityAppCleanerBinding>() {
         viewModel.onScreenResumed()
         // Bound from here, not once at creation: coming back from one of those is exactly when a
         // cached ad should be re-attached or an expired one replaced.
-        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top")
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom")
     }
 
     override fun onDestroy() {

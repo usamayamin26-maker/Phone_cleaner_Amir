@@ -6,15 +6,15 @@ package com.phone.cleaner.ads
  * [com.phone.cleaner.BaseApp].
  *
  * [DEFAULT_JSON] lists **every** ads key the app reads; debug builds log any key a screen reads that
- * is not here (`AdsConfig: Unknown ads key …`), which is what catches a typo. Every flag is 0 and
- * every unit id blank, so a build that never reaches Remote Config shows no ad at all. Adding a
+ * is not here (`AdsConfig: Unknown ads key …`), which is what catches a typo. Every flag is 0, so a
+ * build that never reaches Remote Config shows no ad at all; the unit ids are the real ones. Adding a
  * screen or a placement = adding its keys here and to docs/PhoneCleanerAds.json, which is the value
  * the console holds.
  *
  * Key shapes: `<screen>_<top|mid|bottom>_banner` / `_native` (slots; banner 0..5, native 0..5),
- * `is_show_*` (full-screen placements), `admob_<units>_banner_id` / `_native_id` (per-screen units,
- * blank = the shared `admob_app_*_id`), `counter_*` (how often each group of buttons shows an
- * interstitial).
+ * `is_show_*` (full-screen placements), `admob_<units>_banner_id` / `_native_id` (the launch
+ * flow's own units - splash, language, onboarding; blank = the shared `admob_app_*_id`, which every
+ * screen from Home on uses), `counter_*` (how often each group of buttons shows an interstitial).
  *
  * **Screens and their keys.** One screen key per screen, and the cleaners count as three screens
  * each, because the scanning page, the results and a section's page are separate fragments with
@@ -222,42 +222,22 @@ object AppAds {
           "native_button_bg_color": "",
           "native_ad_bg_color": "",
           "native_ad_border_color": "",
-          "app_id": "",
-          "admob_app_banner_id": "",
-          "admob_app_native_id": "",
-          "admob_app_inter_id": "",
-          "admob_resume_app_open_id": "",
-          "admob_splash_banner_id": "",
-          "admob_splash_native_id": "",
-          "admob_splash_app_open_id": "",
-          "admob_splash_inter_id": "",
+          "app_id": "ca-app-pub-6439059775801210~5510985504",
+          "admob_app_banner_id": "ca-app-pub-6439059775801210/7387621069",
+          "admob_app_native_id": "ca-app-pub-6439059775801210/6757065677",
+          "admob_app_inter_id": "ca-app-pub-6439059775801210/4374444913",
+          "admob_resume_app_open_id": "ca-app-pub-6439059775801210/8642534978",
+          "admob_splash_banner_id": "ca-app-pub-6439059775801210/8509131042",
+          "admob_splash_native_id": "ca-app-pub-6439059775801210/2817820664",
+          "admob_splash_app_open_id": "ca-app-pub-6439059775801210/5354026652",
+          "admob_splash_inter_id": "ca-app-pub-6439059775801210/3636078317",
           "admob_language_banner_id": "",
-          "admob_language_native_id": "",
+          "admob_language_native_id": "ca-app-pub-6439059775801210/2322996640",
           "admob_language_done_btn_inter_id": "",
           "admob_onboarding_banner_id": "",
-          "admob_onboarding_native_id": "",
+          "admob_onboarding_native_id": "ca-app-pub-6439059775801210/1504738999",
           "admob_onboarding_full_screen_native_id": "",
-          "admob_onboarding_get_started_inter_id": "",
-          "admob_home_banner_id": "",
-          "admob_home_native_id": "",
-          "admob_settings_banner_id": "",
-          "admob_settings_native_id": "",
-          "admob_scan_now_banner_id": "",
-          "admob_scan_now_native_id": "",
-          "admob_ai_cleaner_banner_id": "",
-          "admob_ai_cleaner_native_id": "",
-          "admob_wa_cleaner_banner_id": "",
-          "admob_wa_cleaner_native_id": "",
-          "admob_duplicates_banner_id": "",
-          "admob_duplicates_native_id": "",
-          "admob_app_cleaner_banner_id": "",
-          "admob_app_cleaner_native_id": "",
-          "admob_device_info_banner_id": "",
-          "admob_device_info_native_id": "",
-          "admob_device_info_detail_banner_id": "",
-          "admob_device_info_detail_native_id": "",
-          "admob_battery_info_banner_id": "",
-          "admob_battery_info_native_id": ""
+          "admob_onboarding_get_started_inter_id": ""
         }
     """
 }

@@ -47,8 +47,8 @@ class DeviceInfoActivity : BaseActivity<ActivityDeviceInfoBinding>() {
     /** Bound from here, not once at creation, so coming back from a detail re-attaches the ads. */
     override fun onResume() {
         super.onResume()
-        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top")
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom")
     }
 
     override fun onDestroy() {

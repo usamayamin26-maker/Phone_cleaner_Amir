@@ -68,9 +68,9 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
     /** Bound from here, not once at creation, so coming back from Language re-attaches the ads. */
     override fun onResume() {
         super.onResume()
-        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top")
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid")
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom")
     }
 
     private fun ItemSettingsRowBinding.bind(@DrawableRes icon: Int, @StringRes title: Int, onClick: () -> Unit) {

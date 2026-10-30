@@ -118,9 +118,9 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
 
     /** Bound from [onResume]: coming back from the AI cleaner or a settings screen re-attaches them. */
     private fun bindAdSlots() {
-        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid", units = SCREEN_KEY)
-        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom", units = SCREEN_KEY)
+        AdsController.slot(this, binding.adSlotTop, "${SCREEN_KEY}_top")
+        AdsController.slot(this, binding.adSlotMid, "${SCREEN_KEY}_mid")
+        AdsController.slot(this, binding.adSlotBottom, "${SCREEN_KEY}_bottom")
     }
 
     override fun onDestroy() {

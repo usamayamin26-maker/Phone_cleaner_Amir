@@ -43,8 +43,9 @@ have top / bottom slots (mid where a screen scrolls past two blocks), each showi
 (5 types) or a native ad (5 layouts), native wins if both are on. Full-screen: splash, entry and
 back interstitials with click counters, onboarding full-screen native, resume app open. Never an
 ad between the user and a delete. Nothing is requested before UMP (User Messaging Platform)
-consent. **Ads are not live yet:** the manifest has Google's test app id and every unit id in the
-JSON is blank.
+consent. The manifest has the real AdMob app id and the JSON the real unit ids: the launch flow
+(splash, language, onboarding) has its own units, and from Home on every screen uses the shared
+`admob_app_*_id`.
 
 How the package works and how to use it: `app/src/main/java/com/phone/cleaner/ads/README.md`.
 
@@ -52,7 +53,7 @@ How the package works and how to use it: `app/src/main/java/com/phone/cleaner/ad
 
 | File | What it is |
 |---|---|
-| `PhoneCleanerAds.json` | Parameter `PhoneCleanerAds`, equal to `AppAds.DEFAULT_JSON` (every flag 0, every unit id blank) |
+| `PhoneCleanerAds.json` | Parameter `PhoneCleanerAds`, equal to `AppAds.DEFAULT_JSON` (every flag 0, the real unit ids) |
 
 ## Other
 

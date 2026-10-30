@@ -688,16 +688,22 @@ consent has settled. `AdsController.init` runs in `BaseApp`; `AdsController.star
   behind a frame.
 - **This app deletes files, so an ad never sits between the user and a delete.** The ad is on the
   way *in* to a screen and on the way *out* of it, never on Delete, Clean or Uninstall.
-- **Ads are not live yet:** the manifest carries Google's test AdMob application id and every unit
-  id in the JSON is blank, so the app requests nothing but Google's test units (which
-  `AdUnitIds` substitutes in debug builds anyway). The real app id and unit ids are item 3 of
-  "Release checklist" below.
+- **Unit ids.** The manifest carries the app's real AdMob application id, and the real unit ids
+  are in `AppAds.DEFAULT_JSON` and `docs/PhoneCleanerAds.json` (debug builds still request
+  Google's test units: `AdUnitIds` substitutes them). The launch flow has its own units - splash
+  (app open, inter, native, banner), language native, onboarding native. **From Home on every
+  screen uses the shared `admob_app_banner_id` / `admob_app_native_id` / `admob_app_inter_id`**, so
+  no screen after the launch flow passes `units` to `AdsController.slot` and there are no
+  per-screen `admob_<screen>_*_id` keys. The resume app open ad has `admob_resume_app_open_id`.
+  The launch-flow keys left blank (language banner, language Done inter, onboarding banner,
+  onboarding full-screen native, onboarding Get Started inter) fall back to the shared ids. The
+  app has no rewarded placement, so the rewarded and rewarded interstitial units are not used.
 
 ### Remote Config JSON files
 
 | File | What it is |
 |---|---|
-| `PhoneCleanerAds.json` | The console value of the `PhoneCleanerAds` parameter, equal to `AppAds.DEFAULT_JSON`. Every flag 0 and every unit id blank, so a build that never reaches the console shows no ad. A key added on one side only is a key that reads as off. |
+| `PhoneCleanerAds.json` | The console value of the `PhoneCleanerAds` parameter, equal to `AppAds.DEFAULT_JSON`. Every flag 0 and the real unit ids, so placements are switched on from the console one at a time. A key added on one side only is a key that reads as off. |
 
 Numbers in the console are unquoted: `"home_top_banner": 1`, never `"1"`. A quoted number on a
 screen key reads as its default (off); on one of the package's typed keys it is a parse error and
@@ -1129,7 +1135,7 @@ it is done and say where it landed.
 |---|---|---|---|
 | 1 | Privacy policy URL | company | `privacy_policy_url` in values/strings.xml is still `PLACEHOLDER_PRIVACY_URL`. The policy must say every scan and the AI model run on the phone and no file or data leaves it. Play requires the link. |
 | 2 | App icon | designer | Adaptive icon (separate foreground and background layers) and the 512 x 512 Play Store icon. The launcher icon is still Android Studio's default. |
-| 3 | Real AdMob app id and unit ids | AdMob console | The `ads/` package is wired and driven by the `PhoneCleanerAds` Remote Config parameter (`docs/PhoneCleanerAds.json`). Still to come: the real AdMob application id in `AndroidManifest.xml` (it holds Google's test id) and the real unit ids in the console value (every `admob_*_id` is blank), plus each mediation network's ad source per unit - Yandex goes in as a custom event, see `ads/README.md`. Then turn the placements on one at a time from the console. |
+| 3 | AdMob mediation and console | owner | Done in code: the real AdMob app id is in the manifest and the real unit ids are in `PhoneCleanerAds`. Still to do in the consoles: create the `PhoneCleanerAds` parameter in Firebase Remote Config from `docs/PhoneCleanerAds.json`, add each mediation network's ad source per unit (Yandex as a custom event, see `ads/README.md`), set `in_app_update_type`, then turn the placements on one at a time. |
 | 4 | Release keystore and signing | owner | Same pattern as UniversalRemoteControl (`jks/`, passwords in `keystore.properties`, never committed). Then an R8 run of the real `release` build; `staging` already passes. |
 | 5 | Play Console permission declarations and Data safety | to be written | All files access (MANAGE_EXTERNAL_STORAGE), Usage access (PACKAGE_USAGE_STATS), REQUEST_DELETE_PACKAGES; Data safety: no data collected or shared, all processing on device. |
 | 6 | Translations review | native speakers | 17 languages were machine-written by the developer tools; brand names stay English. |
