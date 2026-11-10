@@ -54,11 +54,12 @@
         tools:visibility="visible" />
 
 
-    <!-- The app's logo (owner's artwork, img_splash_logo), 104 px in the design. -->
+    <!-- The app's logo (owner's artwork, img_splash_logo): 106sdp, larger than the design's
+         104 px (83sdp) at the owner's request. -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="@dimen/_94sdp"
-        android:layout_height="@dimen/_94sdp"
+        android:layout_width="@dimen/_106sdp"
+        android:layout_height="@dimen/_106sdp"
         android:layout_marginTop="@dimen/_48sdp"
         android:importantForAccessibility="no"
         android:scaleType="fitCenter"
