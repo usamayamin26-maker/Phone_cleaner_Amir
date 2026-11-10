@@ -25,7 +25,7 @@
          and logo, until SplashActivity draws the design's splash in the same place. -->
     <style name="Theme.PhoneCleaner.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/screen_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_window</item>
         <item name="postSplashScreenTheme">@style/Theme.PhoneCleaner</item>
     </style>
 

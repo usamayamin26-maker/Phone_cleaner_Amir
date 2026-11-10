@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The splash logo for the system splash window that covers the cold start. The window draws its
+     icon in a 240-unit box and only the middle circle, 160 across, is safe, so the logo is inset to
+     96 units in the middle (30% on every side) and its corners stay inside the circle. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/img_splash_logo"
+    android:inset="30%" />

@@ -127,7 +127,6 @@
 
     <!-- Splash (Figma 1:4189): the logo's 70% white border, the violet glow behind it and the
          loading bar's track. -->
-    <color name="splash_logo_stroke">#B3FFFFFF</color>
     <color name="splash_glow">#9E7C6CF7</color>
     <color name="splash_glow_end">#007C6CF7</color>
     <color name="progress_track">#FFEEF2FF</color>
