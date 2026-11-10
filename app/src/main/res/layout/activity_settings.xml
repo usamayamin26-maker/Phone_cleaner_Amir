@@ -70,9 +70,12 @@
                 android:id="@+id/row_language"
                 layout="@layout/item_settings_row" />
 
+            <!-- Share App and Rate Us are hidden until the app is live on the Play Store; set both
+                 back to visible then. Their code in SettingsActivity stays as it is. -->
             <include
                 android:id="@+id/row_share"
-                layout="@layout/item_settings_row" />
+                layout="@layout/item_settings_row"
+                android:visibility="gone" />
 
             <!-- The mid slot, between the first two rows and the last two. A GONE child of a
                  LinearLayout takes its margins with it, so with settings_mid_* at 0 the four rows
@@ -87,9 +90,11 @@
                 android:visibility="gone"
                 tools:visibility="visible" />
 
+            <!-- Hidden until the app is live, like Share App above. -->
             <include
                 android:id="@+id/row_rate"
-                layout="@layout/item_settings_row" />
+                layout="@layout/item_settings_row"
+                android:visibility="gone" />
 
             <include
                 android:id="@+id/row_privacy"
