@@ -67,15 +67,16 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
         }
 
         if (isGrid) {
-            // Figma 1:240: four to a row, 4 px apart, 12 px between rows, 23 px from the edges.
+            // Three to a row (QA sample; Figma 1:240 had four), 23 px from the edges. QA spacing:
+            // 5sdp between the tiles of a row, 8sdp between rows (Figma: 4 px and 12 px).
             val side = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._18sdp)
             items.setPaddingRelative(side, items.paddingTop, side, items.paddingBottom)
             items.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
             items.addItemDecoration(
                 GridSpacingDecoration(
                     spanCount = SPAN_COUNT,
-                    spacingPx = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._3sdp),
-                    rowSpacingPx = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp),
+                    spacingPx = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._5sdp),
+                    rowSpacingPx = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._8sdp),
                 ),
             )
             items.adapter = gridAdapter
@@ -221,7 +222,7 @@ class CleanerPageFragment : BaseFragment<FragmentCleanerPageBinding>() {
     companion object {
         private const val ARG_KEY = "section_key"
         private const val ARG_GRID = "grid"
-        private const val SPAN_COUNT = 4
+        private const val SPAN_COUNT = 3
         private const val DISABLED_ALPHA = 0.5f
 
         fun newInstance(key: String, grid: Boolean) = CleanerPageFragment().apply {

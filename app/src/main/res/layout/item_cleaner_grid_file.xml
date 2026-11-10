@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One photo or video in a section's grid (Figma 1:242, four to a row): 79.3 x 73.9, radius 10.3,
-     70% white hairline. Selected, a 14 px blue disc with a white tick sits 16.5 px from the top and
-     9 px from the end (1:249); not selected, the design draws nothing. The tile toggles the file. -->
+<!-- One photo or video in a section's grid, three to a row (QA sample; Figma 1:242 had four):
+     the design's 79.3 x 73.9 proportion, radius 10.3, 70% white hairline. Selected, a blue disc with
+     a white tick sits in the top end corner, as in the QA sample (Figma 1:249 drew a smaller one
+     lower down); not selected, nothing is drawn. The tile toggles the file. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_59sdp"
+    android:layout_height="@dimen/_94sdp"
     android:foreground="?attr/selectableItemBackground">
 
     <ImageView
@@ -18,16 +19,16 @@
 
     <FrameLayout
         android:id="@+id/file_check"
-        android:layout_width="@dimen/_11sdp"
-        android:layout_height="@dimen/_11sdp"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
         android:layout_gravity="top|end"
-        android:layout_marginTop="@dimen/_13sdp"
-        android:layout_marginEnd="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
         android:background="@drawable/shape_check_on">
 
         <ImageView
-            android:layout_width="@dimen/_8sdp"
-            android:layout_height="@dimen/_8sdp"
+            android:layout_width="@dimen/_11sdp"
+            android:layout_height="@dimen/_11sdp"
             android:layout_gravity="center"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_tick"
