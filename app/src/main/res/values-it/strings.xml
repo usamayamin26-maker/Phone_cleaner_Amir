@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Caricamento dati</string>
     <string name="cleaner_loading_message">Scansione sicura del dispositivo: non è ancora stato eliminato nulla.</string>
     <string name="cleaner_stop_scanning">Interrompi scansione</string>
+    <string name="dialog_leave_scan_title">Aspetta! Sei sicuro?</string>
+    <string name="dialog_leave_scan_message">Ci siamo quasi! Lascia terminare la scansione per risultati migliori. Uscire ora potrebbe lasciarla incompleta.</string>
+    <string name="dialog_leave_scan_keep">Continua la pulizia</string>
+    <string name="dialog_leave_scan_stop">Interrompi comunque</string>
     <string name="cleaner_images_count">Immagini (%1$s)</string>
     <string name="cleaner_videos_count">Video (%1$s)</string>
     <string name="cleaner_large_files_count">File grandi (%1$s)</string>

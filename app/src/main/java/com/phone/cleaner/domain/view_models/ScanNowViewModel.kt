@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phone.cleaner.domain.repository.DeviceInfoRepository
 import com.phone.cleaner.domain.repository.JunkRepository
+import com.phone.cleaner.utils.ScanPacer
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -86,6 +87,11 @@ class ScanNowViewModel(
      */
     var debugStepDelayMs: Long = 0L
 
+    /** Holds the scanning page for at least [ScanPacer.MIN_SCAN_MS] and paces its ring. */
+    private val pacer = ScanPacer { shown ->
+        _state.update { if (it.isScanning) it.copy(progress = shown) else it }
+    }
+
     /** The user went to the junk screen; what it deleted is looked for again on the way back. */
     private var isJunkStale = false
 
@@ -95,15 +101,20 @@ class ScanNowViewModel(
         junkJob?.cancel()
         scanJob = viewModelScope.launch {
             _state.value = ScanNowUiState(isScanning = true)
+            pacer.start(this)
             try {
                 // The settings are read at once; the junk walk is what takes time.
                 val security = deviceInfoRepository.getSecurityStatus().data
                 _state.update { it.copy(security = security) }
-                val junk = scanJunk { fraction -> _state.update { it.copy(progress = fraction) } }
+                val junk = scanJunk(pacer::report)
+                // The scanning page stays for at least ScanPacer.MIN_SCAN_MS.
+                pacer.finish()
                 _state.update { it.copy(isScanning = false, isComplete = true, progress = 1f, junk = junk) }
             } catch (e: CancellationException) {
                 Log.d(TAG, "Scan stopped; nothing was changed")
                 throw e
+            } finally {
+                pacer.stop()
             }
         }
     }

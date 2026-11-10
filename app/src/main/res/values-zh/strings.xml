@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">正在加载数据</string>
     <string name="cleaner_loading_message">正在安全扫描您的设备，尚未删除任何内容。</string>
     <string name="cleaner_stop_scanning">停止扫描</string>
+    <string name="dialog_leave_scan_title">等等！确定吗？</string>
+    <string name="dialog_leave_scan_message">就快完成了！请让扫描完成以获得最佳效果。现在退出可能会导致结果不完整。</string>
+    <string name="dialog_leave_scan_keep">继续清理</string>
+    <string name="dialog_leave_scan_stop">仍然停止</string>
     <string name="cleaner_images_count">图片（%1$s）</string>
     <string name="cleaner_videos_count">视频（%1$s）</string>
     <string name="cleaner_large_files_count">大文件（%1$s）</string>

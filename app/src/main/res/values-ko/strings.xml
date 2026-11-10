@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">데이터 불러오는 중</string>
     <string name="cleaner_loading_message">기기를 안전하게 검사하고 있습니다. 아직 아무것도 삭제되지 않았습니다.</string>
     <string name="cleaner_stop_scanning">검사 중지</string>
+    <string name="dialog_leave_scan_title">잠깐만요! 정말 그만하시겠어요?</string>
+    <string name="dialog_leave_scan_message">거의 다 됐어요! 최상의 결과를 위해 스캔이 끝날 때까지 기다려 주세요. 지금 나가면 작업이 완료되지 않을 수 있어요.</string>
+    <string name="dialog_leave_scan_keep">계속 정리하기</string>
+    <string name="dialog_leave_scan_stop">그래도 중지</string>
     <string name="cleaner_images_count">이미지(%1$s)</string>
     <string name="cleaner_videos_count">동영상(%1$s)</string>
     <string name="cleaner_large_files_count">대용량 파일(%1$s)</string>

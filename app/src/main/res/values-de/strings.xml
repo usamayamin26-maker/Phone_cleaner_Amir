@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Daten werden geladen</string>
     <string name="cleaner_loading_message">Dein Gerät wird sicher gescannt – noch wird nichts gelöscht.</string>
     <string name="cleaner_stop_scanning">Scan stoppen</string>
+    <string name="dialog_leave_scan_title">Moment! Bist du sicher?</string>
+    <string name="dialog_leave_scan_message">Fast geschafft! Lass den Scan für die besten Ergebnisse fertig laufen. Wenn du jetzt abbrichst, bleibt er möglicherweise unvollständig.</string>
+    <string name="dialog_leave_scan_keep">Weiter bereinigen</string>
+    <string name="dialog_leave_scan_stop">Trotzdem stoppen</string>
     <string name="cleaner_images_count">Bilder (%1$s)</string>
     <string name="cleaner_videos_count">Videos (%1$s)</string>
     <string name="cleaner_large_files_count">Große Dateien (%1$s)</string>

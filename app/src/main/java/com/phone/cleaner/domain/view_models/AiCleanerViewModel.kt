@@ -48,7 +48,7 @@ class AiCleanerViewModel(
         var aiFraction = 0f
         var junkFraction = 0f
         // The slower of the two, so the ring never runs ahead of the work still to do.
-        fun report() = mutableState.update { it.copy(progress = minOf(aiFraction, junkFraction)) }
+        fun report() = reportProgress(minOf(aiFraction, junkFraction))
 
         val junkScan = async {
             var result: JunkScanResult? = null
@@ -83,7 +83,7 @@ class AiCleanerViewModel(
         val categories = junk?.categories.orEmpty()
         junkItems = categories.filter { it.isAvailable }.flatMap { it.items }.associateBy { it.path }
         val sections = sectionsOf(aiJunk, screenshots.data.orEmpty(), large.data.orEmpty(), junk)
-        mutableState.update { state ->
+        finishScan { state ->
             state.copy(
                 isScanning = false,
                 isScanComplete = true,

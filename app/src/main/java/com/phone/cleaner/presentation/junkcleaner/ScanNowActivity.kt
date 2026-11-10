@@ -1,5 +1,6 @@
 package com.phone.cleaner.presentation.junkcleaner
 
+import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.util.Log
@@ -25,6 +26,7 @@ import com.phone.cleaner.domain.view_models.ScanNowViewModel
 import com.phone.cleaner.domain.view_models.needsDeveloperSettings
 import com.phone.cleaner.presentation.aicleaner.AiCleanerActivity
 import com.phone.cleaner.presentation.base.BaseActivity
+import com.phone.cleaner.presentation.components.AppDialog
 import com.phone.cleaner.presentation.components.StorageAccessGate
 import com.phone.cleaner.utils.SharedPref
 import com.phone.cleaner.utils.applyNavigationBarBottomMargin
@@ -53,6 +55,9 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
     private val storageAccess: StorageAccessRepository by inject()
     private val sharedPref: SharedPref by inject()
 
+    /** "Wait! Are you sure?", while it is open. */
+    private var leaveDialog: Dialog? = null
+
     /** Junk needs All files access; the junk card asks for it. Declining keeps the results. */
     private val allFilesGate by lazy {
         StorageAccessGate(
@@ -78,17 +83,17 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
         scanNowContent.applyNavigationBarBottomMargin()
         adSlotBottom.applyNavigationBarBottomMargin()
         header.headerTitle.setText(R.string.scan_now_title)
-        header.backButton.root.onClick { stopAndLeave() }
+        header.backButton.root.onClick { onBack() }
         header.backButton.root.expandTouchTarget()
         // System back does exactly what the screen's own back button does.
-        onBackPressedDispatcher.addCallback(this@ScanNowActivity) { stopAndLeave() }
+        onBackPressedDispatcher.addCallback(this@ScanNowActivity) { onBack() }
 
         // The design's two rows (1:1678, 1:1687) at their sizes: the security icon 23 px, the chart
         // 18 px. Junk has no row: the scan is over the moment junk is done.
         rowSecurity.bind(R.drawable.ic_security, R.string.health_security, com.intuit.sdp.R.dimen._18sdp)
         rowVpn.bind(R.drawable.img_scan_chart, R.string.health_vpn, com.intuit.sdp.R.dimen._14sdp)
 
-        stopButton.onClick { stopAndLeave() }
+        stopButton.onClick { onBack() }
         scanAgain.onClick { viewModel.startScan() }
         cardJunk.onClick { viewModel.onJunkClicked() }
         cardSecurity.onClick { viewModel.onSecurityClicked() }
@@ -124,11 +129,18 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
     }
 
     override fun onDestroy() {
+        leaveDialog?.dismiss()
+        leaveDialog = null
         AdsController.forgetSlots(SCREEN_KEY)
         super.onDestroy()
     }
 
     private fun render(state: ScanNowUiState) = with(binding) {
+        // The scan finished while "Wait! Are you sure?" was open: nothing is left to stop.
+        if (state.isComplete) {
+            leaveDialog?.dismiss()
+            leaveDialog = null
+        }
         scanState.visibleIf(!state.isComplete)
         doneState.visibleIf(state.isComplete)
 
@@ -222,7 +234,20 @@ class ScanNowActivity : BaseActivity<ActivityScanNowBinding>() {
     }
 
     /**
-     * Back, by the screen's own button, by "Stop Scanning" or by the system gesture.
+     * Back (the screen's own button or the system gesture) and "Stop Scanning". While the scan runs they ask
+     * first ("Wait! Are you sure?"); Stop Anyway leaves. No ad either way.
+     */
+    private fun onBack() {
+        if (viewModel.state.value.isComplete) {
+            stopAndLeave()
+            return
+        }
+        if (leaveDialog?.isShowing == true) return
+        leaveDialog = AppDialog.showLeaveScan(this, onStop = ::stopAndLeave)
+    }
+
+    /**
+     * Leaving: the dialog's Stop Anyway, or back once the scan is complete.
      *
      * **No full-screen ad while the scan is running.** The user pressing Stop is asking for the
      * scan to end now, and an interstitial on top of that reads as the app refusing to stop. Once

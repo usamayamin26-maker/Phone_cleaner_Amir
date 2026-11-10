@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">डेटा लोड हो रहा है</string>
     <string name="cleaner_loading_message">आपका डिवाइस सुरक्षित रूप से स्कैन हो रहा है — अभी कुछ नहीं मिटाया गया है।</string>
     <string name="cleaner_stop_scanning">स्कैन रोकें</string>
+    <string name="dialog_leave_scan_title">रुकिए! क्या आप पक्का चाहते हैं?</string>
+    <string name="dialog_leave_scan_message">बस थोड़ा और! सबसे अच्छे नतीजों के लिए स्कैन पूरा होने दें। अभी बाहर निकलने पर काम अधूरा रह सकता है।</string>
+    <string name="dialog_leave_scan_keep">सफ़ाई जारी रखें</string>
+    <string name="dialog_leave_scan_stop">फिर भी रोकें</string>
     <string name="cleaner_images_count">इमेज (%1$s)</string>
     <string name="cleaner_videos_count">वीडियो (%1$s)</string>
     <string name="cleaner_large_files_count">बड़ी फ़ाइलें (%1$s)</string>

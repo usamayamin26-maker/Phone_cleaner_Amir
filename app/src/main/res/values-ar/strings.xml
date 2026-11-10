@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">جارٍ تحميل البيانات</string>
     <string name="cleaner_loading_message">يتم فحص جهازك بأمان، ولم يُحذف أي شيء بعد.</string>
     <string name="cleaner_stop_scanning">إيقاف الفحص</string>
+    <string name="dialog_leave_scan_title">انتظر! هل أنت متأكد؟</string>
+    <string name="dialog_leave_scan_message">اقتربنا من الانتهاء! دع الفحص يكتمل للحصول على أفضل النتائج. قد يؤدي الخروج الآن إلى بقاء الأمور غير مكتملة.</string>
+    <string name="dialog_leave_scan_keep">متابعة التنظيف</string>
+    <string name="dialog_leave_scan_stop">إيقاف على أي حال</string>
     <string name="cleaner_images_count">الصور (%1$s)</string>
     <string name="cleaner_videos_count">مقاطع الفيديو (%1$s)</string>
     <string name="cleaner_large_files_count">الملفات الكبيرة (%1$s)</string>

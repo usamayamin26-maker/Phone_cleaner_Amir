@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Indlæser data</string>
     <string name="cleaner_loading_message">Din enhed scannes sikkert – intet er slettet endnu.</string>
     <string name="cleaner_stop_scanning">Stop scanning</string>
+    <string name="dialog_leave_scan_title">Vent! Er du sikker?</string>
+    <string name="dialog_leave_scan_message">Næsten færdig! Lad scanningen blive færdig for det bedste resultat. Hvis du afslutter nu, kan den blive ufuldstændig.</string>
+    <string name="dialog_leave_scan_keep">Fortsæt rensningen</string>
+    <string name="dialog_leave_scan_stop">Stop alligevel</string>
     <string name="cleaner_images_count">Billeder (%1$s)</string>
     <string name="cleaner_videos_count">Videoer (%1$s)</string>
     <string name="cleaner_large_files_count">Store filer (%1$s)</string>

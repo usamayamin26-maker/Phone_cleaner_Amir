@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Загрузка данных</string>
     <string name="cleaner_loading_message">Безопасное сканирование устройства: пока ничего не удалено.</string>
     <string name="cleaner_stop_scanning">Остановить</string>
+    <string name="dialog_leave_scan_title">Подождите! Вы уверены?</string>
+    <string name="dialog_leave_scan_message">Почти готово! Дайте сканированию завершиться, чтобы получить лучший результат. Если выйти сейчас, оно может остаться незавершённым.</string>
+    <string name="dialog_leave_scan_keep">Продолжить очистку</string>
+    <string name="dialog_leave_scan_stop">Всё равно остановить</string>
     <string name="cleaner_images_count">Изображения (%1$s)</string>
     <string name="cleaner_videos_count">Видео (%1$s)</string>
     <string name="cleaner_large_files_count">Большие файлы (%1$s)</string>

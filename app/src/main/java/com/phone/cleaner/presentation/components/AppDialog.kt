@@ -121,6 +121,23 @@ object AppDialog {
     }
 
     /**
+     * "Wait! Are you sure?" - back pressed while a scan is running (QA sample; the design has no
+     * frame for it). Keep Cleaning, a tap outside or back close the dialog and the scan carries on;
+     * Stop Anyway runs [onStop]. No ad is shown from it: leaving a scan never goes behind one.
+     */
+    fun showLeaveScan(context: Context, onStop: () -> Unit): Dialog = show(
+        context = context,
+        spec = Spec(
+            title = context.getString(R.string.dialog_leave_scan_title),
+            message = context.getString(R.string.dialog_leave_scan_message),
+            primaryLabel = context.getString(R.string.dialog_leave_scan_keep),
+            secondaryLabel = context.getString(R.string.dialog_leave_scan_stop),
+        ),
+        onPrimary = {},
+        onSecondary = onStop,
+    )
+
+    /**
      * The window every dialog of the app uses: transparent, full width (the card keeps its own
      * margins), the screen behind dimmed by [scrim] and, on Android 12+, blurred by 12 px.
      */

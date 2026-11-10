@@ -34,8 +34,8 @@ class WaCleanerViewModel(
         repository.scan().collect { event ->
             if (debugStepDelayMs > 0) delay(debugStepDelayMs)
             when (event) {
-                is WhatsAppScanEvent.Progress -> mutableState.update { it.copy(progress = event.fraction) }
-                is WhatsAppScanEvent.Completed -> mutableState.update { state ->
+                is WhatsAppScanEvent.Progress -> reportProgress(event.fraction)
+                is WhatsAppScanEvent.Completed -> finishScan { state ->
                     state.copy(
                         isScanning = false,
                         isScanComplete = true,

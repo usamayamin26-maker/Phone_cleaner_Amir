@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Chargement des données</string>
     <string name="cleaner_loading_message">Analyse sécurisée de votre appareil : rien n\'est encore supprimé.</string>
     <string name="cleaner_stop_scanning">Arrêter l\'analyse</string>
+    <string name="dialog_leave_scan_title">Attendez ! Êtes-vous sûr ?</string>
+    <string name="dialog_leave_scan_message">C\'est presque fini ! Laissez l\'analyse se terminer pour de meilleurs résultats. Quitter maintenant peut la laisser incomplète.</string>
+    <string name="dialog_leave_scan_keep">Continuer le nettoyage</string>
+    <string name="dialog_leave_scan_stop">Arrêter quand même</string>
     <string name="cleaner_images_count">Images (%1$s)</string>
     <string name="cleaner_videos_count">Vidéos (%1$s)</string>
     <string name="cleaner_large_files_count">Fichiers volumineux (%1$s)</string>

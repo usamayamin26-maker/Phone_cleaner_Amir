@@ -129,6 +129,10 @@
     <string name="cleaner_loading_title">Loading Data</string>
     <string name="cleaner_loading_message">Scanning your device safely — nothing is deleted yet.</string>
     <string name="cleaner_stop_scanning">Stop Scanning</string>
+    <string name="dialog_leave_scan_title">Wait! Are you sure?</string>
+    <string name="dialog_leave_scan_message">Almost there! Let the scan finish for the best results. Exiting now may leave things incomplete.</string>
+    <string name="dialog_leave_scan_keep">Keep Cleaning</string>
+    <string name="dialog_leave_scan_stop">Stop Anyway</string>
     <!-- "Images (50)": the number of files in the section. -->
     <string name="cleaner_images_count">Images (%1$s)</string>
     <string name="cleaner_videos_count">Videos (%1$s)</string>

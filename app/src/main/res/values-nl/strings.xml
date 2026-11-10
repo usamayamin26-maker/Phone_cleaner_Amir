@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Gegevens laden</string>
     <string name="cleaner_loading_message">Je apparaat wordt veilig gescand. Er is nog niets verwijderd.</string>
     <string name="cleaner_stop_scanning">Scan stoppen</string>
+    <string name="dialog_leave_scan_title">Wacht! Weet je het zeker?</string>
+    <string name="dialog_leave_scan_message">Bijna klaar! Laat de scan afronden voor het beste resultaat. Als je nu stopt, blijft hij mogelijk onvolledig.</string>
+    <string name="dialog_leave_scan_keep">Doorgaan met opschonen</string>
+    <string name="dialog_leave_scan_stop">Toch stoppen</string>
     <string name="cleaner_images_count">Afbeeldingen (%1$s)</string>
     <string name="cleaner_videos_count">Video\'s (%1$s)</string>
     <string name="cleaner_large_files_count">Grote bestanden (%1$s)</string>

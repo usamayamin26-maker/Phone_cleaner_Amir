@@ -40,8 +40,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * locale is applied, and the first [onCreate] that sees it clears it and moves on, exactly once.
  * Choosing the language already in effect recreates nothing, so that case moves on directly.
  *
- * On the first run the screen moves on to onboarding (or Home once onboarding is done) and has no
- * back button. Settings opens it with [EXTRA_FROM_SETTINGS]; then it closes back to Settings. The
+ * On the first run the screen moves on to onboarding (or Home once onboarding is done), has no
+ * back button and ignores system back, so it never closes the app. Settings opens it with [EXTRA_FROM_SETTINGS]; then it closes back to Settings. The
  * extra survives the recreation, because an activity is recreated with its own intent.
  */
 class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
@@ -78,11 +78,11 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         header.backButton.root.visibleIf(isFromSettings)
         header.backButton.root.onClick { leaveWithAd(BACK_INTERSTITIAL_FLAG) }
         header.backButton.root.expandTouchTarget()
-        // System back does exactly what the screen's own back button does.
-        if (isFromSettings) {
-            onBackPressedDispatcher.addCallback(this@LanguageActivity) {
-                leaveWithAd(BACK_INTERSTITIAL_FLAG)
-            }
+        // From Settings, system back does exactly what the screen's own back button does. On the
+        // first run there is nowhere to go back to, so system back does nothing instead of
+        // closing the app.
+        onBackPressedDispatcher.addCallback(this@LanguageActivity) {
+            if (isFromSettings) leaveWithAd(BACK_INTERSTITIAL_FLAG)
         }
 
         languages.adapter = languageAdapter

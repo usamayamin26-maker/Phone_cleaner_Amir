@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Veriler yükleniyor</string>
     <string name="cleaner_loading_message">Cihazınız güvenle taranıyor; henüz hiçbir şey silinmedi.</string>
     <string name="cleaner_stop_scanning">Taramayı durdur</string>
+    <string name="dialog_leave_scan_title">Bekleyin! Emin misiniz?</string>
+    <string name="dialog_leave_scan_message">Neredeyse bitti! En iyi sonuç için taramanın bitmesini bekleyin. Şimdi çıkarsanız işlem yarım kalabilir.</string>
+    <string name="dialog_leave_scan_keep">Temizlemeye devam et</string>
+    <string name="dialog_leave_scan_stop">Yine de durdur</string>
     <string name="cleaner_images_count">Görseller (%1$s)</string>
     <string name="cleaner_videos_count">Videolar (%1$s)</string>
     <string name="cleaner_large_files_count">Büyük dosyalar (%1$s)</string>

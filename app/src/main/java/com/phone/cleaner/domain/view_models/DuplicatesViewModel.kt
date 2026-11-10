@@ -26,14 +26,14 @@ class DuplicatesViewModel(
     override suspend fun scan() {
         repository.scan().collect { event ->
             when (event) {
-                is DuplicateScanEvent.Progress -> mutableState.update { it.copy(progress = event.fraction) }
+                is DuplicateScanEvent.Progress -> reportProgress(event.fraction)
                 is DuplicateScanEvent.Completed -> {
                     val groups = mapOf(
                         CleanerSectionType.IMAGES to event.result.groupsOf(FileKind.IMAGE),
                         CleanerSectionType.VIDEOS to event.result.groupsOf(FileKind.VIDEO),
                     )
                     val large = repository.getLargeFiles()
-                    mutableState.update { state ->
+                    finishScan { state ->
                         state.copy(
                             isScanning = false,
                             isScanComplete = true,

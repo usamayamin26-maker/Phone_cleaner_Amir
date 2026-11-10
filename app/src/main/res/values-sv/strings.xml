@@ -76,6 +76,10 @@
     <string name="cleaner_loading_title">Läser in data</string>
     <string name="cleaner_loading_message">Enheten skannas säkert – inget har raderats ännu.</string>
     <string name="cleaner_stop_scanning">Stoppa skanning</string>
+    <string name="dialog_leave_scan_title">Vänta! Är du säker?</string>
+    <string name="dialog_leave_scan_message">Nästan klart! Låt genomsökningen bli klar för bästa resultat. Om du avslutar nu kan den bli ofullständig.</string>
+    <string name="dialog_leave_scan_keep">Fortsätt rensa</string>
+    <string name="dialog_leave_scan_stop">Stoppa ändå</string>
     <string name="cleaner_images_count">Bilder (%1$s)</string>
     <string name="cleaner_videos_count">Videor (%1$s)</string>
     <string name="cleaner_large_files_count">Stora filer (%1$s)</string>

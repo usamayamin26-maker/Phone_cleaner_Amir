@@ -33,6 +33,7 @@ import org.koin.android.ext.android.inject
 /**
  * The four onboarding pages, swipeable. Skip leaves from any page; Next turns the page and
  * becomes Continue on the last one. Leaving either way marks onboarding as done and opens Home.
+ * System back turns back a page and does nothing on the first one; it never closes the app.
  *
  * ViewPager2 follows the layout direction, so in a right-to-left language the pages run right to
  * left and the indicator is mirrored with them.
@@ -91,13 +92,10 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>() {
         skipButton.onClick { finishOnboarding(skipped = true) }
         actionButton.onClick { goToNextPage() }
 
+        // System back turns back a page; on the first page it does nothing, so it never closes
+        // the app. Skip and Continue are the only ways out.
         onBackPressedDispatcher.addCallback(this@OnboardingActivity) {
-            if (pager.currentItem > 0) {
-                pager.setCurrentItem(pager.currentItem - 1, true)
-            } else {
-                isEnabled = false
-                onBackPressedDispatcher.onBackPressed()
-            }
+            if (pager.currentItem > 0) pager.setCurrentItem(pager.currentItem - 1, true)
         }
     }
 

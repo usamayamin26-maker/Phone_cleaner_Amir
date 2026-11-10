@@ -12,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.phone.cleaner.domain.entities.ApiResult
 import com.phone.cleaner.domain.entities.CleanerSection
 import com.phone.cleaner.domain.entities.CleanerSectionType
+import com.phone.cleaner.utils.ScanPacer
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -112,11 +113,17 @@ abstract class CleanerViewModel : ViewModel() {
     /** The log tag of the screen's own ViewModel. */
     protected abstract val tag: String
 
+    /** Holds the scanning page for at least [ScanPacer.MIN_SCAN_MS] and paces its ring. */
+    private val pacer = ScanPacer { shown ->
+        mutableState.update { if (it.isScanning) it.copy(progress = shown) else it }
+    }
+
     fun startScan() {
         hasStarted = true
         scanJob?.cancel()
         scanJob = viewModelScope.launch {
             mutableState.value = CleanerUiState(isScanning = true)
+            pacer.start(this)
             try {
                 scan()
             } catch (e: CancellationException) {
@@ -125,8 +132,22 @@ abstract class CleanerViewModel : ViewModel() {
             } catch (e: Exception) {
                 Log.e(tag, "Scan failed", e)
                 mutableState.update { it.copy(isScanning = false, error = e.message ?: "Scan failed") }
+            } finally {
+                pacer.stop()
             }
         }
+    }
+
+    /** The scan's real progress, 0..1; the ring shows it paced by [ScanPacer]. */
+    protected fun reportProgress(fraction: Float) = pacer.report(fraction)
+
+    /**
+     * The scan's last update, the one that shows the results: applied once the scanning page has
+     * been on screen for [ScanPacer.MIN_SCAN_MS].
+     */
+    protected suspend fun finishScan(results: (CleanerUiState) -> CleanerUiState) {
+        pacer.finish()
+        mutableState.update(results)
     }
 
     /** "Stop Scanning": the scan is cancelled and nothing is deleted. */
