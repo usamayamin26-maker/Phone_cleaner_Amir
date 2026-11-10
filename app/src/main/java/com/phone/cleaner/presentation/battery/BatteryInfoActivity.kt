@@ -3,7 +3,6 @@ package com.phone.cleaner.presentation.battery
 import ai.jhw.battery.model.BatteryHealth
 import ai.jhw.battery.model.CapacitySource
 import android.content.ActivityNotFoundException
-import android.text.format.DateUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -128,15 +127,8 @@ class BatteryInfoActivity : BaseActivity<ActivityBatteryInfoBinding>() {
 
         healthValue.setText(healthText(info.health))
 
-        chargedValue.text = when {
-            info.isCharging -> getString(R.string.battery_charging)
-            battery.lastFullChargeAt > 0 -> DateUtils.getRelativeTimeSpanString(
-                battery.lastFullChargeAt,
-                System.currentTimeMillis(),
-                DateUtils.SECOND_IN_MILLIS,
-            ).toString()
-            else -> getString(R.string.value_not_available)
-        }
+        // The "Last Fully Charged" card shows only whether a charger is connected (QA).
+        chargedValue.setText(if (info.isPluggedIn) R.string.battery_charging else R.string.battery_discharging)
 
         temperatureValue.text = info.temperatureCelsius
             ?.let { getString(R.string.format_celsius, formatNumber(it, maxFractionDigits = 1)) }

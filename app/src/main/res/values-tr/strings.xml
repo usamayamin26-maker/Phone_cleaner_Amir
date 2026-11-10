@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">Son Tam Şarj</string>
     <string name="battery_charging">Şarj oluyor</string>
+    <string name="battery_discharging">Şarj boşalıyor</string>
     <string name="battery_capacity">Kapasite</string>
     <string name="battery_capacity_approx">Kapasite (yaklaşık)</string>
     <string name="format_mah">%1$s mAh</string>

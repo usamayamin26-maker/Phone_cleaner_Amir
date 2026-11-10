@@ -28,13 +28,9 @@ data class BatteryInfo(
     val chargeTimeRemainingMillis: Long?,
     val isPowerSaveMode: Boolean,
 ) {
-    val isCharging: Boolean
-        get() = status == BatteryStatus.CHARGING || status == BatteryStatus.FULL
-
-    /** True while plugged in and at 100% - the moment the app records as "last fully charged". */
-    val isFullyCharged: Boolean
-        get() = status == BatteryStatus.FULL ||
-            (plugType != BatteryPlugType.NONE && levelPercent == 100)
+    /** A charger is connected: AC (Alternating Current), USB, wireless or dock. */
+    val isPluggedIn: Boolean
+        get() = plugType != BatteryPlugType.NONE
 }
 
 enum class BatteryHealth { GOOD, OVERHEAT, DEAD, OVER_VOLTAGE, COLD, FAILURE, UNKNOWN }

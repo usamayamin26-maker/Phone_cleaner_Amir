@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">마지막 완전 충전</string>
     <string name="battery_charging">충전 중</string>
+    <string name="battery_discharging">방전 중</string>
     <string name="battery_capacity">용량</string>
     <string name="battery_capacity_approx">용량(추정)</string>
     <string name="format_mah">%1$s mAh</string>

@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s мВ</string>
     <string name="battery_last_full_charge">Последняя полная зарядка</string>
     <string name="battery_charging">Заряжается</string>
+    <string name="battery_discharging">Разряжается</string>
     <string name="battery_capacity">Ёмкость</string>
     <string name="battery_capacity_approx">Ёмкость (прибл.)</string>
     <string name="format_mah">%1$s мА·ч</string>

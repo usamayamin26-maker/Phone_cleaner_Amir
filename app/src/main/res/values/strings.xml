@@ -311,6 +311,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">Last Fully Charged</string>
     <string name="battery_charging">Charging</string>
+    <string name="battery_discharging">Discharging</string>
     <string name="battery_capacity">Capacity</string>
     <!-- When the device has no design capacity and the app estimates it from the charge counter. -->
     <string name="battery_capacity_approx">Capacity (approx.)</string>

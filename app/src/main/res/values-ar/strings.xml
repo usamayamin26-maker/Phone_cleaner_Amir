@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">آخر شحن كامل</string>
     <string name="battery_charging">جارٍ الشحن</string>
+    <string name="battery_discharging">جارٍ التفريغ</string>
     <string name="battery_capacity">السعة</string>
     <string name="battery_capacity_approx">السعة (تقريبية)</string>
     <string name="format_mah">%1$s mAh</string>

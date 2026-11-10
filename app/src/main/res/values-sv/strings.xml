@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">Senast fulladdat</string>
     <string name="battery_charging">Laddas</string>
+    <string name="battery_discharging">Laddas ur</string>
     <string name="battery_capacity">Kapacitet</string>
     <string name="battery_capacity_approx">Kapacitet (ca)</string>
     <string name="format_mah">%1$s mAh</string>

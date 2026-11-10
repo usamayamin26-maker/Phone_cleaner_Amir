@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">Ultima carica completa</string>
     <string name="battery_charging">In carica</string>
+    <string name="battery_discharging">In scarica</string>
     <string name="battery_capacity">Capacità</string>
     <string name="battery_capacity_approx">Capacità (circa)</string>
     <string name="format_mah">%1$s mAh</string>

@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">最後の満充電</string>
     <string name="battery_charging">充電中</string>
+    <string name="battery_discharging">放電中</string>
     <string name="battery_capacity">容量</string>
     <string name="battery_capacity_approx">容量（推定）</string>
     <string name="format_mah">%1$s mAh</string>

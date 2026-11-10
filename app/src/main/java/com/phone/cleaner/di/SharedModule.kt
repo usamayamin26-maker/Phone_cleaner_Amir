@@ -110,6 +110,6 @@ val SharedModule = module {
     factory { InfoListAdapter() }
 
     // ---- battery ----
-    single<BatteryRepository> { BatteryRepositoryImp(get(), get()) }
+    single<BatteryRepository> { BatteryRepositoryImp(get()) }
     viewModel { BatteryViewModel(get()) }
 }

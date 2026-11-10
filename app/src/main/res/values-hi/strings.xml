@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">पिछली बार पूरी चार्ज</string>
     <string name="battery_charging">चार्ज हो रही है</string>
+    <string name="battery_discharging">डिस्चार्ज हो रही है</string>
     <string name="battery_capacity">क्षमता</string>
     <string name="battery_capacity_approx">क्षमता (अनुमानित)</string>
     <string name="format_mah">%1$s mAh</string>

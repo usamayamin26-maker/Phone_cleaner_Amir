@@ -231,6 +231,7 @@
     <string name="format_millivolts">%1$s mV</string>
     <string name="battery_last_full_charge">Zuletzt voll geladen</string>
     <string name="battery_charging">Wird geladen</string>
+    <string name="battery_discharging">Wird entladen</string>
     <string name="battery_capacity">Kapazität</string>
     <string name="battery_capacity_approx">Kapazität (ca.)</string>
     <string name="format_mah">%1$s mAh</string>
