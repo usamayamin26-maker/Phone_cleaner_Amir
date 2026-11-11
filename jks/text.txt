@@ -1,0 +1,6 @@
+storePassword=phone_cleaner
+keyPassword=phone_cleaner
+keyAlias=JointHashWorks
+
+namespace = "com.phone.cleaner"
+applicationId = "com.jhw.aicleaner"
